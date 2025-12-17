@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jan Escoda - Inicio</title>
+
+    <!-- Script para cargar menú y footer -->
+    <script src="assets/js/include.js" defer></script>
+
+    <style>
+        /* --- TODO TU CSS EXACTO DEL INDEX, SIN EL NAV Y FOOTER --- */
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.6;color:#333;overflow-x:hidden;}
+
+        /* Hero Section */
+        .hero{height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;background:linear-gradient(135deg,#667eea,#764ba2);color:white;position:relative;overflow:hidden;}
+        .hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');opacity:0.3;}
+        .hero-content{position:relative;z-index:1;max-width:1200px;padding:2rem;}
+        .hero h1{font-size:clamp(2.5rem,8vw,6rem);font-weight:900;margin-bottom:1rem;letter-spacing:-2px;animation:fadeInUp 1s ease;}
+        .subtitle{font-size:clamp(1rem,3vw,1.5rem);font-weight:300;margin-bottom:2rem;letter-spacing:2px;text-transform:uppercase;animation:fadeInUp 1s ease .2s both;}
+        .description{font-size:clamp(1.1rem,2vw,1.3rem);max-width:800px;margin:0 auto 3rem;line-height:1.8;animation:fadeInUp 1s ease .4s both;}
+        @keyframes fadeInUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
+        .cta-buttons{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;animation:fadeInUp 1s ease .6s both;}
+        .btn{padding:1rem 2.5rem;border-radius:50px;text-decoration:none;font-weight:600;transition:.3s;}
+        .btn-primary{background:white;color:#667eea;}
+        .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 25px rgba(0,0,0,0.2);}
+        .btn-secondary{background:transparent;color:white;border:2px solid white;}
+        .btn-secondary:hover{background:white;color:#667eea;}
+
+        .featured{padding:6rem 5%;max-width:1400px;margin:0 auto;}
+        .featured h2{text-align:center;font-size:clamp(2rem,5vw,3.5rem);font-weight:900;margin-bottom:1rem;}
+        .section-subtitle{text-align:center;font-size:1.2rem;color:#666;margin-bottom:3rem;}
+
+        .featured-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:2rem;margin-top:3rem;}
+        .featured-card{background:white;border-radius:12px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.08);transition:.3s;}
+        .featured-card:hover{transform:translateY(-10px);box-shadow:0 12px 40px rgba(0,0,0,0.15);}
+        .featured-image{width:100%;height:280px;object-fit:cover;}
+        .featured-info{padding:2rem;}
+    </style>
+</head>
+
+<body>
+
+<!-- Aquí se carga automáticamente el MENÚ -->
+<div data-include="menu.html"></div>
+
+<!-- Hero -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>Jan Escoda</h1>
+        <div class="subtitle">Desarrollador Full Stack | Diseñador Creativo</div>
+        <p class="description">
+            Creando experiencias digitales que fusionan diseño y tecnología.
+        </p>
+        <div class="cta-buttons">
+            <a href="Portfolio.html" class="btn btn-primary">Ver Proyectos</a>
+            <a href="contacto.html" class="btn btn-secondary">Contactar</a>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Projects -->
+<section class="featured">
+    <h2>Proyectos Destacados</h2>
+    <p class="section-subtitle">Una selección de mi trabajo reciente</p>
+    <div class="featured-grid">
+        <!-- Tus tarjetas de proyecto -->
+    </div>
+</section>
+
+<!-- FOOTER -->
+<div data-include="footer.html"></div>
+
+</body>
+</html>

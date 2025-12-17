@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TU NOMBRE - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1.5rem 5%;
+            border-bottom: 1px solid #eee;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: #6366f1;
+        }
+
+        /* Page Header */
+        .page-header {
+            padding: 8rem 5% 4rem;
+            text-align: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .page-header h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 900;
+            margin-bottom: 1rem;
+            letter-spacing: -2px;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Projects Section */
+        .projects {
+            padding: 6rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .project-card:hover .project-image {
+            transform: scale(1.1);
+        }
+
+        .project-info {
+            padding: 2rem;
+        }
+
+        .project-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .project-info p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            background: #f3f4f6;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: #555;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 3rem 5%;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            color: #667eea;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1.5rem;
+            }
+
+            .projects {
+                padding: 4rem 5%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="portfolio.html" class="active">Portfolio</a></li>
+            <li><a href="sobre-mi.html">Sobre Mí</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <h1>Portfolio</h1>
+        <p>Mis proyectos y trabajos recientes</p>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects">
+        <div class="projects-grid">
+            <div class="project-card">
+                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop" alt="Project 1" class="project-image">
+                <div class="project-info">
+                    <h3>Plataforma E-Commerce</h3>
+                    <p>Tienda online completa con integración de pagos y panel de administración</p>
+                    <div class="project-tags">
+                        <span class="tag">React</span>
+                        <span class="tag">Node.js</span>
+                        <span class="tag">MongoDB</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&h=600&fit=crop" alt="Project 2" class="project-image">
+                <div class="project-info">
+                    <h3>App de Fitness</h3>
+                    <p>Aplicación móvil para seguimiento de entrenamientos y nutrición</p>
+                    <div class="project-tags">
+                        <span class="tag">React Native</span>
+                        <span class="tag">Firebase</span>
+                        <span class="tag">UI/UX</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop" alt="Project 3" class="project-image">
+                <div class="project-info">
+                    <h3>Dashboard de Datos</h3>
+                    <p>Panel de análisis en tiempo real con gráficos interactivos</p>
+                    <div class="project-tags">
+                        <span class="tag">D3.js</span>
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">API</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <img src="https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=800&h=600&fit=crop" alt="Project 4" class="project-image">
+                <div class="project-info">
+                    <h3>Sistema de Identidad</h3>
+                    <p>Guía completa de marca y sistema de diseño</p>
+                    <div class="project-tags">
+                        <span class="tag">Figma</span>
+                        <span class="tag">Branding</span>
+                        <span class="tag">Diseño</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=800&h=600&fit=crop" alt="Project 5" class="project-image">
+                <div class="project-info">
+                    <h3>CMS de Portfolio</h3>
+                    <p>Sistema de gestión de contenido personalizado para creativos</p>
+                    <div class="project-tags">
+                        <span class="tag">Next.js</span>
+                        <span class="tag">TypeScript</span>
+                        <span class="tag">PostgreSQL</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&h=600&fit=crop" alt="Project 6" class="project-image">
+                <div class="project-info">
+                    <h3>Galería de Arte Generativo</h3>
+                    <p>Piezas de arte basadas en algoritmos usando código creativo</p>
+                    <div class="project-tags">
+                        <span class="tag">p5.js</span>
+                        <span class="tag">Canvas</span>
+                        <span class="tag">WebGL</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="social-links">
+            <a href="https://github.com/tuusuario" target="_blank">GitHub</a>
+            <a href="https://linkedin.com/in/tuusuario" target="_blank">LinkedIn</a>
+            <a href="https://twitter.com/tuusuario" target="_blank">Twitter</a>
+        </div>
+        <p>&copy; 2024 Tu Nombre. Creado con pasión y código.</p>
+    </footer>
+</body>
+</html>
