@@ -18,66 +18,12 @@
             overflow-x: hidden;
         }
 
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            padding: 1.5rem 5%;
-            border-bottom: 1px solid #eee;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            flex-wrap: wrap;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 600;
-            font-size: 0.95rem;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            transition: color 0.3s;
-        }
-
-        nav a:hover,
-        nav a.active {
-            color: #6366f1;
-        }
-
-        /* Page Header */
-        .page-header {
-            padding: 8rem 5% 4rem;
-            text-align: center;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-        }
-
-        .page-header h1 {
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            font-weight: 900;
-            margin-bottom: 1rem;
-            letter-spacing: -2px;
-        }
-
-        .page-header p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-        }
-
         /* About Section */
         .about {
             padding: 6rem 5%;
             max-width: 1200px;
             margin: 0 auto;
+            margin-top: 80px;
         }
 
         .about-content {
@@ -161,38 +107,8 @@
             color: #333;
         }
 
-        /* Footer */
-        footer {
-            background: #1a1a1a;
-            color: white;
-            text-align: center;
-            padding: 3rem 5%;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .social-links a {
-            color: white;
-            font-size: 1.5rem;
-            transition: color 0.3s;
-            text-decoration: none;
-        }
-
-        .social-links a:hover {
-            color: #667eea;
-        }
-
         /* Responsive */
         @media (max-width: 768px) {
-            nav ul {
-                gap: 1.5rem;
-            }
-
             .about-content {
                 grid-template-columns: 1fr;
             }
@@ -208,21 +124,10 @@
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
-        <ul>
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="portfolio.html">Portfolio</a></li>
-            <li><a href="sobre-mi.html" class="active">Sobre Mí</a></li>
-            <li><a href="contacto.html">Contacto</a></li>
-        </ul>
-    </nav>
-
-    <!-- Page Header -->
-    <section class="page-header">
-        <h1>Sobre Mí</h1>
-        <p>Desarrollador, Diseñador, Creador</p>
-    </section>
+    <!-- Script para cargar menú y footer -->
+    <script src="assets/js/include.js" defer></script>
+    <!-- Aquí se carga automáticamente el MENÚ -->
+    <div data-include="menu.html"></div>
 
     <!-- About Section -->
     <section class="about">
@@ -283,14 +188,7 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="social-links">
-            <a href="https://github.com/tuusuario" target="_blank">GitHub</a>
-            <a href="https://linkedin.com/in/tuusuario" target="_blank">LinkedIn</a>
-            <a href="https://twitter.com/tuusuario" target="_blank">Twitter</a>
-        </div>
-        <p>&copy; 2024 Tu Nombre. Creado con pasión y código.</p>
-    </footer>
+    <!-- FOOTER -->
+    <div data-include="footer.html"></div>
 </body>
 </html>
