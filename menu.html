@@ -8,7 +8,7 @@
             <ul>
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="portfolio.html">Portfolio</a></li>
-                <li><a href="sobre-mi.html">Sobre Mí</a></li>
+                <li><a href="sobre-mi. html">Sobre Mí</a></li>
                 <li><a href="contacto.html">Contacto</a></li>
             </ul>
         </div>
@@ -23,7 +23,7 @@ nav {
     top: 0;
     width: 100%;
     background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
+    backdrop-filter:  blur(10px);
     z-index: 1000;
     padding: 1.2rem 5%;
     border-bottom: 1px solid #eee;
@@ -39,34 +39,46 @@ nav {
     font-size: 1.3rem;
     font-weight: 700;
     text-decoration: none;
-    color: #333;
+    color:  #000;
     letter-spacing: -0.5px;
     transition: color 0.3s;
 }
 
 .logo:hover {
-    color: #6366f1;
+    color: #888;
 }
 
 .nav-right ul {
-    list-style: none;
+    list-style:  none;
     display: flex;
     gap: 2.5rem;
     margin: 0;
 }
 
 .nav-right a {
-    text-decoration: none;
-    color: #333;
+    text-decoration:  none;
+    color: #000;
     font-weight: 600;
-    font-size: 0.95rem;
+    font-size:  0.95rem;
     letter-spacing: 0.5px;
+    position: relative;
     transition: color 0.3s;
 }
 
-.nav-right a:hover,
-.nav-right a.active {
-    color: #6366f1;
+.nav-right a:: after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #000;
+    transition: width 0.3s ease;
+}
+
+.nav-right a:hover::after,
+.nav-right a.active::after {
+    width: 100%;
 }
 
 @media (max-width: 768px) {
@@ -79,5 +91,6 @@ nav {
     }
 }
 </style>
+
 
 
