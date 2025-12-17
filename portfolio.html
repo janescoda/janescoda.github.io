@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<! DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -7,7 +7,7 @@
     <style>
         * {
             margin: 0;
-            padding: 0;
+            padding:  0;
             box-sizing: border-box;
         }
 
@@ -16,41 +16,6 @@
             line-height: 1.6;
             color: #333;
             overflow-x: hidden;
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            padding: 1.5rem 5%;
-            border-bottom: 1px solid #eee;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            flex-wrap: wrap;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 600;
-            font-size: 0.95rem;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            transition: color 0.3s;
-        }
-
-        nav a:hover,
-        nav a.active {
-            color: #6366f1;
         }
 
         /* Page Header */
@@ -68,7 +33,7 @@
             letter-spacing: -2px;
         }
 
-        .page-header p {
+        . page-header p {
             font-size: 1.2rem;
             opacity: 0.9;
         }
@@ -87,9 +52,9 @@
             margin-top: 3rem;
         }
 
-        .project-card {
-            background: white;
-            border-radius: 12px;
+        . project-card {
+            background:  white;
+            border-radius:  12px;
             overflow: hidden;
             box-shadow: 0 4px 20px rgba(0,0,0,0.08);
             transition: transform 0.3s, box-shadow 0.3s;
@@ -98,17 +63,17 @@
 
         .project-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+            box-shadow:  0 12px 40px rgba(0,0,0,0.15);
         }
 
         .project-image {
             width: 100%;
             height: 280px;
-            object-fit: cover;
+            object-fit:  cover;
             transition: transform 0.5s;
         }
 
-        .project-card:hover .project-image {
+        . project-card:hover .project-image {
             transform: scale(1.1);
         }
 
@@ -116,14 +81,14 @@
             padding: 2rem;
         }
 
-        .project-info h3 {
+        . project-info h3 {
             font-size: 1.5rem;
-            margin-bottom: 0.5rem;
+            margin-bottom:  0.5rem;
             color: #333;
         }
 
         .project-info p {
-            color: #666;
+            color:  #666;
             margin-bottom: 1rem;
         }
 
@@ -136,43 +101,13 @@
         .tag {
             background: #f3f4f6;
             padding: 0.4rem 1rem;
-            border-radius: 20px;
+            border-radius:  20px;
             font-size: 0.85rem;
             color: #555;
         }
 
-        /* Footer */
-        footer {
-            background: #1a1a1a;
-            color: white;
-            text-align: center;
-            padding: 3rem 5%;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .social-links a {
-            color: white;
-            font-size: 1.5rem;
-            transition: color 0.3s;
-            text-decoration: none;
-        }
-
-        .social-links a:hover {
-            color: #667eea;
-        }
-
         /* Responsive */
         @media (max-width: 768px) {
-            nav ul {
-                gap: 1.5rem;
-            }
-
             .projects {
                 padding: 4rem 5%;
             }
@@ -180,15 +115,10 @@
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
-        <ul>
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="portfolio.html" class="active">Portfolio</a></li>
-            <li><a href="sobre-mi.html">Sobre Mí</a></li>
-            <li><a href="contacto.html">Contacto</a></li>
-        </ul>
-    </nav>
+    <!-- Script para cargar menú y footer -->
+    <script src="assets/js/include.js" defer></script>
+    <!-- Aquí se carga automáticamente el MENÚ -->
+    <div data-include="menu. html"></div>
 
     <!-- Page Header -->
     <section class="page-header">
@@ -233,7 +163,7 @@
                     <div class="project-tags">
                         <span class="tag">D3.js</span>
                         <span class="tag">JavaScript</span>
-                        <span class="tag">API</span>
+                        <span class="tag\">API</span>
                     </div>
                 </div>
             </div>
@@ -257,7 +187,7 @@
                     <h3>CMS de Portfolio</h3>
                     <p>Sistema de gestión de contenido personalizado para creativos</p>
                     <div class="project-tags">
-                        <span class="tag">Next.js</span>
+                        <span class="tag">Next. js</span>
                         <span class="tag">TypeScript</span>
                         <span class="tag">PostgreSQL</span>
                     </div>
@@ -279,14 +209,7 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="social-links">
-            <a href="https://github.com/tuusuario" target="_blank">GitHub</a>
-            <a href="https://linkedin.com/in/tuusuario" target="_blank">LinkedIn</a>
-            <a href="https://twitter.com/tuusuario" target="_blank">Twitter</a>
-        </div>
-        <p>&copy; 2024 Tu Nombre. Creado con pasión y código.</p>
-    </footer>
+    <!-- FOOTER -->
+    <div data-include="footer. html"></div>
 </body>
 </html>
