@@ -28,7 +28,9 @@ function initMenu() {
   if (menuInitialized) return;
   menuInitialized = true;
 
-  /* MENÚ ACTIVO */
+  /* ===============================
+     MENÚ ACTIVO SEGÚN LA PÁGINA
+  =============================== */
   const currentPage =
     window.location.pathname.split("/").pop() || "index.html";
 
@@ -38,7 +40,9 @@ function initMenu() {
     }
   });
 
-  /* MENÚ MÓVIL */
+  /* ===============================
+     MENÚ MÓVIL (ESTÁNDAR)
+  =============================== */
   const toggle = document.querySelector(".menu-toggle");
   const nav = document.querySelector(".nav-right");
 
@@ -46,8 +50,12 @@ function initMenu() {
 
   toggle.addEventListener("click", () => {
     const isOpen = nav.classList.toggle("show");
+
+    // Control visual del botón (☰ / ✕)
     toggle.classList.toggle("open", isOpen);
-    toggle.setAttribute("aria-expanded", isOpen);
+
+    // Accesibilidad
+    toggle.setAttribute("aria-expanded", isOpen.toString());
   });
 
   // Cerrar menú al hacer click en un enlace
@@ -59,9 +67,3 @@ function initMenu() {
     });
   });
 }
-
-
-
-
-
-
