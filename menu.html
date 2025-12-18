@@ -11,106 +11,143 @@
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
-        /* ----- NAVIGATION ----- */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            padding: 1.2rem 5%;
-            border-bottom: 1px solid #eee;
-            font-family: 'Hind Siliguri', sans-serif;
-        }
+   /* ----- NAVIGATION ----- */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  padding: 1.2rem 5%;
+  border-bottom: 1px solid #eee;
+  font-family: 'Hind Siliguri', sans-serif;
+}
 
-        .nav-container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 500;
-            text-decoration: none;
-            color: #000;
-            letter-spacing: -0.3px;
-            transition: color 0.3s;
-        }
+/* Logo */
+.logo {
+  font-size: 1.5rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: #000;
+  letter-spacing: -0.3px;
+}
 
-        .logo:hover {
-            color: #888;
-        }
+/* Desktop menu */
+.nav-right ul {
+  list-style: none;
+  display: flex;
+  gap: 2.5rem;
+  margin: 0;
+  padding: 0;
+}
 
-        .nav-right ul {
-            list-style: none;
-            display: flex;
-            gap: 2.5rem;
-            margin: 0;
-            padding: 0;
-        }
+.nav-right a {
+  text-decoration: none;
+  color: #000;
+  font-weight: 200;
+  font-size: 0.9rem;
+  letter-spacing: 0.3px;
+  position: relative;
+}
 
-        .nav-right a {
-            text-decoration: none;
-            color: #000;
-            font-weight: 200;
-            font-size: 0.90rem;
-            letter-spacing: 0.3px;
-            position: relative;
-            transition: color 0.3s;
-        }
+.nav-right a::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #000;
+  transition: width 0.3s ease;
+}
 
-        .nav-right a::after {
-            content: '';
-  
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: #000;
-            transition: width 0.3s ease;
-        }
+.nav-right a:hover::after,
+.nav-right a.active::after {
+  width: 100%;
+}
 
-        .nav-right a:hover::after,
-        .nav-right a.active::after {
-            width: 100%;
-        }
+/* Botón móvil */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
 
-        @media (max-width: 768px) {
-            .nav-right ul {
-                gap: 1.5rem;
-            }
+.menu-toggle span {
+  width: 22px;
+  height: 2px;
+  background: #000;
+}
 
-            .logo {
-                font-size: 1.1rem;
-            }
-        }
+/*  MÓVIL */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: flex;
+  }
+
+  .nav-right {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.97);
+    border-bottom: 1px solid #eee;
+    display: none;
+  }
+
+  .nav-right ul {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 2rem 5%;
+  }
+
+  .nav-right.show {
+    display: block;
+  }
+}
+
     </style>
 </head>
 
 <body>
 
 <nav>
-    <div class="nav-container">
-        <div class="nav-left">
-            <a href="index.html" class="logo">Jan Escoda</a>
-        </div>
-
-        <div class="nav-right">
-            <ul>
-<li><a href="index.html">INICIO</a></li>
-<li><a href="portfolio.html">PORTFOLIO</a></li>
-<li><a href="sobre-mi.html">SOBRE MÍ</a></li>
-<li><a href="contacto.html">CONTACTO</a></li>
-            </ul>
-        </div>
+  <div class="nav-container">
+    <div class="nav-left">
+      <a href="index.html" class="logo">Jan Escoda</a>
     </div>
+
+    <!-- Botón menú móvil -->
+    <button class="menu-toggle" aria-label="Abrir menú">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <div class="nav-right">
+      <ul>
+        <li><a href="index.html">INICIO</a></li>
+        <li><a href="portfolio.html">PORTFOLIO</a></li>
+        <li><a href="sobre-mi.html">SOBRE MÍ</a></li>
+        <li><a href="contacto.html">CONTACTO</a></li>
+      </ul>
+    </div>
+  </div>
 </nav>
 
 </body>
 </html>
+
 
 
 
