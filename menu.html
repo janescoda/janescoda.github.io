@@ -1,3 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jan Escoda</title>
+
+    <!-- Google Fonts: Hind Siliguri -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ----- NAVIGATION ----- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1.2rem 5%;
+            border-bottom: 1px solid #eee;
+            font-family: 'Hind Siliguri', sans-serif;
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 1.3rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: #000;
+            letter-spacing: -0.3px;
+            transition: color 0.3s;
+        }
+
+        .logo:hover {
+            color: #888;
+        }
+
+        .nav-right ul {
+            list-style: none;
+            display: flex;
+            gap: 2.5rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-right a {
+            text-decoration: none;
+            color: #000;
+            font-weight: 200;
+            font-size: 0.95rem;
+            letter-spacing: 0.3px;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-right a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #000;
+            transition: width 0.3s ease;
+        }
+
+        .nav-right a:hover::after,
+        .nav-right a.active::after {
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .nav-right ul {
+                gap: 1.5rem;
+            }
+
+            .logo {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
 <nav>
     <div class="nav-container">
         <div class="nav-left">
@@ -6,92 +99,14 @@
 
         <div class="nav-right">
             <ul>
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="portfolio.html">Portfolio</a></li>
-                <li><a href="sobre-mi. html">Sobre Mí</a></li>
-                <li><a href="contacto.html">Contacto</a></li>
+                <li><a href="index.html" class="active">INICIO</a></li>
+                <li><a href="portfolio.html">PORTFOLIO</a></li>
+                <li><a href="sobre-mi.html">SOBRE MÍ</a></li>
+                <li><a href="contacto.html">CONTACTO</a></li>
             </ul>
         </div>
     </div>
 </nav>
 
-<style>
-    
-/* ----- NAVIGATION ----- */
-nav {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter:  blur(10px);
-    z-index: 1000;
-    padding: 1.2rem 5%;
-    border-bottom: 1px solid #eee;
-}
-
-.nav-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.logo {
-    font-size: 1.3rem;
-    font-weight: 700;
-    text-decoration: none;
-    color:  #000;
-    letter-spacing: -0.5px;
-    transition: color 0.3s;
-}
-
-.logo:hover {
-    color: #888;
-}
-
-.nav-right ul {
-    list-style:  none;
-    display: flex;
-    gap: 2.5rem;
-    margin: 0;
-}
-
-.nav-right a {
-    text-decoration:  none;
-    color: #000;
-    font-weight: 600;
-    font-size:  0.95rem;
-    letter-spacing: 0.5px;
-    position: relative;
-    transition: color 0.3s;
-}
-
-.nav-right a:: after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background-color: #000;
-    transition: width 0.3s ease;
-}
-
-.nav-right a:hover::after,
-.nav-right a.active::after {
-    width: 100%;
-}
-
-@media (max-width: 768px) {
-    .nav-right ul {
-        gap: 1.5rem;
-    }
-
-    .logo {
-        font-size: 1.1rem;
-    }
-}
-</style>
-
-
-
-
+</body>
+</html>
