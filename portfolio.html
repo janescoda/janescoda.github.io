@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio - Jan Escoda</title>
+  <title>Portfolio – Jan Escoda</title>
 
   <style>
     * {
@@ -13,46 +13,71 @@
     }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      line-height: 1.6;
-      color: #333;
-      overflow-x: hidden;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: #111;
     }
 
-    /* Page Header */
+    /* HERO */
     .page-header {
-      padding: 8rem 5% 4rem;
+      padding: 9rem 5% 4rem;
       text-align: center;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
     }
 
     .page-header h1 {
       font-size: clamp(2.5rem, 6vw, 4rem);
-      font-weight: 900;
+      font-weight: 700;
+      letter-spacing: -1.5px;
       margin-bottom: 1rem;
-      letter-spacing: -2px;
     }
 
     .page-header p {
-      font-size: 1.2rem;
-      opacity: 0.9;
+      color: #666;
     }
 
-    /* Projects Section */
+    /* FILTROS */
+    .portfolio-filters {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.6rem;
+      margin: 3rem auto 4rem;
+      font-size: 0.85rem;
+      letter-spacing: 0.8px;
+    }
+
+    .portfolio-filters span {
+      opacity: 0.3;
+    }
+
+    .portfolio-filters button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #999;
+      padding: 0;
+    }
+
+    .portfolio-filters button.active,
+    .portfolio-filters button:hover {
+      color: #000;
+      font-weight: 600;
+    }
+
+    /* PROYECTOS */
     .projects {
-      padding: 6rem 5%;
+      padding: 0 5% 6rem;
       max-width: 1400px;
       margin: 0 auto;
     }
 
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 2rem;
     }
 
-    /* Enlace envolvente */
     .project-link {
       text-decoration: none;
       color: inherit;
@@ -60,59 +85,37 @@
     }
 
     .project-card {
-      background: white;
+      background: #fff;
       border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      height: 100%;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.08);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
 
     .project-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.12);
     }
 
     .project-image {
       width: 100%;
-      height: 260px;
+      height: 240px;
       object-fit: cover;
       display: block;
     }
 
     .project-info {
-      padding: 2rem;
+      padding: 1.8rem;
     }
 
     .project-info h3 {
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       margin-bottom: 0.5rem;
     }
 
     .project-info p {
+      font-size: 0.95rem;
       color: #666;
-      margin-bottom: 1rem;
-    }
-
-    .project-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-
-    .tag {
-      background: #f3f4f6;
-      padding: 0.4rem 1rem;
-      border-radius: 20px;
-      font-size: 0.85rem;
-      color: #555;
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .projects {
-        padding: 4rem 5%;
-      }
     }
   </style>
 </head>
@@ -123,60 +126,65 @@
   <script src="assets/js/include.js" defer></script>
   <div data-include="menu.html"></div>
 
-  <!-- Page Header -->
-  <section class="page-header">
+  <!-- HERO -->
+  <header class="page-header">
     <h1>Portfolio</h1>
-    <p>Una selección de mis proyectos recientes</p>
-  </section>
+    <p>Una selección de proyectos creativos</p>
+  </header>
 
-  <!-- Projects Section -->
+  <!-- FILTROS -->
+  <nav class="portfolio-filters">
+    <button class="filter active" data-filter="all">TODO</button>
+    <span>/</span>
+    <button class="filter" data-filter="animacion">ANIMACIÓN</button>
+    <span>/</span>
+    <button class="filter" data-filter="diseno-3d">DISEÑO 3D</button>
+    <span>/</span>
+    <button class="filter" data-filter="impresion-3d">IMPRESIÓN 3D</button>
+    <span>/</span>
+    <button class="filter" data-filter="ilustracion">ILUSTRACIÓN</button>
+  </nav>
+
+  <!-- PROYECTOS -->
   <section class="projects">
     <div class="projects-grid">
 
-      <!-- Proyecto 1 -->
-      <a href="#" class="project-link">
+      <a href="#" class="project-link" data-category="animacion">
         <div class="project-card">
-          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f71?w=800" alt="Proyecto E-commerce" class="project-image">
+          <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=800" class="project-image" alt="">
           <div class="project-info">
-            <h3>Plataforma E-commerce</h3>
-            <p>Tienda online completa con sistema de pagos y administración.</p>
-            <div class="project-tags">
-              <span class="tag">React</span>
-              <span class="tag">Node.js</span>
-              <span class="tag">MongoDB</span>
-            </div>
+            <h3>Proyecto Animación</h3>
+            <p>Motion graphics y animación digital.</p>
           </div>
         </div>
       </a>
 
-      <!-- Proyecto 2 -->
-      <a href="#" class="project-link">
+      <a href="#" class="project-link" data-category="diseno-3d">
         <div class="project-card">
-          <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800" alt="App Fitness" class="project-image">
+          <img src="https://images.unsplash.com/photo-1581091870627-3cdb6b53d53f?w=800" class="project-image" alt="">
           <div class="project-info">
-            <h3>App de Fitness</h3>
-            <p>Aplicación móvil para seguimiento de entrenamientos.</p>
-            <div class="project-tags">
-              <span class="tag">React Native</span>
-              <span class="tag">Firebase</span>
-              <span class="tag">UI/UX</span>
-            </div>
+            <h3>Diseño 3D</h3>
+            <p>Modelado y visualización tridimensional.</p>
           </div>
         </div>
       </a>
 
-      <!-- Proyecto 3 -->
-      <a href="#" class="project-link">
+      <a href="#" class="project-link" data-category="impresion-3d">
         <div class="project-card">
-          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800" alt="Dashboard de datos" class="project-image">
+          <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?w=800" class="project-image" alt="">
           <div class="project-info">
-            <h3>Dashboard de Datos</h3>
-            <p>Panel interactivo con métricas en tiempo real.</p>
-            <div class="project-tags">
-              <span class="tag">JavaScript</span>
-              <span class="tag">D3.js</span>
-              <span class="tag">API</span>
-            </div>
+            <h3>Impresión 3D</h3>
+            <p>Prototipado y fabricación aditiva.</p>
+          </div>
+        </div>
+      </a>
+
+      <a href="#" class="project-link" data-category="ilustracion">
+        <div class="project-card">
+          <img src="https://images.unsplash.com/photo-1541963463532-d68292c34b19?w=800" class="project-image" alt="">
+          <div class="project-info">
+            <h3>Ilustración</h3>
+            <p>Ilustración digital y conceptual.</p>
           </div>
         </div>
       </a>
@@ -189,8 +197,6 @@
 
 </body>
 </html>
-
-
 
 
 
