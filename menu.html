@@ -1,17 +1,5 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio - Jan Escoda</title>
-
-    <!-- Google Fonts: Hind Siliguri -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-    <style>
-   /* ----- NAVIGATION ----- */
+<style>
+/* ----- NAVIGATION ----- */
 nav {
   position: fixed;
   top: 0;
@@ -73,8 +61,9 @@ nav {
   width: 100%;
 }
 
-/* Botón móvil */
+/* Botón menú móvil */
 .menu-toggle {
+  display: none;
   background: none;
   border: none;
   font-size: 1.6rem;
@@ -82,12 +71,11 @@ nav {
   line-height: 1;
 }
 
-/* Por defecto: solo hamburguesa */
+/* Iconos */
 .menu-toggle .icon-close {
   display: none;
 }
 
-/* Menú abierto: mostrar cruz */
 .menu-toggle.open .icon-menu {
   display: none;
 }
@@ -96,11 +84,33 @@ nav {
   display: inline;
 }
 
+/* ===== MÓVIL ===== */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
 
-    </style>
-</head>
+  .nav-right {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.97);
+    border-bottom: 1px solid #eee;
+    display: none;
+  }
 
-<body>
+  .nav-right.show {
+    display: block;
+  }
+
+  .nav-right ul {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 2rem 5%;
+  }
+}
+</style>
 
 <nav>
   <div class="nav-container">
@@ -109,10 +119,10 @@ nav {
     </div>
 
     <!-- Botón menú móvil -->
-<button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
-  <span class="icon-menu">☰</span>
-  <span class="icon-close">✕</span>
-</button>
+    <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
+      <span class="icon-menu">☰</span>
+      <span class="icon-close">✕</span>
+    </button>
 
     <div class="nav-right">
       <ul>
@@ -125,9 +135,6 @@ nav {
   </div>
 </nav>
 
-
-</body>
-</html>
 
 
 
