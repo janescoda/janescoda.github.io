@@ -75,62 +75,27 @@ nav {
 
 /* Botón móvil */
 .menu-toggle {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
   background: none;
   border: none;
+  font-size: 1.6rem;
   cursor: pointer;
+  line-height: 1;
 }
 
-.menu-toggle span {
-  width: 22px;
-  height: 2px;
-  background: #000;
+/* Por defecto: solo hamburguesa */
+.menu-toggle .icon-close {
+  display: none;
 }
 
-/*  MÓVIL */
-@media (max-width: 768px) {
-  .menu-toggle {
-    display: flex;
-  }
-
-  .nav-right {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background: rgba(255, 255, 255, 0.97);
-    border-bottom: 1px solid #eee;
-    display: none;
-  }
-
-  .nav-right ul {
-    flex-direction: column;
-    gap: 1.5rem;
-    padding: 2rem 5%;
-  }
-
-  .nav-right.show {
-    display: block;
-  }
-}
-/* Animación hamburguesa → cruz */
-.menu-toggle span {
-  transition: all 0.3s ease;
+/* Menú abierto: mostrar cruz */
+.menu-toggle.open .icon-menu {
+  display: none;
 }
 
-.menu-toggle.open span:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
+.menu-toggle.open .icon-close {
+  display: inline;
 }
 
-.menu-toggle.open span:nth-child(2) {
-  opacity: 0;
-}
-
-.menu-toggle.open span:nth-child(3) {
-  transform: rotate(-45deg) translate(6px, -6px);
-}
 
     </style>
 </head>
@@ -144,11 +109,10 @@ nav {
     </div>
 
     <!-- Botón menú móvil -->
-    <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
+<button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
+  <span class="icon-menu">☰</span>
+  <span class="icon-close">✕</span>
+</button>
 
     <div class="nav-right">
       <ul>
@@ -164,6 +128,7 @@ nav {
 
 </body>
 </html>
+
 
 
 
