@@ -50,11 +50,7 @@ function initMenu() {
 
   toggle.addEventListener("click", () => {
     const isOpen = nav.classList.toggle("show");
-
-    // Control visual del botón (☰ / ✕)
     toggle.classList.toggle("open", isOpen);
-
-    // Accesibilidad
     toggle.setAttribute("aria-expanded", isOpen.toString());
   });
 
@@ -67,3 +63,5 @@ function initMenu() {
     });
   });
 }
+
+
