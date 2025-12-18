@@ -13,13 +13,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
-const currentPage = window.location.pathname.split('/').pop();
+document.addEventListener('DOMContentLoaded', () => {
+  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
 
-document.querySelectorAll('.nav-right a').forEach(link => {
-  if (
-    link.getAttribute('href') === currentPage ||
-    (currentPage === '' && link.getAttribute('href') === 'index.html')
-  ) {
-    link.classList.add('active');
-  }
+  document.querySelectorAll('.nav-right a').forEach(link => {
+    if (link.getAttribute('href') === currentPage) {
+      link.classList.add('active');
+    }
+  });
 });
+
