@@ -10,4 +10,16 @@ document.addEventListener("DOMContentLoaded", () => {
                 el.innerHTML = data;
             });
     });
+
+});
+
+const currentPage = window.location.pathname.split('/').pop();
+
+document.querySelectorAll('.nav-right a').forEach(link => {
+  if (
+    link.getAttribute('href') === currentPage ||
+    (currentPage === '' && link.getAttribute('href') === 'index.html')
+  ) {
+    link.classList.add('active');
+  }
 });
