@@ -9,13 +9,16 @@ document.addEventListener("DOMContentLoaded", () => {
       .then(data => {
         el.innerHTML = data;
 
-        //  ACTIVAR MENÚ DESPUÉS DE CARGARLO
-        activateMenu();
+        // Inicializar funcionalidades cuando el menú ya está en el DOM
+        initMenu();
       });
   });
 });
 
-function activateMenu() {
+function initMenu() {
+  /* ===============================
+     MENÚ ACTIVO SEGÚN LA PÁGINA
+  =============================== */
   const currentPage =
     window.location.pathname.split("/").pop() || "index.html";
 
@@ -24,6 +27,26 @@ function activateMenu() {
       link.classList.add("active");
     }
   });
+
+  /* ===============================
+     MENÚ HAMBURGUESA (MÓVIL)
+  =============================== */
+  const toggle = document.querySelector(".menu-toggle");
+  const nav = document.querySelector(".nav-right");
+
+  if (toggle && nav) {
+    toggle.addEventListener("click", () => {
+      nav.classList.toggle("show");
+    });
+
+    // Cerrar menú al hacer click en un enlace (móvil)
+    document.querySelectorAll(".nav-right a").forEach(link => {
+      link.addEventListener("click", () => {
+        nav.classList.remove("show");
+      });
+    });
+  }
 }
+
 
 
