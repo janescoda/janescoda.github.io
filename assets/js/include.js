@@ -16,8 +16,6 @@ document.addEventListener("DOMContentLoaded", () => {
       })
       .then(data => {
         el.innerHTML = data;
-
-        // Inicializa el menú SOLO cuando ya está en el DOM
         initMenu();
       })
       .catch(error => {
@@ -27,11 +25,10 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function initMenu() {
-  // Protección contra doble inicialización
   if (menuInitialized) return;
   menuInitialized = true;
 
-  /* MENÚ ACTIVO SEGÚN LA PÁGINA */
+  /* MENÚ ACTIVO */
   const currentPage =
     window.location.pathname.split("/").pop() || "index.html";
 
@@ -41,23 +38,28 @@ function initMenu() {
     }
   });
 
-  /* MENÚ HAMBURGUESA (MÓVIL) */
+  /* MENÚ MÓVIL */
   const toggle = document.querySelector(".menu-toggle");
   const nav = document.querySelector(".nav-right");
 
   if (!toggle || !nav) return;
 
   toggle.addEventListener("click", () => {
-    nav.classList.toggle("show");
+    const isOpen = nav.classList.toggle("show");
+    toggle.classList.toggle("open", isOpen);
+    toggle.setAttribute("aria-expanded", isOpen);
   });
 
-  // Cerrar menú al hacer click en un enlace (móvil)
+  // Cerrar menú al hacer click en un enlace
   document.querySelectorAll(".nav-right a").forEach(link => {
     link.addEventListener("click", () => {
       nav.classList.remove("show");
+      toggle.classList.remove("open");
+      toggle.setAttribute("aria-expanded", "false");
     });
   });
 }
+
 
 
 
