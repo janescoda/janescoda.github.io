@@ -1,3 +1,6 @@
+// Evita inicializar el menú más de una vez
+let menuInitialized = false;
+
 document.addEventListener("DOMContentLoaded", () => {
   const includeElements = document.querySelectorAll("[data-include]");
 
@@ -5,20 +8,30 @@ document.addEventListener("DOMContentLoaded", () => {
     const file = el.getAttribute("data-include");
 
     fetch(file)
-      .then(response => response.text())
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`No se pudo cargar ${file}`);
+        }
+        return response.text();
+      })
       .then(data => {
         el.innerHTML = data;
 
-        // Inicializar funcionalidades cuando el menú ya está en el DOM
+        // Inicializa el menú SOLO cuando ya está en el DOM
         initMenu();
+      })
+      .catch(error => {
+        console.error("Error cargando include:", error);
       });
   });
 });
 
 function initMenu() {
-  /* ===============================
-     MENÚ ACTIVO SEGÚN LA PÁGINA
-  =============================== */
+  // Protección contra doble inicialización
+  if (menuInitialized) return;
+  menuInitialized = true;
+
+  /* MENÚ ACTIVO SEGÚN LA PÁGINA */
   const currentPage =
     window.location.pathname.split("/").pop() || "index.html";
 
@@ -28,25 +41,25 @@ function initMenu() {
     }
   });
 
-  /* ===============================
-     MENÚ HAMBURGUESA (MÓVIL)
-  =============================== */
+  /* MENÚ HAMBURGUESA (MÓVIL) */
   const toggle = document.querySelector(".menu-toggle");
   const nav = document.querySelector(".nav-right");
 
-  if (toggle && nav) {
-    toggle.addEventListener("click", () => {
-      nav.classList.toggle("show");
-    });
+  if (!toggle || !nav) return;
 
-    // Cerrar menú al hacer click en un enlace (móvil)
-    document.querySelectorAll(".nav-right a").forEach(link => {
-      link.addEventListener("click", () => {
-        nav.classList.remove("show");
-      });
+  toggle.addEventListener("click", () => {
+    nav.classList.toggle("show");
+  });
+
+  // Cerrar menú al hacer click en un enlace (móvil)
+  document.querySelectorAll(".nav-right a").forEach(link => {
+    link.addEventListener("click", () => {
+      nav.classList.remove("show");
     });
-  }
+  });
 }
+
+
 
 
 
