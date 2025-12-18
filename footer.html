@@ -1,38 +1,113 @@
-<footer>
-    <div class="social-links">
-        <a href="https://github.com/tuusuario" target="_blank">GitHub</a>
-        <a href="https://linkedin.com/in/tuusuario" target="_blank">LinkedIn</a>
-        <a href="https://twitter.com/tuusuario" target="_blank">Twitter</a>
+<footer class="site-footer">
+  <div class="footer-container">
+
+    <!-- Columna 1 -->
+    <div class="footer-col">
+      <p class="footer-title">Jan Escoda</p>
+      <p class="footer-subtitle">Digital content & marketing</p>
     </div>
-    <p>&copy; 2024 Jan Escoda. Creado con pasión.</p>
+
+    <!-- Columna 2 -->
+    <div class="footer-col">
+      <p class="footer-title">Ayuda</p>
+      <ul class="footer-links">
+        <li><a href="aviso-legal.html">Aviso legal</a></li>
+        <li><a href="politica-privacidad.html">Política de privacidad</a></li>
+        <li><a href="politica-cookies.html">Política de cookies</a></li>
+      </ul>
+    </div>
+
+    <!-- Columna 3 -->
+    <div class="footer-col">
+      <p class="footer-title">Redes sociales</p>
+      <ul class="footer-links">
+        <li><a href="https://linkedin.com/in/tuusuario" target="_blank">LinkedIn</a></li>
+        <li><a href="mailto:tuemail@email.com">Correo electrónico</a></li>
+        <li><a href="https://instagram.com/tuusuario" target="_blank">Instagram</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; 2025 Jan Escoda. Todos los derechos reservados.</p>
+  </div>
 </footer>
 
-<style>
 /* ----- FOOTER ----- */
+<style>
+.site-footer {
+  background: #1a1a1a;
+  color: #ffffff;
+  padding: 4rem 5% 2rem;
+  font-family: 'Hind Siliguri', sans-serif;
+}
 
-footer {
-    background: #1a1a1a;
-    color: white;
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+}
+
+.footer-col {
+  text-align: left;
+}
+
+.footer-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.6rem;
+}
+
+.footer-subtitle {
+  font-size: 0.9rem;
+  font-weight: 400;
+  opacity: 0.8;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: 0.6rem;
+}
+
+.footer-links a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 400;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.footer-links a:hover {
+  opacity: 1;
+}
+
+.footer-bottom {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+  font-size: 0.85rem;
+  opacity: 0.6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .footer-container {
+    grid-template-columns: 1fr;
     text-align: center;
-    padding: 3rem 5%;
-    margin-top: 4rem;
-}
+  }
 
-.social-links {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    margin-bottom: 2rem;
+  .footer-col {
+    text-align: center;
+  }
 }
-
-.social-links a {
-    color: white;
-    font-size: 1.5rem;
-    transition: color 0.3s;
-    text-decoration: none;
-}
-
-.social-links a:hover {
-    color: #667eea;
-}
-</style>
+  </style>
