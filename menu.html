@@ -69,7 +69,7 @@
 
 /* ---------- BOTÓN MENÚ MÓVIL ---------- */
 .menu-toggle {
-  display: none;
+  display: none;                /* ✅ oculto en desktop */
   background: none;
   border: none;
   padding: 0;
@@ -88,10 +88,6 @@
   -webkit-appearance: none;
   appearance: none;
   -webkit-tap-highlight-color: transparent;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .menu-toggle span {
@@ -117,13 +113,15 @@
 /* ---------- MÓVIL ---------- */
 @media (max-width: 768px) {
   .menu-toggle {
-    display: flex;
+    display: flex;              /* ✅ solo en móvil */
+    align-items: center;
+    justify-content: center;
   }
 
   /* Menú desplegable a ancho completo */
   .nav-right {
     position: fixed;
-    top: 72px;          /* justo debajo de la barra */
+    top: 72px;
     left: 0;
     width: 100vw;
     background: #fff;
