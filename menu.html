@@ -74,44 +74,56 @@
   border: none;
   padding: 0;
 
+  width: 32px;
+  height: 32px;
+
   font-size: 1.6rem;
   cursor: pointer;
-  line-height: 1;
 
   position: absolute;
   right: 0;
 
   color: #000;
 
-  /* 🔥 FIX iOS (iconos azules) */
   -webkit-appearance: none;
   appearance: none;
   -webkit-tap-highlight-color: transparent;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* Iconos */
+.menu-toggle span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Estado iconos */
 .menu-toggle .icon-close {
-  display: none;
+  opacity: 0;
 }
 
 .menu-toggle.open .icon-menu {
-  display: none;
+  opacity: 0;
 }
 
 .menu-toggle.open .icon-close {
-  display: inline;
+  opacity: 1;
 }
 
 /* ---------- MÓVIL ---------- */
 @media (max-width: 768px) {
   .menu-toggle {
-    display: block;
+    display: flex;
   }
 
   /* Menú desplegable a ancho completo */
   .nav-right {
     position: fixed;
-    top: 72px;            /* justo debajo de la barra */
+    top: 72px;          /* justo debajo de la barra */
     left: 0;
     width: 100vw;
     background: #fff;
@@ -154,5 +166,7 @@
 
   </div>
 </nav>
+
+
 
 
