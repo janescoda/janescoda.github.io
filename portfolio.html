@@ -50,7 +50,7 @@
     ====================== */
     .portfolio-filters-wrapper {
       padding: 2.5rem 5% 0;
-      max-width: 1400px;
+      max-width: 1600px;
       margin: 0 auto;
     }
 
@@ -85,23 +85,20 @@
     ====================== */
     .projects {
       padding: 4rem 5% 6rem;
-      max-width: 1400px;
+      max-width: 1600px; /* 🔥 más ancho */
       margin: 0 auto;
     }
 
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr); /* 🔥 siempre 3 columnas */
-      gap: 1.6rem; /* 🔥 menos separación */
-      justify-content: center;
+      grid-template-columns: repeat(3, minmax(420px, 1fr));
+      gap: 1.4rem; /* 🔥 menos separación */
     }
 
     .project-link {
+      width: 100%;
       text-decoration: none;
       color: inherit;
-      max-width: 420px; /* 🔥 evita que se estire */
-      width: 100%;
-      justify-self: center;
     }
 
     /* ======================
@@ -124,6 +121,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      display: block;
       transform: scale(1.15);
       transition: transform 0.7s ease;
     }
@@ -133,26 +131,29 @@
       top: 1.5rem;
       left: 1.5rem;
       color: #fff;
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       font-weight: 500;
+      letter-spacing: 0.3px;
       transition: transform 0.7s ease;
       pointer-events: none;
+      z-index: 2;
     }
 
+    /* Hover */
     .capsule:hover img {
       transform: scale(1);
     }
 
     .capsule:hover .capsule-title {
-      transform: translateY(120px); /* 🔥 solo hasta mitad */
+      transform: translateY(120px); /* 🔥 baja hasta mitad */
     }
 
     /* ======================
        RESPONSIVE
     ====================== */
-    @media (max-width: 1024px) {
+    @media (max-width: 1200px) {
       .projects-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, minmax(360px, 1fr));
       }
     }
 
@@ -170,14 +171,13 @@
 
 <body>
 
-  <!-- MENU -->
+  <!-- MENÚ -->
   <script src="assets/js/include.js" defer></script>
   <div data-include="menu.html"></div>
 
   <!-- HERO -->
   <header class="page-header">
-    <h1>Portfolio</h1>
-    <p>Una selección de proyectos creativos</p>
+    <h1>Últimos trabajos</h1>
   </header>
 
   <!-- FILTROS -->
@@ -202,16 +202,16 @@
       <a href="#" class="project-link" data-category="animacion">
         <div class="capsule">
           <div class="capsule-media">
-            <img src="../assets/img/category-five-brand-portrait.png" alt="Category Five Brand">
+            <img src="../assets/img/Category-five-brand-portrait.png" alt="D. Franklin Mercredy">
           </div>
-          <div class="capsule-title">D. Franklin Mercredy</div>
+          <div class="capsule-title">Category Five Brand</div>
         </div>
       </a>
 
       <a href="#" class="project-link" data-category="diseno-3d">
         <div class="capsule">
           <div class="capsule-media">
-            <img src="https://images.unsplash.com/photo-1581091870627-3cdb6b53d53f?w=1200" alt="">
+            <img src="https://images.unsplash.com/photo-1581091870627-3cdb6b53d53f?w=1600" alt="Hawkers One">
           </div>
           <div class="capsule-title">Hawkers One</div>
         </div>
@@ -220,9 +220,36 @@
       <a href="#" class="project-link" data-category="impresion-3d">
         <div class="capsule">
           <div class="capsule-media">
-            <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?w=1200" alt="">
+            <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?w=1600" alt="D. Franklin">
           </div>
           <div class="capsule-title">D. Franklin</div>
+        </div>
+      </a>
+
+      <a href="#" class="project-link" data-category="ilustracion">
+        <div class="capsule">
+          <div class="capsule-media">
+            <img src="https://images.unsplash.com/photo-1541963463532-d68292c34b19?w=1600" alt="Paneles LED RGB">
+          </div>
+          <div class="capsule-title">Paneles LED RGB</div>
+        </div>
+      </a>
+
+      <a href="#" class="project-link" data-category="ilustracion">
+        <div class="capsule">
+          <div class="capsule-media">
+            <img src="https://images.unsplash.com/photo-1518441902117-fef7d8d0d9a0?w=1600" alt="Lámpara LED RGB">
+          </div>
+          <div class="capsule-title">Lámpara LED RGB</div>
+        </div>
+      </a>
+
+      <a href="#" class="project-link" data-category="ilustracion">
+        <div class="capsule">
+          <div class="capsule-media">
+            <img src="https://images.unsplash.com/photo-1519677100203-a0e668c92439?w=1600" alt="Bluetooth Speaker">
+          </div>
+          <div class="capsule-title">Bluetooth Speaker</div>
         </div>
       </a>
 
