@@ -71,6 +71,12 @@
       font-weight: 600;
     }
 
+    .portfolio-filters-wrapper {
+  padding: 2.5rem 5% 0;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
     /* ======================
        PROYECTOS
     ====================== */
@@ -170,20 +176,22 @@
     <h1>Portfolio</h1>
     <p>Una selección de proyectos creativos</p>
 
-    <!-- AQUÍ VAN LOS FILTROS (Y SOLO AQUÍ) -->
-    <nav class="portfolio-filters">
-      <button class="filter active" data-filter="all">TODO</button>
-      <span>/</span>
-      <button class="filter" data-filter="animacion">ANIMACIÓN</button>
-      <span>/</span>
-      <button class="filter" data-filter="diseno-3d">DISEÑO 3D</button>
-      <span>/</span>
-      <button class="filter" data-filter="impresion-3d">IMPRESIÓN 3D</button>
-      <span>/</span>
-      <button class="filter" data-filter="ilustracion">ILUSTRACIÓN</button>
-    </nav>
   </header>
-
+   <!-- AQUÍ VAN LOS FILTROS (Y SOLO AQUÍ) -->
+<section class="portfolio-filters-wrapper">
+  <nav class="portfolio-filters">
+    <button class="filter active" data-filter="all">TODO</button>
+    <span>/</span>
+    <button class="filter" data-filter="animacion">ANIMACIÓN</button>
+    <span>/</span>
+    <button class="filter" data-filter="diseno-3d">DISEÑO 3D</button>
+    <span>/</span>
+    <button class="filter" data-filter="impresion-3d">IMPRESIÓN 3D</button>
+    <span>/</span>
+    <button class="filter" data-filter="ilustracion">ILUSTRACIÓN</button>
+  </nav>
+</section>
+  
   <!-- PROYECTOS -->
   <section class="projects">
     <div class="projects-grid">
@@ -256,3 +264,4 @@
 
 </body>
 </html>
+
