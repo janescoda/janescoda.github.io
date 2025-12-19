@@ -1,4 +1,4 @@
-<!-- GOOGLE FONTS -->
+<!-- GOOGLE FONTS (una vez por página) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Hind+Siliguri:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -9,17 +9,23 @@
   position: fixed;
   top: 0;
   width: 100%;
+  min-height: 72px;               /* ✅ altura estable */
+  display: flex;
+  align-items: center;
+
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
   z-index: 1000;
-  padding: 1.2rem 5%;
+  padding: 0 5%;                  /* padding vertical controlado */
   border-bottom: 1px solid #eee;
 
-  /* 👉 TIPOGRAFÍA SOLO DEL MENÚ */
+  /* Tipografía SOLO menú */
   font-family: 'Hind Siliguri', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  line-height: 1.2;               /* ✅ evita variaciones */
 }
 
 .nav-container {
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -32,6 +38,7 @@
   text-decoration: none;
   color: #000;
   letter-spacing: -0.3px;
+  line-height: 1;
 }
 
 /* Desktop menu */
@@ -46,12 +53,14 @@
 .nav-right a {
   text-decoration: none;
   color: #000;
-  font-weight: 400; /* Hind Siliguri funciona mejor aquí */
+  font-weight: 400;
   font-size: 0.9rem;
   letter-spacing: 0.4px;
   position: relative;
+  line-height: 1;                 /* ✅ altura consistente */
 }
 
+/* Subrayado hover */
 .nav-right a::after {
   content: '';
   position: absolute;
@@ -141,3 +150,4 @@
     </div>
   </div>
 </nav>
+
