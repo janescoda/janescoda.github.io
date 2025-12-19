@@ -69,7 +69,7 @@
 
 /* ---------- BOTÓN MENÚ MÓVIL ---------- */
 .menu-toggle {
-  display: none;                /* ✅ oculto en desktop */
+  display: none;                /* oculto en desktop */
   background: none;
   border: none;
   padding: 0;
@@ -84,6 +84,8 @@
   right: 0;
 
   color: #000;
+
+  z-index: 1001;                /* 🔥 CLAVE: por encima del menú */
 
   -webkit-appearance: none;
   appearance: none;
@@ -113,7 +115,7 @@
 /* ---------- MÓVIL ---------- */
 @media (max-width: 768px) {
   .menu-toggle {
-    display: flex;              /* ✅ solo en móvil */
+    display: flex;              /* solo en móvil */
     align-items: center;
     justify-content: center;
   }
@@ -121,13 +123,13 @@
   /* Menú desplegable a ancho completo */
   .nav-right {
     position: fixed;
-    top: 72px;
+    top: 72px;                  /* justo debajo de la barra */
     left: 0;
     width: 100vw;
     background: #fff;
     border-bottom: 1px solid #eee;
     display: none;
-    z-index: 999;
+    z-index: 999;               /* por debajo del botón */
   }
 
   .nav-right.show {
@@ -164,7 +166,3 @@
 
   </div>
 </nav>
-
-
-
-
