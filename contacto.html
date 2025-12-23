@@ -1,205 +1,192 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contacto - Jan Escoda</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacto - Jan Escoda</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    
-    <style>
-        * {
-            margin: 0;
-            padding:  0;
-            box-sizing: border-box;
-        }
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 
-        body {
-            padding-top: 72px;
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      padding-top: 72px;
       font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            overflow-x: hidden;
-        }
+      background: #f5f6f7;
+      color: #333;
+    }
 
-        /* Contact Section */
-        .contact {
-            padding: 6rem 5%;
-            max-width: 800px;
-            margin: 0 auto;
-        }
+    .page-header {
+      padding: 4rem 5% 2rem;
+      text-align: center;
+    }
 
-        .contact-form {
-            background: white;
-            padding: 3rem;
-            border-radius: 12px;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
-        }
+    .page-header h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      letter-spacing: -1.5px;
+      margin-bottom: 1rem;
+      color: #323232;
+    }
 
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
+    .contact {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem 5% 6rem;
+    }
 
-        . form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            color: #333;
-        }
+    .contact-form,
+    .form-success {
+      background: #fff;
+      padding: 3rem;
+    }
 
-        .form-group input,
-        .form-group textarea {
-            width:  100%;
-            padding: 1rem;
-            border: 2px solid #e5e7eb;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-family: inherit;
-            transition: border-color 0.3s;
-        }
+    .form-group {
+      margin-bottom: 1.6rem;
+    }
 
-        .form-group input:focus,
-        . form-group textarea:focus {
-            outline: none;
-            border-color: #667eea;
-        }
+    .form-group label {
+      display: block;
+      margin-bottom: 0.4rem;
+      font-weight: 600;
+    }
 
-        .form-group textarea {
-            min-height: 150px;
-            resize: vertical;
-        }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 1rem;
+      border: 1px solid #d1d5db;
+      font-family: inherit;
+    }
 
-        .btn-submit {
-            width: 100%;
-            padding:  1rem 2rem;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border:  none;
-            border-radius:  50px;
-            font-size:  1.1rem;
-            font-weight: 600;
-            cursor:  pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
+    .btn-submit {
+      width: 100%;
+      padding: 1rem;
+      background: #e5e7eb;
+      border: none;
+      font-weight: 600;
+      cursor: pointer;
+    }
 
-        .btn-submit:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
-        }
+    .form-success {
+      display: none;
+      text-align: center;
+      border-left: 4px solid #111;
+    }
 
-        .contact-info {
-            margin-top: 4rem;
-            text-align:  center;
-        }
+    .contact-info {
+      margin-top: 5rem;
+      text-align: center;
+    }
 
-        . contact-info h2 {
-            font-size: 2rem;
-            margin-bottom: 2rem;
-        }
+    .contact-info-title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #323232;
+      margin-bottom: 2.5rem;
+    }
 
-        .contact-methods {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-top:  2rem;
-        }
+    .contact-methods {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
 
-        .contact-method {
-            padding: 2rem;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-        }
+    .contact-method {
+      padding: 1.5rem;
+      border-top: 1px solid #e5e7eb;
+    }
 
-        .contact-method h3 {
-            margin-bottom: 0.5rem;
-            color: #667eea;
-        }
+    @media (max-width: 640px) {
+      .contact-methods {
+        grid-template-columns: 1fr;
+      }
 
-        .contact-method a {
-            color: #666;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .contact-method a:hover {
-            color: #667eea;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .contact {
-                padding: 4rem 5%;
-            }
-
-            .contact-form {
-                padding: 2rem;
-            }
-        }
-    </style>
+      .contact-form,
+      .form-success {
+        padding: 2rem;
+      }
+    }
+  </style>
 </head>
+
 <body>
-<script src="assets/js/include.js" defer></script>
-<div data-include="menu.html"></div>
 
-    <!-- Contact Section -->
-    <section class="contact">
-        <h1 style="text-align: center; margin-bottom: 3rem; font-size: 2.5rem;">Contacto</h1>
-        <p style="text-align: center; margin-bottom: 3rem; font-size: 1.2rem;">¿Tienes un proyecto en mente? Hablemos</p>
-        
-        <form class="contact-form" action="#" method="POST">
-            <div class="form-group">
-                <label for="name">Nombre</label>
-                <input type="text" id="name" name="name" required>
-            </div>
+  <script src="assets/js/include.js" defer></script>
+  <div data-include="menu.html"></div>
 
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required>
-            </div>
+  <header class="page-header">
+    <h1>Contacto</h1>
+  </header>
 
-            <div class="form-group">
-                <label for="subject">Asunto</label>
-                <input type="text" id="subject" name="subject" required>
-            </div>
+  <section class="contact">
 
-            <div class="form-group">
-                <label for="message">Mensaje</label>
-                <textarea id="message" name="message" required></textarea>
-            </div>
+    <form
+      id="contactForm"
+      class="contact-form"
+      action="https://formspree.io/f/mjgbjkjj"
+      method="POST"
+    >
+      <input type="hidden" name="_subject" value="Nuevo mensaje desde janescoda.com">
+      <input type="hidden" name="_captcha" value="false">
 
-            <button type="submit" class="btn-submit">Enviar Mensaje</button>
-        </form>
+      <div class="form-group">
+        <label>Nombre</label>
+        <input type="text" name="name" required>
+      </div>
 
-        <div class="contact-info">
-            <h2>Otras formas de contacto</h2>
-            <div class="contact-methods">
-                <div class="contact-method">
-                    <h3>Email</h3>
-                    <a href="mailto:tu. email@example.com">tu. email@example.com</a>
-                </div>
-                <div class="contact-method">
-                    <h3>Teléfono</h3>
-                    <a href="tel: +34123456789">+34 123 456 789</a>
-                </div>
-                <div class="contact-method">
-                    <h3>Ubicación</h3>
-                    <p>Tu Ciudad, España</p>
-                </div>
-            </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" name="email" required>
+      </div>
+
+      <div class="form-group">
+        <label>Asunto</label>
+        <input type="text" name="subject" required>
+      </div>
+
+      <div class="form-group">
+        <label>Mensaje</label>
+        <textarea name="message" required></textarea>
+      </div>
+
+      <button class="btn-submit">Enviar mensaje</button>
+    </form>
+
+    <div id="formSuccess" class="form-success">
+      <h3>Mensaje enviado correctamente</h3>
+      <p>Gracias por escribir. Te responderé lo antes posible.</p>
+    </div>
+
+    <div class="contact-info">
+      <h2 class="contact-info-title">Otros canales</h2>
+
+      <div class="contact-methods">
+        <div class="contact-method">
+          <strong>Email</strong><br>
+          janescoda49@gmail.com
         </div>
-    </section>
+        <div class="contact-method">
+          <strong>Teléfono</strong><br>
+          +34 123 456 789
+        </div>
+        <div class="contact-method">
+          <strong>LinkedIn</strong><br>
+          linkedin.com/in/tuusuario
+        </div>
+        <div class="contact-method">
+          <strong>Instagram</strong><br>
+          @tuusuario
+        </div>
+      </div>
+    </div>
 
-    <!-- FOOTER -->
-    <div data-include="footer.html"></div>
+  </section>
+
+  <div data-include="footer.html"></div>
+
 </body>
 </html>
-
-
-
-
-
-
-
