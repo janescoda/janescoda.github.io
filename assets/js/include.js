@@ -16,8 +16,10 @@ document.addEventListener("DOMContentLoaded", () => {
       })
       .then(data => {
         el.innerHTML = data;
+
         initMenu();
-        initPortfolioFilters(); // 👈 filtros portfolio
+        initPortfolioFilters();
+        initContactForm(); // 👈 NUEVO
       })
       .catch(error => {
         console.error("Error cargando include:", error);
@@ -32,7 +34,6 @@ function initMenu() {
   if (menuInitialized) return;
   menuInitialized = true;
 
-  // Enlace activo
   const currentPage =
     window.location.pathname.split("/").pop() || "index.html";
 
@@ -42,7 +43,6 @@ function initMenu() {
     }
   });
 
-  // Menú móvil
   const toggle = document.querySelector(".menu-toggle");
   const nav = document.querySelector(".nav-right");
 
@@ -54,7 +54,6 @@ function initMenu() {
     toggle.setAttribute("aria-expanded", isOpen);
   });
 
-  // Cerrar al clicar un enlace
   document.querySelectorAll(".nav-right a").forEach(link => {
     link.addEventListener("click", () => {
       nav.classList.remove("show");
@@ -77,20 +76,39 @@ function initPortfolioFilters() {
     button.addEventListener("click", () => {
       const filter = button.dataset.filter;
 
-      // Estado activo
       filterButtons.forEach(btn => btn.classList.remove("active"));
       button.classList.add("active");
 
-      // Filtrado
       projects.forEach(project => {
         const category = project.dataset.category;
-
-        if (filter === "all" || category === filter) {
-          project.style.display = "block";
-        } else {
-          project.style.display = "none";
-        }
+        project.style.display =
+          filter === "all" || category === filter ? "block" : "none";
       });
     });
+  });
+}
+
+/* ===============================
+   FORMULARIO CONTACTO
+=============================== */
+function initContactForm() {
+  const form = document.getElementById("contactForm");
+  const success = document.getElementById("formSuccess");
+
+  if (!form || !success) return; // Solo en contacto
+
+  form.addEventListener("submit", async e => {
+    e.preventDefault();
+
+    const response = await fetch(form.action, {
+      method: form.method,
+      body: new FormData(form),
+      headers: { Accept: "application/json" }
+    });
+
+    if (response.ok) {
+      form.style.display = "none";
+      success.style.display = "block";
+    }
   });
 }
