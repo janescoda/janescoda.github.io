@@ -55,12 +55,17 @@
     }
 
     /* =========================
-       EXPERIENCE BUTTONS
+       EXPERIENCE BLOCK
     ========================== */
-    .experience-row {
-      margin-top: 3rem;
+    .experience-wrapper {
+      grid-column: 1 / -1;
+      margin-top: 3.5rem;
       display: flex;
-      justify-content: center; /* 🔥 CENTRADO */
+      justify-content: center;
+    }
+
+    .experience-row {
+      display: flex;
       gap: 1.5rem;
       flex-wrap: wrap;
     }
@@ -86,22 +91,14 @@
       border-color: #d1d5db;
     }
 
-    .experience-icon {
-      width: 34px;
-      height: 34px;
-      border: 1px solid #e5e7eb;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: #0a66c2;
-    }
-
     .experience-number {
       font-size: 2.2rem;
       font-weight: 700;
       color: #111;
+    }
+
+    .experience-number.linkedin {
+      color: #0a66c2;
     }
 
     .experience-label {
@@ -116,7 +113,9 @@
       display: block;
     }
 
-    /* SKILLS */
+    /* =========================
+       CONOCIMIENTOS
+    ========================== */
     .skills {
       margin-top: 6rem;
     }
@@ -131,23 +130,32 @@
 
     .skills-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2.5rem 3rem;
     }
 
-    .skill {
-      padding: 1.2rem;
-      text-align: center;
-      border: 1px solid #e5e7eb;
+    .skill-item {
+      padding-top: 1.2rem;
+      border-top: 1px solid #e5e7eb;
       font-size: 0.95rem;
       font-weight: 500;
-      color: #444;
+      color: #111;
+      transition: color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .skill-item:hover {
+      border-color: #d1d5db;
+      color: #000;
     }
 
     /* RESPONSIVE */
     @media (max-width: 900px) {
       .about-main {
         grid-template-columns: 1fr;
+      }
+
+      .experience-wrapper {
+        margin-top: 2.5rem;
       }
     }
   </style>
@@ -167,26 +175,30 @@
     <div class="about-main">
 
       <!-- TEXTO -->
-      <div>
-        <div class="about-text">
-          <p>
-            Trabajo en el ámbito del contenido digital, el diseño y la web, con especial atención al
-            detalle, al tono y a la coherencia visual. Me interesa crear piezas claras, útiles y bien
-            pensadas.
-          </p>
+      <div class="about-text">
+        <p>
+          Trabajo en el ámbito del contenido digital, el diseño y la web, con especial atención al
+          detalle, al tono y a la coherencia visual.
+        </p>
 
-          <p>
-            He participado en proyectos digitales reales y académicos, trabajando desde el contenido
-            hasta la estructura y optimización web.
-          </p>
+        <p>
+          He participado en proyectos digitales reales y académicos, trabajando desde el contenido
+          hasta la estructura y optimización web.
+        </p>
 
-          <p>
-            Disfruto del proceso de convertir ideas en soluciones comprensibles, cuidadas y alineadas
-            con los objetivos del proyecto.
-          </p>
-        </div>
+        <p>
+          Disfruto del proceso de convertir ideas en soluciones comprensibles, cuidadas y alineadas
+          con los objetivos del proyecto.
+        </p>
+      </div>
 
-        <!-- BOTONES CENTRADOS -->
+      <!-- IMAGEN -->
+      <div class="about-image">
+        <img src="assets/img/foto-jan.png" alt="Jan Escoda">
+      </div>
+
+      <!-- BLOQUE DE BOTONES -->
+      <div class="experience-wrapper">
         <div class="experience-row">
 
           <div class="experience-card">
@@ -195,50 +207,47 @@
           </div>
 
           <a
+            href="assets/docs/Jan-Escoda-CV.pdf"
+            target="_blank"
+            class="experience-card"
+          >
+            <div class="experience-number">CV</div>
+            <div class="experience-label">Descargar documento</div>
+          </a>
+
+          <a
             href="https://www.linkedin.com/in/janescoda/#experience"
             target="_blank"
             class="experience-card"
           >
-            <div class="experience-icon">in</div>
-            <div class="experience-label">Ver trabajos</div>
-          </a>
-
-          <a
-            href="https://www.linkedin.com/in/janescoda/#education"
-            target="_blank"
-            class="experience-card"
-          >
-            <div class="experience-icon">in</div>
-            <div class="experience-label">Ver estudios</div>
+            <div class="experience-number linkedin">in</div>
+            <div class="experience-label">Ver proyectos</div>
           </a>
 
         </div>
       </div>
 
-      <!-- IMAGEN -->
-      <div class="about-image">
-        <img src="assets/img/foto-jan.png" alt="Jan Escoda">
-      </div>
-
     </div>
 
-    <!-- SKILLS -->
+    <!-- CONOCIMIENTOS -->
     <div class="skills">
       <h2>Conocimientos</h2>
 
       <div class="skills-grid">
-        <div class="skill">Adobe Photoshop</div>
-        <div class="skill">Adobe Illustrator</div>
-        <div class="skill">Adobe InDesign</div>
-        <div class="skill">Figma</div>
-        <div class="skill">Copywriting web</div>
-        <div class="skill">UX writing</div>
-        <div class="skill">SEO básico</div>
-        <div class="skill">Arquitectura de contenidos</div>
-        <div class="skill">HTML & CSS</div>
-        <div class="skill">WordPress</div>
-        <div class="skill">Gestión de contenidos</div>
-        <div class="skill">Optimización web</div>
+        <div class="skill-item">Adobe Photoshop</div>
+        <div class="skill-item">Adobe Illustrator</div>
+        <div class="skill-item">Adobe InDesign</div>
+        <div class="skill-item">Figma</div>
+
+        <div class="skill-item">Copywriting web</div>
+        <div class="skill-item">UX writing</div>
+        <div class="skill-item">SEO básico</div>
+        <div class="skill-item">Arquitectura de contenidos</div>
+
+        <div class="skill-item">HTML</div>
+        <div class="skill-item">CSS</div>
+        <div class="skill-item">WordPress</div>
+        <div class="skill-item">Optimización web</div>
       </div>
     </div>
 
@@ -248,4 +257,3 @@
 
 </body>
 </html>
-
