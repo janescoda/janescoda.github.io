@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         initMenu();
         initPortfolioFilters();
-        initContactForm(); // 👈 NUEVO
+        initContactForm();
       })
       .catch(error => {
         console.error("Error cargando include:", error);
@@ -34,15 +34,32 @@ function initMenu() {
   if (menuInitialized) return;
   menuInitialized = true;
 
-  const currentPage =
-    window.location.pathname.split("/").pop() || "index.html";
+  // Detectar si estamos en una subcarpeta y ajustar rutas
+  const path = window.location.pathname;
+  const inSubfolder = path.includes('/projects/') || path.split('/').filter(p => p && !p.includes('.')).length > 0;
+  
+  const links = document.querySelectorAll('.nav-right a');
+  
+  links.forEach(link => {
+    const page = link.getAttribute('data-page');
+    
+    // Si estamos en subcarpeta, usar ruta relativa
+    if (inSubfolder && page) {
+      link.setAttribute('href', '../' + page);
+    }
+  });
 
-  document.querySelectorAll(".nav-right a").forEach(link => {
-    if (link.getAttribute("href") === currentPage) {
+  // Marcar página activa
+  const currentPage = window.location.pathname.split("/").pop() || "index.html";
+
+  links.forEach(link => {
+    const href = link.getAttribute("href");
+    if (href === currentPage || href === '../' + currentPage || href === '/' + currentPage) {
       link.classList.add("active");
     }
   });
 
+  // Funcionalidad del menú móvil
   const toggle = document.querySelector(".menu-toggle");
   const nav = document.querySelector(".nav-right");
 
