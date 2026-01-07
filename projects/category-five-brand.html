@@ -309,6 +309,31 @@
         gap: 2rem;
       }
     }
+    #scroll-to-top {
+    display: none; /* Hidden by default */
+    position: fixed; /* Fixed position at the bottom right */
+    bottom: 20px; /* 20px from the bottom */
+    right: 30px; /* 30px from the right */
+    z-index: 99; /* Make sure it's above other content */
+    border: none; /* Remove borders */
+    outline: none; /* Remove outline */
+    background-color: #007bff; /* Background color (e.g., blue) */
+    color: white; /* Text color */
+    cursor: pointer; /* Add a mouse pointer on hover */
+    padding: 15px; /* Some padding */
+    border-radius: 10px; /* Rounded corners */
+    font-size: 18px; /* Increase font size */
+    text-decoration: none; /* Remove underline from link */
+    line-height: 1; /* Adjust line height for icon */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Subtle shadow */
+    transition: background-color 0.3s, opacity 0.3s; /* Smooth transition for hover and show/hide */
+}
+
+#scroll-to-top:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    opacity: 0.9;
+}
+
   </style>
 </head>
 
@@ -512,6 +537,8 @@
       </div>
     </div>
   </section>
+  
+<a href="#" id="scroll-to-top" title="Volver arriba">⬆️</a>
 
   <div data-include="../footer.html"></div>
 
