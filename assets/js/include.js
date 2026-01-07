@@ -125,7 +125,7 @@ function initScrollToTopButton() { // <--- NEW FUNCTION
 
     function scrollFunction() {
         // Change '200' to the desired pixel distance from the top
-        const scrollThreshold = 200; // You can change this value
+        const scrollThreshold = 1000; // You can change this value
 
         if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
             mybutton.style.display = "flex";
@@ -169,6 +169,7 @@ function initContactForm() {
     }
   });
 }
+
 
 
 
