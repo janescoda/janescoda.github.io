@@ -17,9 +17,11 @@ document.addEventListener("DOMContentLoaded", () => {
       .then(data => {
         el.innerHTML = data;
 
+        // Initialize all components AFTER content is loaded
         initMenu();
         initPortfolioFilters();
         initContactForm();
+        initScrollToTopButton(); // <--- CALL THE NEW FUNCTION HERE
       })
       .catch(error => {
         console.error("Error cargando include:", error);
@@ -37,12 +39,12 @@ function initMenu() {
   // Detectar si estamos en una subcarpeta y ajustar rutas
   const path = window.location.pathname;
   const inSubfolder = path.includes('/projects/') || path.split('/').filter(p => p && !p.includes('.')).length > 0;
-  
+
   const links = document.querySelectorAll('.nav-right a');
-  
+
   links.forEach(link => {
     const page = link.getAttribute('data-page');
-    
+
     // Si estamos en subcarpeta, usar ruta relativa
     if (inSubfolder && page) {
       link.setAttribute('href', '../' + page);
@@ -105,15 +107,24 @@ function initPortfolioFilters() {
   });
 }
 
+/* ===============================
+   SCROLL TO TOP BUTTON
+=============================== */
+function initScrollToTopButton() { // <--- NEW FUNCTION
     // Get the button
     let mybutton = document.getElementById("scroll-to-top");
+
+    // IMPORTANT: Check if the button actually exists before adding listeners
+    if (!mybutton) {
+        console.warn("Scroll-to-top button not found. Make sure its HTML is included.");
+        return;
+    }
 
     // When the user scrolls down a certain distance from the top of the document, show the button
     window.onscroll = function() {scrollFunction()};
 
     function scrollFunction() {
         // Change '200' to the desired pixel distance from the top
-        // For example, 200 means the button will appear after scrolling 200 pixels down.
         const scrollThreshold = 200; // You can change this value
 
         if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
@@ -131,6 +142,7 @@ function initPortfolioFilters() {
             behavior: "smooth" // Smooth scrolling
         });
     });
+}
 
 
 /* ===============================
@@ -157,6 +169,8 @@ function initContactForm() {
     }
   });
 }
+
+
 
 
 
