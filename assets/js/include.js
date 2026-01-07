@@ -105,16 +105,19 @@ function initPortfolioFilters() {
   });
 }
 
-<script>
     // Get the button
     let mybutton = document.getElementById("scroll-to-top");
 
-    // When the user scrolls down 20px from the top of the document, show the button
+    // When the user scrolls down a certain distance from the top of the document, show the button
     window.onscroll = function() {scrollFunction()};
 
     function scrollFunction() {
-        if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-            mybutton.style.display = "flex"; // Changed to 'flex' to match CSS
+        // Change '200' to the desired pixel distance from the top
+        // For example, 200 means the button will appear after scrolling 200 pixels down.
+        const scrollThreshold = 200; // You can change this value
+
+        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+            mybutton.style.display = "flex";
         } else {
             mybutton.style.display = "none";
         }
@@ -128,7 +131,6 @@ function initPortfolioFilters() {
             behavior: "smooth" // Smooth scrolling
         });
     });
-</script>
 
 
 /* ===============================
@@ -155,5 +157,6 @@ function initContactForm() {
     }
   });
 }
+
 
 
