@@ -105,6 +105,7 @@ function initPortfolioFilters() {
   });
 }
 
+<script>
     // Get the button
     let mybutton = document.getElementById("scroll-to-top");
 
@@ -112,8 +113,8 @@ function initPortfolioFilters() {
     window.onscroll = function() {scrollFunction()};
 
     function scrollFunction() {
-        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-            mybutton.style.display = "block";
+        if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+            mybutton.style.display = "flex"; // Changed to 'flex' to match CSS
         } else {
             mybutton.style.display = "none";
         }
@@ -127,6 +128,8 @@ function initPortfolioFilters() {
             behavior: "smooth" // Smooth scrolling
         });
     });
+</script>
+
 
 /* ===============================
    FORMULARIO CONTACTO
@@ -152,4 +155,5 @@ function initContactForm() {
     }
   });
 }
+
 
