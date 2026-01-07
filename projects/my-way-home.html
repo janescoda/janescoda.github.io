@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Way Home - Jan Escoda</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      padding-top: 72px;
+      font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: #333;
+      background: #fff;
+      line-height: 1.6;
+    }
+
+    /* BREADCRUMB */
+    .breadcrumb {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 2rem 5% 0;
+    }
+
+    .breadcrumb a {
+      color: #999;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.3s ease;
+    }
+
+    .breadcrumb a:hover {
+      color: #1a1a1a;
+    }
+
+    .breadcrumb span {
+      color: #ccc;
+      margin: 0 0.5rem;
+    }
+
+    .breadcrumb .current {
+      color: #1a1a1a;
+    }
+
+    /* HERO DEL PROYECTO */
+    .project-hero {
+      padding: 3rem 5% 3rem;
+      text-align: center;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .project-category {
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #999;
+      margin-bottom: 1rem;
+    }
+
+    .project-hero h1 {
+      font-size: clamp(2.8rem, 6vw, 4rem);
+      font-weight: 700;
+      letter-spacing: -1.5px;
+      color: #1a1a1a;
+      margin-bottom: 1.5rem;
+    }
+
+    .project-intro {
+      max-width: 900px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+      line-height: 1.9;
+      color: #555;
+    }
+
+    /* INFORMACIÓN CLAVE */
+    .project-meta {
+      max-width: 1400px;
+      margin: 3rem auto;
+      padding: 0 5%;
+      display: flex;
+      justify-content: center;
+      gap: 4rem;
+      flex-wrap: wrap;
+    }
+
+    .meta-item {
+      text-align: center;
+    }
+
+    .meta-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #999;
+      margin-bottom: 0.5rem;
+    }
+
+    .meta-value {
+      font-size: 1.05rem;
+      color: #1a1a1a;
+      font-weight: 500;
+    }
+
+    /* CONTENIDO DEL PROYECTO */
+    .project-content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 4rem 5% 0;
+    }
+
+    .content-section {
+      margin-bottom: 4rem;
+    }
+
+    .content-section h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.5px;
+    }
+
+    .content-section p {
+      font-size: 1.05rem;
+      line-height: 1.9;
+      color: #555;
+      margin-bottom: 1.2rem;
+    }
+
+    /* VIDEO DESTACADO */
+    .project-video {
+      max-width: 1400px;
+      margin: 4rem auto;
+      padding: 0 5%;
+    }
+
+    .video-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 2.5rem;
+      letter-spacing: -0.5px;
+      text-align: center;
+    }
+
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 */
+      height: 0;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      background: #000;
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* GALERÍA DE FOTOGRAMAS */
+    .project-gallery {
+      max-width: 1400px;
+      margin: 4rem auto;
+      padding: 0 5%;
+    }
+
+    .gallery-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 2.5rem;
+      letter-spacing: -0.5px;
+      text-align: center;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2.5rem;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      display: block;
+      border-radius: 8px;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.06);
+    }
+
+    /* CRÉDITOS */
+    .credits-section {
+      max-width: 900px;
+      margin: 6rem auto;
+      padding: 0 5% 6rem;
+    }
+
+    .credits-section h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 2rem;
+      letter-spacing: -0.5px;
+    }
+
+    .credits-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem 4rem;
+    }
+
+    .credit-item {
+      font-size: 0.95rem;
+      color: #555;
+      line-height: 1.8;
+    }
+
+    .credit-role {
+      font-weight: 600;
+      color: #1a1a1a;
+    }
+
+    /* NAVEGACIÓN ENTRE PROYECTOS */
+    .project-navigation {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 3rem 5%;
+      border-top: 1px solid #e5e5e5;
+    }
+
+    .nav-projects {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .nav-project {
+      text-decoration: none;
+      color: inherit;
+      padding: 2rem;
+      background: #fafafa;
+      border-radius: 8px;
+      border: 1px solid #e5e5e5;
+      transition: all 0.3s ease;
+    }
+
+    .nav-project:hover {
+      background: #fff;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      transform: translateY(-2px);
+    }
+
+    .nav-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #999;
+      margin-bottom: 0.5rem;
+    }
+
+    .nav-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #1a1a1a;
+    }
+
+    .nav-project.next {
+      text-align: right;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .project-meta {
+        gap: 2rem;
+      }
+
+      .gallery-grid,
+      .nav-projects,
+      .credits-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .project-hero {
+        padding: 2rem 5% 2rem;
+      }
+
+      .project-content {
+        padding: 3rem 5% 0;
+      }
+
+      .credits-grid {
+        gap: 0.8rem 2rem;
+      }
+
+      .breadcrumb {
+        padding: 1.5rem 5% 0;
+      }
+
+      .gallery-grid {
+        gap: 2rem;
+      }
+
+      .credits-section {
+        padding: 0 5% 4rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <script src="assets/js/include.js" defer></script>
+  <div data-include="menu.html"></div>
+
+  <!-- BREADCRUMB -->
+  <nav class="breadcrumb">
+    <a href="index.html">Inicio</a>
+    <span>/</span>
+    <a href="portfolio.html">Portfolio</a>
+    <span>/</span>
+    <span class="current">My Way Home</span>
+  </nav>
+
+  <!-- HERO -->
+  <section class="project-hero">
+    <div class="project-category">Audiovisual</div>
+    <h1>My Way Home</h1>
+    <p class="project-intro">
+      Video musical como parte del trabajo de final de grado, con la producción del videoclip para el single «My Way Home», creado por Eric Corvo. Dirigido por Adrián Olmedo y realizado con la colaboración de compañeros de la universidad, el vídeo narra la emotiva historia de un adolescente que, cansado del tormento familiar, encuentra refugio y autenticidad en las aventuras junto a sus amigos.
+    </p>
+  </section>
+
+  <!-- INFORMACIÓN CLAVE -->
+  <section class="project-meta">
+    <div class="meta-item">
+      <div class="meta-label">Artista</div>
+      <div class="meta-value">Eric Corvo</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Director</div>
+      <div class="meta-value">Adrián Olmedo</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Mi rol</div>
+      <div class="meta-value">Ayudante de producción</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Locación</div>
+      <div class="meta-value">Mataró, Barcelona</div>
+    </div>
+  </section>
+
+  <!-- DESCRIPCIÓN -->
+  <section class="project-content">
+    <div class="content-section">
+      <h2>Descripción</h2>
+      <p>
+        A medida que el protagonista descubre su verdadera identidad y el camino hacia la felicidad, el videoclip se inspira en el género britpop, creando un juego visual entre escenas nostálgicas a color que reflejan la vida del protagonista y secuencias en blanco y negro que muestran al cantante y su banda interpretando la canción en directo.
+      </p>
+      <p>
+        Filmado en localizaciones emblemáticas de Mataró, la ciudad natal del artista, el proyecto no solo celebra la música, sino también el talento emergente y la creatividad del equipo.
+      </p>
+    </div>
+  </section>
+
+  <!-- VIDEO -->
+  <section class="project-video">
+    <h2 class="video-title">Videoclip</h2>
+    <div class="video-container">
+      <iframe 
+        src="https://www.youtube.com/embed/YOUR_VIDEO_ID" 
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+      </iframe>
+    </div>
+  </section>
+
+  <!-- FOTOGRAMAS -->
+  <section class="project-gallery">
+    <h2 class="gallery-title">Fotogramas del vídeo</h2>
+    <div class="gallery-grid">
+      
+      <div class="gallery-item">
+        <img src="assets/img/my-way-home-1.jpg" alt="My Way Home - Fotograma 1">
+      </div>
+
+      <div class="gallery-item">
+        <img src="assets/img/my-way-home-2.jpg" alt="My Way Home - Fotograma 2">
+      </div>
+
+      <div class="gallery-item">
+        <img src="assets/img/my-way-home-3.jpg" alt="My Way Home - Fotograma 3">
+      </div>
+
+      <div class="gallery-item">
+        <img src="assets/img/my-way-home-4.jpg" alt="My Way Home - Fotograma 4">
+      </div>
+
+    </div>
+  </section>
+
+<!-- CRÉDITOS -->
+<section class="credits-section">
+  <h2>Créditos</h2>
+  <div class="credits-grid">
+
+    <div class="credit-item">
+      <span class="credit-role">Director, guionista, editor:</span> Adrián Olmedo
+    </div>
+
+    <div class="credit-item">
+      <span class="credit-role">Director creativo, historia por:</span> Eric Corvo
+    </div>
+
+    <div class="credit-item">
+      <span class="credit-role">Productor:</span> Jordi Del Valle
+    </div>
+
+    <div class="credit-item">
+      <span class="credit-role">Producción:</span> Martí Roma
+    </div>
+
+    <div class="credit-item">
+      <span class="credit-role">Ayudante de producción:</span> Jan Escoda
+    </div>
+
+    <div class="credit-item">
+      <span class="credit-role">Productores ejecutivos:</span> Jordi del Valle, Ferran Garcia, Adrián Olmedo
+    </div>
+
+    <div class="credit-item">
+      <span class="credit-role">Asistente de dirección:</span> Irene Bardallo
+    </div>
+
+    <div class="credit-item">
+      <span class="credit-role">Supervisor de guion:</span> Damià Aguilar
+    </div>
+
+    <div class="credit-item">
+      <span class="credit-role">Director de casting:</span> Noelia Sánchez
+    </div>
+
+    <div class="credit-item">
+      <span class="credit-role">Directores de fotografía:</span> Ferran Garcia, Àlex Subirats, Adrián Olmedo
+    </div>
+
+    <div class="credit-item">
+      <span class="credit-role">Primer asistente de cámara:</span> Noelia Sánchez
+    </div>
+
+    <div class="credit-item">
+      <span class="credit-role">Segundo asistente de cámara:</span> Mario Manzano
+    </div>
+
+    <div class="credit-item">
+      <span class="credit-role">Jefe de iluminación:</span> Alex Vega
+    </div>
+
+    <div class="credit-item">
+      <span class="credit-role">Electricistas:</span> Anna Ricós, Àxel Villar
+    </div>
+
+    <div class="credit-item">
+      <span class="credit-role">Dirección de arte:</span> Laura Delgado
+    </div>
+
+    <div class="credit-item">
+      <span class="credit-role">Asistente de dirección de arte:</span> Jan Escoda
+    </div>
+
+    <div class="credit-item">
+      <span class="credit-role">Maquillaje y peluquería:</span> Raquel Merino
+    </div>
+
+    <div class="credit-item">
+      <span class="credit-role">Colorista:</span> Mariona López
+    </div>
+
+    <div class="credit-item">
+      <span class="credit-role">Fotografía en el set y detrás de las cámaras:</span> Marc Bonet
+    </div>
+
+    <div class="credit-item">
+      <span class="credit-role">Reparto:</span> Sam Avtaev, Santi Clavell, Mireia Rocas, Rubén Anaya, Lídia Costa
+    </div>
+
+    <div class="credit-item">
+      <span class="credit-role">Músicos:</span> Eric Corvo, David Ojea, David Gala, Gerard Alias
+    </div>
+
+  </div>
+</section>
