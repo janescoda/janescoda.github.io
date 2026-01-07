@@ -35,15 +35,34 @@
         .btn-secondary{background:transparent;color:white;border:2px solid white;}
         .btn-secondary:hover{background:white;color:#667eea;}
 
-        .featured{padding:6rem 5%;max-width:1400px;margin:0 auto;}
+        .featured{padding:6rem 5%;max-width:1600px;margin:0 auto;}
         .featured h2{text-align:center;font-size:clamp(2rem,5vw,3.5rem);font-weight:900;margin-bottom:1rem;}
         .section-subtitle{text-align:center;font-size:1.2rem;color:#666;margin-bottom:3rem;}
 
-        .featured-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:2rem;margin-top:3rem;}
-        .featured-card{background:white;border-radius:12px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.08);transition:.3s;}
-        .featured-card:hover{transform:translateY(-10px);box-shadow:0 12px 40px rgba(0,0,0,0.15);}
-        .featured-image{width:100%;height:280px;object-fit:cover;}
-        .featured-info{padding:2rem;}
+        .featured-grid{display:grid;grid-template-columns:repeat(3,minmax(320px,1fr));gap:1.4rem;margin-top:3rem;}
+        
+        .project-link{width:100%;text-decoration:none;color:inherit;}
+        
+        .capsule{position:relative;overflow:hidden;background:#000;box-shadow:0 8px 28px rgba(0,0,0,0.08);}
+        
+        .capsule-media{width:100%;aspect-ratio:4/3;overflow:hidden;}
+        
+        .capsule-media img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.15);transition:transform 0.35s ease;}
+        
+        .capsule-title{position:absolute;top:1.5rem;left:1.5rem;color:#fff;font-size:1.30rem;font-weight:700;letter-spacing:0.3px;transition:transform 0.35s ease;pointer-events:none;z-index:2;}
+        
+        .capsule:hover img{transform:scale(1);}
+        
+        .capsule:hover .capsule-title{transform:translateY(120px);}
+
+        @media (max-width:1200px){
+            .featured-grid{grid-template-columns:repeat(2,minmax(320px,1fr));}
+        }
+
+        @media (max-width:640px){
+            .featured-grid{grid-template-columns:1fr;}
+            .capsule:hover .capsule-title{transform:translateY(90px);}
+        }
     </style>
 </head>
 
@@ -68,10 +87,37 @@
 
 <!-- Featured Projects -->
 <section class="featured">
-    <h2>Proyectos Destacados</h2>
+    <h2>Últimos proyectos</h2>
     <p class="section-subtitle">Una selección de mi trabajo reciente</p>
     <div class="featured-grid">
-        <!-- Tus tarjetas de proyecto -->
+        
+        <a href="#" class="project-link">
+            <div class="capsule">
+                <div class="capsule-media">
+                    <img src="assets/img/ikea-portrait.png" alt="IKEA">
+                </div>
+                <div class="capsule-title">IKEA</div>
+            </div>
+        </a>
+
+        <a href="#" class="project-link">
+            <div class="capsule">
+                <div class="capsule-media">
+                    <img src="assets/img/scan-and-go-portrait.png" alt="Scan and Go">
+                </div>
+                <div class="capsule-title">Scan and Go</div>
+            </div>
+        </a>
+
+        <a href="#" class="project-link">
+            <div class="capsule">
+                <div class="capsule-media">
+                    <img src="assets/img/my-way-home-portrait.png" alt="My way home">
+                </div>
+                <div class="capsule-title">My way home</div>
+            </div>
+        </a>
+
     </div>
 </section>
 
@@ -80,10 +126,3 @@
 
 </body>
 </html>
-
-
-
-
-
-
-
