@@ -179,7 +179,7 @@
       height: 100%;
     }
 
-    /* GALERÍA DE IMÁGENES */
+    /* GALERÍA DE IMÁGENES - HORIZONTAL (para fotogramas) */
     .project-gallery {
       max-width: 1400px;
       margin: 4rem auto;
@@ -201,7 +201,22 @@
       gap: 2.5rem;
     }
 
-    .gallery-item {
+    /* Fotogramas horizontales (sin formato fijo) */
+    .gallery-item img {
+      width: 100%;
+      display: block;
+      border-radius: 8px;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.06);
+    }
+
+    /* GALERÍA VERTICAL (para lookbook y analógica) */
+    .gallery-grid-vertical {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2.5rem;
+    }
+
+    .gallery-item-vertical {
       position: relative;
       width: 100%;
       padding-bottom: 177.78%; /* Aspect ratio 9:16 (Instagram Stories) */
@@ -211,7 +226,7 @@
       background: #f5f5f5;
     }
 
-    .gallery-item img {
+    .gallery-item-vertical img {
       position: absolute;
       top: 0;
       left: 0;
@@ -273,6 +288,7 @@
       }
 
       .gallery-grid,
+      .gallery-grid-vertical,
       .credits-grid {
         grid-template-columns: 1fr;
       }
@@ -289,7 +305,8 @@
         gap: 0.8rem 2rem;
       }
 
-      .gallery-grid {
+      .gallery-grid,
+      .gallery-grid-vertical {
         gap: 2rem;
       }
     }
@@ -365,7 +382,7 @@
     </div>
   </section>
 
-  <!-- FOTOGRAMAS DEL VÍDEO -->
+  <!-- FOTOGRAMAS DEL VÍDEO (HORIZONTAL) -->
   <section class="project-gallery">
     <h2 class="gallery-title">Fotogramas del vídeo</h2>
     <div class="gallery-grid">
@@ -384,39 +401,39 @@
     </div>
   </section>
 
-  <!-- FOTOGRAFÍA LOOKBOOK Y CAMPAÑA -->
+  <!-- FOTOGRAFÍA LOOKBOOK Y CAMPAÑA (VERTICAL 9:16) -->
   <section class="project-gallery">
     <h2 class="gallery-title">Fotografía para Lookbook y Campaña</h2>
-    <div class="gallery-grid">
-      <div class="gallery-item">
+    <div class="gallery-grid-vertical">
+      <div class="gallery-item-vertical">
         <img src="../assets/img/la-prairie-lookbook-1.png" alt="La Prairie - Lookbook 1">
       </div>
-      <div class="gallery-item">
+      <div class="gallery-item-vertical">
         <img src="../assets/img/la-prairie-lookbook-2.png" alt="La Prairie - Lookbook 2">
       </div>
-      <div class="gallery-item">
+      <div class="gallery-item-vertical">
         <img src="../assets/img/la-prairie-lookbook-3.png" alt="La Prairie - Lookbook 3">
       </div>
-      <div class="gallery-item">
+      <div class="gallery-item-vertical">
         <img src="../assets/img/la-prairie-lookbook-4.png" alt="La Prairie - Lookbook 4">
       </div>
     </div>
   </section>
 
-  <!-- FOTOGRAFÍA ANALÓGICA -->
+  <!-- FOTOGRAFÍA ANALÓGICA (VERTICAL 9:16) -->
   <section class="project-gallery">
     <h2 class="gallery-title">Fotografía analógica</h2>
-    <div class="gallery-grid">
-      <div class="gallery-item">
+    <div class="gallery-grid-vertical">
+      <div class="gallery-item-vertical">
         <img src="../assets/img/la-prairie-analogica-1.jpg" alt="La Prairie - Fotografía analógica 1">
       </div>
-      <div class="gallery-item">
+      <div class="gallery-item-vertical">
         <img src="../assets/img/la-prairie-analogica-2.jpg" alt="La Prairie - Fotografía analógica 2">
       </div>
-      <div class="gallery-item">
+      <div class="gallery-item-vertical">
         <img src="../assets/img/la-prairie-analogica-3.jpg" alt="La Prairie - Fotografía analógica 3">
       </div>
-      <div class="gallery-item">
+      <div class="gallery-item-vertical">
         <img src="../assets/img/la-prairie-analogica-4.jpg" alt="La Prairie - Fotografía analógica 4">
       </div>
     </div>
