@@ -110,39 +110,35 @@ function initPortfolioFilters() {
 /* ===============================
    SCROLL TO TOP BUTTON
 =============================== */
-function initScrollToTopButton() { // <--- NEW FUNCTION
-    // Get the button
+function initScrollToTopButton() {
     let mybutton = document.getElementById("scroll-to-top");
 
-    // IMPORTANT: Check if the button actually exists before adding listeners
     if (!mybutton) {
         console.warn("Scroll-to-top button not found. Make sure its HTML is included.");
         return;
     }
 
-    // When the user scrolls down a certain distance from the top of the document, show the button
     window.onscroll = function() {scrollFunction()};
 
     function scrollFunction() {
-        // Change '200' to the desired pixel distance from the top
-        const scrollThreshold = 1000; // You can change this value
+        const scrollThreshold = 1000;
 
         if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
-            mybutton.style.display = "flex";
+            mybutton.classList.add("show-flex"); // Add the class to show it with flex
         } else {
-            mybutton.style.display = "none";
+            mybutton.classList.remove("show-flex"); // Remove the class to hide it
         }
     }
 
-    // When the user clicks on the button, scroll to the top of the document
     mybutton.addEventListener("click", function(e) {
-        e.preventDefault(); // Prevent default anchor behavior
+        e.preventDefault();
         window.scrollTo({
             top: 0,
-            behavior: "smooth" // Smooth scrolling
+            behavior: "smooth"
         });
     });
 }
+
 
 
 /* ===============================
@@ -169,6 +165,7 @@ function initContactForm() {
     }
   });
 }
+
 
 
 
