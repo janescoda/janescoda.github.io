@@ -1,10 +1,8 @@
-<!-- GOOGLE FONTS -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Hind+Siliguri:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
-/* ----- NAVIGATION ----- */
 .main-nav {
   position: fixed;
   top: 0;
@@ -31,7 +29,6 @@
   position: relative;
 }
 
-/* ---------- DESKTOP MENU ---------- */
 .nav-right ul {
   list-style: none;
   display: flex;
@@ -50,7 +47,6 @@
   line-height: 1;
 }
 
-/* Subrayado hover */
 .nav-right a::after {
   content: '';
   position: absolute;
@@ -67,9 +63,8 @@
   width: 100%;
 }
 
-/* ---------- BOTÓN MENÚ MÓVIL ---------- */
 .menu-toggle {
-  display: none;                /* oculto en desktop */
+  display: none;
   background: none;
   border: none;
   padding: 0;
@@ -85,7 +80,7 @@
 
   color: #000;
 
-  z-index: 1001;                /* 🔥 CLAVE: por encima del menú */
+  z-index: 1001;
 
   -webkit-appearance: none;
   appearance: none;
@@ -99,7 +94,6 @@
   transform: translate(-50%, -50%);
 }
 
-/* Estado iconos */
 .menu-toggle .icon-close {
   opacity: 0;
 }
@@ -112,24 +106,22 @@
   opacity: 1;
 }
 
-/* ---------- MÓVIL ---------- */
 @media (max-width: 768px) {
   .menu-toggle {
-    display: flex;              /* solo en móvil */
+    display: flex;
     align-items: center;
     justify-content: center;
   }
 
-  /* Menú desplegable a ancho completo */
   .nav-right {
     position: fixed;
-    top: 72px;                  /* justo debajo de la barra */
+    top: 72px;
     left: 0;
     width: 100vw;
     background: #fff;
     border-bottom: 1px solid #eee;
     display: none;
-    z-index: 999;               /* por debajo del botón */
+    z-index: 999;
   }
 
   .nav-right.show {
@@ -148,13 +140,11 @@
 <nav class="main-nav">
   <div class="nav-container">
 
-    <!-- Botón menú móvil -->
     <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
       <span class="icon-menu">☰</span>
       <span class="icon-close">✕</span>
     </button>
 
-    <!-- Navegación -->
     <div class="nav-right">
       <ul>
         <li><a href="index.html">INICIO</a></li>
@@ -166,3 +156,4 @@
 
   </div>
 </nav>
+
