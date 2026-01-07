@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Category Five Brand - Jan Escoda</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      padding-top: 72px;
+      font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: #333;
+      background: #fff;
+      line-height: 1.6;
+    }
+
+    /* BREADCRUMB */
+    .breadcrumb {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 2rem 5% 0;
+      font-size: 0.95rem;
+    }
+
+    .breadcrumb a,
+    .breadcrumb .current {
+      color: #555;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .breadcrumb a {
+      font-weight: 400;
+    }
+
+    .breadcrumb a:hover {
+      color: #000;
+    }
+
+    .breadcrumb span {
+      color: #bbb;
+      margin: 0 0.5rem;
+    }
+
+    .breadcrumb .current {
+      font-weight: 500;
+    }
+
+    /* HERO DEL PROYECTO */
+    .project-hero {
+      padding: 3rem 5% 3rem;
+      text-align: center;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .project-category {
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #999;
+      margin-bottom: 1rem;
+    }
+
+    .project-hero h1 {
+      font-size: clamp(2.8rem, 6vw, 4rem);
+      font-weight: 700;
+      letter-spacing: -1.5px;
+      color: #1a1a1a;
+      margin-bottom: 1.5rem;
+    }
+
+    .project-intro {
+      max-width: 900px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+      line-height: 1.9;
+      color: #555;
+    }
+
+    /* INFORMACIÓN CLAVE */
+    .project-meta {
+      max-width: 1400px;
+      margin: 3rem auto;
+      padding: 0 5%;
+      display: flex;
+      justify-content: center;
+      gap: 4rem;
+      flex-wrap: wrap;
+    }
+
+    .meta-item {
+      text-align: center;
+    }
+
+    .meta-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #999;
+      margin-bottom: 0.5rem;
+    }
+
+    .meta-value {
+      font-size: 1.05rem;
+      color: #1a1a1a;
+      font-weight: 500;
+    }
+
+    /* CONTENIDO DEL PROYECTO */
+    .project-content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 4rem 5% 0;
+    }
+
+    .content-section {
+      margin-bottom: 4rem;
+    }
+
+    .content-section h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.5px;
+    }
+
+    .content-section p {
+      font-size: 1.05rem;
+      line-height: 1.9;
+      color: #555;
+      margin-bottom: 1.2rem;
+    }
+
+    /* VIDEO DESTACADO */
+    .project-video {
+      max-width: 1400px;
+      margin: 4rem auto;
+      padding: 0 5%;
+    }
+
+    .video-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 2.5rem;
+      letter-spacing: -0.5px;
+      text-align: center;
+    }
+
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 */
+      height: 0;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      background: #000;
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* GALERÍA DE IMÁGENES - HORIZONTAL */
+    .project-gallery {
+      max-width: 1400px;
+      margin: 4rem auto;
+      padding: 0 5%;
+    }
+
+    .gallery-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 2.5rem;
+      letter-spacing: -0.5px;
+      text-align: center;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2.5rem;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      display: block;
+      border-radius: 8px;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.06);
+    }
+
+    /* GALERÍA VERTICAL (para stories) */
+    .gallery-grid-vertical {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2.5rem;
+    }
+
+    .gallery-item-vertical {
+      position: relative;
+      width: 100%;
+      padding-bottom: 177.78%; /* Aspect ratio 9:16 */
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.06);
+      background: #f5f5f5;
+    }
+
+    .gallery-item-vertical img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    /* CRÉDITOS */
+    .credits-section {
+      max-width: 900px;
+      margin: 6rem auto;
+      padding: 0 5% 6rem;
+    }
+
+    .credits-section h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 2rem;
+      letter-spacing: -0.5px;
+    }
+
+    .credits-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem 4rem;
+    }
+
+    .credit-item {
+      font-size: 0.95rem;
+      color: #555;
+      line-height: 1.8;
+    }
+
+    .credit-role {
+      font-weight: 600;
+      color: #1a1a1a;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .breadcrumb {
+        padding: 1.5rem 5% 0;
+        font-size: 0.9rem;
+      }
+
+      .project-meta {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem 2rem;
+        justify-content: center;
+      }
+
+      .meta-item {
+        text-align: left;
+      }
+
+      .gallery-grid,
+      .gallery-grid-vertical,
+      .credits-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .project-hero {
+        padding: 2rem 5% 2rem;
+      }
+
+      .project-content {
+        padding: 3rem 5% 0;
+      }
+
+      .credits-grid {
+        gap: 0.8rem 2rem;
+      }
+
+      .gallery-grid,
+      .gallery-grid-vertical {
+        gap: 2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <script src="../assets/js/include.js" defer></script>
+  <div data-include="../menu.html"></div>
+
+  <!-- BREADCRUMB -->
+  <nav class="breadcrumb">
+    <a href="../index.html">Inicio</a>
+    <span>/</span>
+    <a href="../portfolio.html">Portfolio</a>
+    <span>/</span>
+    <span class="current">Category Five Brand</span>
+  </nav>
+
+  <!-- HERO -->
+  <section class="project-hero">
+    <div class="project-category">Marketing Digital</div>
+    <h1>Category Five Brand</h1>
+    <p class="project-intro">
+      Proyecto realizado en colaboración con la marca de ropa Category Five Brand, creada en Barcelona, con la finalidad de promocionar una nueva colección de verano, crear contenido de alta calidad, y renovar y mejorar la imagen de la marca.
+    </p>
+  </section>
+
+  <!-- INFORMACIÓN CLAVE -->
+  <section class="project-meta">
+    <div class="meta-item">
+      <div class="meta-label">Cliente</div>
+      <div class="meta-value">Category Five Brand</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Sector</div>
+      <div class="meta-value">Moda Urbana</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Mi rol</div>
+      <div class="meta-value">Dirección de arte, diseño gráfico, content creator</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Duración</div>
+      <div class="meta-value">1 mes</div>
+    </div>
+  </section>
+
+  <!-- DESCRIPCIÓN -->
+  <section class="project-content">
+    <div class="content-section">
+      <h2>Descripción</h2>
+      <p>
+        La estructura de la campaña incluye la producción de tres videos cortos que muestran diferentes actividades veraniegas, diseñados para captar la atención y generar interés en la nueva colección, y acciones en redes sociales, incluyendo la publicación de Stories, Reels y publicaciones en Instagram, así como la creación de contenido dinámico y viral en TikTok.
+      </p>
+      <p>
+        El público objetivo son jóvenes de 18 a 25 años interesados en la moda, la cultura urbana, las últimas tendencias y la ropa ancha, y que llevan un estilo de vida libre y activo, buscando expresar su individualidad a través de su estilo.
+      </p>
+    </div>
+
+    <div class="content-section">
+      <h2>Estrategia de contenido</h2>
+      <p>
+        Los videos muestran actividades típicas del verano, como días de playa, rutas con motos y eventos urbanos con skate, destacando diferentes piezas de la nueva colección y mostrando su versatilidad y adecuación a diversas situaciones.
+      </p>
+      <p>
+        La participación del público se incentiva a través de retos, encuestas y concursos en las redes sociales, lo que no solo aumenta el alcance de la campaña, sino que también fortalece la relación de la marca con su audiencia. La campaña busca reflejar una imagen fresca y moderna de Category Five Brand, alineada con las últimas tendencias de moda y cultura urbana.
+      </p>
+    </div>
+  </section>
+
+  <!-- IMÁGENES PARA STORIES DE INSTAGRAM (VERTICAL 9:16) -->
+  <section class="project-gallery">
+    <h2 class="gallery-title">Imágenes para Stories de Instagram</h2>
+    <div class="gallery-grid-vertical">
+      <div class="gallery-item-vertical">
+        <img src="../assets/img/category-five-stories-1.jpg" alt="Category Five - Story 1">
+      </div>
+      <div class="gallery-item-vertical">
+        <img src="../assets/img/category-five-stories-2.jpg" alt="Category Five - Story 2">
+      </div>
+      <div class="gallery-item-vertical">
+        <img src="../assets/img/category-five-stories-3.jpg" alt="Category Five - Story 3">
+      </div>
+      <div class="gallery-item-vertical">
+        <img src="../assets/img/category-five-stories-4.jpg" alt="Category Five - Story 4">
+      </div>
+    </div>
+  </section>
+
+  <!-- IMÁGENES PARA PUBLICACIONES DE INSTAGRAM (CUADRADAS/HORIZONTAL) -->
+  <section class="project-gallery">
+    <h2 class="gallery-title">Imágenes para publicaciones de Instagram</h2>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="../assets/img/category-five-post-1.jpg" alt="Category Five - Post 1">
+      </div>
+      <div class="gallery-item">
+        <img src="../assets/img/category-five-post-2.jpg" alt="Category Five - Post 2">
+      </div>
+      <div class="gallery-item">
+        <img src="../assets/img/category-five-post-3.jpg" alt="Category Five - Post 3">
+      </div>
+      <div class="gallery-item">
+        <img src="../assets/img/category-five-post-4.jpg" alt="Category Five - Post 4">
+      </div>
+    </div>
+  </section>
+
+  <!-- ANIMACIONES DEL LOGOTIPO -->
+  <section class="project-gallery">
+    <h2 class="gallery-title">Animaciones del logotipo</h2>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="../assets/img/category-five-logo-1.gif" alt="Category Five - Animación logo 1">
+      </div>
+      <div class="gallery-item">
+        <img src="../assets/img/category-five-logo-2.gif" alt="Category Five - Animación logo 2">
+      </div>
+      <div class="gallery-item">
+        <img src="../assets/img/category-five-logo-3.gif" alt="Category Five - Animación logo 3">
+      </div>
+      <div class="gallery-item">
+        <img src="../assets/img/category-five-logo-4.gif" alt="Category Five - Animación logo 4">
+      </div>
+    </div>
+  </section>
+
+  <!-- VIDEOS PROMOCIONALES -->
+  <section class="project-video">
+    <h2 class="video-title">Videos promocionales</h2>
+    <div class="video-container">
+      <iframe 
+        src="https://www.youtube.com/embed/YOUR_VIDEO_ID_1"
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+      </iframe>
+    </div>
+  </section>
+
+  <!-- VIDEO 2 -->
+  <section class="project-video">
+    <div class="video-container">
+      <iframe 
+        src="https://www.youtube.com/embed/YOUR_VIDEO_ID_2"
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+      </iframe>
+    </div>
+  </section>
+
+  <!-- VIDEO 3 -->
+  <section class="project-video">
+    <div class="video-container">
+      <iframe 
+        src="https://www.youtube.com/embed/YOUR_VIDEO_ID_3"
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+      </iframe>
+    </div>
+  </section>
+
+  <!-- CRÉDITOS -->
+  <section class="credits-section">
+    <h2>Créditos</h2>
+    <div class="credits-grid">
+      <div class="credit-item">
+        <span class="credit-role">Director de Fotografía:</span> Rubén Carbón
+      </div>
+      <div class="credit-item">
+        <span class="credit-role">Dirección, guion:</span> Xavier Charques
+      </div>
+      <div class="credit-item">
+        <span class="credit-role">Producción, guion:</span> Martí Roma
+      </div>
+      <div class="credit-item">
+        <span class="credit-role">Ayudante de producción, sonido:</span> Oriol Villarino
+      </div>
+      <div class="credit-item">
+        <span class="credit-role">Dirección de arte, diseño gráfico, content creator:</span> Jan Escoda
+      </div>
+      <div class="credit-item">
+        <span class="credit-role">Fotografía, content management:</span> Maria Ibarguren
+      </div>
+      <div class="credit-item">
+        <span class="credit-role">Postproducción y montaje:</span> Alex Tubau
+      </div>
+    </div>
+  </section>
+
+  <div data-include="../footer.html"></div>
+
+</body>
+</html>
