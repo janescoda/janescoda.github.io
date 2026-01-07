@@ -1,19 +1,24 @@
 <footer class="site-footer">
   <div class="footer-container">
 
-    <!-- Columna 1 -->
     <div class="footer-col">
       <p class="footer-title">JAN ESCODA</p>
-      <p class="footer-subtitle">Digital content & marketing</p>
+      <p class="footer-subtitle">DIGITAL CONTENT | MARKETING SPECIALIST</p>
     </div>
 
-    <!-- Columna 2 -->
+    <div class="footer-col">
+      <p class="footer-title">CONTACTO</p>
+      <ul class="footer-links">
+        <li><a href="mailto:janescoda49@gmail.com">janescoda49@gmail.com</a></li>
+        <li><a href="tel:+34677695965">+34 677 695 965</a></li>
+      </ul>
+    </div>
+
     <div class="footer-col">
       <p class="footer-title">REDES SOCIALES</p>
       <ul class="footer-links">
-        <li><a href="https://linkedin.com/in/tuusuario" target="_blank">LinkedIn</a></li>
-        <li><a href="mailto:tuemail@email.com">Correo electrónico</a></li>
-        <li><a href="https://instagram.com/tuusuario" target="_blank">Instagram</a></li>
+        <li><a href="https://www.linkedin.com/in/janescoda/" target="_blank">LinkedIn</a></li>
+        <li><a href="https://instagram.com/janescoda_" target="_blank">Instagram</a></li>
       </ul>
     </div>
 
@@ -28,16 +33,16 @@
 .site-footer {
   background: #1a1a1a;
   color: #ffffff;
-  padding: 4rem 5% 2rem;
-  font-family: 'Hind Siliguri', sans-serif;
+  padding: 5rem 5% 2.5rem;
+  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 .footer-container {
   max-width: 1200px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(2, max-content);
-  gap: 10rem;
+  grid-template-columns: repeat(3, max-content);
+  gap: 6rem;
   justify-content: center;
 }
 
@@ -46,15 +51,18 @@
 }
 
 .footer-title {
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: 600;
-  margin-bottom: 0.6rem;
+  margin-bottom: 1.2rem;
+  letter-spacing: 2px;
+  color: #fff;
 }
 
 .footer-subtitle {
-  font-size: 0.9rem;
-  font-weight: 400;
-  opacity: 0.8;
+  font-size: 1rem;
+  font-weight: 300;
+  color: #aaa;
+  letter-spacing: 1px;
 }
 
 .footer-links {
@@ -64,38 +72,59 @@
 }
 
 .footer-links li {
-  margin-bottom: 0.6rem;
+  margin-bottom: 1rem;
 }
 
 .footer-links a {
-  color: #ffffff;
+  color: #aaa;
   text-decoration: none;
-  font-size: 0.9rem;
-  font-weight: 400;
-  opacity: 0.8;
-  transition: opacity 0.3s ease;
+  font-size: 1rem;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+  transition: color 0.3s ease;
 }
 
 .footer-links a:hover {
-  opacity: 1;
+  color: #fff;
 }
 
 .footer-bottom {
-  margin-top: 3rem;
-  padding-top: 1.5rem;
+  margin-top: 4rem;
+  padding-top: 2rem;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   text-align: center;
-  font-size: 0.85rem;
-  opacity: 0.6;
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: #777;
+  letter-spacing: 0.5px;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   .footer-container {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 3rem;
+  }
+
+  .site-footer {
+    padding: 3.5rem 5% 2rem;
+  }
+
+  .footer-bottom {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+  }
+
+  .footer-title {
+    font-size: 1rem;
+  }
+
+  .footer-subtitle,
+  .footer-links a {
+    font-size: 0.95rem;
   }
 }
 </style>
+
+
 
 
