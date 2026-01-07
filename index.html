@@ -15,29 +15,35 @@
         body{      
             padding-top: 72px;
             font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-             ;line-height:1.6;
-             color:#333;
-             overflow-x:hidden;
-            }
+            line-height:1.6;
+            color:#333;
+            overflow-x:hidden;
+        }
 
         /* Hero Section */
-        .hero{height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;background:linear-gradient(135deg,#667eea,#764ba2);color:white;position:relative;overflow:hidden;}
+        .hero{height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;background:linear-gradient(135deg,#4A90E2,#5E60CE);color:white;position:relative;overflow:hidden;}
         .hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');opacity:0.3;}
         .hero-content{position:relative;z-index:1;max-width:1200px;padding:2rem;}
         .hero h1{font-size:clamp(2.5rem,8vw,6rem);font-weight:900;margin-bottom:1rem;letter-spacing:-2px;animation:fadeInUp 1s ease;}
         .subtitle{font-size:clamp(1rem,3vw,1.5rem);font-weight:300;margin-bottom:2rem;letter-spacing:2px;text-transform:uppercase;animation:fadeInUp 1s ease .2s both;}
-        .description{font-size:clamp(1.1rem,2vw,1.3rem);max-width:800px;margin:0 auto 3rem;line-height:1.8;animation:fadeInUp 1s ease .4s both;}
         @keyframes fadeInUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
         .cta-buttons{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;animation:fadeInUp 1s ease .6s both;}
         .btn{padding:1rem 2.5rem;border-radius:50px;text-decoration:none;font-weight:600;transition:.3s;}
-        .btn-primary{background:white;color:#667eea;}
+        .btn-primary{background:white;color:#4A90E2;}
         .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 25px rgba(0,0,0,0.2);}
         .btn-secondary{background:transparent;color:white;border:2px solid white;}
-        .btn-secondary:hover{background:white;color:#667eea;}
+        .btn-secondary:hover{background:white;color:#4A90E2;}
 
-        .featured{padding:6rem 5%;max-width:1600px;margin:0 auto;}
-        .featured h2{text-align:center;font-size:clamp(2rem,5vw,3.5rem);font-weight:900;margin-bottom:1rem;}
-        .section-subtitle{text-align:center;font-size:1.2rem;color:#666;margin-bottom:3rem;}
+        /* Featured Projects */
+        .featured{padding:6rem 5% 4rem;max-width:1600px;margin:0 auto;}
+        .featured h2{
+            text-align:center;
+            font-size:clamp(3.5rem,6vw,3.5rem);
+            font-weight:700;
+            letter-spacing:-1.5px;
+            margin-bottom:3rem;
+            color:#323232;
+        }
 
         .featured-grid{display:grid;grid-template-columns:repeat(3,minmax(320px,1fr));gap:1.4rem;margin-top:3rem;}
         
@@ -55,13 +61,104 @@
         
         .capsule:hover .capsule-title{transform:translateY(120px);}
 
+        /* Info Section */
+        .info-section{
+            padding:8rem 5%;
+            background:#fafafa;
+            border-top:1px solid #e5e5e5;
+            border-bottom:1px solid #e5e5e5;
+        }
+        .info-content{
+            max-width:1000px;
+            margin:0 auto;
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:4rem;
+            align-items:center;
+        }
+        .info-text h2{
+            font-size:clamp(2.2rem,4vw,2.8rem);
+            font-weight:700;
+            margin-bottom:1.5rem;
+            color:#323232;
+            letter-spacing:-1px;
+        }
+        .info-text p{
+            font-size:1.1rem;
+            line-height:1.8;
+            color:#666;
+            margin-bottom:1.2rem;
+        }
+        .info-stats{
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:2rem;
+        }
+        .stat-item{
+            text-align:center;
+            padding:2rem 1.5rem;
+            background:white;
+            border-radius:8px;
+            box-shadow:0 2px 10px rgba(0,0,0,0.05);
+        }
+        .stat-label{
+            font-size:1.1rem;
+            font-weight:600;
+            color:#323232;
+            letter-spacing:0.3px;
+        }
+
+        /* Contact Banner */
+        .contact-banner{
+            padding:8rem 5%;
+            background:#111;
+            text-align:center;
+            color:white;
+        }
+        .contact-content{
+            max-width:800px;
+            margin:0 auto;
+        }
+        .contact-content h2{
+            font-size:clamp(2.5rem,5vw,3.5rem);
+            font-weight:700;
+            margin-bottom:1.5rem;
+            letter-spacing:-1px;
+        }
+        .contact-content p{
+            font-size:clamp(1.1rem,2vw,1.3rem);
+            line-height:1.8;
+            margin-bottom:2.5rem;
+            color:#ccc;
+        }
+        .contact-content .btn-primary{
+            background:#4A90E2;
+            color:white;
+        }
+        .contact-content .btn-primary:hover{
+            background:#3a7bc8;
+        }
+
         @media (max-width:1200px){
             .featured-grid{grid-template-columns:repeat(2,minmax(320px,1fr));}
+        }
+
+        @media (max-width:768px){
+            .info-content{
+                grid-template-columns:1fr;
+                gap:3rem;
+            }
+            .info-stats{
+                grid-template-columns:1fr 1fr;
+            }
         }
 
         @media (max-width:640px){
             .featured-grid{grid-template-columns:1fr;}
             .capsule:hover .capsule-title{transform:translateY(90px);}
+            .info-stats{
+                grid-template-columns:1fr;
+            }
         }
     </style>
 </head>
@@ -70,14 +167,12 @@
     <!-- Script para cargar menú y footer -->
 <script src="assets/js/include.js" defer></script>
 <div data-include="menu.html"></div>
+
 <!-- Hero -->
 <section class="hero">
     <div class="hero-content">
         <h1>Jan Escoda</h1>
         <div class="subtitle">Digital content | Marketing</div>
-        <p class="description">
-            Creando experiencias digitales que fusionan diseño y tecnología.
-        </p>
         <div class="cta-buttons">
             <a href="portfolio.html" class="btn btn-primary">Ver Proyectos</a>
             <a href="contacto.html" class="btn btn-secondary">Contactar</a>
@@ -87,8 +182,7 @@
 
 <!-- Featured Projects -->
 <section class="featured">
-    <h2>Últimos proyectos</h2>
-    <p class="section-subtitle">Una selección de mi trabajo reciente</p>
+    <h2>Últimos trabajos</h2>
     <div class="featured-grid">
         
         <a href="#" class="project-link">
@@ -103,21 +197,61 @@
         <a href="#" class="project-link">
             <div class="capsule">
                 <div class="capsule-media">
-                    <img src="assets/img/scan-and-go-portrait.png" alt="Scan and Go">
+                    <img src="assets/img/daina-media-portrait.png" alt="Daina Media">
                 </div>
-                <div class="capsule-title">Scan and Go</div>
+                <div class="capsule-title">Daina Media</div>
             </div>
         </a>
 
         <a href="#" class="project-link">
             <div class="capsule">
                 <div class="capsule-media">
-                    <img src="assets/img/my-way-home-portrait.png" alt="My way home">
+                    <img src="assets/img/category-five-brand-portrait.png" alt="Category Five Brand">
                 </div>
-                <div class="capsule-title">My way home</div>
+                <div class="capsule-title">Category Five Brand</div>
             </div>
         </a>
 
+    </div>
+</section>
+
+<!-- Info Section -->
+<section class="info-section">
+    <div class="info-content">
+        <div class="info-text">
+            <h2>Transformando ideas en experiencias digitales</h2>
+            <p>
+                Especializado en comunicación digital, desarrollo de plataformas y producción audiovisual.
+            </p>
+            <p>
+                Trabajo con marcas para crear contenido que conecta, estrategias que funcionan y proyectos que dejan huella.
+            </p>
+        </div>
+        <div class="info-stats">
+            <div class="stat-item">
+                <div class="stat-label">Comunicación Digital</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-label">Desarrollo de Plataformas</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-label">Producción Audiovisual</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-label">Estrategia de Marketing</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Banner -->
+<section class="contact-banner">
+    <div class="contact-content">
+        <h2>¿Tienes alguna pregunta?</h2>
+        <p>
+            Puedes contactar conmigo a través del formulario, mis redes sociales o escribiéndome directamente a mi email.
+        </p>
+        <a href="contacto.html" class="btn btn-primary">Contactar</a>
     </div>
 </section>
 
