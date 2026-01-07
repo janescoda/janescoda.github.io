@@ -29,26 +29,31 @@
       max-width: 1400px;
       margin: 0 auto;
       padding: 2rem 5% 0;
+      font-size: 0.95rem;              /* mismo tamaño que texto base */
     }
 
-    .breadcrumb a {
-      color: #999;
+    .breadcrumb a,
+    .breadcrumb .current {
+      color: #555;
       text-decoration: none;
-      font-size: 0.9rem;
       transition: color 0.3s ease;
     }
 
+    .breadcrumb a {
+      font-weight: 400;
+    }
+
     .breadcrumb a:hover {
-      color: #1a1a1a;
+      color: #000;
     }
 
     .breadcrumb span {
-      color: #ccc;
+      color: #bbb;
       margin: 0 0.5rem;
     }
 
     .breadcrumb .current {
-      color: #1a1a1a;
+      font-weight: 500;                /* un pelín más marcada, pero mismo tamaño */
     }
 
     /* HERO DEL PROYECTO */
@@ -235,7 +240,7 @@
       color: #1a1a1a;
     }
 
-    /* NAVEGACIÓN ENTRE PROYECTOS */
+    /* NAVEGACIÓN ENTRE PROYECTOS (si la añades luego) */
     .project-navigation {
       max-width: 1400px;
       margin: 0 auto;
@@ -286,8 +291,23 @@
 
     /* RESPONSIVE */
     @media (max-width: 768px) {
+
+      /* Breadcrumb un poco más compacto */
+      .breadcrumb {
+        padding: 1.5rem 5% 0;
+        font-size: 0.9rem;
+      }
+
+      /* Meta en grid 2x2 en móvil */
       .project-meta {
-        gap: 2rem;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);  /* 2 columnas */
+        gap: 1.5rem 2rem;                       /* filas x columnas */
+        justify-content: center;
+      }
+
+      .meta-item {
+        text-align: left;
       }
 
       .gallery-grid,
@@ -306,10 +326,6 @@
 
       .credits-grid {
         gap: 0.8rem 2rem;
-      }
-
-      .breadcrumb {
-        padding: 1.5rem 5% 0;
       }
 
       .gallery-grid {
@@ -384,7 +400,7 @@
     <h2 class="video-title">Videoclip</h2>
     <div class="video-container">
       <iframe 
-        src="https://youtu.be/DiWv8_7DrfM"
+        src="https://www.youtube.com/embed/DiWv8_7DrfM" 
         frameborder="0" 
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
         allowfullscreen>
@@ -396,118 +412,90 @@
   <section class="project-gallery">
     <h2 class="gallery-title">Fotogramas del vídeo</h2>
     <div class="gallery-grid">
-      
       <div class="gallery-item">
         <img src="../assets/img/my-way-home-1.png" alt="My Way Home - Fotograma 1">
       </div>
-
       <div class="gallery-item">
         <img src="../assets/img/my-way-home-2.png" alt="My Way Home - Fotograma 2">
       </div>
-
       <div class="gallery-item">
         <img src="../assets/img/my-way-home-3.png" alt="My Way Home - Fotograma 3">
       </div>
-
       <div class="gallery-item">
         <img src="../assets/img/my-way-home-4.png" alt="My Way Home - Fotograma 4">
       </div>
-
     </div>
   </section>
 
-<!-- CRÉDITOS -->
-<section class="credits-section">
-  <h2>Créditos</h2>
-  <div class="credits-grid">
-
-    <div class="credit-item">
-      <span class="credit-role">Director, guionista, editor:</span> Adrián Olmedo
+  <!-- CRÉDITOS -->
+  <section class="credits-section">
+    <h2>Créditos</h2>
+    <div class="credits-grid">
+      <div class="credit-item">
+        <span class="credit-role">Director, guionista, editor:</span> Adrián Olmedo
+      </div>
+      <div class="credit-item">
+        <span class="credit-role">Director creativo, historia por:</span> Eric Corvo
+      </div>
+      <div class="credit-item">
+        <span class="credit-role">Productor:</span> Jordi Del Valle
+      </div>
+      <div class="credit-item">
+        <span class="credit-role">Producción:</span> Martí Roma
+      </div>
+      <div class="credit-item">
+        <span class="credit-role">Ayudante de producción:</span> Jan Escoda
+      </div>
+      <div class="credit-item">
+        <span class="credit-role">Productores ejecutivos:</span> Jordi del Valle, Ferran Garcia, Adrián Olmedo
+      </div>
+      <div class="credit-item">
+        <span class="credit-role">Asistente de dirección:</span> Irene Bardallo
+      </div>
+      <div class="credit-item">
+        <span class="credit-role">Supervisor de guion:</span> Damià Aguilar
+      </div>
+      <div class="credit-item">
+        <span class="credit-role">Director de casting:</span> Noelia Sánchez
+      </div>
+      <div class="credit-item">
+        <span class="credit-role">Directores de fotografía:</span> Ferran Garcia, Àlex Subirats, Adrián Olmedo
+      </div>
+      <div class="credit-item">
+        <span class="credit-role">Primer asistente de cámara:</span> Noelia Sánchez
+      </div>
+      <div class="credit-item">
+        <span class="credit-role">Segundo asistente de cámara:</span> Mario Manzano
+      </div>
+      <div class="credit-item">
+        <span class="credit-role">Jefe de iluminación:</span> Alex Vega
+      </div>
+      <div class="credit-item">
+        <span class="credit-role">Electricistas:</span> Anna Ricós, Àxel Villar
+      </div>
+      <div class="credit-item">
+        <span class="credit-role">Dirección de arte:</span> Laura Delgado
+      </div>
+      <div class="credit-item">
+        <span class="credit-role">Asistente de dirección de arte:</span> Jan Escoda
+      </div>
+      <div class="credit-item">
+        <span class="credit-role">Maquillaje y peluquería:</span> Raquel Merino
+      </div>
+      <div class="credit-item">
+        <span class="credit-role">Colorista:</span> Mariona López
+      </div>
+      <div class="credit-item">
+        <span class="credit-role">Fotografía en el set y detrás de las cámaras:</span> Marc Bonet
+      </div>
+      <div class="credit-item">
+        <span class="credit-role">Reparto:</span> Sam Avtaev, Santi Clavell, Mireia Rocas, Rubén Anaya, Lídia Costa
+      </div>
+      <div class="credit-item">
+        <span class="credit-role">Músicos:</span> Eric Corvo, David Ojea, David Gala, Gerard Alias
+      </div>
     </div>
+  </section>
 
-    <div class="credit-item">
-      <span class="credit-role">Director creativo, historia por:</span> Eric Corvo
-    </div>
-
-    <div class="credit-item">
-      <span class="credit-role">Productor:</span> Jordi Del Valle
-    </div>
-
-    <div class="credit-item">
-      <span class="credit-role">Producción:</span> Martí Roma
-    </div>
-
-    <div class="credit-item">
-      <span class="credit-role">Ayudante de producción:</span> Jan Escoda
-    </div>
-
-    <div class="credit-item">
-      <span class="credit-role">Productores ejecutivos:</span> Jordi del Valle, Ferran Garcia, Adrián Olmedo
-    </div>
-
-    <div class="credit-item">
-      <span class="credit-role">Asistente de dirección:</span> Irene Bardallo
-    </div>
-
-    <div class="credit-item">
-      <span class="credit-role">Supervisor de guion:</span> Damià Aguilar
-    </div>
-
-    <div class="credit-item">
-      <span class="credit-role">Director de casting:</span> Noelia Sánchez
-    </div>
-
-    <div class="credit-item">
-      <span class="credit-role">Directores de fotografía:</span> Ferran Garcia, Àlex Subirats, Adrián Olmedo
-    </div>
-
-    <div class="credit-item">
-      <span class="credit-role">Primer asistente de cámara:</span> Noelia Sánchez
-    </div>
-
-    <div class="credit-item">
-      <span class="credit-role">Segundo asistente de cámara:</span> Mario Manzano
-    </div>
-
-    <div class="credit-item">
-      <span class="credit-role">Jefe de iluminación:</span> Alex Vega
-    </div>
-
-    <div class="credit-item">
-      <span class="credit-role">Electricistas:</span> Anna Ricós, Àxel Villar
-    </div>
-
-    <div class="credit-item">
-      <span class="credit-role">Dirección de arte:</span> Laura Delgado
-    </div>
-
-    <div class="credit-item">
-      <span class="credit-role">Asistente de dirección de arte:</span> Jan Escoda
-    </div>
-
-    <div class="credit-item">
-      <span class="credit-role">Maquillaje y peluquería:</span> Raquel Merino
-    </div>
-
-    <div class="credit-item">
-      <span class="credit-role">Colorista:</span> Mariona López
-    </div>
-
-    <div class="credit-item">
-      <span class="credit-role">Fotografía en el set y detrás de las cámaras:</span> Marc Bonet
-    </div>
-
-    <div class="credit-item">
-      <span class="credit-role">Reparto:</span> Sam Avtaev, Santi Clavell, Mireia Rocas, Rubén Anaya, Lídia Costa
-    </div>
-
-    <div class="credit-item">
-      <span class="credit-role">Músicos:</span> Eric Corvo, David Ojea, David Gala, Gerard Alias
-    </div>
-
-  </div>
-</section>
-
-
-
-
+</body>
+</html>
