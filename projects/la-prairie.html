@@ -197,7 +197,7 @@
 
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(2, 1fr); /* horizontales: se quedan en 2 */
       gap: 2.5rem;
     }
 
@@ -212,7 +212,7 @@
     /* GALERÍA VERTICAL (para lookbook y analógica) */
     .gallery-grid-vertical {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(4, 1fr); /* 4 columnas en desktop */
       gap: 2.5rem;
     }
 
@@ -287,10 +287,19 @@
         text-align: left;
       }
 
-      .gallery-grid,
-      .gallery-grid-vertical,
+      /* Horizontales: 1 columna en móvil (como antes) */
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      /* Verticales: 2 columnas en móvil */
+      .gallery-grid-vertical {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
       .credits-grid {
         grid-template-columns: 1fr;
+        gap: 0.8rem 2rem;
       }
 
       .project-hero {
@@ -301,55 +310,50 @@
         padding: 3rem 5% 0;
       }
 
-      .credits-grid {
-        gap: 0.8rem 2rem;
-      }
-
       .gallery-grid,
       .gallery-grid-vertical {
         gap: 2rem;
       }
     }
+
     #scroll-to-top {
-    display: none; /* Hidden by default, JavaScript will show it */
-    position: fixed; /* Keeps the button in place when scrolling */
-    bottom: 20px; /* Distance from the bottom of the screen */
-    right: 30px; /* Distance from the right of the screen */
-    z-index: 99; /* Ensures it's above other content */
-    border: none; /* No border */
-    outline: none; /* No outline */
-    background-color: #6c757d; /* Gray background color */
-    cursor: pointer; /* Changes cursor to a pointer on hover */
-    width: 50px; /* HALF SIZE: Fixed width for the square icon */
-    height: 50px; /* HALF SIZE: Fixed height for the square icon */
-    border-radius: 4px; /* HALF SIZE: Rounded corners (half of original 8px) */
-    box-shadow: none; /* No shadow */
-    transition: background-color 0.3s ease; /* Smooth transition for background color change */
+      display: none; /* Hidden by default, JavaScript will show it */
+      position: fixed; /* Keeps the button in place when scrolling */
+      bottom: 20px; /* Distance from the bottom of the screen */
+      right: 30px; /* Distance from the right of the screen */
+      z-index: 99; /* Ensures it's above other content */
+      border: none; /* No border */
+      outline: none; /* No outline */
+      background-color: #6c757d; /* Gray background color */
+      cursor: pointer; /* Changes cursor to a pointer on hover */
+      width: 50px; /* HALF SIZE: Fixed width for the square icon */
+      height: 50px; /* HALF SIZE: Fixed height for the square icon */
+      border-radius: 4px; /* HALF SIZE: Rounded corners (half of original 8px) */
+      box-shadow: none; /* No shadow */
+      transition: background-color 0.3s ease; /* Smooth transition for background color change */
 
-    /* Flexbox for perfect centering of the chevron (will be applied via .show-flex) */
-    align-items: center; /* Vertically center */
-    justify-content: center; /* Horizontally center */
-}
+      /* Flexbox for perfect centering of the chevron (will be applied via .show-flex) */
+      align-items: center; /* Vertically center */
+      justify-content: center; /* Horizontally center */
+    }
 
-/* This class will be added by JavaScript to show the button */
-#scroll-to-top.show-flex {
-    display: flex;
-}
+    #scroll-to-top.show-flex {
+      display: flex;
+    }
 
-#scroll-to-top::before {
-    content: ''; /* Required for pseudo-elements */
-    display: block;
-    width: 8px; /* Slightly smaller than previous to accommodate thicker border */
-    height: 8px; /* Slightly smaller than previous to accommodate thicker border */
-    border-top: 2.5px solid white; /* THICKER LINE: Increased border thickness */
-    border-right: 2.5px solid white; /* THICKER LINE: Increased border thickness */
-    transform: rotate(-45deg); /* Rotates the square to form the chevron shape */
-}
+    #scroll-to-top::before {
+      content: ''; /* Required for pseudo-elements */
+      display: block;
+      width: 8px; /* Slightly smaller than previous to accommodate thicker border */
+      height: 8px; /* Slightly smaller than previous to accommodate thicker border */
+      border-top: 2.5px solid white; /* THICKER LINE: Increased border thickness */
+      border-right: 2.5px solid white; /* THICKER LINE: Increased border thickness */
+      transform: rotate(-45deg); /* Rotates the square to form the chevron shape */
+    }
 
-#scroll-to-top:hover {
-    background-color: #5a6268; /* Slightly darker gray on hover */
-}
-    
+    #scroll-to-top:hover {
+      background-color: #5a6268; /* Slightly darker gray on hover */
+    }
   </style>
 </head>
 
@@ -372,7 +376,8 @@
     <div class="project-category">Audiovisual</div>
     <h1>La Prairié</h1>
     <p class="project-intro">
-Proyecto audiovisual de moda sostenible desarrollado en formato fashion film. La pieza presenta una colección de prendas hechas a mano mediante técnicas de ganchillo, utilizando materiales sostenibles y poniendo en valor la artesanía y el diseño consciente. El proyecto combina moda, narrativa visual y entornos naturales para transmitir una estética cuidada y atemporal.    </p>
+      Proyecto audiovisual de moda sostenible desarrollado en formato fashion film. La pieza presenta una colección de prendas hechas a mano mediante técnicas de ganchillo, utilizando materiales sostenibles y poniendo en valor la artesanía y el diseño consciente. El proyecto combina moda, narrativa visual y entornos naturales para transmitir una estética cuidada y atemporal.
+    </p>
   </section>
 
   <!-- INFORMACIÓN CLAVE -->
@@ -400,9 +405,11 @@ Proyecto audiovisual de moda sostenible desarrollado en formato fashion film. La
     <div class="content-section">
       <h2>Descripción</h2>
       <p>
-La Prairé es un proyecto creativo que explora la relación entre moda, sostenibilidad y artesanía. El fashion film se concibe como una pieza visual que resalta la belleza de las prendas hechas a mano, el valor del trabajo artesanal y el uso responsable de materiales, integrando la colección en entornos naturales que refuerzan su identidad orgánica y sostenible.      </p>
+        La Prairé es un proyecto creativo que explora la relación entre moda, sostenibilidad y artesanía. El fashion film se concibe como una pieza visual que resalta la belleza de las prendas hechas a mano, el valor del trabajo artesanal y el uso responsable de materiales, integrando la colección en entornos naturales que refuerzan su identidad orgánica y sostenible.
+      </p>
       <p>
-La producción audiovisual forma parte del Trabajo Final de Grado en Idep Barcelona – Escuela Superior de Diseño, Moda y Fotografía. A través de una cuidada dirección estética y una narrativa visual coherente, el proyecto pone en diálogo el diseño de moda con la naturaleza, destacando la sensibilidad artística y el proceso artesanal detrás de cada prenda.      </p>
+        La producción audiovisual forma parte del Trabajo Final de Grado en Idep Barcelona – Escuela Superior de Diseño, Moda y Fotografía. A través de una cuidada dirección estética y una narrativa visual coherente, el proyecto pone en diálogo el diseño de moda con la naturaleza, destacando la sensibilidad artística y el proceso artesanal detrás de cada prenda.
+      </p>
     </div>
   </section>
 
@@ -500,7 +507,8 @@ La producción audiovisual forma parte del Trabajo Final de Grado en Idep Barcel
       </div>
     </div>
   </section>
-<a href="#" id="scroll-to-top" title="Volver arriba"></a>
+
+  <a href="#" id="scroll-to-top" title="Volver arriba"></a>
   <div data-include="../footer.html"></div>
 
 </body>
