@@ -174,7 +174,7 @@
       box-shadow: 0 2px 15px rgba(0,0,0,0.06);
     }
 
-    /* Grid para Figma y Productos: 4 columnas desktop, 2 móvil */
+    /* Grid para Productos: 4 columnas desktop, 2 móvil (cuadradas) */
     .gallery-grid-4 {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -190,11 +190,11 @@
       box-shadow: 0 2px 15px rgba(0,0,0,0.06);
     }
 
-    /* Productos: cuadradas (por si las fuentes no lo son exactamente) */
+    /* Productos: cuadradas */
     .gallery-grid-4.productos .gallery-item {
       position: relative;
       width: 100%;
-      padding-bottom: 100%; /* cuadrado 1:1 */
+      padding-bottom: 100%; /* 1:1 */
       overflow: hidden;
       border-radius: 8px;
       box-shadow: 0 2px 15px rgba(0,0,0,0.06);
@@ -209,8 +209,24 @@
       height: 100%;
       object-fit: cover;
       object-position: center;
-      border-radius: 0; /* ya redondea el contenedor */
-      box-shadow: none; 
+      border-radius: 0;
+      box-shadow: none;
+    }
+
+    /* Grid para Diseño de la página web (2 x 2) */
+    .gallery-grid-web {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr); /* 2 columnas desktop */
+      gap: 2.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .gallery-grid-web .gallery-item img {
+      width: 100%;
+      display: block;
+      border-radius: 8px;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.06);
     }
 
     /* CRÉDITOS */
@@ -271,8 +287,16 @@
         padding: 3rem 5% 0;
       }
 
+      /* Productos: 2 columnas en móvil */
       .gallery-grid-4 {
-        grid-template-columns: repeat(2, 1fr); /* 2 columnas en móvil */
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+      }
+
+      /* Diseño web: 1 columna en móvil */
+      .gallery-grid-web {
+        grid-template-columns: 1fr;
+        max-width: 600px;
         gap: 2rem;
       }
 
@@ -414,26 +438,7 @@
     </div>
   </section>
 
-  <!-- DISEÑO DE LA PÁGINA WEB EN FIGMA -->
-  <section class="project-gallery">
-    <h2 class="gallery-title">Diseño de la página web en Figma</h2>
-    <div class="gallery-grid-4">
-      <div class="gallery-item">
-        <img src="../assets/img/accesorios3d-web-1.png" alt="Accesorios3d - Diseño web 1">
-      </div>
-      <div class="gallery-item">
-        <img src="../assets/img/accesorios3d-web-2.png" alt="Accesorios3d - Diseño web 2">
-      </div>
-      <div class="gallery-item">
-        <img src="../assets/img/accesorios3d-web-3.png" alt="Accesorios3d - Diseño web 3">
-      </div>
-      <div class="gallery-item">
-        <img src="../assets/img/accesorios3d-web-4.png" alt="Accesorios3d - Diseño web 4">
-      </div>
-    </div>
-  </section>
-
-  <!-- PRODUCTOS -->
+  <!-- PRODUCTOS (antes de Diseño web) -->
   <section class="project-gallery">
     <h2 class="gallery-title">Productos</h2>
     <div class="gallery-grid-4 productos">
@@ -448,6 +453,25 @@
       </div>
       <div class="gallery-item">
         <img src="../assets/img/accesorios3d-producto-4.jpg" alt="Accesorios3d - Producto 4">
+      </div>
+    </div>
+  </section>
+
+  <!-- DISEÑO DE LA PÁGINA WEB EN FIGMA (2 x 2 desktop, 1 columna móvil) -->
+  <section class="project-gallery">
+    <h2 class="gallery-title">Diseño de la página web en Figma</h2>
+    <div class="gallery-grid-web">
+      <div class="gallery-item">
+        <img src="../assets/img/accesorios3d-web-1.png" alt="Accesorios3d - Diseño web 1">
+      </div>
+      <div class="gallery-item">
+        <img src="../assets/img/accesorios3d-web-2.png" alt="Accesorios3d - Diseño web 2">
+      </div>
+      <div class="gallery-item">
+        <img src="../assets/img/accesorios3d-web-3.png" alt="Accesorios3d - Diseño web 3">
+      </div>
+      <div class="gallery-item">
+        <img src="../assets/img/accesorios3d-web-4.png" alt="Accesorios3d - Diseño web 4">
       </div>
     </div>
   </section>
@@ -468,3 +492,4 @@
 
 </body>
 </html>
+
