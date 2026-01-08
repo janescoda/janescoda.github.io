@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daina Media - Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      padding-top: 72px;
+      font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: #333;
+      background: #fff;
+      line-height: 1.6;
+    }
+
+    /* BREADCRUMB */
+    .breadcrumb {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 2rem 5% 0;
+      font-size: 0.95rem;
+    }
+
+    .breadcrumb a,
+    .breadcrumb .current {
+      color: #555;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .breadcrumb a:hover {
+      color: #000;
+    }
+
+    .breadcrumb span {
+      color: #bbb;
+      margin: 0 0.5rem;
+    }
+
+    .breadcrumb .current {
+      font-weight: 500;
+    }
+
+    /* HERO DEL PROYECTO */
+    .project-hero {
+      padding: 3rem 5% 3rem;
+      text-align: center;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .project-category {
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #999;
+      margin-bottom: 1rem;
+    }
+
+    .project-hero h1 {
+      font-size: clamp(2.8rem, 6vw, 4rem);
+      font-weight: 700;
+      letter-spacing: -1.5px;
+      color: #1a1a1a;
+      margin-bottom: 1.5rem;
+    }
+
+    .project-intro {
+      max-width: 900px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+      line-height: 1.9;
+      color: #555;
+    }
+
+    /* INFORMACIÓN CLAVE */
+    .project-meta {
+      max-width: 1400px;
+      margin: 3rem auto;
+      padding: 0 5%;
+      display: flex;
+      justify-content: center;
+      gap: 4rem;
+      flex-wrap: wrap;
+    }
+
+    .meta-item {
+      text-align: center;
+    }
+
+    .meta-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #999;
+      margin-bottom: 0.5rem;
+    }
+
+    .meta-value {
+      font-size: 1.05rem;
+      color: #1a1a1a;
+      font-weight: 500;
+    }
+
+    /* CONTENIDO DEL PROYECTO */
+    .project-content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 4rem 5% 0;
+    }
+
+    .content-section {
+      margin-bottom: 4rem;
+    }
+
+    .content-section h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.5px;
+    }
+
+    .content-section p {
+      font-size: 1.05rem;
+      line-height: 1.9;
+      color: #555;
+      margin-bottom: 1.2rem;
+    }
+
+    /* GALERÍAS GENERALES */
+    .project-gallery {
+      max-width: 1400px;
+      margin: 4rem auto;
+      padding: 0 5%;
+    }
+
+    .gallery-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 2.5rem;
+      letter-spacing: -0.5px;
+      text-align: center;
+    }
+
+    .gallery-grid {
+      display: grid;
+      gap: 2.5rem;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      display: block;
+      border-radius: 8px;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.06);
+    }
+
+    /* GRID INSTAGRAM: 4 columnas desktop, 2 móviles */
+    .gallery-grid.instagram-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    /* GRID WEB: 3 columnas desktop, 2 tablet, 1 móvil */
+    .gallery-grid.web-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* CRÉDITOS */
+    .credits-section {
+      max-width: 900px;
+      margin: 6rem auto;
+      padding: 0 5% 6rem;
+    }
+
+    .credits-section h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 2rem;
+      letter-spacing: -0.5px;
+    }
+
+    .credits-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem 4rem;
+    }
+
+    .credit-item {
+      font-size: 0.95rem;
+      color: #555;
+      line-height: 1.8;
+    }
+
+    .credit-role {
+      font-weight: 600;
+      color: #1a1a1a;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .gallery-grid.web-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .breadcrumb {
+        padding: 1.5rem 5% 0;
+        font-size: 0.9rem;
+      }
+
+      .project-meta {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem 2rem;
+        justify-content: center;
+      }
+
+      .meta-item {
+        text-align: left;
+      }
+
+      /* Instagram: 2 columnas en móvil (2x2) */
+      .gallery-grid.instagram-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .gallery-grid.web-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .credits-section {
+        margin: 4rem auto;
+        padding-bottom: 4rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .gallery-grid.web-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* BOTÓN SCROLL TOP */
+    #scroll-to-top {
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      right: 30px;
+      z-index: 99;
+      border: none;
+      outline: none;
+      background-color: #6c757d;
+      cursor: pointer;
+      width: 50px;
+      height: 50px;
+      border-radius: 4px;
+      box-shadow: none;
+      transition: background-color 0.3s ease;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #scroll-to-top.show-flex {
+      display: flex;
+    }
+
+    #scroll-to-top::before {
+      content: '';
+      display: block;
+      width: 8px;
+      height: 8px;
+      border-top: 2.5px solid white;
+      border-right: 2.5px solid white;
+      transform: rotate(-45deg);
+    }
+
+    #scroll-to-top:hover {
+      background-color: #5a6268;
+    }
+  </style>
+</head>
+
+<body>
+
+  <script src="../assets/js/include.js" defer></script>
+  <div data-include="../menu.html"></div>
+
+  <!-- BREADCRUMB -->
+  <nav class="breadcrumb">
+    <a href="../index.html">Inicio</a>
+    <span>/</span>
+    <a href="../portfolio.html">Portfolio</a>
+    <span>/</span>
+    <span class="current">Daina Media</span>
+  </nav>
+
+  <!-- HERO -->
+  <section class="project-hero">
+    <div class="project-category">Comunicación digital · Estrategia y creatividad</div>
+    <h1>Daina Media</h1>
+    <p class="project-intro">
+      Proyecto desarrollado como Trabajo Final de Máster en Estrategia y Creatividad en Publicidad (UOC),
+      centrado en la creación y lanzamiento real de una agencia de marketing digital: Daina Media.
+      El trabajo combina investigación estratégica, branding, diseño y puesta en marcha de los canales
+      digitales de la marca.
+    </p>
+  </section>
+
+  <!-- INFORMACIÓN CLAVE -->
+  <section class="project-meta">
+    <div class="meta-item">
+      <div class="meta-label">Cliente</div>
+      <div class="meta-value">Trabajo Final de Máster · UOC</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Sector</div>
+      <div class="meta-value">Marketing digital, Branding, Emprendimiento</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Rol</div>
+      <div class="meta-value">Estrategia, Branding, Diseño web, Contenido digital</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Año</div>
+      <div class="meta-value">2024</div>
+    </div>
+  </section>
+
+  <!-- CONTENIDO -->
+  <section class="project-content">
+    <div class="content-section">
+      <h2>Descripción del proyecto</h2>
+      <p>
+        Daina Media es una agencia de marketing digital creada como proyecto de máster, con un enfoque
+        totalmente aplicado: pasar de la teoría a un caso real. El proyecto parte de un análisis del contexto
+        económico, del sector digital y de las necesidades de pymes y profesionales, para plantear una
+        agencia especializada en acompañar a pequeños negocios en su transición al entorno online【14-0】【14-2】.
+      </p>
+      <p>
+        Más allá de un plan de empresa teórico, el trabajo se centra en construir una marca viable y lanzar
+        sus primeros activos: naming, identidad visual, sitio web, presencia en redes y una campaña inicial
+        de contenidos. El objetivo es ofrecer servicios accesibles y cercanos en branding, diseño web y
+        estrategia digital, pensados para personas y proyectos que necesitan apoyo profesional pero no
+        disponen de grandes recursos【14-2】【14-16】.
+      </p>
+    </div>
+
+    <div class="content-section">
+      <h2>Estrategia y marca</h2>
+      <p>
+        La estrategia se articula a partir de herramientas como DAFO, benchmarking y el modelo Canvas,
+        definiendo segmentos de clientes, propuesta de valor, canales y estructura de costes de la agencia【14-3】【14-16】.
+        Se trabaja un posicionamiento muy claro: una agencia cercana, ágil y creativa, especializada en
+        marcas pequeñas con alma que valoran la autenticidad y el diseño.
+      </p>
+      <p>
+        A nivel de branding se definen propósito, misión, visión y personalidad de la marca. Daina nace
+        de un naming en catalán que significa “ciervo”, símbolo de agilidad y elegancia, reforzando
+        valores de movimiento estratégico y conexión con el territorio. La identidad visual se construye
+        sobre una paleta de blancos, negros y azules, con tipografías sans serif y una estética minimalista,
+        profesional y muy digital【14-20】【14-21】.
+      </p>
+    </div>
+
+    <div class="content-section">
+      <h2>Implementación digital</h2>
+      <p>
+        Uno de los resultados clave del proyecto es la creación del sitio web
+        <strong>dainamedia.com</strong>, desarrollado en WordPress con dominio y hosting propios.
+        La web funciona como eje central de la marca, con secciones de “Nosotros”, “Servicios”,
+        “Valores” y “Contacto”, disponibles en tres idiomas (español, catalán e inglés), y diseñada
+        con una estética minimalista muy cuidada, alineada con la identidad visual de la agencia【14-22】【14-23】.
+      </p>
+      <p>
+        El plan se completa con la puesta en marcha de perfiles en LinkedIn, Instagram y Facebook.
+        Para cada red se define un tono y una línea gráfica específicos: más corporativa y técnica en
+        LinkedIn, y más emocional y visual en Instagram y Facebook. Se diseña un calendario de
+        lanzamiento de cuatro semanas con publicaciones orientadas a presentar la marca, explicar
+        servicios, mostrar el estilo visual y conectar con emprendedores y pequeñas empresas【14-25】【14-27】.
+      </p>
+    </div>
+  </section>
+
+  <!-- GALERÍA INSTAGRAM (4 imágenes) -->
+  <section class="project-gallery">
+    <h2 class="gallery-title">Piezas para Instagram</h2>
+    <div class="gallery-grid instagram-grid">
+      <div class="gallery-item">
+        <img src="../assets/img/daina-ig-1.png" alt="Daina Media - Post Instagram 1">
+      </div>
+      <div class="gallery-item">
+        <img src="../assets/img/daina-ig-2.png" alt="Daina Media - Post Instagram 2">
+      </div>
+      <div class="gallery-item">
+        <img src="../assets/img/daina-ig-3.png" alt="Daina Media - Post Instagram 3">
+      </div>
+      <div class="gallery-item">
+        <img src="../assets/img/daina-ig-4.png" alt="Daina Media - Post Instagram 4">
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERÍA WEB (6 imágenes en 3x2 desktop, 2x3 tablet) -->
+  <section class="project-gallery">
+    <h2 class="gallery-title">Diseño del sitio web</h2>
+    <div class="gallery-grid web-grid">
+      <div class="gallery-item">
+        <img src="../assets/img/daina-web-1.png" alt="Daina Media - Página de inicio">
+      </div>
+      <div class="gallery-item">
+        <img src="../assets/img/daina-web-2.png" alt="Daina Media - Sección Nosotros">
+      </div>
+      <div class="gallery-item">
+        <img src="../assets/img/daina-web-3.png" alt="Daina Media - Servicios">
+      </div>
+      <div class="gallery-item">
+        <img src="../assets/img/daina-web-4.png" alt="Daina Media - Valores">
+      </div>
+      <div class="gallery-item">
+        <img src="../assets/img/daina-web-5.png" alt="Daina Media - Página de contacto">
+      </div>
+      <div class="gallery-item">
+        <img src="../assets/img/daina-web-6.png" alt="Daina Media - Detalle responsive">
+      </div>
+    </div>
+  </section>
+
+  <!-- CRÉDITOS -->
+  <section class="credits-section">
+    <h2>Créditos</h2>
+    <div class="credits-grid">
+      <div class="credit-item">
+        <span class="credit-role">Estrategia, branding, diseño web y contenidos:</span> Jan Escoda
+      </div>
+      <div class="credit-item">
+        <span class="credit-role">Tutoría académica y supervisión del TFM:</span> Profesora del Máster de Estrategia y Creatividad en Publicidad (UOC)
+      </div>
+    </div>
+  </section>
+
+  <a href="#" id="scroll-to-top" title="Volver arriba"></a>
+
+  <div data-include="../footer.html"></div>
+
+</body>
+</html>
