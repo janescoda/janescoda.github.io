@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Airo - Jan Escoda</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      padding-top: 72px;
+      font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: #333;
+      background: #fff;
+      line-height: 1.6;
+    }
+
+    /* BREADCRUMB */
+    .breadcrumb {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 2rem 5% 0;
+      font-size: 0.95rem;
+    }
+
+    .breadcrumb a,
+    .breadcrumb .current {
+      color: #555;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .breadcrumb a {
+      font-weight: 400;
+    }
+
+    .breadcrumb a:hover {
+      color: #000;
+    }
+
+    .breadcrumb span {
+      color: #bbb;
+      margin: 0 0.5rem;
+    }
+
+    .breadcrumb .current {
+      font-weight: 500;
+    }
+
+    /* HERO DEL PROYECTO */
+    .project-hero {
+      padding: 3rem 5% 3rem;
+      text-align: center;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .project-category {
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #999;
+      margin-bottom: 1rem;
+    }
+
+    .project-hero h1 {
+      font-size: clamp(2.8rem, 6vw, 4rem);
+      font-weight: 700;
+      letter-spacing: -1.5px;
+      color: #1a1a1a;
+      margin-bottom: 1.5rem;
+    }
+
+    .project-intro {
+      max-width: 900px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+      line-height: 1.9;
+      color: #555;
+    }
+
+    /* INFORMACIÓN CLAVE */
+    .project-meta {
+      max-width: 1400px;
+      margin: 3rem auto;
+      padding: 0 5%;
+      display: flex;
+      justify-content: center;
+      gap: 4rem;
+      flex-wrap: wrap;
+    }
+
+    .meta-item {
+      text-align: center;
+    }
+
+    .meta-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #999;
+      margin-bottom: 0.5rem;
+    }
+
+    .meta-value {
+      font-size: 1.05rem;
+      color: #1a1a1a;
+      font-weight: 500;
+    }
+
+    /* CONTENIDO DEL PROYECTO */
+    .project-content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 4rem 5% 0;
+    }
+
+    .content-section {
+      margin-bottom: 4rem;
+    }
+
+    .content-section h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.5px;
+    }
+
+    .content-section p {
+      font-size: 1.05rem;
+      line-height: 1.9;
+      color: #555;
+      margin-bottom: 1.2rem;
+    }
+
+    /* VIDEO DESTACADO (Removed for Airo, but keeping structure for future use) */
+    .project-video {
+      max-width: 1400px;
+      margin: 4rem auto;
+      padding: 0 5%;
+    }
+
+    .video-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 2.5rem;
+      letter-spacing: -0.5px;
+      text-align: center;
+    }
+
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 */
+      height: 0;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      background: #000;
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* GALERÍA DE IMÁGENES - HORIZONTAL */
+    .project-gallery {
+      max-width: 1400px;
+      margin: 4rem auto;
+      padding: 0 5%;
+    }
+
+    .gallery-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 2.5rem;
+      letter-spacing: -0.5px;
+      text-align: center;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2.5rem;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      display: block;
+      border-radius: 8px;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.06);
+    }
+
+    /* GALERÍA VERTICAL (para stories) */
+    .gallery-grid-vertical {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2.5rem;
+    }
+
+    .gallery-item-vertical {
+      position: relative;
+      width: 100%;
+      padding-bottom: 177.78%; /* Aspect ratio 9:16 */
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.06);
+      background: #f5f5f5;
+    }
+
+    .gallery-item-vertical img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    /* CRÉDITOS */
+    .credits-section {
+      max-width: 900px;
+      margin: 6rem auto;
+      padding: 0 5% 6rem;
+    }
+
+    .credits-section h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 2rem;
+      letter-spacing: -0.5px;
+    }
+
+    .credits-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem 4rem;
+    }
+
+    .credit-item {
+      font-size: 0.95rem;
+      color: #555;
+      line-height: 1.8;
+    }
+
+    .credit-role {
+      font-weight: 600;
+      color: #1a1a1a;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .breadcrumb {
+        padding: 1.5rem 5% 0;
+        font-size: 0.9rem;
+      }
+
+      .project-meta {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem 2rem;
+        justify-content: center;
+      }
+
+      .meta-item {
+        text-align: left;
+      }
+
+      .gallery-grid,
+      .gallery-grid-vertical,
+      .credits-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .project-hero {
+        padding: 2rem 5% 2rem;
+      }
+
+      .project-content {
+        padding: 3rem 5% 0;
+      }
+
+      .credits-grid {
+        gap: 0.8rem 2rem;
+      }
+
+      .gallery-grid,
+      .gallery-grid-vertical {
+        gap: 2rem;
+      }
+    }
+    
+    #scroll-to-top {
+      display: none; /* Hidden by default, JavaScript will show it */
+      position: fixed; /* Keeps the button in place when scrolling */
+      bottom: 20px; /* Distance from the bottom of the screen */
+      right: 30px; /* Distance from the right of the screen */
+      z-index: 99; /* Ensures it's above other content */
+      border: none; /* No border */
+      outline: none; /* No outline */
+      background-color: #6c757d; /* Gray background color */
+      cursor: pointer; /* Changes cursor to a pointer on hover */
+      width: 50px; /* HALF SIZE: Fixed width for the square icon */
+      height: 50px; /* HALF SIZE: Fixed height for the square icon */
+      border-radius: 4px; /* HALF SIZE: Rounded corners (half of original 8px) */
+      box-shadow: none; /* No shadow */
+      transition: background-color 0.3s ease; /* Smooth transition for background color change */
+
+      /* Flexbox for perfect centering of the chevron (will be applied via .show-flex) */
+      align-items: center; /* Vertically center */
+      justify-content: center; /* Horizontally center */
+    }
+
+    /* This class will be added by JavaScript to show the button */
+    #scroll-to-top.show-flex {
+      display: flex;
+    }
+
+    #scroll-to-top::before {
+      content: ''; /* Required for pseudo-elements */
+      display: block;
+      width: 8px; /* Slightly smaller than previous to accommodate thicker border */
+      height: 8px; /* Slightly smaller than previous to accommodate thicker border */
+      border-top: 2.5px solid white; /* THICKER LINE: Increased border thickness */
+      border-right: 2.5px solid white; /* THICKER LINE: Increased border thickness */
+      transform: rotate(-45deg); /* Rotates the square to form the chevron shape */
+    }
+
+    #scroll-to-top:hover {
+      background-color: #5a6268; /* Slightly darker gray on hover */
+    }
+  </style>
+</head>
+
+<body>
+
+  <script src="../assets/js/include.js" defer></script>
+  <div data-include="../menu.html"></div>
+
+  <!-- BREADCRUMB -->
+  <nav class="breadcrumb">
+    <a href="../index.html">Inicio</a>
+    <span>/</span>
+    <a href="../portfolio.html">Portfolio</a>
+    <span>/</span>
+    <span class="current">Airo</span>
+  </nav>
+
+  <!-- HERO -->
+  <section class="project-hero">
+    <div class="project-category">Emprendimiento e Innovación</div>
+    <h1>Airo</h1>
+    <p class="project-intro">
+      Propuesta de emprendimiento e innovación creada durante la universidad con un grupo de compañeros.
+      Consiste en una tarjeta de transporte universal para tren, tranvía, autobús y metro, con el objetivo de obtener
+      beneficios por su uso, como recompensas. Desarrollando una página web y una aplicación móvil donde los usuarios
+      pueden canjear estas recompensas. También se ofrece una opción de tarjeta digital para reducir el consumo de material.
+    </p>
+  </section>
+
+  <!-- INFORMACIÓN CLAVE -->
+  <section class="project-meta">
+    <div class="meta-item">
+      <div class="meta-label">Cliente</div>
+      <div class="meta-value">Proyecto Universitario</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Sector</div>
+      <div class="meta-value">Movilidad / Innovación</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Rol</div>
+      <div class="meta-value">Diseño UX/UI, Estrategia</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">año</div>
+      <div class="meta-value">2023</div>
+    </div>
+  </section>
+
+  <!-- DESCRIPCIÓN -->
+  <section class="project-content">
+    <div class="content-section">
+      <h2>Descripción</h2>
+      <p>
+        El objetivo principal de Airo es disminuir el uso del coche y las emisiones de CO2 en las grandes ciudades,
+        promoviendo un estilo de vida saludable que incluya la práctica deportiva y el uso del transporte público
+        para trayectos largos.
+      </p>
+      <p>
+        Para ello, se garantiza un precio asequible, un transporte cómodo, una buena seguridad y horarios eficientes.
+        El proyecto contempla el desarrollo de una página web y una aplicación móvil para que los usuarios puedan
+        gestionar su tarjeta, consultar sus beneficios y canjear las recompensas obtenidas por el uso del transporte
+        público.
+      </p>
+    </div>
+
+    <div class="content-section">
+      <h2>Propuesta de Valor</h2>
+      <p>
+        Airo no solo busca incentivar el transporte público a través de un sistema de recompensas, sino también
+        ofrecer una opción de tarjeta digital para reducir el consumo de material plástico, contribuyendo así a la
+        sostenibilidad ambiental. La integración de todos los medios de transporte (tren, tranvía, autobús y metro)
+        en una única tarjeta universal simplifica la experiencia del usuario y fomenta una movilidad más eficiente y
+        respetuosa con el medio ambiente.
+      </p>
+    </div>
+  </section>
+
+  <!-- DISEÑO DE LA APLICACIÓN EN FIGMA -->
+  <section class="project-gallery">
+    <h2 class="gallery-title">Diseño de la aplicación en Figma</h2>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="../assets/img/airo-app-design-1.png" alt="Airo App Design Screen 1">
+      </div>
+      <div class="gallery-item">
+        <img src="../assets/img/airo-app-design-2.png" alt="Airo App Design Screen 2">
+      </div>
+      <div class="gallery-item">
+        <img src="../assets/img/airo-app-design-3.png" alt="Airo App Design Screen 3">
+      </div>
+      <div class="gallery-item">
+        <img src="../assets/img/airo-app-design-4.png" alt="Airo App Design Screen 4">
+      </div>
+    </div>
+  </section>
+
+  <!-- GUÍA DE ESTILOS (BRAND BOOK) -->
+  <section class="project-gallery">
+    <h2 class="gallery-title">Guía de estilos (Brand Book)</h2>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="../assets/img/airo-brand-book-1.png" alt="Airo Brand Book Page 1">
+      </div>
+      <div class="gallery-item">
+        <img src="../assets/img/airo-brand-book-2.png" alt="Airo Brand Book Page 2">
+      </div>
+      <div class="gallery-item">
+        <img src="../assets/img/airo-brand-book-3.png" alt="Airo Brand Book Page 3">
+      </div>
+      <div class="gallery-item">
+        <img src="../assets/img/airo-brand-book-4.png" alt="Airo Brand Book Page 4">
+      </div>
+    </div>
+  </section>
+
+  <!-- CRÉDITOS -->
+  <section class="credits-section">
+    <h2>Créditos</h2>
+    <div class="credits-grid">
+      <div class="credit-item">
+        <span class="credit-role">Diseño gráfico, contenido aplicación:</span> Jan Escoda
+      </div>
+      <div class="credit-item">
+        <span class="credit-role">Diseño UX/UI:</span> Laura Delgado
+      </div>
+      <div class="credit-item">
+        <span class="credit-role">Guion, administración:</span> Eric Corvo
+      </div>
+      <div class="credit-item">
+        <span class="credit-role">Colaborador:</span> [Nombre del Colaborador 1]
+      </div>
+      <div class="credit-item">
+        <span class="credit-role">Colaborador:</span> [Nombre del Colaborador 2]
+      </div>
+    </div>
+  </section>
+  
+  <a href="#" id="scroll-to-top" title="Volver arriba"></a>
+  
+  <div data-include="../footer.html"></div>
+
+
+</body>
+</html>
