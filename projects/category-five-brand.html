@@ -179,7 +179,7 @@
       height: 100%;
     }
 
-    /* GALERÍA DE IMÁGENES - HORIZONTAL (posts y animaciones) */
+    /* GALERÍAS GENERALES */
     .project-gallery {
       max-width: 1400px;
       margin: 4rem auto;
@@ -195,18 +195,12 @@
       text-align: center;
     }
 
+    /* GRID PARA POSTS E IMÁGENES HORIZONTALES */
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr); /* ahora 4 columnas */
+      grid-template-columns: repeat(4, 1fr); /* 4 columnas en escritorio */
       gap: 2.5rem;
     }
-    /* Centrar la sección "Animaciones del logotipo" */
-.gallery-grid.animaciones-logo {
-  display: flex;
-  justify-content: center;
-  gap: 2.5rem;       /* mismo espacio que el grid */
-  flex-wrap: wrap;   /* por si en el futuro hay más de 2 */
-}
 
     .gallery-item img {
       width: 100%;
@@ -215,17 +209,17 @@
       box-shadow: 0 2px 15px rgba(0,0,0,0.06);
     }
 
-    /* GALERÍA VERTICAL (para stories) */
+    /* GRID VERTICAL (STORIES) */
     .gallery-grid-vertical {
       display: grid;
-      grid-template-columns: repeat(4, 1fr); /* 4 columnas */
+      grid-template-columns: repeat(4, 1fr); /* 4 columnas en escritorio */
       gap: 2.5rem;
     }
 
     .gallery-item-vertical {
       position: relative;
       width: 100%;
-      padding-bottom: 177.78%; /* Aspect ratio 9:16 */
+      padding-bottom: 177.78%; /* 9:16 */
       overflow: hidden;
       border-radius: 8px;
       box-shadow: 0 2px 15px rgba(0,0,0,0.06);
@@ -241,6 +235,13 @@
       object-fit: cover;
       object-position: center;
       display: block;
+    }
+
+    /* GRID ESPECÍFICO PARA "ANIMACIONES DEL LOGOTIPO" */
+    .gallery-grid.animaciones-logo {
+      max-width: 700px;                 /* para que no se estire a todo el ancho */
+      margin: 0 auto;                   /* centra el grid en la página */
+      grid-template-columns: repeat(2, 1fr); /* 2 columnas en escritorio */
     }
 
     /* CRÉDITOS */
@@ -293,10 +294,20 @@
         text-align: left;
       }
 
+      /* En móvil: 2 columnas para los grids de 4 */
       .gallery-grid,
-      .gallery-grid-vertical,
+      .gallery-grid-vertical {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      /* En móvil: animaciones también en 2 columnas (y si el ancho no da, el navegador ya las pasa a 1 automáticamente) */
+      .gallery-grid.animaciones-logo {
+        max-width: 100%;
+      }
+
       .credits-grid {
-        grid-template-columns: 1fr; /* en móvil una columna */
+        grid-template-columns: 1fr;
+        gap: 0.8rem 2rem;
       }
 
       .project-hero {
@@ -305,10 +316,6 @@
 
       .project-content {
         padding: 3rem 5% 0;
-      }
-
-      .credits-grid {
-        gap: 0.8rem 2rem;
       }
 
       .gallery-grid,
@@ -423,7 +430,7 @@
     </div>
   </section>
 
-  <!-- IMÁGENES PARA STORIES DE INSTAGRAM (VERTICAL 9:16) -->
+  <!-- IMÁGENES PARA STORIES (FOTOGRÁFICAS) -->
   <section class="project-gallery">
     <h2 class="gallery-title">Imágenes fotográficas para Stories de Instagram</h2>
     <div class="gallery-grid-vertical">
@@ -442,7 +449,7 @@
     </div>
   </section>
 
-  <!-- IMÁGENES GRÁFICAS PARA STORIES DE INSTAGRAM (VERTICAL 9:16) -->
+  <!-- IMÁGENES GRÁFICAS PARA STORIES -->
   <section class="project-gallery">
     <h2 class="gallery-title">Imágenes gráficas para Stories de Instagram</h2>
     <div class="gallery-grid-vertical">
@@ -461,7 +468,7 @@
     </div>
   </section>
 
-  <!-- IMÁGENES PARA PUBLICACIONES DE INSTAGRAM (CUADRADAS/HORIZONTAL) -->
+  <!-- IMÁGENES PARA PUBLICACIONES (4 columnas) -->
   <section class="project-gallery">
     <h2 class="gallery-title">Imágenes para publicaciones de Instagram</h2>
     <div class="gallery-grid">
@@ -480,18 +487,18 @@
     </div>
   </section>
 
-  <!-- ANIMACIONES DEL LOGOTIPO -->
-<section class="project-gallery">
-  <h2 class="gallery-title">Animaciones del logotipo</h2>
-  <div class="gallery-grid animaciones-logo">
-    <div class="gallery-item">
-      <img src="../assets/img/category-five-animacion-1.gif" alt="Category Five - Animación logo 1">
+  <!-- ANIMACIONES DEL LOGOTIPO (2 columnas centradas) -->
+  <section class="project-gallery">
+    <h2 class="gallery-title">Animaciones del logotipo</h2>
+    <div class="gallery-grid animaciones-logo">
+      <div class="gallery-item">
+        <img src="../assets/img/category-five-animacion-1.gif" alt="Category Five - Animación logo 1">
+      </div>
+      <div class="gallery-item">
+        <img src="../assets/img/category-five-animacion-2.gif" alt="Category Five - Animación logo 2">
+      </div>
     </div>
-    <div class="gallery-item">
-      <img src="../assets/img/category-five-animacion-2.gif" alt="Category Five - Animación logo 2">
-    </div>
-  </div>
-</section>
+  </section>
 
   <!-- VIDEOS PROMOCIONALES -->
   <section class="project-video">
