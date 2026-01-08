@@ -200,6 +200,13 @@
       grid-template-columns: repeat(4, 1fr); /* ahora 4 columnas */
       gap: 2.5rem;
     }
+    /* Centrar la sección "Animaciones del logotipo" */
+.gallery-grid.animaciones-logo {
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem;       /* mismo espacio que el grid */
+  flex-wrap: wrap;   /* por si en el futuro hay más de 2 */
+}
 
     .gallery-item img {
       width: 100%;
@@ -474,17 +481,17 @@
   </section>
 
   <!-- ANIMACIONES DEL LOGOTIPO -->
-  <section class="project-gallery">
-    <h2 class="gallery-title">Animaciones del logotipo</h2>
-    <div class="gallery-grid">
-      <div class="gallery-item">
-        <img src="../assets/img/category-five-animacion-1.gif" alt="Category Five - Animación logo 1">
-      </div>
-      <div class="gallery-item">
-        <img src="../assets/img/category-five-animacion-2.gif" alt="Category Five - Animación logo 2">
-      </div>
+<section class="project-gallery">
+  <h2 class="gallery-title">Animaciones del logotipo</h2>
+  <div class="gallery-grid animaciones-logo">
+    <div class="gallery-item">
+      <img src="../assets/img/category-five-animacion-1.gif" alt="Category Five - Animación logo 1">
     </div>
-  </section>
+    <div class="gallery-item">
+      <img src="../assets/img/category-five-animacion-2.gif" alt="Category Five - Animación logo 2">
+    </div>
+  </div>
+</section>
 
   <!-- VIDEOS PROMOCIONALES -->
   <section class="project-video">
