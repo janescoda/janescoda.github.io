@@ -309,6 +309,7 @@
         gap: 2rem;
       }
     }
+    
 #scroll-to-top {
     display: none; /* Hidden by default, JavaScript will show it */
     position: fixed; /* Keeps the button in place when scrolling */
@@ -325,10 +326,14 @@
     box-shadow: none; /* No shadow */
     transition: background-color 0.3s ease; /* Smooth transition for background color change */
 
-    /* Flexbox for perfect centering of the chevron */
-    display: flex;
+    /* Flexbox for perfect centering of the chevron (will be applied via .show-flex) */
     align-items: center; /* Vertically center */
     justify-content: center; /* Horizontally center */
+}
+
+/* This class will be added by JavaScript to show the button */
+#scroll-to-top.show-flex {
+    display: flex;
 }
 
 #scroll-to-top::before {
@@ -344,6 +349,7 @@
 #scroll-to-top:hover {
     background-color: #5a6268; /* Slightly darker gray on hover */
 }
+
 
   </style>
 </head>
