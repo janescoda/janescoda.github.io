@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accesorios3d - Jan Escoda</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      padding-top: 72px;
+      font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: #333;
+      background: #fff;
+      line-height: 1.6;
+    }
+
+    /* BREADCRUMB */
+    .breadcrumb {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 2rem 5% 0;
+      font-size: 0.95rem;
+    }
+
+    .breadcrumb a,
+    .breadcrumb .current {
+      color: #555;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .breadcrumb a {
+      font-weight: 400;
+    }
+
+    .breadcrumb a:hover {
+      color: #000;
+    }
+
+    .breadcrumb span {
+      color: #bbb;
+      margin: 0 0.5rem;
+    }
+
+    .breadcrumb .current {
+      font-weight: 500;
+    }
+
+    /* HERO DEL PROYECTO */
+    .project-hero {
+      padding: 3rem 5% 3rem;
+      text-align: center;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .project-category {
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #999;
+      margin-bottom: 1rem;
+    }
+
+    .project-hero h1 {
+      font-size: clamp(2.8rem, 6vw, 4rem);
+      font-weight: 700;
+      letter-spacing: -1.5px;
+      color: #1a1a1a;
+      margin-bottom: 1.5rem;
+    }
+
+    .project-intro {
+      max-width: 900px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+      line-height: 1.9;
+      color: #555;
+    }
+
+    /* INFORMACIÓN CLAVE */
+    .project-meta {
+      max-width: 1400px;
+      margin: 3rem auto;
+      padding: 0 5%;
+      display: flex;
+      justify-content: center;
+      gap: 4rem;
+      flex-wrap: wrap;
+    }
+
+    .meta-item {
+      text-align: center;
+    }
+
+    .meta-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #999;
+      margin-bottom: 0.5rem;
+    }
+
+    .meta-value {
+      font-size: 1.05rem;
+      color: #1a1a1a;
+      font-weight: 500;
+    }
+
+    /* CONTENIDO DEL PROYECTO */
+    .project-content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 4rem 5% 0;
+    }
+
+    .content-section {
+      margin-bottom: 4rem;
+    }
+
+    .content-section h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.5px;
+    }
+
+    .content-section p {
+      font-size: 1.05rem;
+      line-height: 1.9;
+      color: #555;
+      margin-bottom: 1.2rem;
+    }
+
+    /* GALERÍAS */
+    .project-gallery {
+      max-width: 1400px;
+      margin: 4rem auto;
+      padding: 0 5%;
+    }
+
+    .gallery-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 2.5rem;
+      letter-spacing: -0.5px;
+      text-align: center;
+    }
+
+    /* Bloques de 1 imagen (logo, icono, paleta) */
+    .single-image {
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .single-image img {
+      width: 100%;
+      display: block;
+      border-radius: 8px;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.06);
+    }
+
+    /* Grid para Figma y Productos: 4 columnas desktop, 2 móvil */
+    .gallery-grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2.5rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .gallery-grid-4 .gallery-item img {
+      width: 100%;
+      display: block;
+      border-radius: 8px;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.06);
+    }
+
+    /* Productos: cuadradas (por si las fuentes no lo son exactamente) */
+    .gallery-grid-4.productos .gallery-item {
+      position: relative;
+      width: 100%;
+      padding-bottom: 100%; /* cuadrado 1:1 */
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.06);
+      background: #f5f5f5;
+    }
+
+    .gallery-grid-4.productos .gallery-item img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 0; /* ya redondea el contenedor */
+      box-shadow: none; 
+    }
+
+    /* CRÉDITOS */
+    .credits-section {
+      max-width: 900px;
+      margin: 6rem auto;
+      padding: 0 5% 6rem;
+    }
+
+    .credits-section h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 2rem;
+      letter-spacing: -0.5px;
+    }
+
+    .credits-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem 4rem;
+    }
+
+    .credit-item {
+      font-size: 0.95rem;
+      color: #555;
+      line-height: 1.8;
+    }
+
+    .credit-role {
+      font-weight: 600;
+      color: #1a1a1a;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .breadcrumb {
+        padding: 1.5rem 5% 0;
+        font-size: 0.9rem;
+      }
+
+      .project-meta {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem 2rem;
+        justify-content: center;
+      }
+
+      .meta-item {
+        text-align: left;
+      }
+
+      .project-hero {
+        padding: 2rem 5% 2rem;
+      }
+
+      .project-content {
+        padding: 3rem 5% 0;
+      }
+
+      .gallery-grid-4 {
+        grid-template-columns: repeat(2, 1fr); /* 2 columnas en móvil */
+        gap: 2rem;
+      }
+
+      .credits-grid {
+        gap: 0.8rem 2rem;
+      }
+    }
+
+    /* BOTÓN SCROLL TOP (si lo usas en el resto del sitio) */
+    #scroll-to-top {
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      right: 30px;
+      z-index: 99;
+      border: none;
+      outline: none;
+      background-color: #6c757d;
+      cursor: pointer;
+      width: 50px;
+      height: 50px;
+      border-radius: 4px;
+      box-shadow: none;
+      transition: background-color 0.3s ease;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #scroll-to-top.show-flex {
+      display: flex;
+    }
+
+    #scroll-to-top::before {
+      content: '';
+      display: block;
+      width: 8px;
+      height: 8px;
+      border-top: 2.5px solid white;
+      border-right: 2.5px solid white;
+      transform: rotate(-45deg);
+    }
+
+    #scroll-to-top:hover {
+      background-color: #5a6268;
+    }
+  </style>
+</head>
+
+<body>
+
+  <script src="../assets/js/include.js" defer></script>
+  <div data-include="../menu.html"></div>
+
+  <!-- BREADCRUMB -->
+  <nav class="breadcrumb">
+    <a href="../index.html">Inicio</a>
+    <span>/</span>
+    <a href="../portfolio.html">Portfolio</a>
+    <span>/</span>
+    <span class="current">Accesorios3d</span>
+  </nav>
+
+  <!-- HERO -->
+  <section class="project-hero">
+    <div class="project-category">Diseño de producto / Web</div>
+    <h1>Accesorios3d</h1>
+    <p class="project-intro">
+      Producto en desarrollo: plataforma especializada en la fabricación de piezas decorativas y accesorios para el hogar mediante impresión 3D, con un enfoque en diseño minimalista, calidad y sostenibilidad.
+    </p>
+  </section>
+
+  <!-- INFORMACIÓN CLAVE -->
+  <section class="project-meta">
+    <div class="meta-item">
+      <div class="meta-label">Cliente</div>
+      <div class="meta-value">Proyecto personal</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Sector</div>
+      <div class="meta-value">Decoración / Impresión 3D</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Rol</div>
+      <div class="meta-value">Branding, diseño web, fabricación</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Estado</div>
+      <div class="meta-value">En desarrollo</div>
+    </div>
+  </section>
+
+  <!-- DESCRIPCIÓN -->
+  <section class="project-content">
+    <div class="content-section">
+      <h2>Descripción</h2>
+      <p>
+        Accesorios3d es una marca centrada en la creación de piezas de decoración y accesorios para el hogar mediante impresión 3D. 
+        El proyecto busca ofrecer productos con un diseño minimalista y contemporáneo, capaces de integrarse en diferentes estilos de 
+        interiorismo sin perder personalidad.
+      </p>
+      <p>
+        La propuesta combina la estética de lujo con la accesibilidad, utilizando materiales sostenibles y procesos de fabricación 
+        responsables. La marca apuesta por la durabilidad y la atemporalidad, priorizando formas limpias, detalles cuidados y acabados 
+        de alta calidad.
+      </p>
+      <p>
+        La web permite personalizar ciertos productos —como dimensiones, colores o acabados— para adaptarlos a las necesidades de cada 
+        cliente. Además, la experiencia de compra se ha diseñado para que sea clara, rápida y agradable, con envíos eficientes y una 
+        atención al cliente cercana y personalizada.
+      </p>
+      <p>
+        El mensaje principal de Accesorios3d es inspirar a las personas a transformar sus espacios mediante accesorios que equilibran 
+        estilo y sostenibilidad, convirtiendo cada rincón del hogar en un entorno más cuidado y significativo.
+      </p>
+    </div>
+  </section>
+
+  <!-- LOGO DE LA MARCA -->
+  <section class="project-gallery">
+    <h2 class="gallery-title">Logo de la marca</h2>
+    <div class="single-image">
+      <img src="../assets/img/accesorios3d-logo.png" alt="Accesorios3d - Logo de la marca">
+    </div>
+  </section>
+
+  <!-- ICONO DEL SITIO -->
+  <section class="project-gallery">
+    <h2 class="gallery-title">Icono del sitio</h2>
+    <div class="single-image">
+      <img src="../assets/img/accesorios3d-icon.png" alt="Accesorios3d - Icono del sitio">
+    </div>
+  </section>
+
+  <!-- PALETA DE COLORES -->
+  <section class="project-gallery">
+    <h2 class="gallery-title">Paleta de colores</h2>
+    <div class="single-image">
+      <img src="../assets/img/accesorios3d-paleta-colores.png" alt="Accesorios3d - Paleta de colores">
+    </div>
+  </section>
+
+  <!-- DISEÑO DE LA PÁGINA WEB EN FIGMA -->
+  <section class="project-gallery">
+    <h2 class="gallery-title">Diseño de la página web en Figma</h2>
+    <div class="gallery-grid-4">
+      <div class="gallery-item">
+        <img src="../assets/img/accesorios3d-web-1.png" alt="Accesorios3d - Diseño web 1">
+      </div>
+      <div class="gallery-item">
+        <img src="../assets/img/accesorios3d-web-2.png" alt="Accesorios3d - Diseño web 2">
+      </div>
+      <div class="gallery-item">
+        <img src="../assets/img/accesorios3d-web-3.png" alt="Accesorios3d - Diseño web 3">
+      </div>
+      <div class="gallery-item">
+        <img src="../assets/img/accesorios3d-web-4.png" alt="Accesorios3d - Diseño web 4">
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTOS -->
+  <section class="project-gallery">
+    <h2 class="gallery-title">Productos</h2>
+    <div class="gallery-grid-4 productos">
+      <div class="gallery-item">
+        <img src="../assets/img/accesorios3d-producto-1.jpg" alt="Accesorios3d - Producto 1">
+      </div>
+      <div class="gallery-item">
+        <img src="../assets/img/accesorios3d-producto-2.jpg" alt="Accesorios3d - Producto 2">
+      </div>
+      <div class="gallery-item">
+        <img src="../assets/img/accesorios3d-producto-3.jpg" alt="Accesorios3d - Producto 3">
+      </div>
+      <div class="gallery-item">
+        <img src="../assets/img/accesorios3d-producto-4.jpg" alt="Accesorios3d - Producto 4">
+      </div>
+    </div>
+  </section>
+
+  <!-- CRÉDITOS -->
+  <section class="credits-section">
+    <h2>Créditos</h2>
+    <div class="credits-grid">
+      <div class="credit-item">
+        <span class="credit-role">Diseño gráfico y branding, desarrollo de la página web, fabricación de productos:</span>
+        Jan Escoda
+      </div>
+    </div>
+  </section>
+
+  <a href="#" id="scroll-to-top" title="Volver arriba"></a>
+  <div data-include="../footer.html"></div>
+
+</body>
+</html>
