@@ -121,7 +121,8 @@ function initScrollToTopButton() {
     window.onscroll = function() {scrollFunction()};
 
     function scrollFunction() {
-        const scrollThreshold = 1000;
+        // Calculate the threshold as half the viewport height
+        const scrollThreshold = window.innerHeight / 2;
 
         if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
             mybutton.classList.add("show-flex"); // Add the class to show it with flex
@@ -138,6 +139,7 @@ function initScrollToTopButton() {
         });
     });
 }
+
 
 
 
@@ -165,6 +167,7 @@ function initContactForm() {
     }
   });
 }
+
 
 
 
