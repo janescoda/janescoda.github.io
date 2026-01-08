@@ -287,10 +287,18 @@
         text-align: left;
       }
 
-      .gallery-grid,
-      .gallery-grid-vertical,
+      /* 2 columnas para las imágenes en móvil */
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .gallery-grid-vertical {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
       .credits-grid {
         grid-template-columns: 1fr;
+        gap: 0.8rem 2rem;
       }
 
       .project-hero {
@@ -299,10 +307,6 @@
 
       .project-content {
         padding: 3rem 5% 0;
-      }
-
-      .credits-grid {
-        gap: 0.8rem 2rem;
       }
 
       .gallery-grid,
