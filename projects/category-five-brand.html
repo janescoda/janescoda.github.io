@@ -24,7 +24,6 @@
       line-height: 1.6;
     }
 
-    /* BREADCRUMB */
     .breadcrumb {
       max-width: 1400px;
       margin: 0 auto;
@@ -56,9 +55,8 @@
       font-weight: 500;
     }
 
-    /* HERO DEL PROYECTO */
     .project-hero {
-      padding: 3rem 5% 3rem;
+      padding: 3rem 5% 2rem;
       text-align: center;
       max-width: 1400px;
       margin: 0 auto;
@@ -89,10 +87,9 @@
       color: #555;
     }
 
-    /* INFORMACIÓN CLAVE */
     .project-meta {
       max-width: 1400px;
-      margin: 3rem auto;
+      margin: 1.5rem auto 3rem;
       padding: 0 5%;
       display: flex;
       justify-content: center;
@@ -119,7 +116,6 @@
       font-weight: 500;
     }
 
-    /* CONTENIDO DEL PROYECTO */
     .project-content {
       max-width: 900px;
       margin: 0 auto;
@@ -145,7 +141,6 @@
       margin-bottom: 1.2rem;
     }
 
-    /* VIDEO DESTACADO */
     .project-video {
       max-width: 1400px;
       margin: 4rem auto;
@@ -163,7 +158,7 @@
 
     .video-container {
       position: relative;
-      padding-bottom: 56.25%; /* 16:9 */
+      padding-bottom: 56.25%;
       height: 0;
       overflow: hidden;
       border-radius: 8px;
@@ -179,7 +174,6 @@
       height: 100%;
     }
 
-    /* GALERÍAS GENERALES */
     .project-gallery {
       max-width: 1400px;
       margin: 4rem auto;
@@ -195,10 +189,9 @@
       text-align: center;
     }
 
-    /* GRID PARA POSTS E IMÁGENES HORIZONTALES */
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr); /* 4 columnas en escritorio */
+      grid-template-columns: repeat(4, 1fr);
       gap: 2.5rem;
     }
 
@@ -209,17 +202,16 @@
       box-shadow: 0 2px 15px rgba(0,0,0,0.06);
     }
 
-    /* GRID VERTICAL (STORIES) */
     .gallery-grid-vertical {
       display: grid;
-      grid-template-columns: repeat(4, 1fr); /* 4 columnas en escritorio */
+      grid-template-columns: repeat(4, 1fr);
       gap: 2.5rem;
     }
 
     .gallery-item-vertical {
       position: relative;
       width: 100%;
-      padding-bottom: 177.78%; /* 9:16 */
+      padding-bottom: 177.78%;
       overflow: hidden;
       border-radius: 8px;
       box-shadow: 0 2px 15px rgba(0,0,0,0.06);
@@ -237,14 +229,12 @@
       display: block;
     }
 
-    /* GRID ESPECÍFICO PARA "ANIMACIONES DEL LOGOTIPO" */
     .gallery-grid.animaciones-logo {
-      max-width: 700px;                 /* para que no se estire a todo el ancho */
-      margin: 0 auto;                   /* centra el grid en la página */
-      grid-template-columns: repeat(2, 1fr); /* 2 columnas en escritorio */
+      max-width: 700px;
+      margin: 0 auto;
+      grid-template-columns: repeat(2, 1fr);
     }
 
-    /* CRÉDITOS */
     .credits-section {
       max-width: 900px;
       margin: 6rem auto;
@@ -276,7 +266,6 @@
       color: #1a1a1a;
     }
 
-    /* RESPONSIVE */
     @media (max-width: 768px) {
       .breadcrumb {
         padding: 1.5rem 5% 0;
@@ -294,13 +283,11 @@
         text-align: left;
       }
 
-      /* En móvil: 2 columnas para los grids de 4 */
       .gallery-grid,
       .gallery-grid-vertical {
         grid-template-columns: repeat(2, 1fr);
       }
 
-      /* En móvil: animaciones también en 2 columnas (y si el ancho no da, el navegador ya las pasa a 1 automáticamente) */
       .gallery-grid.animaciones-logo {
         max-width: 100%;
       }
@@ -324,7 +311,6 @@
       }
     }
 
-    /* BOTÓN SCROLL TOP */
     #scroll-to-top {
       display: none;
       position: fixed;
@@ -369,7 +355,6 @@
   <script src="../assets/js/include.js" defer></script>
   <div data-include="../menu.html"></div>
 
-  <!-- BREADCRUMB -->
   <nav class="breadcrumb">
     <a href="../index.html">Inicio</a>
     <span>/</span>
@@ -378,16 +363,11 @@
     <span class="current">Category Five Brand</span>
   </nav>
 
-  <!-- HERO -->
   <section class="project-hero">
     <div class="project-category">Comunicación digital</div>
     <h1>Category Five Brand</h1>
-    <p class="project-intro">
-      Proyecto realizado en colaboración con la marca de ropa Category Five Brand, creada en Barcelona, con la finalidad de promocionar una nueva colección de verano, crear contenido de alta calidad, y renovar y mejorar la imagen de la marca.
-    </p>
   </section>
 
-  <!-- INFORMACIÓN CLAVE -->
   <section class="project-meta">
     <div class="meta-item">
       <div class="meta-label">Cliente</div>
@@ -395,42 +375,32 @@
     </div>
     <div class="meta-item">
       <div class="meta-label">Sector</div>
-      <div class="meta-value">Moda Urbana</div>
+      <div class="meta-value">Moda</div>
     </div>
     <div class="meta-item">
       <div class="meta-label">Rol</div>
-      <div class="meta-value">Dirección de arte, diseño gráfico, content creator</div>
+      <div class="meta-value">Dirección de arte, diseño gráfico y contenido digital</div>
     </div>
     <div class="meta-item">
-      <div class="meta-label">año</div>
+      <div class="meta-label">Año</div>
       <div class="meta-value">2023</div>
     </div>
   </section>
 
-  <!-- DESCRIPCIÓN -->
   <section class="project-content">
     <div class="content-section">
-      <h2>Descripción</h2>
       <p>
-        La estructura de la campaña incluye la producción de tres videos cortos que muestran diferentes actividades veraniegas, diseñados para captar la atención y generar interés en la nueva colección, y acciones en redes sociales, incluyendo la publicación de Stories, Reels y publicaciones en Instagram, así como la creación de contenido dinámico y viral en TikTok.
+        La campaña se estructura en torno a la producción de tres vídeos cortos que muestran distintas actividades veraniegas vinculadas al universo de la marca: días de playa, rutas en moto y eventos urbanos con skate. Cada pieza audiovisual está pensada para destacar diferentes prendas de la nueva colección y mostrar su versatilidad en contextos reales, buscando conectar con el estilo de vida de la audiencia.
       </p>
       <p>
-        El público objetivo son jóvenes de 18 a 25 años interesados en la moda, la cultura urbana, las últimas tendencias y la ropa ancha, y que llevan un estilo de vida libre y activo, buscando expresar su individualidad a través de su estilo.
-      </p>
-    </div>
-
-    <div class="content-section">
-      <h2>Estrategia de contenido</h2>
-      <p>
-        Los videos muestran actividades típicas del verano, como días de playa, rutas con motos y eventos urbanos con skate, destacando diferentes piezas de la nueva colección y mostrando su versatilidad y adecuación a diversas situaciones.
+        El público objetivo son jóvenes de entre 18 y 25 años interesados en la moda, la cultura urbana, las últimas tendencias y la ropa ancha, que entienden la vestimenta como una forma de expresión personal. A partir de este perfil, se diseña una estrategia de contenidos centrada en Instagram y TikTok, combinando Stories, Reels, publicaciones estáticas y contenido dinámico con potencial viral.
       </p>
       <p>
-        La participación del público se incentiva a través de retos, encuestas y concursos en las redes sociales, lo que no solo aumenta el alcance de la campaña, sino que también fortalece la relación de la marca con su audiencia. La campaña busca reflejar una imagen fresca y moderna de Category Five Brand, alineada con las últimas tendencias de moda y cultura urbana.
+        La participación de la comunidad se incentiva mediante retos, encuestas y concursos en redes sociales, lo que contribuye a aumentar el alcance orgánico y a fortalecer el vínculo entre la marca y su audiencia. La campaña busca consolidar una imagen fresca y contemporánea de Category Five Brand, alineada con las referencias actuales de moda urbana y con una identidad visual coherente en todas las piezas gráficas, fotográficas y audiovisuales.
       </p>
     </div>
   </section>
 
-  <!-- IMÁGENES PARA STORIES (FOTOGRÁFICAS) -->
   <section class="project-gallery">
     <h2 class="gallery-title">Imágenes fotográficas para Stories de Instagram</h2>
     <div class="gallery-grid-vertical">
@@ -449,7 +419,6 @@
     </div>
   </section>
 
-  <!-- IMÁGENES GRÁFICAS PARA STORIES -->
   <section class="project-gallery">
     <h2 class="gallery-title">Imágenes gráficas para Stories de Instagram</h2>
     <div class="gallery-grid-vertical">
@@ -468,7 +437,6 @@
     </div>
   </section>
 
-  <!-- IMÁGENES PARA PUBLICACIONES (4 columnas) -->
   <section class="project-gallery">
     <h2 class="gallery-title">Imágenes para publicaciones de Instagram</h2>
     <div class="gallery-grid">
@@ -487,7 +455,6 @@
     </div>
   </section>
 
-  <!-- ANIMACIONES DEL LOGOTIPO (2 columnas centradas) -->
   <section class="project-gallery">
     <h2 class="gallery-title">Animaciones del logotipo</h2>
     <div class="gallery-grid animaciones-logo">
@@ -500,7 +467,6 @@
     </div>
   </section>
 
-  <!-- VIDEOS PROMOCIONALES -->
   <section class="project-video">
     <h2 class="video-title">Videos promocionales</h2>
     <div class="video-container">
@@ -513,7 +479,6 @@
     </div>
   </section>
 
-  <!-- VIDEO 2 -->
   <section class="project-video">
     <div class="video-container">
       <iframe 
@@ -525,7 +490,6 @@
     </div>
   </section>
 
-  <!-- VIDEO 3 -->
   <section class="project-video">
     <div class="video-container">
       <iframe 
@@ -537,27 +501,26 @@
     </div>
   </section>
 
-  <!-- CRÉDITOS -->
   <section class="credits-section">
     <h2>Créditos</h2>
     <div class="credits-grid">
       <div class="credit-item">
-        <span class="credit-role">Director de Fotografía:</span> Rubén Carbón
+        <span class="credit-role">Director de fotografía:</span> Rubén Carbón
       </div>
       <div class="credit-item">
-        <span class="credit-role">Dirección, guion:</span> Xavier Charques
+        <span class="credit-role">Dirección y guion:</span> Xavier Charques
       </div>
       <div class="credit-item">
-        <span class="credit-role">Producción, guion:</span> Martí Roma
+        <span class="credit-role">Producción y guion:</span> Martí Roma
       </div>
       <div class="credit-item">
-        <span class="credit-role">Ayudante de producción, sonido:</span> Oriol Villarino
+        <span class="credit-role">Ayudante de producción y sonido:</span> Oriol Villarino
       </div>
       <div class="credit-item">
-        <span class="credit-role">Dirección de arte, diseño gráfico, content creator:</span> Jan Escoda
+        <span class="credit-role">Dirección de arte, diseño gráfico y creación de contenido:</span> Jan Escoda
       </div>
       <div class="credit-item">
-        <span class="credit-role">Fotografía, content management:</span> Maria Ibarguren
+        <span class="credit-role">Fotografía y gestión de contenido:</span> Maria Ibarguren
       </div>
       <div class="credit-item">
         <span class="credit-role">Postproducción y montaje:</span> Alex Tubau
