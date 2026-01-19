@@ -24,7 +24,6 @@
       line-height: 1.6;
     }
 
-    /* BREADCRUMB */
     .breadcrumb {
       max-width: 1400px;
       margin: 0 auto;
@@ -56,7 +55,6 @@
       font-weight: 500;
     }
 
-    /* HERO DEL PROYECTO */
     .project-hero {
       padding: 3rem 5% 3rem;
       text-align: center;
@@ -81,15 +79,6 @@
       margin-bottom: 1.5rem;
     }
 
-    .project-intro {
-      max-width: 900px;
-      margin: 0 auto;
-      font-size: 1.1rem;
-      line-height: 1.9;
-      color: #555;
-    }
-
-    /* INFORMACIÓN CLAVE */
     .project-meta {
       max-width: 1400px;
       margin: 3rem auto;
@@ -119,7 +108,6 @@
       font-weight: 500;
     }
 
-    /* CONTENIDO DEL PROYECTO */
     .project-content {
       max-width: 900px;
       margin: 0 auto;
@@ -145,7 +133,6 @@
       margin-bottom: 1.2rem;
     }
 
-    /* VIDEO DESTACADO */
     .project-video {
       max-width: 1400px;
       margin: 4rem auto;
@@ -163,7 +150,7 @@
 
     .video-container {
       position: relative;
-      padding-bottom: 56.25%; /* 16:9 */
+      padding-bottom: 56.25%;
       height: 0;
       overflow: hidden;
       border-radius: 8px;
@@ -179,7 +166,6 @@
       height: 100%;
     }
 
-    /* GALERÍA DE IMÁGENES - HORIZONTAL (para fotogramas) */
     .project-gallery {
       max-width: 1400px;
       margin: 4rem auto;
@@ -197,11 +183,10 @@
 
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr); /* horizontales: se quedan en 2 */
+      grid-template-columns: repeat(2, 1fr);
       gap: 2.5rem;
     }
 
-    /* Fotogramas horizontales (sin formato fijo) */
     .gallery-item img {
       width: 100%;
       display: block;
@@ -209,17 +194,16 @@
       box-shadow: 0 2px 15px rgba(0,0,0,0.06);
     }
 
-    /* GALERÍA VERTICAL (para lookbook y analógica) */
     .gallery-grid-vertical {
       display: grid;
-      grid-template-columns: repeat(4, 1fr); /* 4 columnas en desktop */
+      grid-template-columns: repeat(4, 1fr);
       gap: 2.5rem;
     }
 
     .gallery-item-vertical {
       position: relative;
       width: 100%;
-      padding-bottom: 177.78%; /* Aspect ratio 9:16 (Instagram Stories) */
+      padding-bottom: 177.78%;
       overflow: hidden;
       border-radius: 8px;
       box-shadow: 0 2px 15px rgba(0,0,0,0.06);
@@ -237,7 +221,6 @@
       display: block;
     }
 
-    /* CRÉDITOS */
     .credits-section {
       max-width: 900px;
       margin: 6rem auto;
@@ -269,7 +252,6 @@
       color: #1a1a1a;
     }
 
-    /* RESPONSIVE */
     @media (max-width: 768px) {
       .breadcrumb {
         padding: 1.5rem 5% 0;
@@ -287,12 +269,10 @@
         text-align: left;
       }
 
-      /* Horizontales: 1 columna en móvil (como antes) */
       .gallery-grid {
         grid-template-columns: 1fr;
       }
 
-      /* Verticales: 2 columnas en móvil */
       .gallery-grid-vertical {
         grid-template-columns: repeat(2, 1fr);
       }
@@ -317,24 +297,23 @@
     }
 
     #scroll-to-top {
-      display: none; /* Hidden by default, JavaScript will show it */
-      position: fixed; /* Keeps the button in place when scrolling */
-      bottom: 20px; /* Distance from the bottom of the screen */
-      right: 30px; /* Distance from the right of the screen */
-      z-index: 99; /* Ensures it's above other content */
-      border: none; /* No border */
-      outline: none; /* No outline */
-      background-color: #6c757d; /* Gray background color */
-      cursor: pointer; /* Changes cursor to a pointer on hover */
-      width: 50px; /* HALF SIZE: Fixed width for the square icon */
-      height: 50px; /* HALF SIZE: Fixed height for the square icon */
-      border-radius: 4px; /* HALF SIZE: Rounded corners (half of original 8px) */
-      box-shadow: none; /* No shadow */
-      transition: background-color 0.3s ease; /* Smooth transition for background color change */
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      right: 30px;
+      z-index: 99;
+      border: none;
+      outline: none;
+      background-color: #6c757d;
+      cursor: pointer;
+      width: 50px;
+      height: 50px;
+      border-radius: 4px;
+      box-shadow: none;
+      transition: background-color 0.3s ease;
 
-      /* Flexbox for perfect centering of the chevron (will be applied via .show-flex) */
-      align-items: center; /* Vertically center */
-      justify-content: center; /* Horizontally center */
+      align-items: center;
+      justify-content: center;
     }
 
     #scroll-to-top.show-flex {
@@ -342,17 +321,17 @@
     }
 
     #scroll-to-top::before {
-      content: ''; /* Required for pseudo-elements */
+      content: '';
       display: block;
-      width: 8px; /* Slightly smaller than previous to accommodate thicker border */
-      height: 8px; /* Slightly smaller than previous to accommodate thicker border */
-      border-top: 2.5px solid white; /* THICKER LINE: Increased border thickness */
-      border-right: 2.5px solid white; /* THICKER LINE: Increased border thickness */
-      transform: rotate(-45deg); /* Rotates the square to form the chevron shape */
+      width: 8px;
+      height: 8px;
+      border-top: 2.5px solid white;
+      border-right: 2.5px solid white;
+      transform: rotate(-45deg);
     }
 
     #scroll-to-top:hover {
-      background-color: #5a6268; /* Slightly darker gray on hover */
+      background-color: #5a6268;
     }
   </style>
 </head>
@@ -362,7 +341,6 @@
   <script src="../assets/js/include.js" defer></script>
   <div data-include="../menu.html"></div>
 
-  <!-- BREADCRUMB -->
   <nav class="breadcrumb">
     <a href="../index.html">Inicio</a>
     <span>/</span>
@@ -371,16 +349,11 @@
     <span class="current">La Prairié</span>
   </nav>
 
-  <!-- HERO -->
   <section class="project-hero">
     <div class="project-category">Audiovisual</div>
     <h1>La Prairié</h1>
-    <p class="project-intro">
-      Proyecto audiovisual de moda sostenible desarrollado en formato fashion film. La pieza presenta una colección de prendas hechas a mano mediante técnicas de ganchillo, utilizando materiales sostenibles y poniendo en valor la artesanía y el diseño consciente. El proyecto combina moda, narrativa visual y entornos naturales para transmitir una estética cuidada y atemporal.
-    </p>
   </section>
 
-  <!-- INFORMACIÓN CLAVE -->
   <section class="project-meta">
     <div class="meta-item">
       <div class="meta-label">Cliente</div>
@@ -388,7 +361,7 @@
     </div>
     <div class="meta-item">
       <div class="meta-label">Sector</div>
-      <div class="meta-value">Moda sostenible / Artesanía</div>
+      <div class="meta-value">Moda</div>
     </div>
     <div class="meta-item">
       <div class="meta-label">Rol</div>
@@ -400,10 +373,8 @@
     </div>
   </section>
 
-  <!-- DESCRIPCIÓN -->
   <section class="project-content">
     <div class="content-section">
-      <h2>Descripción</h2>
       <p>
         La Prairé es un proyecto creativo que explora la relación entre moda, sostenibilidad y artesanía. El fashion film se concibe como una pieza visual que resalta la belleza de las prendas hechas a mano, el valor del trabajo artesanal y el uso responsable de materiales, integrando la colección en entornos naturales que refuerzan su identidad orgánica y sostenible.
       </p>
@@ -413,7 +384,6 @@
     </div>
   </section>
 
-  <!-- VIDEO -->
   <section class="project-video">
     <h2 class="video-title">Videoclip</h2>
     <div class="video-container">
@@ -426,7 +396,6 @@
     </div>
   </section>
 
-  <!-- FOTOGRAMAS DEL VÍDEO (HORIZONTAL) -->
   <section class="project-gallery">
     <h2 class="gallery-title">Fotogramas del vídeo</h2>
     <div class="gallery-grid">
@@ -445,7 +414,6 @@
     </div>
   </section>
 
-  <!-- FOTOGRAFÍA LOOKBOOK Y CAMPAÑA (VERTICAL 9:16) -->
   <section class="project-gallery">
     <h2 class="gallery-title">Fotografía para Lookbook y Campaña</h2>
     <div class="gallery-grid-vertical">
@@ -464,7 +432,6 @@
     </div>
   </section>
 
-  <!-- FOTOGRAFÍA ANALÓGICA (VERTICAL 9:16) -->
   <section class="project-gallery">
     <h2 class="gallery-title">Fotografía analógica</h2>
     <div class="gallery-grid-vertical">
@@ -483,7 +450,6 @@
     </div>
   </section>
 
-  <!-- CRÉDITOS -->
   <section class="credits-section">
     <h2>Créditos</h2>
     <div class="credits-grid">
