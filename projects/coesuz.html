@@ -24,7 +24,6 @@
       line-height: 1.6;
     }
 
-    /* BREADCRUMB */
     .breadcrumb {
       max-width: 1400px;
       margin: 0 auto;
@@ -52,9 +51,8 @@
       font-weight: 500;
     }
 
-    /* HERO DEL PROYECTO */
     .project-hero {
-      padding: 3rem 5% 3rem;
+      padding: 3rem 5% 2rem;
       text-align: center;
       max-width: 1400px;
       margin: 0 auto;
@@ -85,10 +83,9 @@
       color: #555;
     }
 
-    /* INFORMACIÓN CLAVE */
     .project-meta {
       max-width: 1400px;
-      margin: 3rem auto;
+      margin: 1.5rem auto 3rem;
       padding: 0 5%;
       display: flex;
       justify-content: center;
@@ -115,7 +112,6 @@
       font-weight: 500;
     }
 
-    /* CONTENIDO DEL PROYECTO */
     .project-content {
       max-width: 900px;
       margin: 0 auto;
@@ -126,14 +122,6 @@
       margin-bottom: 4rem;
     }
 
-    .content-section h2 {
-      font-size: 2rem;
-      font-weight: 700;
-      color: #1a1a1a;
-      margin-bottom: 1.5rem;
-      letter-spacing: -0.5px;
-    }
-
     .content-section p {
       font-size: 1.05rem;
       line-height: 1.9;
@@ -141,7 +129,6 @@
       margin-bottom: 1.2rem;
     }
 
-    /* VIDEO / ANIMACIÓN DESTACADA */
     .project-video {
       max-width: 1400px;
       margin: 4rem auto;
@@ -159,7 +146,7 @@
 
     .video-container {
       position: relative;
-      padding-bottom: 56.25%; /* 16:9 */
+      padding-bottom: 56.25%;
       height: 0;
       overflow: hidden;
       border-radius: 8px;
@@ -175,7 +162,6 @@
       height: 100%;
     }
 
-    /* GALERÍAS GENERALES */
     .project-gallery {
       max-width: 1400px;
       margin: 4rem auto;
@@ -191,10 +177,9 @@
       text-align: center;
     }
 
-    /* GRID PARA POSTS E IMÁGENES HORIZONTALES */
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr); /* 4 columnas en escritorio */
+      grid-template-columns: repeat(4, 1fr);
       gap: 2.5rem;
     }
 
@@ -205,17 +190,16 @@
       box-shadow: 0 2px 15px rgba(0,0,0,0.06);
     }
 
-    /* GRID VERTICAL (STORIES) */
     .gallery-grid-vertical {
       display: grid;
-      grid-template-columns: repeat(4, 1fr); /* 4 columnas en escritorio */
+      grid-template-columns: repeat(4, 1fr);
       gap: 2.5rem;
     }
 
     .gallery-item-vertical {
       position: relative;
       width: 100%;
-      padding-bottom: 177.78%; /* 9:16 */
+      padding-bottom: 177.78%;
       overflow: hidden;
       border-radius: 8px;
       box-shadow: 0 2px 15px rgba(0,0,0,0.06);
@@ -233,14 +217,12 @@
       display: block;
     }
 
-    /* GRID ESPECÍFICO PARA 2 IMÁGENES */
     .gallery-grid.grid-2-columns {
       grid-template-columns: repeat(2, 1fr);
       max-width: 900px;
       margin: 0 auto;
     }
 
-    /* CRÉDITOS */
     .credits-section {
       max-width: 900px;
       margin: 6rem auto;
@@ -272,7 +254,6 @@
       color: #1a1a1a;
     }
 
-    /* RESPONSIVE */
     @media (max-width: 768px) {
       .breadcrumb {
         padding: 1.5rem 5% 0;
@@ -290,7 +271,6 @@
         text-align: left;
       }
 
-      /* En móvil: 2 columnas para los grids de 4 */
       .gallery-grid,
       .gallery-grid-vertical {
         grid-template-columns: repeat(2, 1fr);
@@ -320,7 +300,6 @@
       }
     }
 
-    /* BOTÓN SCROLL TOP */
     #scroll-to-top {
       display: none;
       position: fixed;
@@ -365,7 +344,6 @@
   <script src="../assets/js/include.js" defer></script>
   <div data-include="../menu.html"></div>
 
-  <!-- BREADCRUMB -->
   <nav class="breadcrumb">
     <a href="../index.html">Inicio</a>
     <span>/</span>
@@ -374,59 +352,44 @@
     <span class="current">Coesuz</span>
   </nav>
 
-  <!-- HERO -->
   <section class="project-hero">
-    <div class="project-category">Comunicación Digital, Educación</div>
+    <div class="project-category">Comunicación digital</div>
     <h1>Coesuz</h1>
-    <p class="project-intro">
-      Proyecto desarrollado en el marco de un Máster para la ESAME PHARMACEUTICAL BUSINESS SCHOOL, con un enfoque en la Industria Farmacéutica y Biotecnológica. Mi contribución principal al proyecto fue el diseño 3D de la caja del producto, la animación de la misma y la edición del vídeo promocional.
-    </p>
   </section>
 
-  <!-- INFORMACIÓN CLAVE -->
   <section class="project-meta">
     <div class="meta-item">
       <div class="meta-label">Cliente</div>
-      <div class="meta-value">ESAME Pharmaceutical Business School</div>
+      <div class="meta-value">Trabajo final de máster - ESAME</div>
     </div>
     <div class="meta-item">
       <div class="meta-label">Sector</div>
-      <div class="meta-value">Educación, Farmacéutica y Biotecnológica</div>
+      <div class="meta-value">Farmacéutico</div>
     </div>
     <div class="meta-item">
       <div class="meta-label">Rol</div>
-      <div class="meta-value">Diseño 3D, Animación, Edición de vídeo</div>
+      <div class="meta-value">Diseño 3D, animación y edición de vídeo</div>
     </div>
     <div class="meta-item">
       <div class="meta-label">Año</div>
-      <div class="meta-value">2023</div>
+      <div class="meta-value">2024</div>
     </div>
   </section>
 
-  <!-- DESCRIPCIÓN -->
   <section class="project-content">
     <div class="content-section">
-      <h2>Descripción del Proyecto</h2>
       <p>
-        Coesuz es un proyecto académico de Máster que simula el lanzamiento de un producto innovador en el sector farmacéutico. Mi rol se centró en la creación de los elementos visuales clave para la presentación y promoción del producto. Esto incluyó la conceptualización y el diseño tridimensional de la caja del producto, asegurando que su estética reflejara los valores de la marca y las especificaciones del sector.
+        Coesuz es un proyecto académico desarrollado en el marco de un máster para la ESAME Pharmaceutical Business School, centrado en la simulación del lanzamiento de un producto innovador en el sector farmacéutico y biotecnológico. Mi contribución se focaliza en la creación de los elementos visuales clave del proyecto: el diseño tridimensional de la caja del producto, su animación y la edición del vídeo promocional.
       </p>
       <p>
-        Posteriormente, realicé animaciones 3D de la caja, mostrando sus características y elementos distintivos de una manera dinámica y atractiva. Finalmente, me encargué de la edición del vídeo de presentación del proyecto, integrando las animaciones 3D y otros elementos visuales para crear una narrativa cohesiva y profesional que respaldara la estrategia de marketing y ventas del producto.
-      </p>
-    </div>
-
-    <div class="content-section">
-      <h2>Conceptualización y Diseño</h2>
-      <p>
-        La fase de conceptualización se inició con un análisis detallado de la identidad de marca y el público objetivo. Para el diseño 3D de la caja, se priorizó la claridad, la funcionalidad y un diseño moderno que comunicara confianza y avance tecnológico.
+        A partir de los requisitos estratégicos del equipo, conceptualicé y modelé en 3D el packaging del producto, buscando un equilibrio entre claridad, modernidad y coherencia con los códigos visuales del sector. Posteriormente, desarrollé animaciones 3D que mostraran de forma dinámica la caja, sus detalles gráficos y sus funcionalidades, convirtiéndola en una pieza atractiva para presentación y comunicación.
       </p>
       <p>
-        La animación se planificó para destacar los aspectos más relevantes del empaque, como el sistema de apertura o detalles gráficos específicos, utilizando movimientos fluidos y transiciones que mantuvieran el interés del espectador. La edición del vídeo final buscó sintetizar todos los componentes del proyecto, desde la visión estratégica hasta la materialización visual del producto, en un formato conciso y persuasivo, ideal para presentaciones académicas y potenciales inversores.
+        Finalmente, me encargué de la edición del vídeo promocional, integrando las animaciones 3D con otros recursos gráficos y textuales para construir una narrativa clara y profesional. El resultado es una pieza audiovisual pensada para reforzar el posicionamiento del producto en un contexto académico y simular cómo podría presentarse ante potenciales clientes, inversores o comités internos.
       </p>
     </div>
   </section>
 
-  <!-- IMÁGENES DE PRODUCTOS (2 columnas) -->
   <section class="project-gallery">
     <h2 class="gallery-title">Imágenes de productos</h2>
     <div class="gallery-grid grid-2-columns">
@@ -439,7 +402,6 @@
     </div>
   </section>
 
-  <!-- ANIMACIÓN DEL PRODUCTO (GIF del tamaño de un vídeo) -->
   <section class="project-gallery">
     <h2 class="gallery-title">Animación de la caja del producto</h2>
     <div class="video-container">
@@ -449,27 +411,26 @@
     </div>
   </section>
 
-  <!-- CRÉDITOS -->
   <section class="credits-section">
-    <h2>Créditos del Equipo</h2>
+    <h2>Créditos del equipo</h2>
     <div class="credits-grid">
       <div class="credit-item">
-        <span class="credit-role">Dirección General:</span> Helena Riba
+        <span class="credit-role">Dirección general:</span> Helena Riba
       </div>
       <div class="credit-item">
-        <span class="credit-role">Departamento Ventas:</span> Héctor Cuerda
+        <span class="credit-role">Departamento de ventas:</span> Héctor Cuerda
       </div>
       <div class="credit-item">
-        <span class="credit-role">Departamento Acceso:</span> Carolina Alcobé
+        <span class="credit-role">Departamento de acceso:</span> Carolina Alcobé
       </div>
       <div class="credit-item">
-        <span class="credit-role">Departamento Médico:</span> Yasmin Soares
+        <span class="credit-role">Departamento médico:</span> Yasmin Soares
       </div>
       <div class="credit-item">
-        <span class="credit-role">Departamento Marketing:</span> Laura Moncusí
+        <span class="credit-role">Departamento de marketing:</span> Laura Moncusí
       </div>
       <div class="credit-item">
-        <span class="credit-role">Departamento de Marketing y Creación Gráfica:</span> Jan Escoda
+        <span class="credit-role">Diseño 3D, animación y edición de vídeo:</span> Jan Escoda
       </div>
     </div>
   </section>
