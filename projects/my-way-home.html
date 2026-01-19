@@ -24,12 +24,11 @@
       line-height: 1.6;
     }
 
-    /* BREADCRUMB */
     .breadcrumb {
       max-width: 1400px;
       margin: 0 auto;
       padding: 2rem 5% 0;
-      font-size: 0.95rem;              /* mismo tamaño que texto base */
+      font-size: 0.95rem;
     }
 
     .breadcrumb a,
@@ -53,12 +52,11 @@
     }
 
     .breadcrumb .current {
-      font-weight: 500;                /* un pelín más marcada, pero mismo tamaño */
+      font-weight: 500;
     }
 
-    /* HERO DEL PROYECTO */
     .project-hero {
-      padding: 3rem 5% 3rem;
+      padding: 3rem 5% 2rem;
       text-align: center;
       max-width: 1400px;
       margin: 0 auto;
@@ -81,18 +79,9 @@
       margin-bottom: 1.5rem;
     }
 
-    .project-intro {
-      max-width: 900px;
-      margin: 0 auto;
-      font-size: 1.1rem;
-      line-height: 1.9;
-      color: #555;
-    }
-
-    /* INFORMACIÓN CLAVE */
     .project-meta {
       max-width: 1400px;
-      margin: 3rem auto;
+      margin: 1.5rem auto 3rem;
       padding: 0 5%;
       display: flex;
       justify-content: center;
@@ -119,7 +108,6 @@
       font-weight: 500;
     }
 
-    /* CONTENIDO DEL PROYECTO */
     .project-content {
       max-width: 900px;
       margin: 0 auto;
@@ -130,14 +118,6 @@
       margin-bottom: 4rem;
     }
 
-    .content-section h2 {
-      font-size: 2rem;
-      font-weight: 700;
-      color: #1a1a1a;
-      margin-bottom: 1.5rem;
-      letter-spacing: -0.5px;
-    }
-
     .content-section p {
       font-size: 1.05rem;
       line-height: 1.9;
@@ -145,7 +125,6 @@
       margin-bottom: 1.2rem;
     }
 
-    /* VIDEO DESTACADO */
     .project-video {
       max-width: 1400px;
       margin: 4rem auto;
@@ -163,7 +142,7 @@
 
     .video-container {
       position: relative;
-      padding-bottom: 56.25%; /* 16:9 */
+      padding-bottom: 56.25%;
       height: 0;
       overflow: hidden;
       border-radius: 8px;
@@ -179,7 +158,6 @@
       height: 100%;
     }
 
-    /* GALERÍA DE FOTOGRAMAS */
     .project-gallery {
       max-width: 1400px;
       margin: 4rem auto;
@@ -208,7 +186,6 @@
       box-shadow: 0 2px 15px rgba(0,0,0,0.06);
     }
 
-    /* CRÉDITOS */
     .credits-section {
       max-width: 900px;
       margin: 6rem auto;
@@ -240,7 +217,6 @@
       color: #1a1a1a;
     }
 
-    /* NAVEGACIÓN ENTRE PROYECTOS (si la añades luego) */
     .project-navigation {
       max-width: 1400px;
       margin: 0 auto;
@@ -289,20 +265,16 @@
       text-align: right;
     }
 
-    /* RESPONSIVE */
     @media (max-width: 768px) {
-
-      /* Breadcrumb un poco más compacto */
       .breadcrumb {
         padding: 1.5rem 5% 0;
         font-size: 0.9rem;
       }
 
-      /* Meta en grid 2x2 en móvil */
       .project-meta {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);  /* 2 columnas */
-        gap: 1.5rem 2rem;                       /* filas x columnas */
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem 2rem;
         justify-content: center;
       }
 
@@ -336,46 +308,43 @@
         padding: 0 5% 4rem;
       }
     }
+
     #scroll-to-top {
-    display: none; /* Hidden by default, JavaScript will show it */
-    position: fixed; /* Keeps the button in place when scrolling */
-    bottom: 20px; /* Distance from the bottom of the screen */
-    right: 30px; /* Distance from the right of the screen */
-    z-index: 99; /* Ensures it's above other content */
-    border: none; /* No border */
-    outline: none; /* No outline */
-    background-color: #6c757d; /* Gray background color */
-    cursor: pointer; /* Changes cursor to a pointer on hover */
-    width: 50px; /* HALF SIZE: Fixed width for the square icon */
-    height: 50px; /* HALF SIZE: Fixed height for the square icon */
-    border-radius: 4px; /* HALF SIZE: Rounded corners (half of original 8px) */
-    box-shadow: none; /* No shadow */
-    transition: background-color 0.3s ease; /* Smooth transition for background color change */
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      right: 30px;
+      z-index: 99;
+      border: none;
+      outline: none;
+      background-color: #6c757d;
+      cursor: pointer;
+      width: 50px;
+      height: 50px;
+      border-radius: 4px;
+      box-shadow: none;
+      transition: background-color 0.3s ease;
+      align-items: center;
+      justify-content: center;
+    }
 
-    /* Flexbox for perfect centering of the chevron (will be applied via .show-flex) */
-    align-items: center; /* Vertically center */
-    justify-content: center; /* Horizontally center */
-}
+    #scroll-to-top.show-flex {
+      display: flex;
+    }
 
-/* This class will be added by JavaScript to show the button */
-#scroll-to-top.show-flex {
-    display: flex;
-}
+    #scroll-to-top::before {
+      content: '';
+      display: block;
+      width: 8px;
+      height: 8px;
+      border-top: 2.5px solid white;
+      border-right: 2.5px solid white;
+      transform: rotate(-45deg);
+    }
 
-#scroll-to-top::before {
-    content: ''; /* Required for pseudo-elements */
-    display: block;
-    width: 8px; /* Slightly smaller than previous to accommodate thicker border */
-    height: 8px; /* Slightly smaller than previous to accommodate thicker border */
-    border-top: 2.5px solid white; /* THICKER LINE: Increased border thickness */
-    border-right: 2.5px solid white; /* THICKER LINE: Increased border thickness */
-    transform: rotate(-45deg); /* Rotates the square to form the chevron shape */
-}
-
-#scroll-to-top:hover {
-    background-color: #5a6268; /* Slightly darker gray on hover */
-}
-
+    #scroll-to-top:hover {
+      background-color: #5a6268;
+    }
   </style>
 </head>
 
@@ -384,7 +353,6 @@
   <script src="../assets/js/include.js" defer></script>
   <div data-include="../menu.html"></div>
 
-  <!-- BREADCRUMB -->
   <nav class="breadcrumb">
     <a href="../index.html">Inicio</a>
     <span>/</span>
@@ -393,39 +361,35 @@
     <span class="current">My Way Home</span>
   </nav>
 
-  <!-- HERO -->
   <section class="project-hero">
     <div class="project-category">Audiovisual</div>
     <h1>My Way Home</h1>
-    <p class="project-intro">
-      Video musical como parte del trabajo de final de grado, con la producción del videoclip para el single «My Way Home», creado por Eric Corvo. Dirigido por Adrián Olmedo y realizado con la colaboración de compañeros de la universidad, el vídeo narra la emotiva historia de un adolescente que, cansado del tormento familiar, encuentra refugio y autenticidad en las aventuras junto a sus amigos.
-    </p>
   </section>
 
-  <!-- INFORMACIÓN CLAVE -->
   <section class="project-meta">
     <div class="meta-item">
-      <div class="meta-label">Artista</div>
+      <div class="meta-label">Cliente</div>
       <div class="meta-value">Eric Corvo</div>
     </div>
     <div class="meta-item">
-      <div class="meta-label">Director</div>
-      <div class="meta-value">Adrián Olmedo</div>
+      <div class="meta-label">Sector</div>
+      <div class="meta-value">Música</div>
     </div>
     <div class="meta-item">
-      <div class="meta-label">Mi rol</div>
-      <div class="meta-value">Ayudante de producción</div>
+      <div class="meta-label">Rol</div>
+      <div class="meta-value">Ayudante de producción, Asistente de dirección de arte</div>
     </div>
     <div class="meta-item">
-      <div class="meta-label">Locación</div>
-      <div class="meta-value">Mataró, Barcelona</div>
+      <div class="meta-label">Año</div>
+      <div class="meta-value">2023</div>
     </div>
   </section>
 
-  <!-- DESCRIPCIÓN -->
   <section class="project-content">
     <div class="content-section">
-      <h2>Descripción</h2>
+      <p>
+        Video musical desarrollado como parte de un trabajo de final de grado, con la producción del videoclip para el single «My Way Home», creado por Eric Corvo y dirigido por Adrián Olmedo. Realizado con la colaboración de compañeros de la universidad, el vídeo narra la emotiva historia de un adolescente que, cansado del tormento familiar, encuentra refugio y autenticidad en las aventuras junto a sus amigos.
+      </p>
       <p>
         A medida que el protagonista descubre su verdadera identidad y el camino hacia la felicidad, el videoclip se inspira en el género britpop, creando un juego visual entre escenas nostálgicas a color que reflejan la vida del protagonista y secuencias en blanco y negro que muestran al cantante y su banda interpretando la canción en directo.
       </p>
@@ -435,7 +399,6 @@
     </div>
   </section>
 
-  <!-- VIDEO -->
   <section class="project-video">
     <h2 class="video-title">Videoclip</h2>
     <div class="video-container">
@@ -448,7 +411,6 @@
     </div>
   </section>
 
-  <!-- FOTOGRAMAS -->
   <section class="project-gallery">
     <h2 class="gallery-title">Fotogramas del vídeo</h2>
     <div class="gallery-grid">
@@ -467,7 +429,6 @@
     </div>
   </section>
 
-  <!-- CRÉDITOS -->
   <section class="credits-section">
     <h2>Créditos</h2>
     <div class="credits-grid">
@@ -536,11 +497,8 @@
       </div>
     </div>
   </section>
+
   <a href="#" id="scroll-to-top" title="Volver arriba"></a>
-<div data-include="../footer.html"></div>
+  <div data-include="../footer.html"></div>
 </body>
 </html>
-
-
-
-
