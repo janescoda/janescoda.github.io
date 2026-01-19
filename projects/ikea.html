@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ikiea - Jan Escoda</title>
+  <title>IKEA - Jan Escoda</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,6 +22,7 @@
       color: #333;
       background: #fff;
       line-height: 1.6;
+      scroll-behavior: smooth;
     }
 
     .breadcrumb {
@@ -79,17 +80,9 @@
       margin-bottom: 1.5rem;
     }
 
-    .project-intro {
-      max-width: 900px;
-      margin: 0 auto;
-      font-size: 1.1rem;
-      line-height: 1.9;
-      color: #555;
-    }
-
     .project-meta {
       max-width: 1400px;
-      margin: 1.5rem auto 3rem;
+      margin: 1.5rem auto 1.5rem;
       padding: 0 5%;
       display: flex;
       justify-content: center;
@@ -116,6 +109,52 @@
       font-weight: 500;
     }
 
+    /* ÍNDICE + MENÚ, CENTRADO */
+    .project-nav-wrapper {
+      padding: 1.5rem 5% 0;
+      max-width: 1400px;
+      margin: 0 auto 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+      text-align: center;
+    }
+
+    .project-index-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #999;
+    }
+
+    .project-nav {
+      display: flex;
+      justify-content: center;
+      gap: 0.6rem;
+      font-size: 0.85rem;
+      letter-spacing: 0.8px;
+    }
+
+    .project-nav span {
+      opacity: 0.4;
+    }
+
+    .project-nav button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #999;
+      font-weight: 500;
+    }
+
+    .project-nav button.active,
+    .project-nav button:hover {
+      color: #000;
+      font-weight: 600;
+    }
+
     .project-content {
       max-width: 900px;
       margin: 0 auto;
@@ -139,39 +178,6 @@
       line-height: 1.9;
       color: #555;
       margin-bottom: 1.2rem;
-    }
-
-    .project-video {
-      max-width: 1400px;
-      margin: 4rem auto;
-      padding: 0 5%;
-    }
-
-    .video-title {
-      font-size: 2rem;
-      font-weight: 700;
-      color: #1a1a1a;
-      margin-bottom: 2.5rem;
-      letter-spacing: -0.5px;
-      text-align: center;
-    }
-
-    .video-container {
-      position: relative;
-      padding-bottom: 56.25%;
-      height: 0;
-      overflow: hidden;
-      border-radius: 8px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-      background: #000;
-    }
-
-    .video-container iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
     }
 
     .project-gallery {
@@ -229,12 +235,6 @@
       display: block;
     }
 
-    .gallery-grid.animaciones-logo {
-      max-width: 700px;
-      margin: 0 auto;
-      grid-template-columns: repeat(2, 1fr);
-    }
-
     .credits-section {
       max-width: 900px;
       margin: 6rem auto;
@@ -286,10 +286,6 @@
       .gallery-grid,
       .gallery-grid-vertical {
         grid-template-columns: repeat(2, 1fr);
-      }
-
-      .gallery-grid.animaciones-logo {
-        max-width: 100%;
       }
 
       .credits-grid {
@@ -360,22 +356,22 @@
     <span>/</span>
     <a href="../portfolio.html">Portfolio</a>
     <span>/</span>
-    <span class="current">Ikiea</span>
+    <span class="current">IKEA</span>
   </nav>
 
   <section class="project-hero">
-    <div class="project-category">Diseño web · Comunicación digital · Retail</div>
-    <h1>Ikiea</h1>
+    <div class="project-category">Comunicación digital</div>
+    <h1>IKEA</h1>
   </section>
 
   <section class="project-meta">
     <div class="meta-item">
       <div class="meta-label">Cliente</div>
-      <div class="meta-value">Ikiea</div>
+      <div class="meta-value">IKEA</div>
     </div>
     <div class="meta-item">
       <div class="meta-label">Sector</div>
-      <div class="meta-value">Retail y equipamiento del hogar</div>
+      <div class="meta-value">Muebles y decoración</div>
     </div>
     <div class="meta-item">
       <div class="meta-label">Rol</div>
@@ -383,85 +379,149 @@
     </div>
     <div class="meta-item">
       <div class="meta-label">Año</div>
-      <div class="meta-value">2024</div>
+      <div class="meta-value">2024 - Act.</div>
     </div>
+  </section>
+
+  <!-- ÍNDICE + MENÚ, CENTRADO -->
+  <section class="project-nav-wrapper">
+    <div class="project-index-label">Índice</div>
+    <nav class="project-nav">
+      <button class="project-tab active" data-target="diseno-web">DISEÑO WEB</button>
+      <span>/</span>
+      <button class="project-tab" data-target="comunicacion-digital">COMUNICACIÓN DIGITAL</button>
+      <span>/</span>
+      <button class="project-tab" data-target="tiendas">TIENDAS</button>
+      <span>/</span>
+      <button class="project-tab" data-target="expansion">EXPANSIÓN</button>
+    </nav>
   </section>
 
   <section class="project-content">
-    <div class="content-section">
+    <!-- SECCIÓN 1: DISEÑO WEB -->
+    <div class="content-section" id="diseno-web">
+      <h2>Diseño web</h2>
       <p>
-        Ikiea es un proyecto orientado a la creación de una experiencia digital coherente con una marca de mobiliario y decoración para el hogar, inspirada en el modelo de grandes superficies de retail. El trabajo se centra en el diseño de una web clara y funcional, que permite explorar productos, colecciones y servicios de forma intuitiva, manteniendo una estética limpia y muy visual.
+        IKEA es un proyecto orientado a la creación de una experiencia digital coherente con una marca de mobiliario y decoración para el hogar, inspirada en el modelo de grandes superficies de retail. El trabajo se centra en el diseño de una web clara y funcional, que permite explorar productos, colecciones y servicios de forma intuitiva, manteniendo una estética limpia y muy visual.
       </p>
       <p>
-        El proyecto combina diseño de interfaz, arquitectura de la información y una estrategia de contenidos pensada para acompañar al usuario desde la inspiración inicial hasta la decisión de compra. Se trabaja con un sistema modular de componentes (tarjetas de producto, banners, bloques de categorías, secciones de ideas y consejos) que facilita mantener coherencia visual en todas las páginas y adapta la web a distintos formatos de campaña.
+        El diseño se articula a través de una arquitectura de la información sencilla, con menús claros, filtros de producto y páginas de categoría que ayudan al usuario a orientarse rápidamente. Se trabaja con un sistema modular de componentes (tarjetas de producto, bloques de inspiración, banners, secciones de ideas) que facilita la coherencia visual y la adaptación de la web a distintos contenidos y campañas.
+      </p>
+    </div>
+
+    <!-- SECCIÓN 2: COMUNICACIÓN DIGITAL -->
+    <div class="content-section" id="comunicacion-digital">
+      <h2>Comunicación digital</h2>
+      <p>
+        Paralelamente al diseño de la web, se desarrolla una estrategia de comunicación digital enfocada en reforzar el vínculo entre la marca y su comunidad. Se plantean piezas específicas para redes sociales, newsletters y soportes online, con el objetivo de presentar colecciones, inspirar nuevas configuraciones del hogar y destacar promociones o servicios.
       </p>
       <p>
-        A nivel de comunicación digital, se desarrollan piezas para redes sociales y soportes online que refuerzan el recorrido del usuario: desde anuncios y publicaciones que presentan colecciones y novedades, hasta contenidos editoriales que muestran combinaciones de producto, soluciones para pequeñas viviendas y propuestas de distribución en el hogar. Todo ello se alinea con un tono cercano, práctico y muy enfocado al día a día de las personas usuarias.
+        La línea visual de estas piezas mantiene la estética de la web: tipografías limpias, uso del color controlado y protagonismo de la fotografía de producto y ambientes. El tono de comunicación es cercano y práctico, orientado a ofrecer soluciones concretas para el día a día en casa, más que a una comunicación puramente publicitaria.
+      </p>
+    </div>
+
+    <!-- SECCIÓN 3: TIENDAS -->
+    <div class="content-section" id="tiendas">
+      <h2>Tiendas</h2>
+      <p>
+        El proyecto contempla cómo la web y la comunicación digital apoyan la experiencia en las tiendas físicas de IKEA. Se trabaja la información de puntos de venta, servicios disponibles en cada tienda, horarios, recogida en tienda y otras facilidades que conectan directamente el entorno online con la visita presencial.
       </p>
       <p>
-        El proyecto también contempla la dimensión física del retail, conectando la experiencia online con la visita a tienda. Se plantea cómo la web puede apoyar la expansión a nuevos puntos de venta mediante información clara sobre tiendas, servicios, horarios y disponibilidad de producto, y cómo las campañas digitales pueden dirigir tráfico tanto al canal online como a las tiendas físicas.
+        La presentación visual de las tiendas pone el foco en la experiencia de recorrido, las zonas de exposición y los espacios de inspiración, trasladando el lenguaje de la marca al espacio físico. Esta coherencia entre web y tienda contribuye a que la persona usuaria reconozca la marca en todos los puntos de contacto.
+      </p>
+    </div>
+
+    <!-- SECCIÓN 4: EXPANSIÓN -->
+    <div class="content-section" id="expansion">
+      <h2>Expansión</h2>
+      <p>
+        Desde la perspectiva de expansión, el proyecto explora cómo la presencia digital de IKEA puede acompañar la apertura de nuevas tiendas y la entrada en nuevos mercados. La web y las campañas online se utilizan como herramientas para comunicar aperturas, eventos locales y servicios adaptados a cada área geográfica.
+      </p>
+      <p>
+        A través de páginas de destino específicas, mensajes segmentados y contenidos orientados a cada zona, la estrategia digital ayuda a dirigir tráfico tanto al canal online como a las nuevas tiendas físicas, reforzando la implantación de la marca en el territorio.
       </p>
     </div>
   </section>
 
   <section class="project-gallery">
-    <h2 class="gallery-title">Diseño web y páginas principales</h2>
+    <h2 class="gallery-title">Páginas principales de la web</h2>
     <div class="gallery-grid">
       <div class="gallery-item">
-        <img src="../assets/img/ikiea-web-home-1.png" alt="Ikiea - Página de inicio">
+        <img src="../assets/img/ikea-web-home-1.png" alt="IKEA - Página de inicio">
       </div>
       <div class="gallery-item">
-        <img src="../assets/img/ikiea-web-categoria-1.png" alt="Ikiea - Página de categoría de producto">
+        <img src="../assets/img/ikea-web-categoria-1.png" alt="IKEA - Página de categoría">
       </div>
       <div class="gallery-item">
-        <img src="../assets/img/ikiea-web-producto-1.png" alt="Ikiea - Ficha de producto">
+        <img src="../assets/img/ikea-web-producto-1.png" alt="IKEA - Ficha de producto">
       </div>
       <div class="gallery-item">
-        <img src="../assets/img/ikiea-web-inspiracion-1.png" alt="Ikiea - Página de inspiración">
+        <img src="../assets/img/ikea-web-inspiracion-1.png" alt="IKEA - Página de inspiración">
       </div>
     </div>
   </section>
 
   <section class="project-gallery">
-    <h2 class="gallery-title">Campaña digital y redes sociales</h2>
+    <h2 class="gallery-title">Piezas para comunicación digital</h2>
     <div class="gallery-grid-vertical">
       <div class="gallery-item-vertical">
-        <img src="../assets/img/ikiea-story-1.png" alt="Ikiea - Story para redes sociales">
+        <img src="../assets/img/ikea-story-1.png" alt="IKEA - Story 1">
       </div>
       <div class="gallery-item-vertical">
-        <img src="../assets/img/ikiea-story-2.png" alt="Ikiea - Story sobre colección">
+        <img src="../assets/img/ikea-story-2.png" alt="IKEA - Story 2">
       </div>
       <div class="gallery-item-vertical">
-        <img src="../assets/img/ikiea-story-3.png" alt="Ikiea - Story productos para el hogar">
+        <img src="../assets/img/ikea-story-3.png" alt="IKEA - Story 3">
       </div>
       <div class="gallery-item-vertical">
-        <img src="../assets/img/ikiea-story-4.png" alt="Ikiea - Story promociones">
+        <img src="../assets/img/ikea-story-4.png" alt="IKEA - Story 4">
       </div>
     </div>
   </section>
 
   <section class="project-gallery">
-    <h2 class="gallery-title">Tiendas y expansión</h2>
+    <h2 class="gallery-title">Retail y puntos de venta</h2>
     <div class="gallery-grid">
       <div class="gallery-item">
-        <img src="../assets/img/ikiea-retail-1.png" alt="Ikiea - Visual de tienda física">
+        <img src="../assets/img/ikea-retail-1.png" alt="IKEA - Visual de tienda">
       </div>
       <div class="gallery-item">
-        <img src="../assets/img/ikiea-retail-2.png" alt="Ikiea - Señalética y comunicación en tienda">
+        <img src="../assets/img/ikea-retail-2.png" alt="IKEA - Comunicación en tienda">
       </div>
       <div class="gallery-item">
-        <img src="../assets/img/ikiea-retail-3.png" alt="Ikiea - Gráfica para expansión">
+        <img src="../assets/img/ikea-retail-3.png" alt="IKEA - Material gráfico">
       </div>
       <div class="gallery-item">
-        <img src="../assets/img/ikiea-retail-4.png" alt="Ikiea - Material para puntos de venta">
+        <img src="../assets/img/ikea-retail-4.png" alt="IKEA - Expansión de tiendas">
       </div>
     </div>
   </section>
 
-  
   <a href="#" id="scroll-to-top" title="Volver arriba"></a>
   
   <div data-include="../footer.html"></div>
+
+  <script>
+    // Activar estado "active" en el menú interno al hacer click
+    document.querySelectorAll('.project-tab').forEach(function(tab) {
+      tab.addEventListener('click', function() {
+        const targetId = this.getAttribute('data-target');
+        const targetEl = document.getElementById(targetId);
+
+        if (targetEl) {
+          window.scrollTo({
+            top: targetEl.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+
+        document.querySelectorAll('.project-tab').forEach(function(btn) {
+          btn.classList.remove('active');
+        });
+        this.classList.add('active');
+      });
+    });
+  </script>
 
 </body>
 </html>
