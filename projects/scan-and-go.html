@@ -24,7 +24,6 @@
       line-height: 1.6;
     }
 
-    /* BREADCRUMB */
     .breadcrumb {
       max-width: 1400px;
       margin: 0 auto;
@@ -56,9 +55,8 @@
       font-weight: 500;
     }
 
-    /* HERO DEL PROYECTO */
     .project-hero {
-      padding: 3rem 5% 3rem;
+      padding: 3rem 5% 2rem;
       text-align: center;
       max-width: 1400px;
       margin: 0 auto;
@@ -89,10 +87,9 @@
       color: #555;
     }
 
-    /* INFORMACIÓN CLAVE */
     .project-meta {
       max-width: 1400px;
-      margin: 3rem auto;
+      margin: 1.5rem auto 3rem;
       padding: 0 5%;
       display: flex;
       justify-content: center;
@@ -119,7 +116,6 @@
       font-weight: 500;
     }
 
-    /* CONTENIDO DEL PROYECTO */
     .project-content {
       max-width: 900px;
       margin: 0 auto;
@@ -130,14 +126,6 @@
       margin-bottom: 4rem;
     }
 
-    .content-section h2 {
-      font-size: 2rem;
-      font-weight: 700;
-      color: #1a1a1a;
-      margin-bottom: 1.5rem;
-      letter-spacing: -0.5px;
-    }
-
     .content-section p {
       font-size: 1.05rem;
       line-height: 1.9;
@@ -145,7 +133,6 @@
       margin-bottom: 1.2rem;
     }
 
-    /* GALERÍAS */
     .project-gallery {
       max-width: 1400px;
       margin: 4rem auto;
@@ -161,13 +148,12 @@
       text-align: center;
     }
 
-    /* Grid base (para pantallas de juego) */
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr); /* 2 columnas en desktop */
+      grid-template-columns: repeat(2, 1fr);
       gap: 2.5rem;
-      max-width: 1000px;   /* limita el ancho para que quede centrado */
-      margin: 0 auto;      /* centra el grid */
+      max-width: 1000px;
+      margin: 0 auto;
     }
 
     .gallery-item img {
@@ -177,7 +163,6 @@
       box-shadow: 0 2px 15px rgba(0,0,0,0.06);
     }
 
-    /* Grid específico para Imágenes publicitarias: 2 columnas centradas */
     .gallery-grid-publicidad {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -186,7 +171,6 @@
       margin: 0 auto;
     }
 
-    /* CRÉDITOS */
     .credits-section {
       max-width: 900px;
       margin: 6rem auto;
@@ -218,7 +202,6 @@
       color: #1a1a1a;
     }
 
-    /* RESPONSIVE */
     @media (max-width: 768px) {
       .breadcrumb {
         padding: 1.5rem 5% 0;
@@ -236,12 +219,10 @@
         text-align: left;
       }
 
-      /* Imágenes publicitarias: 2 columnas también en móvil */
       .gallery-grid-publicidad {
         grid-template-columns: repeat(2, 1fr);
       }
 
-      /* Pantallas del juego: 1 columna en móvil */
       .gallery-grid {
         grid-template-columns: 1fr;
         max-width: 500px;
@@ -265,7 +246,6 @@
       }
     }
 
-    /* BOTÓN SCROLL TOP (opcional) */
     #scroll-to-top {
       display: none;
       position: fixed;
@@ -310,7 +290,6 @@
   <script src="../assets/js/include.js" defer></script>
   <div data-include="../menu.html"></div>
 
-  <!-- BREADCRUMB -->
   <nav class="breadcrumb">
     <a href="../index.html">Inicio</a>
     <span>/</span>
@@ -319,16 +298,11 @@
     <span class="current">Scan&amp;Go Arcade</span>
   </nav>
 
-  <!-- HERO -->
   <section class="project-hero">
     <div class="project-category">Interactividad / Instalaciones</div>
     <h1>Scan&amp;Go Arcade</h1>
-    <p class="project-intro">
-      Instalación interactiva basada en un videojuego para un solo jugador, donde el público debe seleccionar burbujas en pantalla para conseguir la máxima puntuación y competir en una tabla de clasificación.
-    </p>
   </section>
 
-  <!-- INFORMACIÓN CLAVE -->
   <section class="project-meta">
     <div class="meta-item">
       <div class="meta-label">Cliente</div>
@@ -336,11 +310,11 @@
     </div>
     <div class="meta-item">
       <div class="meta-label">Sector</div>
-      <div class="meta-value">Instalación interactiva / New media</div>
+      <div class="meta-value">Instalación interactiva y new media</div>
     </div>
     <div class="meta-item">
       <div class="meta-label">Rol</div>
-      <div class="meta-value">Concepto, desarrollo, programación, montaje</div>
+      <div class="meta-value">Concepto, desarrollo y montaje</div>
     </div>
     <div class="meta-item">
       <div class="meta-label">Año</div>
@@ -348,55 +322,23 @@
     </div>
   </section>
 
-  <!-- DESCRIPCIÓN / FUNCIONAMIENTO -->
   <section class="project-content">
     <div class="content-section">
-      <h2>Descripción</h2>
       <p>
-        Scan&amp;Go Arcade es una instalación interactiva que propone un juego sencillo para un solo jugador, centrado en la 
-        rapidez y la precisión. El objetivo es seleccionar las burbujas que aparecen en pantalla para acumular el máximo de 
-        puntos posibles en un tiempo limitado. Al finalizar la partida, el jugador puede guardar su puntuación introduciendo 
-        su nombre en una tabla de clasificación, lo que fomenta la competitividad y la rejugabilidad entre los asistentes.
+        Scan&amp;Go Arcade es una instalación interactiva basada en un videojuego para un solo jugador, centrado en la rapidez y la precisión. El objetivo es seleccionar las burbujas que aparecen en pantalla para acumular el máximo de puntos posibles en un tiempo limitado. Al finalizar la partida, el jugador puede guardar su puntuación introduciendo su nombre en una tabla de clasificación, lo que fomenta la competitividad y la rejugabilidad entre los asistentes.
       </p>
       <p>
-        El sistema utiliza un sensor de detección de movimiento que identifica la presencia de personas frente a la pantalla 
-        y sigue el movimiento de la mano derecha del jugador. Este gesto se traduce en un cursor que replica sus acciones en el 
-        entorno del juego. Para navegar por los menús y seleccionar opciones no es necesario hacer clic: basta con mantener el 
-        cursor unos segundos sobre cada botón para activar la acción correspondiente.
-      </p>
-    </div>
-
-    <div class="content-section">
-      <h2>Proceso de desarrollo</h2>
-      <p>
-        El juego ha sido desarrollado con Processing, una herramienta de código abierto orientada a la creación de proyectos 
-        interactivos y visualizaciones gráficas mediante el lenguaje Java. El desarrollo completo del proyecto se extendió 
-        aproximadamente durante un mes.
+        El sistema se apoya en un sensor de detección de movimiento que reconoce la presencia de personas frente a la pantalla y sigue el movimiento de la mano derecha del jugador. Ese gesto se traduce en un cursor que replica sus acciones dentro del juego. Para navegar por los menús y seleccionar opciones no es necesario hacer clic: basta con mantener el cursor unos segundos sobre cada botón para activar la acción correspondiente, lo que facilita la interacción incluso a usuarios no familiarizados con videojuegos.
       </p>
       <p>
-        Durante las dos primeras semanas se trabajó en la conceptualización del juego, definición de mecánicas, creación de 
-        bocetos, storyboard y diseño de las máquinas de estado que estructuran la experiencia interactiva. El resto del tiempo 
-        se dedicó a la implementación en código, integración del sistema de detección de movimiento, pruebas de usabilidad y 
-        corrección de errores hasta lograr una versión estable para exhibición.
-      </p>
-    </div>
-
-    <div class="content-section">
-      <h2>Exhibición y experiencia de usuario</h2>
-      <p>
-        La propuesta fue presentada ante un tribunal y seleccionada para formar parte de la exposición 
-        «LAVS: Laboratori d’art visual i sonor», celebrada del 21 al 30 de abril de 2023 en la antigua prisión de Mataró. 
-        Durante el festival, el juego estuvo disponible como instalación abierta al público.
+        El juego ha sido desarrollado con Processing, una herramienta de código abierto orientada a la creación de proyectos interactivos y visualizaciones gráficas mediante Java. El proceso incluyó la conceptualización del juego, la definición de mecánicas, la creación de bocetos, storyboard y máquinas de estado, así como la implementación en código, la integración del sistema de detección de movimiento y varias rondas de pruebas y corrección de errores hasta obtener una versión estable para exhibición.
       </p>
       <p>
-        Los asistentes pudieron descubrir el funcionamiento del sensor, probar varias partidas y competir entre sí por ocupar 
-        las primeras posiciones en la tabla de clasificación. La instalación combinó así juego, interacción y exhibición 
-        pública, convirtiéndose en un punto de encuentro lúdico dentro del recorrido expositivo.
+        La instalación fue presentada ante un tribunal y seleccionada para formar parte de la exposición «LAVS: Laboratori d’art visual i sonor», celebrada del 21 al 30 de abril de 2023 en la antigua prisión de Mataró. Durante el festival, el proyecto funcionó como instalación abierta al público, permitiendo a los asistentes experimentar el sistema, jugar varias partidas y competir por las primeras posiciones en la tabla de clasificación, convirtiéndose en un punto lúdico y participativo dentro del recorrido expositivo.
       </p>
     </div>
   </section>
 
-  <!-- IMÁGENES PUBLICITARIAS FESTIVAL LAVS (2 cuadradas, 2 columnas centradas) -->
   <section class="project-gallery">
     <h2 class="gallery-title">Imágenes publicitarias festival LAVS</h2>
     <div class="gallery-grid-publicidad">
@@ -409,7 +351,6 @@
     </div>
   </section>
 
-  <!-- PANTALLAS DEL JUEGO (6 imágenes, 2 columnas x 3 filas, centrado) -->
   <section class="project-gallery">
     <h2 class="gallery-title">Pantallas del juego</h2>
     <div class="gallery-grid">
@@ -434,12 +375,11 @@
     </div>
   </section>
 
-  <!-- CRÉDITOS -->
   <section class="credits-section">
     <h2>Créditos</h2>
     <div class="credits-grid">
       <div class="credit-item">
-        <span class="credit-role">Conceptualización, desarrollo y programación, montaje de la instalación:</span>
+        <span class="credit-role">Concepto, desarrollo, programación y montaje de la instalación:</span>
         Jan Escoda
       </div>
       <div class="credit-item">
