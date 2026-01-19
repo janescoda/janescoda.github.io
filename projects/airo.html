@@ -24,7 +24,6 @@
       line-height: 1.6;
     }
 
-    /* BREADCRUMB */
     .breadcrumb {
       max-width: 1400px;
       margin: 0 auto;
@@ -56,9 +55,8 @@
       font-weight: 500;
     }
 
-    /* HERO DEL PROYECTO */
     .project-hero {
-      padding: 3rem 5% 3rem;
+      padding: 3rem 5% 2rem;
       text-align: center;
       max-width: 1400px;
       margin: 0 auto;
@@ -89,10 +87,9 @@
       color: #555;
     }
 
-    /* INFORMACIÓN CLAVE */
     .project-meta {
       max-width: 1400px;
-      margin: 3rem auto;
+      margin: 1.5rem auto 3rem;
       padding: 0 5%;
       display: flex;
       justify-content: center;
@@ -119,7 +116,6 @@
       font-weight: 500;
     }
 
-    /* CONTENIDO DEL PROYECTO */
     .project-content {
       max-width: 900px;
       margin: 0 auto;
@@ -130,14 +126,6 @@
       margin-bottom: 4rem;
     }
 
-    .content-section h2 {
-      font-size: 2rem;
-      font-weight: 700;
-      color: #1a1a1a;
-      margin-bottom: 1.5rem;
-      letter-spacing: -0.5px;
-    }
-
     .content-section p {
       font-size: 1.05rem;
       line-height: 1.9;
@@ -145,7 +133,6 @@
       margin-bottom: 1.2rem;
     }
 
-    /* VIDEO DESTACADO (estructura futura) */
     .project-video {
       max-width: 1400px;
       margin: 4rem auto;
@@ -163,7 +150,7 @@
 
     .video-container {
       position: relative;
-      padding-bottom: 56.25%; /* 16:9 */
+      padding-bottom: 56.25%;
       height: 0;
       overflow: hidden;
       border-radius: 8px;
@@ -179,7 +166,6 @@
       height: 100%;
     }
 
-    /* GALERÍA DE IMÁGENES */
     .project-gallery {
       max-width: 1400px;
       margin: 4rem auto;
@@ -195,7 +181,6 @@
       text-align: center;
     }
 
-    /* Grid general: 3 columnas */
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -209,7 +194,6 @@
       box-shadow: 0 2px 15px rgba(0,0,0,0.06);
     }
 
-    /* GALERÍA VERTICAL (para stories) - no usada aquí, pero la dejo */
     .gallery-grid-vertical {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -219,7 +203,7 @@
     .gallery-item-vertical {
       position: relative;
       width: 100%;
-      padding-bottom: 177.78%; /* 9:16 */
+      padding-bottom: 177.78%;
       overflow: hidden;
       border-radius: 8px;
       box-shadow: 0 2px 15px rgba(0,0,0,0.06);
@@ -237,7 +221,6 @@
       display: block;
     }
 
-    /* CRÉDITOS */
     .credits-section {
       max-width: 900px;
       margin: 6rem auto;
@@ -269,7 +252,6 @@
       color: #1a1a1a;
     }
 
-    /* RESPONSIVE */
     @media (max-width: 768px) {
       .breadcrumb {
         padding: 1.5rem 5% 0;
@@ -287,7 +269,6 @@
         text-align: left;
       }
 
-      /* 2 columnas para las imágenes en móvil */
       .gallery-grid {
         grid-template-columns: repeat(2, 1fr);
       }
@@ -315,7 +296,6 @@
       }
     }
 
-    /* BOTÓN SCROLL TOP */
     #scroll-to-top {
       display: none;
       position: fixed;
@@ -360,7 +340,6 @@
   <script src="../assets/js/include.js" defer></script>
   <div data-include="../menu.html"></div>
 
-  <!-- BREADCRUMB -->
   <nav class="breadcrumb">
     <a href="../index.html">Inicio</a>
     <span>/</span>
@@ -369,31 +348,23 @@
     <span class="current">Airo</span>
   </nav>
 
-  <!-- HERO -->
   <section class="project-hero">
-    <div class="project-category">Emprendimiento e Innovación</div>
+    <div class="project-category">Plataformas</div>
     <h1>Airo</h1>
-    <p class="project-intro">
-      Propuesta de emprendimiento e innovación creada durante la universidad con un grupo de compañeros.
-      Consiste en una tarjeta de transporte universal para tren, tranvía, autobús y metro, con el objetivo de obtener
-      beneficios por su uso, como recompensas. Desarrollando una página web y una aplicación móvil donde los usuarios
-      pueden canjear estas recompensas. También se ofrece una opción de tarjeta digital para reducir el consumo de material.
-    </p>
   </section>
 
-  <!-- INFORMACIÓN CLAVE -->
   <section class="project-meta">
     <div class="meta-item">
       <div class="meta-label">Cliente</div>
-      <div class="meta-value">Proyecto Universitario</div>
+      <div class="meta-value">Proyecto universitario - TecnoCampus</div>
     </div>
     <div class="meta-item">
       <div class="meta-label">Sector</div>
-      <div class="meta-value">Movilidad / Innovación</div>
+      <div class="meta-value">Movilidad</div>
     </div>
     <div class="meta-item">
       <div class="meta-label">Rol</div>
-      <div class="meta-value">Diseño UX/UI, Estrategia</div>
+      <div class="meta-value">Diseño gráfico y contenido</div>
     </div>
     <div class="meta-item">
       <div class="meta-label">Año</div>
@@ -401,36 +372,20 @@
     </div>
   </section>
 
-  <!-- DESCRIPCIÓN -->
   <section class="project-content">
     <div class="content-section">
-      <h2>Descripción</h2>
       <p>
-        El objetivo principal de Airo es disminuir el uso del coche y las emisiones de CO2 en las grandes ciudades,
-        promoviendo un estilo de vida saludable que incluya la práctica deportiva y el uso del transporte público
-        para trayectos largos.
+        Airo es una propuesta de emprendimiento e innovación creada durante la universidad junto a un grupo de compañeros. El proyecto plantea una tarjeta de transporte universal para tren, tranvía, autobús y metro, diseñada para incentivar el uso del transporte público mediante un sistema de recompensas por uso y fomentar un estilo de vida más sostenible y activo.
       </p>
       <p>
-        Para ello, se garantiza un precio asequible, un transporte cómodo, una buena seguridad y horarios eficientes.
-        El proyecto contempla el desarrollo de una página web y una aplicación móvil para que los usuarios puedan
-        gestionar su tarjeta, consultar sus beneficios y canjear las recompensas obtenidas por el uso del transporte
-        público.
+        El objetivo principal es reducir el uso del coche y las emisiones de CO₂ en grandes ciudades, garantizando al mismo tiempo un transporte asequible, cómodo, seguro y eficiente en horarios. Para gestionar la experiencia, se contempla el desarrollo de una página web y una aplicación móvil donde las personas usuarias puedan consultar trayectos, beneficios y canjear las recompensas generadas por su movilidad diaria.
       </p>
-    </div>
-
-    <div class="content-section">
-      <h2>Propuesta de Valor</h2>
       <p>
-        Airo no solo busca incentivar el transporte público a través de un sistema de recompensas, sino también
-        ofrecer una opción de tarjeta digital para reducir el consumo de material plástico, contribuyendo así a la
-        sostenibilidad ambiental. La integración de todos los medios de transporte (tren, tranvía, autobús y metro)
-        en una única tarjeta universal simplifica la experiencia del usuario y fomenta una movilidad más eficiente y
-        respetuosa con el medio ambiente.
+        La propuesta se completa con la opción de una tarjeta digital, reduciendo el consumo de materiales físicos y alineando el servicio con criterios de sostenibilidad ambiental. La integración de todos los medios de transporte en un único soporte simplifica la experiencia de usuario y refuerza la idea de una movilidad urbana más conectada, inteligente y respetuosa con el entorno.
       </p>
     </div>
   </section>
 
-  <!-- DISEÑO DE LA APLICACIÓN EN FIGMA -->
   <section class="project-gallery">
     <h2 class="gallery-title">Diseño de la aplicación en Figma</h2>
     <div class="gallery-grid">
@@ -455,7 +410,6 @@
     </div>
   </section>
 
-  <!-- GUÍA DE ESTILOS (BRAND BOOK) -->
   <section class="project-gallery">
     <h2 class="gallery-title">Guía de estilos (Brand Book)</h2>
     <div class="gallery-grid">
@@ -471,18 +425,17 @@
     </div>
   </section>
 
-  <!-- CRÉDITOS -->
   <section class="credits-section">
     <h2>Créditos</h2>
     <div class="credits-grid">
       <div class="credit-item">
-        <span class="credit-role">Diseño gráfico, contenido aplicación:</span> Jan Escoda
+        <span class="credit-role">Diseño gráfico y contenido de la aplicación:</span> Jan Escoda
       </div>
       <div class="credit-item">
         <span class="credit-role">Diseño UX/UI:</span> Laura Delgado
       </div>
       <div class="credit-item">
-        <span class="credit-role">Guion, administración:</span> Eric Corvo
+        <span class="credit-role">Guion y administración:</span> Eric Corvo
       </div>
     </div>
   </section>
