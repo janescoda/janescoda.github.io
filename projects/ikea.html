@@ -82,7 +82,7 @@
 
     .project-meta {
       max-width: 1400px;
-      margin: 1.5rem auto 1.5rem;
+      margin: 1.5rem auto 3rem;
       padding: 0 5%;
       display: flex;
       justify-content: center;
@@ -107,6 +107,16 @@
       font-size: 1.05rem;
       color: #1a1a1a;
       font-weight: 500;
+    }
+
+    .meta-value a {
+      color: #1a1a1a;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+    }
+
+    .meta-value a:hover {
+      border-bottom-color: #000;
     }
 
     .project-nav-wrapper {
@@ -164,12 +174,21 @@
       margin-bottom: 4rem;
     }
 
-    .content-section h2 {
+    .main-section-title {
       font-size: 2rem;
       font-weight: 700;
       color: #1a1a1a;
       margin-bottom: 1.5rem;
       letter-spacing: -0.5px;
+      text-transform: uppercase;
+    }
+
+    .subsection-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #1a1a1a;
+      margin: 2.5rem 0 1rem;
+      letter-spacing: -0.2px;
     }
 
     .content-section p {
@@ -179,25 +198,20 @@
       margin-bottom: 1.2rem;
     }
 
-    .project-gallery {
+    .inline-gallery {
       max-width: 1400px;
-      margin: 4rem auto;
+      margin: 2rem auto 3rem;
       padding: 0 5%;
-    }
-
-    .gallery-title {
-      font-size: 2rem;
-      font-weight: 700;
-      color: #1a1a1a;
-      margin-bottom: 2.5rem;
-      letter-spacing: -0.5px;
-      text-align: center;
     }
 
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: 2.5rem;
+    }
+
+    .gallery-item figure {
+      margin: 0;
     }
 
     .gallery-item img {
@@ -207,62 +221,11 @@
       box-shadow: 0 2px 15px rgba(0,0,0,0.06);
     }
 
-    .gallery-grid-vertical {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 2.5rem;
-    }
-
-    .gallery-item-vertical {
-      position: relative;
-      width: 100%;
-      padding-bottom: 177.78%;
-      overflow: hidden;
-      border-radius: 8px;
-      box-shadow: 0 2px 15px rgba(0,0,0,0.06);
-      background: #f5f5f5;
-    }
-
-    .gallery-item-vertical img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-      display: block;
-    }
-
-    .credits-section {
-      max-width: 900px;
-      margin: 6rem auto;
-      padding: 0 5% 6rem;
-    }
-
-    .credits-section h2 {
-      font-size: 2rem;
-      font-weight: 700;
-      color: #1a1a1a;
-      margin-bottom: 2rem;
-      letter-spacing: -0.5px;
-    }
-
-    .credits-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1rem 4rem;
-    }
-
-    .credit-item {
-      font-size: 0.95rem;
-      color: #555;
-      line-height: 1.8;
-    }
-
-    .credit-role {
-      font-weight: 600;
-      color: #1a1a1a;
+    .gallery-caption {
+      margin-top: 0.6rem;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      color: #777;
     }
 
     @media (max-width: 768px) {
@@ -282,14 +245,9 @@
         text-align: left;
       }
 
-      .gallery-grid,
-      .gallery-grid-vertical {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .credits-grid {
+      .gallery-grid {
         grid-template-columns: 1fr;
-        gap: 0.8rem 2rem;
+        gap: 2rem;
       }
 
       .project-hero {
@@ -298,11 +256,6 @@
 
       .project-content {
         padding: 3rem 5% 0;
-      }
-
-      .gallery-grid,
-      .gallery-grid-vertical {
-        gap: 2rem;
       }
     }
 
@@ -380,6 +333,14 @@
       <div class="meta-label">Año</div>
       <div class="meta-value">2024 - Act.</div>
     </div>
+    <div class="meta-item">
+      <div class="meta-label">Perfil</div>
+      <div class="meta-value">
+        <a href="https://www.linkedin.com/in/janescoda/" target="_blank" rel="noopener noreferrer">
+          LinkedIn
+        </a>
+      </div>
+    </div>
   </section>
 
   <!-- ÍNDICE + MENÚ, CENTRADO -->
@@ -388,7 +349,7 @@
     <nav class="project-nav">
       <button class="project-tab active" data-target="diseno-web">PÁGINA WEB</button>
       <span>/</span>
-      <button class="project-tab" data-target="comunicacion-digital">ESTRATEGÍA DIGITAL</button>
+      <button class="project-tab" data-target="comunicacion-digital">ESTRATEGIA DIGITAL</button>
       <span>/</span>
       <button class="project-tab" data-target="tiendas">TIENDAS</button>
       <span>/</span>
@@ -397,104 +358,497 @@
   </section>
 
   <section class="project-content">
+    <!-- PÁGINA WEB -->
     <div class="content-section" id="diseno-web">
-      <h2>Página web</h2>
+      <h2 class="main-section-title">Página web</h2>
+
+      <h3 class="subsection-title">Contenido y experiencia en catalán</h3>
       <p>
-        IKEA es un proyecto orientado a la creación de una experiencia digital coherente con una marca de mobiliario y decoración para el hogar, inspirada en el modelo de grandes superficies de retail. El trabajo se centra en el diseño de una web clara y funcional, que permite explorar productos, colecciones y servicios de forma intuitiva, manteniendo una estética limpia y muy visual.
+        En IKEA trabajo en la adaptación y actualización de la página web para el mercado de Cataluña, asegurando que todo el contenido esté correctamente traducido, alineado con la versión en castellano y optimizado para la experiencia local. Esto incluye páginas de categoría, fichas de producto, páginas de servicio, checkout y contenidos informativos, revisando que la navegación y los mensajes sean coherentes y fáciles de entender en catalán.
       </p>
       <p>
-        El diseño se articula a través de una arquitectura de la información sencilla, con menús claros, filtros de producto y páginas de categoría que ayudan al usuario a orientarse rápidamente. Se trabaja con un sistema modular de componentes (tarjetas de producto, bloques de inspiración, banners, secciones de ideas) que facilita la coherencia visual y la adaptación de la web a distintos contenidos y campañas.
+        Además de la traducción, reviso y actualizo la estructura de contenidos: categorías, subcategorías y rutas de navegación, garantizando que la experiencia sea consistente en todos los dispositivos. El objetivo es que cualquier persona usuaria pueda encontrar lo que busca de forma rápida e intuitiva, independientemente de si llega desde la home, desde un buscador o desde campañas específicas.
       </p>
     </div>
 
+    <section class="inline-gallery">
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <figure>
+            <img src="../assets/img/ikea-web-home-1.png" alt="Home de IKEA Cataluña con contenidos en catalán actualizados">
+            <figcaption class="gallery-caption">
+              Home de IKEA adaptada al mercado de Cataluña, con módulos y mensajes en catalán alineados con la versión en castellano.
+            </figcaption>
+          </figure>
+        </div>
+        <div class="gallery-item">
+          <figure>
+            <img src="../assets/img/ikea-web-home-2.png" alt="Módulos de contenido e inspiración en la página principal">
+            <figcaption class="gallery-caption">
+              Bloques de inspiración y soluciones para el hogar, pensados para guiar la navegación desde la página principal.
+            </figcaption>
+          </figure>
+        </div>
+        <div class="gallery-item">
+          <figure>
+            <img src="../assets/img/ikea-web-servicios-1.png" alt="Página de servicios de IKEA en catalán">
+            <figcaption class="gallery-caption">
+              Página de servicios con información práctica en catalán: montaje, transporte y otras soluciones para el día a día.
+            </figcaption>
+          </figure>
+        </div>
+        <div class="gallery-item">
+          <figure>
+            <img src="../assets/img/ikea-web-checkout-1.png" alt="Flujo de checkout adaptado a la versión catalana">
+            <figcaption class="gallery-caption">
+              Flujo de checkout revisado para asegurar una experiencia clara y consistente en catalán hasta el final de la compra.
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <div class="content-section">
+      <h3 class="subsection-title">SEO en la web</h3>
+      <p>
+        Paralelamente, realizo una revisión SEO completa de la versión en catalán de la web, asegurando que todas las páginas clave estén optimizadas de la misma forma que en castellano. Esto incluye metatitles, meta descriptions, slugs, etiquetas <code>robots</code> y la estructura de filtros en las páginas de categoría, que funcionan como un menú interno para navegar entre categorías y subcategorías relacionadas.
+      </p>
+      <p>
+        También trabajo el SEO on page a través de textos estratégicos en la parte inferior de algunas páginas de categoría, pensados para mejorar el posicionamiento orgánico y captar más tráfico cualificado. Estos contenidos se redactan en catalán con un equilibrio entre lenguaje natural, palabras clave y tono de marca, reforzando tanto la visibilidad en buscadores como la utilidad real para la persona usuaria.
+      </p>
+    </div>
+
+    <section class="inline-gallery">
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <figure>
+            <img src="../assets/img/ikea-seo-meta-1.png" alt="Metatitle y meta description optimizados en catalán">
+            <figcaption class="gallery-caption">
+              Revisión de metatitles y meta descriptions para garantizar coherencia SEO entre catalán y castellano.
+            </figcaption>
+          </figure>
+        </div>
+        <div class="gallery-item">
+          <figure>
+            <img src="../assets/img/ikea-seo-slug-1.png" alt="Slugs y estructura de URL en la versión catalana">
+            <figcaption class="gallery-caption">
+              Slugs y estructura de URL adaptados al catalán, manteniendo una arquitectura limpia y entendible.
+            </figcaption>
+          </figure>
+        </div>
+        <div class="gallery-item">
+          <figure>
+            <img src="../assets/img/ikea-seo-filtros-1.png" alt="Filtros en páginas de categoría">
+            <figcaption class="gallery-caption">
+              Filtros de categoría que actúan como menú interno para navegar entre productos y familias relacionadas.
+            </figcaption>
+          </figure>
+        </div>
+        <div class="gallery-item">
+          <figure>
+            <img src="../assets/img/ikea-seo-textos-1.png" alt="Texto SEO on page al final de categoría">
+            <figcaption class="gallery-caption">
+              Textos SEO on page en catalán en la parte inferior de categorías clave para mejorar el tráfico orgánico.
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <div class="content-section">
+      <h3 class="subsection-title">Navegación y búsquedas</h3>
+      <p>
+        Otra parte importante del proyecto es la mejora de la navegación interna y del buscador. He participado en la actualización de la barra de búsqueda y en el diseño de las páginas de resultados, incluyendo casos específicos como las búsquedas sin resultados (zero results), resultados muy acotados (top narrow results) o búsquedas amplias (top broad results), para ofrecer siempre alternativas útiles y relevantes.
+      </p>
+      <p>
+        Estas mejoras ayudan a que la web responda mejor a la forma real en la que las personas buscan productos y servicios, reduciendo la frustración y aumentando la conversión. La experiencia de búsqueda se convierte así en una herramienta clave para descubrir nuevas categorías, colecciones y servicios de IKEA.
+      </p>
+    </div>
+
+    <section class="inline-gallery">
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <figure>
+            <img src="../assets/img/ikea-search-1.png" alt="Barra de búsqueda actualizada">
+            <figcaption class="gallery-caption">
+              Barra de búsqueda optimizada con sugerencias y acceso rápido a las categorías más consultadas.
+            </figcaption>
+          </figure>
+        </div>
+        <div class="gallery-item">
+          <figure>
+            <img src="../assets/img/ikea-search-2.png" alt="Página de resultados con zero results">
+            <figcaption class="gallery-caption">
+              Página de resultados con mensajes específicos para zero results y propuestas alternativas relevantes.
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <div class="content-section">
+      <h3 class="subsection-title">Producto y nomenclaturas</h3>
+      <p>
+        También reviso la forma en la que se presentan los productos en catalán: nombres de categorías, descripciones breves y abreviaturas de producto. El objetivo es que la terminología sea coherente, fácil de entender y, al mismo tiempo, esté optimizada para que las personas puedan encontrar los productos tanto dentro de la web como a través de los buscadores.
+      </p>
+      <p>
+        Esta revisión incluye criterios comunes de nomenclatura, consistencia entre idiomas y uso de términos que las personas realmente utilizan al buscar mobiliario y decoración. De este modo, mejoramos tanto la experiencia de búsqueda como el rendimiento de la web a nivel de tráfico orgánico.
+      </p>
+    </div>
+
+    <section class="inline-gallery">
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <figure>
+            <img src="../assets/img/ikea-product-names-1.png" alt="Revisión de nombres de categoría en catalán">
+            <figcaption class="gallery-caption">
+              Nombres de categoría revisados en catalán para facilitar la búsqueda y mantener la coherencia de catálogo.
+            </figcaption>
+          </figure>
+        </div>
+        <div class="gallery-item">
+          <figure>
+            <img src="../assets/img/ikea-product-names-2.png" alt="Abreviaturas de producto pensadas para buscador">
+            <figcaption class="gallery-caption">
+              Abreviaturas y descripciones optimizadas para que el buscador interno reconozca cómo busca la gente.
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ESTRATEGIA DIGITAL -->
     <div class="content-section" id="comunicacion-digital">
-      <h2>Estrategía digital</h2>
+      <h2 class="main-section-title">Estrategia digital</h2>
+
+      <h3 class="subsection-title">Guía de comunicación para Cataluña</h3>
       <p>
-        Paralelamente al diseño de la web, se desarrolla una estrategia de comunicación digital enfocada en reforzar el vínculo entre la marca y su comunidad. Se plantean piezas específicas para redes sociales, newsletters y soportes online, con el objetivo de presentar colecciones, inspirar nuevas configuraciones del hogar y destacar promociones o servicios.
+        Para asegurar una comunicación coherente entre web, app y canales móviles, he creado una guía de comunicación digital específica para el mercado de Cataluña. En ella se definen todos los formatos y posibilidades de banners y módulos promocionales: cabeceras, módulos de campaña, destacados de servicios, mensajes informativos y layouts adaptados a web, móvil y app.
       </p>
       <p>
-        La línea visual de estas piezas mantiene la estética de la web: tipografías limpias, uso del color controlado y protagonismo de la fotografía de producto y ambientes. El tono de comunicación es cercano y práctico, orientado a ofrecer soluciones concretas para el día a día en casa, más que a una comunicación puramente publicitaria.
+        Esta guía funciona como una herramienta de referencia para cualquier campaña o necesidad de comunicación en el mercado catalán, asegurando que todas las piezas respetan el tono de marca, el idioma, la jerarquía de mensajes y las particularidades locales. Gracias a esta base, es más sencillo lanzar campañas consistentes, claras y adaptadas al contexto de cada persona usuaria.
       </p>
     </div>
 
+    <section class="inline-gallery">
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <figure>
+            <img src="../assets/img/ikea-guide-1.png" alt="Portada de la guía de comunicación digital">
+            <figcaption class="gallery-caption">
+              Guía de comunicación para Cataluña que recoge todos los formatos digitales disponibles en el ecosistema IKEA.
+            </figcaption>
+          </figure>
+        </div>
+        <div class="gallery-item">
+          <figure>
+            <img src="../assets/img/ikea-guide-2.png" alt="Resumen de formatos de banners">
+            <figcaption class="gallery-caption">
+              Página de la guía donde se detallan tamaños, usos y jerarquías de los banners web y mobile.
+            </figcaption>
+          </figure>
+        </div>
+        <div class="gallery-item">
+          <figure>
+            <img src="../assets/img/ikea-guide-3.png" alt="Layouts para app y móvil">
+            <figcaption class="gallery-caption">
+              Layouts específicos para app y móvil, pensados para campañas locales en el mercado de Cataluña.
+            </figcaption>
+          </figure>
+        </div>
+        <div class="gallery-item">
+          <figure>
+            <img src="../assets/img/ikea-guide-4.png" alt="Ejemplos de tono y mensajes">
+            <figcaption class="gallery-caption">
+              Ejemplos de tono, copy y jerarquía de mensajes adaptados al público catalán.
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <div class="content-section">
+      <h3 class="subsection-title">Promociones y campañas locales</h3>
+      <p>
+        A partir de esta guía he desarrollado diferentes ejemplos prácticos de campañas digitales. Algunos casos concretos incluyen promociones genéricas, como un 10&nbsp;% de descuento con mensajes adaptados a distintos soportes, servicios específicos como el delivery a domicilio, y comunicaciones locales como la promoción de aparcamiento gratuito en IKEA Granollers.
+      </p>
+      <p>
+        Cada una de estas campañas se adapta a los formatos disponibles en la web, la app y los banners, manteniendo un mensaje claro y consistente pero modulable según el objetivo: venta, servicio, tráfico a tienda o notoriedad de una novedad concreta.
+      </p>
+    </div>
+
+    <!-- 10% -->
+    <section class="inline-gallery">
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <figure>
+            <img src="../assets/img/ikea-promo-10-1.png" alt="Banner web de promoción 10%">
+            <figcaption class="gallery-caption">
+              Banner web para una promoción del 10&nbsp;% de descuento, siguiendo la guía de mensajes y jerarquía de CTA.
+            </figcaption>
+          </figure>
+        </div>
+        <div class="gallery-item">
+          <figure>
+            <img src="../assets/img/ikea-promo-10-2.png" alt="Versión mobile de la campaña 10%">
+            <figcaption class="gallery-caption">
+              Adaptación mobile de la campaña del 10&nbsp;%, optimizada para app y navegación en pantalla pequeña.
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- DELIVERY -->
+    <section class="inline-gallery">
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <figure>
+            <img src="../assets/img/ikea-delivery-1.png" alt="Creatividad web de servicio delivery">
+            <figcaption class="gallery-caption">
+              Mensaje digital para el servicio de entrega a domicilio, centrado en comodidad y alcance en Cataluña.
+            </figcaption>
+          </figure>
+        </div>
+        <div class="gallery-item">
+          <figure>
+            <img src="../assets/img/ikea-delivery-2.png" alt="Módulo mobile de servicio delivery">
+            <figcaption class="gallery-caption">
+              Versión mobile del servicio delivery at home, integrada en el ecosistema de banners y módulos de la web.
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- GRANOLLERS -->
+    <section class="inline-gallery">
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <figure>
+            <img src="../assets/img/ikea-granollers-parking-1.png" alt="Banner de parking gratuito en Granollers">
+            <figcaption class="gallery-caption">
+              Campaña digital de parking gratuito en IKEA Granollers para facilitar la visita al nuevo centro.
+            </figcaption>
+          </figure>
+        </div>
+        <div class="gallery-item">
+          <figure>
+            <img src="../assets/img/ikea-granollers-parking-2.png" alt="Versión mobile de la campaña de parking gratuito">
+            <figcaption class="gallery-caption">
+              Versión mobile de la misma promoción, preparada para stories y módulos de app.
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <div class="content-section">
+      <h3 class="subsection-title">Email marketing</h3>
+      <p>
+        Dentro de la estrategia digital, también trabajo en el email marketing para el mercado de Cataluña. Esto incluye la planificación y redacción de emails orientados a promocionar ofertas, servicios y novedades, combinando mensajes globales de la marca con módulos personalizados para las necesidades locales.
+      </p>
+      <p>
+        En las newsletters nacionales se integran módulos específicos para el mercado catalán, de forma que las personas reciban información relevante según su ubicación, sin perder la coherencia con la comunicación global. Así se refuerza tanto el conocimiento de los servicios disponibles como el tráfico a tienda y a la web.
+      </p>
+    </div>
+
+    <div class="content-section">
+      <h3 class="subsection-title">Talleres y actividades</h3>
+      <p>
+        Otra parte del trabajo consiste en la publicación y actualización de talleres y actividades en la web, especialmente los relacionados con SMÅLAND y con IKEA Family. Cada mes se suben nuevos talleres y eventos, adaptados a cada tienda, para que las familias puedan descubrir fácilmente qué actividades tienen disponibles.
+      </p>
+      <p>
+        Estos contenidos se integran dentro de la web y la estrategia de comunicación digital, ayudando a reforzar el vínculo con la comunidad local y a posicionar IKEA como un punto de encuentro más allá de la compra de productos.
+      </p>
+    </div>
+
+    <section class="inline-gallery">
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <figure>
+            <img src="../assets/img/ikea-email-1.png" alt="Newsletter con módulos locales">
+            <figcaption class="gallery-caption">
+              Newsletter nacional con módulos personalizados para el mercado de Cataluña, combinando ofertas y servicios.
+            </figcaption>
+          </figure>
+        </div>
+        <div class="gallery-item">
+          <figure>
+            <img src="../assets/img/ikea-email-2.png" alt="Email promocional de servicios y productos">
+            <figcaption class="gallery-caption">
+              Email específico para comunicar servicios y promociones, adaptado al contexto local de cada tienda.
+            </figcaption>
+          </figure>
+        </div>
+        <div class="gallery-item">
+          <figure>
+            <img src="../assets/img/ikea-talleres-1.png" alt="Página de talleres de SMÅLAND">
+            <figcaption class="gallery-caption">
+              Página de talleres de SMÅLAND con actividades actualizadas mes a mes para familias con niños.
+            </figcaption>
+          </figure>
+        </div>
+        <div class="gallery-item">
+          <figure>
+            <img src="../assets/img/ikea-talleres-2.png" alt="Listado de actividades IKEA Family">
+            <figcaption class="gallery-caption">
+              Listado de talleres y eventos IKEA Family, segmentados por tienda y tipo de actividad.
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- TIENDAS -->
     <div class="content-section" id="tiendas">
-      <h2>Tiendas</h2>
+      <h2 class="main-section-title">Tiendas</h2>
+
+      <h3 class="subsection-title">Páginas locales en web</h3>
       <p>
-        El proyecto contempla cómo la web y la comunicación digital apoyan la experiencia en las tiendas físicas de IKEA. Se trabaja la información de puntos de venta, servicios disponibles en cada tienda, horarios, recogida en tienda y otras facilidades que conectan directamente el entorno online con la visita presencial.
+        En el ámbito de retail, trabajo en la presencia digital de las tiendas de IKEA en Cataluña. Cada tienda cuenta con una página local dentro de la web, donde se detalla la ubicación, el horario, los servicios disponibles, las opciones de recogida, las promociones activas y la información práctica para la visita. Estas páginas se actualizan de forma continuada para reflejar la realidad de cada centro.
       </p>
       <p>
-        La presentación visual de las tiendas pone el foco en la experiencia de recorrido, las zonas de exposición y los espacios de inspiración, trasladando el lenguaje de la marca al espacio físico. Esta coherencia entre web y tienda contribuye a que la persona usuaria reconozca la marca en todos los puntos de contacto.
+        Entre las tiendas de Cataluña se incluyen, por ejemplo, Badalona, Sabadell, Gran Vía, Hospitalet, Tarragona, así como nuevas aperturas como Girona y formatos adicionales como puntos de recogida en centros comerciales. El objetivo es que cualquier persona pueda encontrar de un vistazo qué ofrece cada tienda y cómo planificar su visita.
       </p>
     </div>
-    
 
+    <section class="inline-gallery">
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <figure>
+            <img src="../assets/img/ikea-tiendas-local-1.png" alt="Página local de tienda IKEA">
+            <figcaption class="gallery-caption">
+              Página local de tienda con información de horarios, servicios, dirección y enlaces a talleres y actividades.
+            </figcaption>
+          </figure>
+        </div>
+        <div class="gallery-item">
+          <figure>
+            <img src="../assets/img/ikea-tiendas-local-2.png" alt="Detalle de promociones y servicios en tienda">
+            <figcaption class="gallery-caption">
+              Sección de promociones y servicios destacados adaptados a cada centro del mercado de Cataluña.
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <div class="content-section">
+      <h3 class="subsection-title">Perfiles de Google Business</h3>
+      <p>
+        Además de la web, también trabajo en la actualización de los perfiles de Google Business de las tiendas. Esto incluye la revisión de descripciones, categorías, palabras clave, horarios, fotografías y servicios destacados, asegurando que la información sea precisa, actual y coherente con la comunicación de la web.
+      </p>
+      <p>
+        Un perfil de Google bien optimizado mejora la visibilidad local, ayuda a que las personas encuentren la tienda más cercana y refuerza la percepción de marca. Esta coordinación entre web y Google Business contribuye a una experiencia más fluida desde el momento en que la persona busca “IKEA + ciudad” hasta que llega físicamente a la tienda.
+      </p>
+    </div>
+
+    <section class="inline-gallery">
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <figure>
+            <img src="../assets/img/ikea-google-business-1.png" alt="Perfil de Google Business de IKEA">
+            <figcaption class="gallery-caption">
+              Perfil de Google Business actualizado con descripción optimizada, horarios y servicios por tienda.
+            </figcaption>
+          </figure>
+        </div>
+        <div class="gallery-item">
+          <figure>
+            <img src="../assets/img/ikea-google-business-2.png" alt="Vista de resultados de Google con tiendas IKEA">
+            <figcaption class="gallery-caption">
+              Resultados locales en Google que conectan directamente con la ficha y la página web de cada tienda.
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPANSIÓN -->
     <div class="content-section" id="expansion">
-      <h2>Expansión</h2>
+      <h2 class="main-section-title">Expansión</h2>
+
+      <h3 class="subsection-title">Nuevas aperturas y reformas</h3>
       <p>
-        Desde la perspectiva de expansión, el proyecto explora cómo la presencia digital de IKEA puede acompañar la apertura de nuevas tiendas y la entrada en nuevos mercados. La web y las campañas online se utilizan como herramientas para comunicar aperturas, eventos locales y servicios adaptados a cada área geográfica.
+        Desde el área digital también doy soporte a los proyectos de expansión de IKEA en Cataluña, acompañando aperturas, reformas y nuevos formatos de tienda. En 2024, por ejemplo, la apertura de IKEA Granollers se ha trabajado a nivel de web, campañas digitales y comunicación local, asegurando que la tienda tuviera presencia clara en el ecosistema online desde el primer día.
       </p>
       <p>
-        A través de páginas de destino específicas, mensajes segmentados y contenidos orientados a cada zona, la estrategia digital ayuda a dirigir tráfico tanto al canal online como a las nuevas tiendas físicas, reforzando la implantación de la marca en el territorio.
+        Para 2025 y 2026, el plan de expansión incluye hitos como la reforma de la tienda de Badalona, la apertura del punto de recogida en Ànecblau y la reforma del restaurante de Sabadell, así como la apertura de la tienda de Girona. Cada proyecto implica actualizar páginas locales, crear contenidos específicos, preparar campañas digitales y coordinar la información en todos los canales.
       </p>
     </div>
-  </section>
 
- <section class="project-gallery">
-    <h2 class="gallery-title">Páginas principales de la web</h2>
-    <div class="gallery-grid">
-      <div class="gallery-item">
-        <img src="../assets/img/ikea-web-home-1.png" alt="IKEA - Página de inicio">
+    <section class="inline-gallery">
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <figure>
+            <img src="../assets/img/ikea-expansion-granollers-1.png" alt="Comunicación apertura IKEA Granollers">
+            <figcaption class="gallery-caption">
+              Comunicación digital de la apertura de IKEA Granollers 2024, con énfasis en servicios y accesos.
+            </figcaption>
+          </figure>
+        </div>
+        <div class="gallery-item">
+          <figure>
+            <img src="../assets/img/ikea-expansion-badalona-1.png" alt="Material para reforma de IKEA Badalona">
+            <figcaption class="gallery-caption">
+              Mensajes y creatividades para la reforma de IKEA Badalona y los cambios en la experiencia en tienda.
+            </figcaption>
+          </figure>
+        </div>
+        <div class="gallery-item">
+          <figure>
+            <img src="../assets/img/ikea-expansion-anecblau-1.png" alt="Punto de recogida en Ànecblau">
+            <figcaption class="gallery-caption">
+              Punto de recogida en Ànecblau integrado en la web como nuevo formato de tienda y servicio.
+            </figcaption>
+          </figure>
+        </div>
+        <div class="gallery-item">
+          <figure>
+            <img src="../assets/img/ikea-expansion-girona-1.png" alt="Apertura futura de IKEA Girona">
+            <figcaption class="gallery-caption">
+              Creatividad para la apertura de IKEA Girona, trabajando awareness previo en canales digitales.
+            </figcaption>
+          </figure>
+        </div>
       </div>
-      <div class="gallery-item">
-        <img src="../assets/img/ikea-web-categoria-1.png" alt="IKEA - Página de categoría">
-      </div>
-      <div class="gallery-item">
-        <img src="../assets/img/ikea-web-producto-1.png" alt="IKEA - Ficha de producto">
-      </div>
-      <div class="gallery-item">
-        <img src="../assets/img/ikea-web-inspiracion-1.png" alt="IKEA - Página de inspiración">
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="project-gallery">
-    <h2 class="gallery-title">Piezas para comunicación digital</h2>
-    <div class="gallery-grid-vertical">
-      <div class="gallery-item-vertical">
-        <img src="../assets/img/ikea-story-1.png" alt="IKEA - Story 1">
-      </div>
-      <div class="gallery-item-vertical">
-        <img src="../assets/img/ikea-story-2.png" alt="IKEA - Story 2">
-      </div>
-      <div class="gallery-item-vertical">
-        <img src="../assets/img/ikea-story-3.png" alt="IKEA - Story 3">
-      </div>
-      <div class="gallery-item-vertical">
-        <img src="../assets/img/ikea-story-4.png" alt="IKEA - Story 4">
-      </div>
+    <div class="content-section">
+      <h3 class="subsection-title">Otros proyectos: Glovo y nuevos canales</h3>
+      <p>
+        Además del entorno web clásico, también he trabajado en proyectos de venta a través de nuevos canales como la app de Glovo. Este trabajo incluye la selección y estructuración de productos, la creación de categorías y secciones dentro de la app, la adaptación de imágenes y la preparación de textos y contenidos coherentes con la marca IKEA.
+      </p>
+      <p>
+        Para apoyar estos lanzamientos se han creado también piezas de comunicación y newsletters específicas, explicando la disponibilidad de productos de IKEA a través de Glovo y ayudando a las personas usuarias a entender qué pueden encontrar, cómo funciona el servicio y en qué áreas está disponible.
+      </p>
     </div>
-  </section>
 
-  <section class="project-gallery">
-    <h2 class="gallery-title">Retail y puntos de venta</h2>
-    <div class="gallery-grid">
-      <div class="gallery-item">
-        <img src="../assets/img/ikea-retail-1.png" alt="IKEA - Visual de tienda">
+    <section class="inline-gallery">
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <figure>
+            <img src="../assets/img/ikea-glovo-1.png" alt="Categorías de IKEA en la app de Glovo">
+            <figcaption class="gallery-caption">
+              Integración de productos y categorías de IKEA dentro de la app de Glovo, con estructura propia.
+            </figcaption>
+          </figure>
+        </div>
+        <div class="gallery-item">
+          <figure>
+            <img src="../assets/img/ikea-glovo-2.png" alt="Newsletter anunciando IKEA en Glovo">
+            <figcaption class="gallery-caption">
+              Newsletter y creatividades que comunican la disponibilidad de IKEA en Glovo y explican el servicio.
+            </figcaption>
+          </figure>
+        </div>
       </div>
-      <div class="gallery-item">
-        <img src="../assets/img/ikea-retail-2.png" alt="IKEA - Comunicación en tienda">
-      </div>
-      <div class="gallery-item">
-        <img src="../assets/img/ikea-retail-3.png" alt="IKEA - Material gráfico">
-      </div>
-      <div class="gallery-item">
-        <img src="../assets/img/ikea-retail-4.png" alt="IKEA - Expansión de tiendas">
-      </div>
-    </div>
+    </section>
+
   </section>
 
   <a href="#" id="scroll-to-top" title="Volver arriba"></a>
-  
   <div data-include="../footer.html"></div>
 
   <script>
@@ -515,6 +869,19 @@
         });
         this.classList.add('active');
       });
+    });
+
+    const scrollBtn = document.getElementById('scroll-to-top');
+    window.addEventListener('scroll', function () {
+      if (window.scrollY > 300) {
+        scrollBtn.classList.add('show-flex');
+      } else {
+        scrollBtn.classList.remove('show-flex');
+      }
+    });
+    scrollBtn.addEventListener('click', function (e) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   </script>
 
