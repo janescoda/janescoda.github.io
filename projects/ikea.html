@@ -109,7 +109,6 @@
       font-weight: 500;
     }
 
-    /* ÍNDICE + MENÚ, CENTRADO */
     .project-nav-wrapper {
       padding: 1.5rem 5% 0;
       max-width: 1400px;
@@ -387,9 +386,9 @@
   <section class="project-nav-wrapper">
     <div class="project-index-label">Índice</div>
     <nav class="project-nav">
-      <button class="project-tab active" data-target="diseno-web">CONTENIDO WEB</button>
+      <button class="project-tab active" data-target="diseno-web">PÁGINA WEB</button>
       <span>/</span>
-      <button class="project-tab" data-target="comunicacion-digital">COMUNICACIÓN DIGITAL</button>
+      <button class="project-tab" data-target="comunicacion-digital">ESTRATEGÍA DIGITAL</button>
       <span>/</span>
       <button class="project-tab" data-target="tiendas">TIENDAS</button>
       <span>/</span>
@@ -398,9 +397,8 @@
   </section>
 
   <section class="project-content">
-    <!-- SECCIÓN 1: DISEÑO WEB -->
     <div class="content-section" id="diseno-web">
-      <h2>Diseño web</h2>
+      <h2>Página web</h2>
       <p>
         IKEA es un proyecto orientado a la creación de una experiencia digital coherente con una marca de mobiliario y decoración para el hogar, inspirada en el modelo de grandes superficies de retail. El trabajo se centra en el diseño de una web clara y funcional, que permite explorar productos, colecciones y servicios de forma intuitiva, manteniendo una estética limpia y muy visual.
       </p>
@@ -409,9 +407,8 @@
       </p>
     </div>
 
-    <!-- SECCIÓN 2: COMUNICACIÓN DIGITAL -->
     <div class="content-section" id="comunicacion-digital">
-      <h2>Comunicación digital</h2>
+      <h2>Estrategía digital</h2>
       <p>
         Paralelamente al diseño de la web, se desarrolla una estrategia de comunicación digital enfocada en reforzar el vínculo entre la marca y su comunidad. Se plantean piezas específicas para redes sociales, newsletters y soportes online, con el objetivo de presentar colecciones, inspirar nuevas configuraciones del hogar y destacar promociones o servicios.
       </p>
@@ -420,7 +417,6 @@
       </p>
     </div>
 
-    <!-- SECCIÓN 3: TIENDAS -->
     <div class="content-section" id="tiendas">
       <h2>Tiendas</h2>
       <p>
@@ -430,8 +426,8 @@
         La presentación visual de las tiendas pone el foco en la experiencia de recorrido, las zonas de exposición y los espacios de inspiración, trasladando el lenguaje de la marca al espacio físico. Esta coherencia entre web y tienda contribuye a que la persona usuaria reconozca la marca en todos los puntos de contacto.
       </p>
     </div>
+    
 
-    <!-- SECCIÓN 4: EXPANSIÓN -->
     <div class="content-section" id="expansion">
       <h2>Expansión</h2>
       <p>
@@ -443,7 +439,7 @@
     </div>
   </section>
 
-  <section class="project-gallery">
+ <section class="project-gallery">
     <h2 class="gallery-title">Páginas principales de la web</h2>
     <div class="gallery-grid">
       <div class="gallery-item">
@@ -502,7 +498,6 @@
   <div data-include="../footer.html"></div>
 
   <script>
-    // Activar estado "active" en el menú interno al hacer click
     document.querySelectorAll('.project-tab').forEach(function(tab) {
       tab.addEventListener('click', function() {
         const targetId = this.getAttribute('data-target');
