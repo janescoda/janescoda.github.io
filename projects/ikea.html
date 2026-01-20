@@ -219,6 +219,7 @@
       display: block;
       border-radius: 8px;
       box-shadow: 0 2px 15px rgba(0,0,0,0.06);
+      cursor: zoom-in;
     }
 
     .gallery-caption {
@@ -226,6 +227,51 @@
       font-size: 0.9rem;
       line-height: 1.5;
       color: #777;
+    }
+
+    /* Lightbox básico */
+    .lightbox-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.75);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+
+    .lightbox-overlay.open {
+      display: flex;
+    }
+
+    .lightbox-content {
+      max-width: 90vw;
+      max-height: 90vh;
+      position: relative;
+    }
+
+    .lightbox-content img {
+      max-width: 100%;
+      max-height: 100%;
+      border-radius: 8px;
+      box-shadow: 0 4px 25px rgba(0,0,0,0.4);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: -32px;
+      right: -32px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(0,0,0,0.8);
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     @media (max-width: 768px) {
@@ -389,19 +435,19 @@
             </figcaption>
           </figure>
         </div>
-                <div class="gallery-item">
+        <div class="gallery-item">
           <figure>
-            <img src="../assets/img/ikea-web-home-3.png" alt="Módulos de contenido e inspiración en la página principal">
+            <img src="../assets/img/ikea-web-home-3.png" alt="Secciones de la home con enfoque en servicios y catálogo">
             <figcaption class="gallery-caption">
-              Bloques de inspiración y soluciones para el hogar, pensados para guiar la navegación desde la página principal.
+              Secciones de la home que conectan catálogo, servicios y contenidos editoriales en un mismo recorrido.
             </figcaption>
           </figure>
         </div>
         <div class="gallery-item">
           <figure>
-            <img src="../assets/img/ikea-web-home-4.png" alt="Módulos de contenido e inspiración en la página principal">
+            <img src="../assets/img/ikea-web-home-4.png" alt="Detalle de navegación en la home de IKEA Cataluña">
             <figcaption class="gallery-caption">
-              Bloques de inspiración y soluciones para el hogar, pensados para guiar la navegación desde la página principal.
+              Detalle de navegación principal y jerarquía de categorías en la home del mercado catalán.
             </figcaption>
           </figure>
         </div>
@@ -584,7 +630,7 @@
           <figure>
             <img src="../assets/img/ikea-promo-10-1.png" alt="Banner web de promoción 10%">
             <figcaption class="gallery-caption">
-              Banner web para una promoción del 10% de descuento, siguiendo la guía de mensajes y jerarquía de CTA.
+              Banner web para una promoción del 10&nbsp;% de descuento, siguiendo la guía de mensajes y jerarquía de CTA.
             </figcaption>
           </figure>
         </div>
@@ -599,6 +645,7 @@
       </div>
     </section>
 
+    <!-- DELIVERY -->
     <section class="inline-gallery">
       <div class="gallery-grid">
         <div class="gallery-item">
@@ -651,6 +698,7 @@
         En las newsletters nacionales se integran módulos específicos para el mercado catalán, de forma que las personas reciban información relevante según su ubicación, sin perder la coherencia con la comunicación global. Así se refuerza tanto el conocimiento de los servicios disponibles como el tráfico a tienda y a la web.
       </p>
     </div>
+
     <section class="inline-gallery">
       <div class="gallery-grid">
         <div class="gallery-item">
@@ -669,7 +717,9 @@
             </figcaption>
           </figure>
         </div>
-            </section>
+      </div>
+    </section>
+
     <div class="content-section">
       <h3 class="subsection-title">Talleres y actividades</h3>
       <p>
@@ -679,7 +729,9 @@
         Estos contenidos se integran dentro de la web y la estrategia de comunicación digital, ayudando a reforzar el vínculo con la comunidad local y a posicionar IKEA como un punto de encuentro más allá de la compra de productos.
       </p>
     </div>
-        <section class="inline-gallery">
+
+    <section class="inline-gallery">
+      <div class="gallery-grid">
         <div class="gallery-item">
           <figure>
             <img src="../assets/img/ikea-talleres-1.png" alt="Página de talleres de SMÅLAND">
@@ -850,7 +902,16 @@
   <a href="#" id="scroll-to-top" title="Volver arriba"></a>
   <div data-include="../footer.html"></div>
 
+  <!-- Lightbox -->
+  <div class="lightbox-overlay" id="lightbox">
+    <div class="lightbox-content">
+      <button class="lightbox-close" id="lightbox-close" aria-label="Cerrar imagen ampliada">×</button>
+      <img src="" alt="" id="lightbox-img">
+    </div>
+  </div>
+
   <script>
+    // Navegación por tabs
     document.querySelectorAll('.project-tab').forEach(function(tab) {
       tab.addEventListener('click', function() {
         const targetId = this.getAttribute('data-target');
@@ -870,6 +931,7 @@
       });
     });
 
+    // Botón scroll-to-top
     const scrollBtn = document.getElementById('scroll-to-top');
     window.addEventListener('scroll', function () {
       if (window.scrollY > 300) {
@@ -881,6 +943,39 @@
     scrollBtn.addEventListener('click', function (e) {
       e.preventDefault();
       window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // LIGHTBOX PARA IMÁGENES
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxClose = document.getElementById('lightbox-close');
+
+    document.querySelectorAll('.inline-gallery img').forEach(img => {
+      img.addEventListener('click', () => {
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt || '';
+        lightbox.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    lightboxClose.addEventListener('click', () => {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) {
+        lightbox.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && lightbox.classList.contains('open')) {
+        lightbox.classList.remove('open');
+        document.body.style.overflow = '';
+      }
     });
   </script>
 
