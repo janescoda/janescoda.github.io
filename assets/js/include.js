@@ -140,7 +140,93 @@ function initScrollToTopButton() {
     });
 }
 
+// Navegación por tabs
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.project-tab').forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      const targetId = this.getAttribute('data-target');
+      const targetEl = document.getElementById(targetId);
 
+      if (targetEl) {
+        window.scrollTo({
+          top: targetEl.offsetTop - 80,
+          behavior: 'smooth'
+        });
+      }
+
+      document.querySelectorAll('.project-tab').forEach(function (btn) {
+        btn.classList.remove('active');
+      });
+      this.classList.add('active');
+    });
+  });
+
+  // Botón scroll-to-top
+  const scrollBtn = document.getElementById('scroll-to-top');
+  window.addEventListener('scroll', function () {
+    if (window.scrollY > 300) {
+      scrollBtn.classList.add('show-flex');
+    } else {
+      scrollBtn.classList.remove('show-flex');
+    }
+  });
+  scrollBtn.addEventListener('click', function (e) {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // LIGHTBOX PARA IMÁGENES
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxCaption = document.getElementById('lightbox-caption');
+  const lightboxClose = document.getElementById('lightbox-close');
+
+  document.querySelectorAll('.inline-gallery img').forEach(img => {
+    img.addEventListener('click', () => {
+      // Imagen
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt || '';
+
+      // Texto: primero figcaption, si no hay, alt
+      let captionText = '';
+      const figure = img.closest('figure');
+      if (figure) {
+        const figcaption = figure.querySelector('figcaption');
+        if (figcaption) {
+          captionText = figcaption.textContent.trim();
+        }
+      }
+      if (!captionText) {
+        captionText = img.alt || '';
+      }
+      lightboxCaption.textContent = captionText;
+
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+    lightboxImg.src = '';
+    lightboxCaption.textContent = '';
+  }
+
+  lightboxClose.addEventListener('click', closeLightbox);
+
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) {
+      closeLightbox();
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && lightbox.classList.contains('open')) {
+      closeLightbox();
+    }
+  });
+});
 
 
 /* ===============================
@@ -167,6 +253,7 @@ function initContactForm() {
     }
   });
 }
+
 
 
 
