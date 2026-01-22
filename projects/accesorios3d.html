@@ -158,6 +158,10 @@
       margin: 0 auto;
     }
 
+    .gallery-grid.web-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
     .gallery-grid-4 {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -239,6 +243,12 @@
       color: #1a1a1a;
     }
 
+    @media (max-width: 1024px) {
+      .gallery-grid.web-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
     @media (max-width: 768px) {
       .breadcrumb {
         padding: 1.5rem 5% 0;
@@ -272,6 +282,10 @@
       .gallery-grid {
         grid-template-columns: 1fr;
         gap: 2rem;
+      }
+
+      .gallery-grid.web-grid {
+        grid-template-columns: 1fr;
       }
 
       .credits-grid {
@@ -396,7 +410,9 @@
   <div data-include="../menu.html"></div>
 
   <nav class="breadcrumb">
-    <a href="../index.html">Portfolio</a>
+    <a href="../index.html">Inicio</a>
+    <span>/</span>
+    <a href="../portfolio.html">Portfolio</a>
     <span>/</span>
     <span class="current">Accesorios3d</span>
   </nav>
@@ -530,7 +546,7 @@
   <section class="project-gallery">
     <h2 class="gallery-title">Página web</h2>
     <section class="inline-gallery">
-      <div class="gallery-grid">
+      <div class="gallery-grid web-grid">
         <div class="gallery-item">
           <figure>
             <img src="../assets/img/accesorios3d-web-1.png" alt="Home de Accesorios3d con presentación de productos destacados">
