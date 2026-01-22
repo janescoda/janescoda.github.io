@@ -141,19 +141,31 @@
       gap: 2.5rem;
     }
 
-    .gallery-item img {
-      width: 100%;
-      display: block;
-      border-radius: 8px;
-      box-shadow: 0 2px 15px rgba(0,0,0,0.06);
-    }
-
     .gallery-grid.instagram-grid {
       grid-template-columns: repeat(4, 1fr);
     }
 
     .gallery-grid.web-grid {
       grid-template-columns: repeat(3, 1fr);
+    }
+
+    .gallery-item figure {
+      margin: 0;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      display: block;
+      border-radius: 8px;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.06);
+      cursor: zoom-in;
+    }
+
+    .gallery-caption {
+      margin-top: 0.6rem;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      color: #777;
     }
 
     .credits-section {
@@ -266,6 +278,79 @@
     #scroll-to-top:hover {
       background-color: #5a6268;
     }
+
+    .lightbox-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.75);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      padding: 1.5rem;
+    }
+
+    .lightbox-overlay.open {
+      display: flex;
+    }
+
+    .lightbox-content {
+      position: relative;
+      max-width: 90vw;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .lightbox-content img {
+      max-width: 100%;
+      max-height: 80vh;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 4px 25px rgba(0,0,0,0.4);
+      background: #000;
+    }
+
+    .lightbox-caption {
+      color: #f5f5f5;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      text-align: center;
+      max-width: 800px;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: -32px;
+      right: -32px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(0,0,0,0.8);
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @media (max-width: 768px) {
+      .lightbox-content {
+        max-width: 100vw;
+        max-height: 100vh;
+      }
+
+      .lightbox-close {
+        top: 8px;
+        right: 8px;
+      }
+    }
   </style>
 </head>
 
@@ -275,9 +360,7 @@
   <div data-include="../menu.html"></div>
 
   <nav class="breadcrumb">
-    <a href="../index.html">Inicio</a>
-    <span>/</span>
-    <a href="../portfolio.html">Portfolio</a>
+    <a href="../index.html">Portfolio</a>
     <span>/</span>
     <span class="current">Daina Media</span>
   </nav>
@@ -308,16 +391,15 @@
 
   <section class="project-content">
     <div class="content-section">
-<p>
-  Daina Media es una agencia de marketing digital creada como proyecto de máster, con un enfoque totalmente aplicado: pasar de la teoría a un caso real. El trabajo parte de un análisis del contexto económico, del sector digital y de las necesidades de pymes y profesionales, para plantear una agencia especializada en acompañar a pequeños negocios en su transición al entorno online.
-</p>
-<p>
-  A partir de herramientas como DAFO, benchmarking y el modelo Canvas, se definen segmentos de clientes, propuesta de valor, canales y estructura de costes, con un posicionamiento claro: una agencia cercana, ágil y creativa, orientada a marcas pequeñas que valoran la autenticidad y el diseño. En el ámbito del branding se trabajan propósito, misión, visión y personalidad, y se construye la marca Daina (ciervo, en catalán) como símbolo de agilidad y elegancia, reforzada por una identidad visual minimalista en blancos, negros y azules, tipografías sans serif y una estética profesional y muy digital.
-</p>
-<p>
-  Uno de los resultados clave del proyecto es la creación del sitio web dainamedia.com, desarrollado en WordPress con dominio y hosting propios. La web actúa como eje central de la marca, con secciones de “Nosotros”, “Servicios”, “Valores” y “Contacto” en tres idiomas (español, catalán e inglés), coherentes con la identidad visual definida. El lanzamiento se completa con la apertura de perfiles en LinkedIn, Instagram y Facebook, cada uno con un tono y una línea gráfica específicos, y un calendario inicial de contenidos orientado a presentar la marca, explicar servicios, mostrar el estilo visual y conectar con emprendedores y pequeñas empresas.
-</p>
-
+      <p>
+        Daina Media es una agencia de marketing digital creada como proyecto de máster, con un enfoque totalmente aplicado: pasar de la teoría a un caso real. El trabajo parte de un análisis del contexto económico, del sector digital y de las necesidades de pymes y profesionales, para plantear una agencia especializada en acompañar a pequeños negocios en su transición al entorno online.
+      </p>
+      <p>
+        A partir de herramientas como DAFO, benchmarking y el modelo Canvas, se definen segmentos de clientes, propuesta de valor, canales y estructura de costes, con un posicionamiento claro: una agencia cercana, ágil y creativa, orientada a marcas pequeñas que valoran la autenticidad y el diseño. En el ámbito del branding se trabajan propósito, misión, visión y personalidad, y se construye la marca Daina (ciervo, en catalán) como símbolo de agilidad y elegancia, reforzada por una identidad visual minimalista en blancos, negros y azules, tipografías sans serif y una estética profesional y muy digital.
+      </p>
+      <p>
+        Uno de los resultados clave del proyecto es la creación del sitio web dainamedia.com, desarrollado en WordPress con dominio y hosting propios. La web actúa como eje central de la marca, con secciones de “Nosotros”, “Servicios”, “Valores” y “Contacto” en tres idiomas (español, catalán e inglés), coherentes con la identidad visual definida. El lanzamiento se completa con la apertura de perfiles en LinkedIn, Instagram y Facebook, cada uno con un tono y una línea gráfica específicos, y un calendario inicial de contenidos orientado a presentar la marca, explicar servicios, mostrar el estilo visual y conectar con emprendedores y pequeñas empresas.
+      </p>
     </div>
   </section>
 
@@ -325,16 +407,36 @@
     <h2 class="gallery-title">Imágenes</h2>
     <div class="gallery-grid instagram-grid">
       <div class="gallery-item">
-        <img src="../assets/img/daina-ig-1.png" alt="Daina Media - Post Instagram 1">
+        <figure>
+          <img src="../assets/img/daina-ig-1.png" alt="Daina Media - Post Instagram 1">
+          <figcaption class="gallery-caption">
+            Publicación de Instagram presentando la identidad visual de Daina Media.
+          </figcaption>
+        </figure>
       </div>
       <div class="gallery-item">
-        <img src="../assets/img/daina-ig-2.png" alt="Daina Media - Post Instagram 2">
+        <figure>
+          <img src="../assets/img/daina-ig-2.png" alt="Daina Media - Post Instagram 2">
+          <figcaption class="gallery-caption">
+            Pieza gráfica orientada a comunicar los servicios de la agencia.
+          </figcaption>
+        </figure>
       </div>
       <div class="gallery-item">
-        <img src="../assets/img/daina-ig-3.png" alt="Daina Media - Post Instagram 3">
+        <figure>
+          <img src="../assets/img/daina-ig-3.png" alt="Daina Media - Post Instagram 3">
+          <figcaption class="gallery-caption">
+            Contenido visual pensado para reforzar el posicionamiento de la marca.
+          </figcaption>
+        </figure>
       </div>
       <div class="gallery-item">
-        <img src="../assets/img/daina-ig-4.png" alt="Daina Media - Post Instagram 4">
+        <figure>
+          <img src="../assets/img/daina-ig-4.png" alt="Daina Media - Post Instagram 4">
+          <figcaption class="gallery-caption">
+            Publicación con mensaje de valor dirigido a pymes y profesionales.
+          </figcaption>
+        </figure>
       </div>
     </div>
   </section>
@@ -343,22 +445,52 @@
     <h2 class="gallery-title">Página web</h2>
     <div class="gallery-grid web-grid">
       <div class="gallery-item">
-        <img src="../assets/img/daina-web-1.png" alt="Daina Media - Página de inicio">
+        <figure>
+          <img src="../assets/img/daina-web-1.png" alt="Daina Media - Página de inicio">
+          <figcaption class="gallery-caption">
+            Página de inicio de Daina Media con propuesta de valor y navegación principal.
+          </figcaption>
+        </figure>
       </div>
       <div class="gallery-item">
-        <img src="../assets/img/daina-web-2.png" alt="Daina Media - Sección Nosotros">
+        <figure>
+          <img src="../assets/img/daina-web-2.png" alt="Daina Media - Sección Nosotros">
+          <figcaption class="gallery-caption">
+            Sección “Nosotros” donde se presenta la filosofía y equipo de la agencia.
+          </figcaption>
+        </figure>
       </div>
       <div class="gallery-item">
-        <img src="../assets/img/daina-web-3.png" alt="Daina Media - Servicios">
+        <figure>
+          <img src="../assets/img/daina-web-3.png" alt="Daina Media - Servicios">
+          <figcaption class="gallery-caption">
+            Página de servicios con la oferta principal orientada a pequeñas marcas.
+          </figcaption>
+        </figure>
       </div>
       <div class="gallery-item">
-        <img src="../assets/img/daina-web-4.png" alt="Daina Media - Valores">
+        <figure>
+          <img src="../assets/img/daina-web-4.png" alt="Daina Media - Valores">
+          <figcaption class="gallery-caption">
+            Sección de valores que refuerza el posicionamiento cercano y honesto de la marca.
+          </figcaption>
+        </figure>
       </div>
       <div class="gallery-item">
-        <img src="../assets/img/daina-web-5.png" alt="Daina Media - Página de contacto">
+        <figure>
+          <img src="../assets/img/daina-web-5.png" alt="Daina Media - Página de contacto">
+          <figcaption class="gallery-caption">
+            Página de contacto con llamada a la acción clara para potenciales clientes.
+          </figcaption>
+        </figure>
       </div>
       <div class="gallery-item">
-        <img src="../assets/img/daina-web-6.png" alt="Daina Media - Detalle responsive">
+        <figure>
+          <img src="../assets/img/daina-web-6.png" alt="Daina Media - Detalle responsive">
+          <figcaption class="gallery-caption">
+            Vista responsive de la web, optimizada para dispositivos móviles.
+          </figcaption>
+        </figure>
       </div>
     </div>
   </section>
@@ -378,6 +510,16 @@
   <a href="#" id="scroll-to-top" title="Volver arriba"></a>
 
   <div data-include="../footer.html"></div>
+
+  <div class="lightbox-overlay" id="lightbox">
+    <div class="lightbox-content">
+      <button class="lightbox-close" id="lightbox-close" aria-label="Cerrar imagen ampliada">×</button>
+      <img src="" alt="" id="lightbox-img">
+      <div class="lightbox-caption" id="lightbox-caption"></div>
+    </div>
+  </div>
+
+  <script src="../assets/js/ikea-page.js" defer></script>
 
 </body>
 </html>
