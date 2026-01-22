@@ -158,8 +158,9 @@
       margin: 0 auto;
     }
 
+    /* AQUÍ el cambio para Página web: 2 columnas */
     .gallery-grid.web-grid {
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
     }
 
     .gallery-grid-4 {
@@ -182,17 +183,21 @@
       cursor: zoom-in;
     }
 
-    .gallery-grid-4.productos .gallery-item {
+    /* NUEVA forma de hacer productos cuadrados + texto debajo */
+
+    /* Contenedor cuadrado solo para la imagen de producto */
+    .gallery-grid-4.productos .producto-image-wrapper {
       position: relative;
       width: 100%;
-      padding-bottom: 100%;
+      padding-bottom: 100%;   /* Hace el contenedor cuadrado */
       overflow: hidden;
       border-radius: 8px;
       box-shadow: 0 2px 15px rgba(0,0,0,0.06);
       background: #f5f5f5;
     }
 
-    .gallery-grid-4.productos .gallery-item img {
+    /* Imagen ajustada dentro del cuadrado */
+    .gallery-grid-4.productos .producto-image-wrapper img {
       position: absolute;
       top: 0;
       left: 0;
@@ -202,6 +207,15 @@
       object-position: center;
       border-radius: 0;
       box-shadow: none;
+    }
+
+    /* Caption de productos debajo y bien alineado */
+    .gallery-grid-4.productos .gallery-caption {
+      margin-top: 0.8rem;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      color: #777;
+      text-align: center;
     }
 
     .gallery-caption {
@@ -509,7 +523,9 @@
       <div class="gallery-grid-4 productos">
         <div class="gallery-item">
           <figure>
-            <img src="../assets/img/accesorios3d-producto-1.png" alt="Jarrón decorativo impreso en 3D de Accesorios3d">
+            <div class="producto-image-wrapper">
+              <img src="../assets/img/accesorios3d-producto-1.png" alt="Jarrón decorativo impreso en 3D de Accesorios3d">
+            </div>
             <figcaption class="gallery-caption">
               Jarrón decorativo impreso en 3D con formas orgánicas, pensado como pieza central en estanterías o mesas auxiliares.
             </figcaption>
@@ -517,7 +533,9 @@
         </div>
         <div class="gallery-item">
           <figure>
-            <img src="../assets/img/accesorios3d-producto-2.png" alt="Macetero minimalista de Accesorios3d">
+            <div class="producto-image-wrapper">
+              <img src="../assets/img/accesorios3d-producto-2.png" alt="Macetero minimalista de Accesorios3d">
+            </div>
             <figcaption class="gallery-caption">
               Macetero minimalista diseñado para plantas pequeñas, combinando geometría limpia y textura sutil.
             </figcaption>
@@ -525,7 +543,9 @@
         </div>
         <div class="gallery-item">
           <figure>
-            <img src="../assets/img/accesorios3d-producto-3.png" alt="Organizador modular impreso en 3D para escritorio">
+            <div class="producto-image-wrapper">
+              <img src="../assets/img/accesorios3d-producto-3.png" alt="Organizador modular impreso en 3D para escritorio">
+            </div>
             <figcaption class="gallery-caption">
               Organizador modular de escritorio que ayuda a mantener ordenados bolígrafos, notas y pequeños objetos cotidianos.
             </figcaption>
@@ -533,7 +553,9 @@
         </div>
         <div class="gallery-item">
           <figure>
-            <img src="../assets/img/accesorios3d-producto-4.png" alt="Portavelas geométrico de Accesorios3d">
+            <div class="producto-image-wrapper">
+              <img src="../assets/img/accesorios3d-producto-4.png" alt="Portavelas geométrico de Accesorios3d">
+            </div>
             <figcaption class="gallery-caption">
               Portavelas con estructura geométrica, pensado para crear ambientes cálidos y detalles decorativos en el hogar.
             </figcaption>
@@ -608,3 +630,4 @@
   <script src="../assets/js/ikea-page.js" defer></script>
 </body>
 </html>
+
