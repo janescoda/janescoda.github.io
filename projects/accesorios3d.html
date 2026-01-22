@@ -152,6 +152,12 @@
       gap: 2.5rem;
     }
 
+    .gallery-grid.single-centered {
+      grid-template-columns: 1fr;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
     .gallery-grid-4 {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -207,6 +213,7 @@
       font-size: 0.9rem;
       line-height: 1.5;
       color: #777;
+      text-align: center;
     }
 
     .credits-section {
@@ -451,7 +458,7 @@
   <section class="project-gallery">
     <h2 class="gallery-title">Logo</h2>
     <section class="inline-gallery">
-      <div class="gallery-grid">
+      <div class="gallery-grid single-centered">
         <div class="gallery-item">
           <figure>
             <img src="../assets/img/accesorios3d-logo.png" alt="Logo principal de Accesorios3d en versión horizontal">
@@ -467,7 +474,7 @@
   <section class="project-gallery">
     <h2 class="gallery-title">Icono del sitio</h2>
     <section class="inline-gallery">
-      <div class="gallery-grid">
+      <div class="gallery-grid single-centered">
         <div class="gallery-item">
           <figure>
             <img src="../assets/img/accesorios3d-icon.png" alt="Icono reducido de Accesorios3d para favicon y aplicaciones">
@@ -483,7 +490,7 @@
   <section class="project-gallery">
     <h2 class="gallery-title">Paleta de colores</h2>
     <section class="inline-gallery">
-      <div class="gallery-grid">
+      <div class="gallery-grid single-centered">
         <div class="gallery-item">
           <figure>
             <img src="../assets/img/accesorios3d-paleta-colores.png" alt="Paleta de colores de Accesorios3d con tonos neutros y acentos cálidos">
@@ -601,3 +608,4 @@
   <script src="../assets/js/ikea-page.js" defer></script>
 </body>
 </html>
+
