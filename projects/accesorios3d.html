@@ -140,17 +140,16 @@
       text-align: center;
     }
 
-    .single-image {
-      max-width: 500px;
-      margin: 0 auto;
+    .inline-gallery {
+      max-width: 1400px;
+      margin: 2rem auto 3rem;
+      padding: 0 5%;
     }
 
-    .single-image img {
-      width: 100%;
-      display: block;
-      border-radius: 8px;
-      box-shadow: 0 2px 15px rgba(0,0,0,0.06);
-      cursor: zoom-in; /* para mantener la pista visual de que se amplía */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2.5rem;
     }
 
     .gallery-grid-4 {
@@ -161,7 +160,19 @@
       margin: 0 auto;
     }
 
-    .gallery-grid-4 .gallery-item img {
+    .gallery-grid-web {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .gallery-item figure {
+      margin: 0;
+    }
+
+    .gallery-item img {
       width: 100%;
       display: block;
       border-radius: 8px;
@@ -189,23 +200,13 @@
       object-position: center;
       border-radius: 0;
       box-shadow: none;
-      cursor: zoom-in;
     }
 
-    .gallery-grid-web {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2.5rem;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    .gallery-grid-web .gallery-item img {
-      width: 100%;
-      display: block;
-      border-radius: 8px;
-      box-shadow: 0 2px 15px rgba(0,0,0,0.06);
-      cursor: zoom-in;
+    .gallery-caption {
+      margin-top: 0.6rem;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      color: #777;
     }
 
     .credits-section {
@@ -275,6 +276,11 @@
         gap: 2rem;
       }
 
+      .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
       .credits-grid {
         gap: 0.8rem 2rem;
       }
@@ -317,9 +323,6 @@
       background-color: #5a6268;
     }
 
-    /* Si reutilizas exactamente el mismo lightbox que IKEA,
-       puedes copiar también sus estilos aquí (lightbox-overlay, etc.)
-       o tenerlos en un CSS común. */
     .lightbox-overlay {
       position: fixed;
       inset: 0;
@@ -397,7 +400,6 @@
 
 <body>
 
-  <script src="../assets/js/include.js" defer></script>
   <div data-include="../menu.html"></div>
 
   <nav class="breadcrumb">
@@ -448,59 +450,130 @@
 
   <section class="project-gallery">
     <h2 class="gallery-title">Logo</h2>
-    <div class="single-image">
-      <img src="../assets/img/accesorios3d-logo.png" alt="Accesorios3d - Logo de la marca">
-    </div>
+    <section class="inline-gallery">
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <figure>
+            <img src="../assets/img/accesorios3d-logo.png" alt="Logo principal de Accesorios3d en versión horizontal">
+            <figcaption class="gallery-caption">
+              Logo principal de Accesorios3d, diseñado con líneas minimalistas para transmitir una marca contemporánea y versátil.
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
   </section>
 
   <section class="project-gallery">
     <h2 class="gallery-title">Icono del sitio</h2>
-    <div class="single-image">
-      <img src="../assets/img/accesorios3d-icon.png" alt="Accesorios3d - Icono del sitio">
-    </div>
+    <section class="inline-gallery">
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <figure>
+            <img src="../assets/img/accesorios3d-icon.png" alt="Icono reducido de Accesorios3d para favicon y aplicaciones">
+            <figcaption class="gallery-caption">
+              Icono simplificado de Accesorios3d pensado para favicon, aplicaciones y usos en formato reducido manteniendo la identidad de marca.
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
   </section>
 
   <section class="project-gallery">
     <h2 class="gallery-title">Paleta de colores</h2>
-    <div class="single-image">
-      <img src="../assets/img/accesorios3d-paleta-colores.png" alt="Accesorios3d - Paleta de colores">
-    </div>
+    <section class="inline-gallery">
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <figure>
+            <img src="../assets/img/accesorios3d-paleta-colores.png" alt="Paleta de colores de Accesorios3d con tonos neutros y acentos cálidos">
+            <figcaption class="gallery-caption">
+              Paleta cromática de Accesorios3d basada en tonos neutros y acentos cálidos, pensada para encajar con estilos de interiorismo actuales.
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
   </section>
 
   <section class="project-gallery">
     <h2 class="gallery-title">Productos</h2>
-    <div class="gallery-grid-4 productos">
-      <div class="gallery-item">
-        <img src="../assets/img/accesorios3d-producto-1.png" alt="Accesorios3d - Producto 1">
+    <section class="inline-gallery">
+      <div class="gallery-grid-4 productos">
+        <div class="gallery-item">
+          <figure>
+            <img src="../assets/img/accesorios3d-producto-1.png" alt="Jarrón decorativo impreso en 3D de Accesorios3d">
+            <figcaption class="gallery-caption">
+              Jarrón decorativo impreso en 3D con formas orgánicas, pensado como pieza central en estanterías o mesas auxiliares.
+            </figcaption>
+          </figure>
+        </div>
+        <div class="gallery-item">
+          <figure>
+            <img src="../assets/img/accesorios3d-producto-2.png" alt="Macetero minimalista de Accesorios3d">
+            <figcaption class="gallery-caption">
+              Macetero minimalista diseñado para plantas pequeñas, combinando geometría limpia y textura sutil.
+            </figcaption>
+          </figure>
+        </div>
+        <div class="gallery-item">
+          <figure>
+            <img src="../assets/img/accesorios3d-producto-3.png" alt="Organizador modular impreso en 3D para escritorio">
+            <figcaption class="gallery-caption">
+              Organizador modular de escritorio que ayuda a mantener ordenados bolígrafos, notas y pequeños objetos cotidianos.
+            </figcaption>
+          </figure>
+        </div>
+        <div class="gallery-item">
+          <figure>
+            <img src="../assets/img/accesorios3d-producto-4.png" alt="Portavelas geométrico de Accesorios3d">
+            <figcaption class="gallery-caption">
+              Portavelas con estructura geométrica, pensado para crear ambientes cálidos y detalles decorativos en el hogar.
+            </figcaption>
+          </figure>
+        </div>
       </div>
-      <div class="gallery-item">
-        <img src="../assets/img/accesorios3d-producto-2.png" alt="Accesorios3d - Producto 2">
-      </div>
-      <div class="gallery-item">
-        <img src="../assets/img/accesorios3d-producto-3.png" alt="Accesorios3d - Producto 3">
-      </div>
-      <div class="gallery-item">
-        <img src="../assets/img/accesorios3d-producto-4.png" alt="Accesorios3d - Producto 4">
-      </div>
-    </div>
+    </section>
   </section>
 
   <section class="project-gallery">
     <h2 class="gallery-title">Página web</h2>
-    <div class="gallery-grid-web">
-      <div class="gallery-item">
-        <img src="../assets/img/accesorios3d-web-1.png" alt="Accesorios3d - Diseño web 1">
+    <section class="inline-gallery">
+      <div class="gallery-grid-web">
+        <div class="gallery-item">
+          <figure>
+            <img src="../assets/img/accesorios3d-web-1.png" alt="Home de Accesorios3d con presentación de productos destacados">
+            <figcaption class="gallery-caption">
+              Página de inicio de Accesorios3d, donde se presentan los productos destacados y la propuesta de valor de la marca.
+            </figcaption>
+          </figure>
+        </div>
+        <div class="gallery-item">
+          <figure>
+            <img src="../assets/img/accesorios3d-web-2.png" alt="Listado de productos de Accesorios3d con filtros básicos">
+            <figcaption class="gallery-caption">
+              Listado de productos con navegación sencilla y visual, pensado para explorar las piezas según gustos y necesidades.
+            </figcaption>
+          </figure>
+        </div>
+        <div class="gallery-item">
+          <figure>
+            <img src="../assets/img/accesorios3d-web-4.png" alt="Detalle de producto de Accesorios3d con opciones de personalización">
+            <figcaption class="gallery-caption">
+              Página de detalle de producto con opciones de personalización de medidas, colores y acabados antes de realizar el pedido.
+            </figcaption>
+          </figure>
+        </div>
+        <div class="gallery-item">
+          <figure>
+            <img src="../assets/img/accesorios3d-web-3.png" alt="Vista de carrito o resumen de compra en Accesorios3d">
+            <figcaption class="gallery-caption">
+              Vista de carrito y resumen de compra, diseñada para que el proceso sea claro, rápido y sin fricciones.
+            </figcaption>
+          </figure>
+        </div>
       </div>
-      <div class="gallery-item">
-        <img src="../assets/img/accesorios3d-web-2.png" alt="Accesorios3d - Diseño web 2">
-      </div>
-      <div class="gallery-item">
-        <img src="../assets/img/accesorios3d-web-4.png" alt="Accesorios3d - Diseño web 3">
-      </div>
-      <div class="gallery-item">
-        <img src="../assets/img/accesorios3d-web-3.png" alt="Accesorios3d - Diseño web 4">
-      </div>
-    </div>
+    </section>
   </section>
 
   <section class="credits-section">
@@ -524,6 +597,7 @@
     </div>
   </div>
 
+  <script src="../assets/js/include.js" defer></script>
+  <script src="../assets/js/ikea-page.js" defer></script>
 </body>
 </html>
-
