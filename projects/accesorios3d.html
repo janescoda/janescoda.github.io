@@ -146,9 +146,9 @@
       padding: 0 5%;
     }
 
+    /* Base de grid (similar a Daina) */
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
       gap: 2.5rem;
     }
 
@@ -158,7 +158,7 @@
       margin: 0 auto;
     }
 
-    /* AQUÍ el cambio para Página web: 2 columnas */
+    /* Web Accesorios: 2 columnas en escritorio, misma idea que Daina */
     .gallery-grid.web-grid {
       grid-template-columns: repeat(2, 1fr);
     }
@@ -183,20 +183,17 @@
       cursor: zoom-in;
     }
 
-    /* NUEVA forma de hacer productos cuadrados + texto debajo */
-
-    /* Contenedor cuadrado solo para la imagen de producto */
+    /* Productos cuadrados + caption debajo */
     .gallery-grid-4.productos .producto-image-wrapper {
       position: relative;
       width: 100%;
-      padding-bottom: 100%;   /* Hace el contenedor cuadrado */
+      padding-bottom: 100%;
       overflow: hidden;
       border-radius: 8px;
       box-shadow: 0 2px 15px rgba(0,0,0,0.06);
       background: #f5f5f5;
     }
 
-    /* Imagen ajustada dentro del cuadrado */
     .gallery-grid-4.productos .producto-image-wrapper img {
       position: absolute;
       top: 0;
@@ -209,7 +206,6 @@
       box-shadow: none;
     }
 
-    /* Caption de productos debajo y bien alineado */
     .gallery-grid-4.productos .gallery-caption {
       margin-top: 0.8rem;
       font-size: 0.9rem;
@@ -567,42 +563,21 @@
 
   <section class="project-gallery">
     <h2 class="gallery-title">Página web</h2>
-    <section class="inline-gallery">
-      <div class="gallery-grid web-grid">
-        <div class="gallery-item">
-          <figure>
-            <img src="../assets/img/accesorios3d-web-1.png" alt="Home de Accesorios3d con presentación de productos destacados">
-            <figcaption class="gallery-caption">
-              Página de inicio de Accesorios3d, donde se presentan los productos destacados y la propuesta de valor de la marca.
-            </figcaption>
-          </figure>
-        </div>
-        <div class="gallery-item">
-          <figure>
-            <img src="../assets/img/accesorios3d-web-2.png" alt="Listado de productos de Accesorios3d con filtros básicos">
-            <figcaption class="gallery-caption">
-              Listado de productos con navegación sencilla y visual, pensado para explorar las piezas según gustos y necesidades.
-            </figcaption>
-          </figure>
-        </div>
-        <div class="gallery-item">
-          <figure>
-            <img src="../assets/img/accesorios3d-web-4.png" alt="Detalle de producto de Accesorios3d con opciones de personalización">
-            <figcaption class="gallery-caption">
-              Página de detalle de producto con opciones de personalización de medidas, colores y acabados antes de realizar el pedido.
-            </figcaption>
-          </figure>
-        </div>
-        <div class="gallery-item">
-          <figure>
-            <img src="../assets/img/accesorios3d-web-3.png" alt="Vista de carrito o resumen de compra en Accesorios3d">
-            <figcaption class="gallery-caption">
-              Vista de carrito y resumen de compra, diseñada para que el proceso sea claro, rápido y sin fricciones.
-            </figcaption>
-          </figure>
-        </div>
+    <!-- Misma estructura que en Daina Media -->
+    <div class="gallery-grid web-grid">
+      <div class="gallery-item">
+        <img src="../assets/img/accesorios3d-web-1.png" alt="Home de Accesorios3d con presentación de productos destacados">
       </div>
-    </section>
+      <div class="gallery-item">
+        <img src="../assets/img/accesorios3d-web-2.png" alt="Listado de productos de Accesorios3d con filtros básicos">
+      </div>
+      <div class="gallery-item">
+        <img src="../assets/img/accesorios3d-web-4.png" alt="Detalle de producto de Accesorios3d con opciones de personalización">
+      </div>
+      <div class="gallery-item">
+        <img src="../assets/img/accesorios3d-web-3.png" alt="Vista de carrito o resumen de compra en Accesorios3d">
+      </div>
+    </div>
   </section>
 
   <section class="credits-section">
@@ -630,4 +605,3 @@
   <script src="../assets/js/ikea-page.js" defer></script>
 </body>
 </html>
-
