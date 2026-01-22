@@ -140,27 +140,21 @@
       text-align: center;
     }
 
-    .inline-gallery {
-      max-width: 1400px;
-      margin: 2rem auto 3rem;
-      padding: 0 5%;
-    }
-
-    /* Base de grid (similar a Daina) */
-    .gallery-grid {
-      display: grid;
-      gap: 2.5rem;
-    }
-
-    .gallery-grid.single-centered {
-      grid-template-columns: 1fr;
-      max-width: 600px;
+    .single-image {
+      max-width: 500px;
       margin: 0 auto;
     }
 
-    /* Web Accesorios: 2 columnas en escritorio, misma idea que Daina */
-    .gallery-grid.web-grid {
-      grid-template-columns: repeat(2, 1fr);
+    .single-image figure {
+      margin: 0;
+    }
+
+    .single-image img {
+      width: 100%;
+      display: block;
+      border-radius: 8px;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.06);
+      cursor: zoom-in;
     }
 
     .gallery-grid-4 {
@@ -171,20 +165,13 @@
       margin: 0 auto;
     }
 
-    .gallery-item figure {
+    .gallery-grid-4 .gallery-item figure {
       margin: 0;
+      display: flex;
+      flex-direction: column;
     }
 
-    .gallery-item img {
-      width: 100%;
-      display: block;
-      border-radius: 8px;
-      box-shadow: 0 2px 15px rgba(0,0,0,0.06);
-      cursor: zoom-in;
-    }
-
-    /* Productos cuadrados + caption debajo */
-    .gallery-grid-4.productos .producto-image-wrapper {
+    .gallery-grid-4.productos .gallery-item-image {
       position: relative;
       width: 100%;
       padding-bottom: 100%;
@@ -194,7 +181,7 @@
       background: #f5f5f5;
     }
 
-    .gallery-grid-4.productos .producto-image-wrapper img {
+    .gallery-grid-4.productos .gallery-item-image img {
       position: absolute;
       top: 0;
       left: 0;
@@ -202,16 +189,28 @@
       height: 100%;
       object-fit: cover;
       object-position: center;
-      border-radius: 0;
-      box-shadow: none;
+      display: block;
+      cursor: zoom-in;
     }
 
-    .gallery-grid-4.productos .gallery-caption {
-      margin-top: 0.8rem;
-      font-size: 0.9rem;
-      line-height: 1.5;
-      color: #777;
-      text-align: center;
+    .gallery-grid-web {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .gallery-grid-web .gallery-item figure {
+      margin: 0;
+    }
+
+    .gallery-grid-web .gallery-item img {
+      width: 100%;
+      display: block;
+      border-radius: 8px;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.06);
+      cursor: zoom-in;
     }
 
     .gallery-caption {
@@ -219,7 +218,6 @@
       font-size: 0.9rem;
       line-height: 1.5;
       color: #777;
-      text-align: center;
     }
 
     .credits-section {
@@ -253,12 +251,6 @@
       color: #1a1a1a;
     }
 
-    @media (max-width: 1024px) {
-      .gallery-grid.web-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
     @media (max-width: 768px) {
       .breadcrumb {
         padding: 1.5rem 5% 0;
@@ -289,13 +281,10 @@
         gap: 2rem;
       }
 
-      .gallery-grid {
+      .gallery-grid-web {
         grid-template-columns: 1fr;
+        max-width: 600px;
         gap: 2rem;
-      }
-
-      .gallery-grid.web-grid {
-        grid-template-columns: 1fr;
       }
 
       .credits-grid {
@@ -417,6 +406,7 @@
 
 <body>
 
+  <script src="../assets/js/include.js" defer></script>
   <div data-include="../menu.html"></div>
 
   <nav class="breadcrumb">
@@ -467,115 +457,120 @@
 
   <section class="project-gallery">
     <h2 class="gallery-title">Logo</h2>
-    <section class="inline-gallery">
-      <div class="gallery-grid single-centered">
-        <div class="gallery-item">
-          <figure>
-            <img src="../assets/img/accesorios3d-logo.png" alt="Logo principal de Accesorios3d en versión horizontal">
-            <figcaption class="gallery-caption">
-              Logo principal de Accesorios3d, diseñado con líneas minimalistas para transmitir una marca contemporánea y versátil.
-            </figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
+    <div class="single-image">
+      <figure>
+        <img src="../assets/img/accesorios3d-logo.png" alt="Accesorios3d - Logo de la marca">
+        <figcaption class="gallery-caption">
+          Logotipo principal de Accesorios3d aplicado sobre fondo neutro.
+        </figcaption>
+      </figure>
+    </div>
   </section>
 
   <section class="project-gallery">
     <h2 class="gallery-title">Icono del sitio</h2>
-    <section class="inline-gallery">
-      <div class="gallery-grid single-centered">
-        <div class="gallery-item">
-          <figure>
-            <img src="../assets/img/accesorios3d-icon.png" alt="Icono reducido de Accesorios3d para favicon y aplicaciones">
-            <figcaption class="gallery-caption">
-              Icono simplificado de Accesorios3d pensado para favicon, aplicaciones y usos en formato reducido manteniendo la identidad de marca.
-            </figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
+    <div class="single-image">
+      <figure>
+        <img src="../assets/img/accesorios3d-icon.png" alt="Accesorios3d - Icono del sitio">
+        <figcaption class="gallery-caption">
+          Icono de la marca diseñado para favicon y aplicaciones digitales.
+        </figcaption>
+      </figure>
+    </div>
   </section>
 
   <section class="project-gallery">
     <h2 class="gallery-title">Paleta de colores</h2>
-    <section class="inline-gallery">
-      <div class="gallery-grid single-centered">
-        <div class="gallery-item">
-          <figure>
-            <img src="../assets/img/accesorios3d-paleta-colores.png" alt="Paleta de colores de Accesorios3d con tonos neutros y acentos cálidos">
-            <figcaption class="gallery-caption">
-              Paleta cromática de Accesorios3d basada en tonos neutros y acentos cálidos, pensada para encajar con estilos de interiorismo actuales.
-            </figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
+    <div class="single-image">
+      <figure>
+        <img src="../assets/img/accesorios3d-paleta-colores.png" alt="Accesorios3d - Paleta de colores">
+        <figcaption class="gallery-caption">
+          Paleta cromática de Accesorios3d basada en tonos neutros y acentos suaves.
+        </figcaption>
+      </figure>
+    </div>
   </section>
 
   <section class="project-gallery">
     <h2 class="gallery-title">Productos</h2>
-    <section class="inline-gallery">
-      <div class="gallery-grid-4 productos">
-        <div class="gallery-item">
-          <figure>
-            <div class="producto-image-wrapper">
-              <img src="../assets/img/accesorios3d-producto-1.png" alt="Jarrón decorativo impreso en 3D de Accesorios3d">
-            </div>
-            <figcaption class="gallery-caption">
-              Jarrón decorativo impreso en 3D con formas orgánicas, pensado como pieza central en estanterías o mesas auxiliares.
-            </figcaption>
-          </figure>
-        </div>
-        <div class="gallery-item">
-          <figure>
-            <div class="producto-image-wrapper">
-              <img src="../assets/img/accesorios3d-producto-2.png" alt="Macetero minimalista de Accesorios3d">
-            </div>
-            <figcaption class="gallery-caption">
-              Macetero minimalista diseñado para plantas pequeñas, combinando geometría limpia y textura sutil.
-            </figcaption>
-          </figure>
-        </div>
-        <div class="gallery-item">
-          <figure>
-            <div class="producto-image-wrapper">
-              <img src="../assets/img/accesorios3d-producto-3.png" alt="Organizador modular impreso en 3D para escritorio">
-            </div>
-            <figcaption class="gallery-caption">
-              Organizador modular de escritorio que ayuda a mantener ordenados bolígrafos, notas y pequeños objetos cotidianos.
-            </figcaption>
-          </figure>
-        </div>
-        <div class="gallery-item">
-          <figure>
-            <div class="producto-image-wrapper">
-              <img src="../assets/img/accesorios3d-producto-4.png" alt="Portavelas geométrico de Accesorios3d">
-            </div>
-            <figcaption class="gallery-caption">
-              Portavelas con estructura geométrica, pensado para crear ambientes cálidos y detalles decorativos en el hogar.
-            </figcaption>
-          </figure>
-        </div>
+    <div class="gallery-grid-4 productos">
+      <div class="gallery-item">
+        <figure>
+          <div class="gallery-item-image">
+            <img src="../assets/img/accesorios3d-producto-1.png" alt="Accesorios3d - Producto 1">
+          </div>
+          <figcaption class="gallery-caption">
+            Pieza decorativa impresa en 3D con acabado minimalista.
+          </figcaption>
+        </figure>
       </div>
-    </section>
+      <div class="gallery-item">
+        <figure>
+          <div class="gallery-item-image">
+            <img src="../assets/img/accesorios3d-producto-2.png" alt="Accesorios3d - Producto 2">
+          </div>
+          <figcaption class="gallery-caption">
+            Accesorio funcional para el hogar con diseño geométrico.
+          </figcaption>
+        </figure>
+      </div>
+      <div class="gallery-item">
+        <figure>
+          <div class="gallery-item-image">
+            <img src="../assets/img/accesorios3d-producto-3.png" alt="Accesorios3d - Producto 3">
+          </div>
+          <figcaption class="gallery-caption">
+            Objeto decorativo pensado para integrarse en interiores contemporáneos.
+          </figcaption>
+        </figure>
+      </div>
+      <div class="gallery-item">
+        <figure>
+          <div class="gallery-item-image">
+            <img src="../assets/img/accesorios3d-producto-4.png" alt="Accesorios3d - Producto 4">
+          </div>
+          <figcaption class="gallery-caption">
+            Accesorio en 3D que combina funcionalidad y estética minimalista.
+          </figcaption>
+        </figure>
+      </div>
+    </div>
   </section>
 
   <section class="project-gallery">
     <h2 class="gallery-title">Página web</h2>
-    <!-- Misma estructura que en Daina Media -->
-    <div class="gallery-grid web-grid">
+    <div class="gallery-grid-web">
       <div class="gallery-item">
-        <img src="../assets/img/accesorios3d-web-1.png" alt="Home de Accesorios3d con presentación de productos destacados">
+        <figure>
+          <img src="../assets/img/accesorios3d-web-1.png" alt="Accesorios3d - Diseño web 1">
+          <figcaption class="gallery-caption">
+            Vista de la página de inicio con presentación de la marca y productos destacados.
+          </figcaption>
+        </figure>
       </div>
       <div class="gallery-item">
-        <img src="../assets/img/accesorios3d-web-2.png" alt="Listado de productos de Accesorios3d con filtros básicos">
+        <figure>
+          <img src="../assets/img/accesorios3d-web-2.png" alt="Accesorios3d - Diseño web 2">
+          <figcaption class="gallery-caption">
+            Sección de catálogo con diferentes piezas de decoración impresas en 3D.
+          </figcaption>
+        </figure>
       </div>
       <div class="gallery-item">
-        <img src="../assets/img/accesorios3d-web-4.png" alt="Detalle de producto de Accesorios3d con opciones de personalización">
+        <figure>
+          <img src="../assets/img/accesorios3d-web-4.png" alt="Accesorios3d - Diseño web 3">
+          <figcaption class="gallery-caption">
+            Detalle de la experiencia de producto y personalización en la web.
+          </figcaption>
+        </figure>
       </div>
       <div class="gallery-item">
-        <img src="../assets/img/accesorios3d-web-3.png" alt="Vista de carrito o resumen de compra en Accesorios3d">
+        <figure>
+          <img src="../assets/img/accesorios3d-web-3.png" alt="Accesorios3d - Diseño web 4">
+          <figcaption class="gallery-caption">
+            Diseño responsive pensado para una navegación clara y sencilla.
+          </figcaption>
+        </figure>
       </div>
     </div>
   </section>
@@ -601,7 +596,7 @@
     </div>
   </div>
 
-  <script src="../assets/js/include.js" defer></script>
   <script src="../assets/js/ikea-page.js" defer></script>
+
 </body>
 </html>
