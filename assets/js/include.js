@@ -5,16 +5,18 @@
   const lightboxClose = document.getElementById('lightbox-close');
 
   if (lightbox && lightboxImg && lightboxCaption && lightboxClose) {
-    const clickableImages = document.querySelectorAll(
-      [
-        '.inline-gallery img',          // IKEA
-        '.single-image img',            // logos, iconos, paleta
-        '.gallery-grid img',            // muchas páginas
-        '.gallery-grid-4 img',          // Accesorios3d productos
-        '.gallery-grid-web img',        // webs
-        '.gallery-item-vertical img'    // fotos verticales La Prairié
-      ].join(', ')
-    );
+const clickableImages = document.querySelectorAll(
+  [
+    '.inline-gallery img',
+    '.single-image img',
+    '.project-gallery .gallery-grid img',
+    '.project-gallery .gallery-grid-4 img',
+    '.project-gallery .gallery-grid-web img',
+    '.project-gallery .gallery-grid-publicidad img',
+    '.project-gallery .gallery-grid-vertical img',
+    '.gallery-item-vertical img'
+  ].join(', ')
+);
 
     clickableImages.forEach(img => {
       img.addEventListener('click', () => {
@@ -60,3 +62,4 @@
       }
     });
   }
+
