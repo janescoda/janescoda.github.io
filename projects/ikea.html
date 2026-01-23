@@ -214,12 +214,30 @@
       margin: 0;
     }
 
-    .gallery-item img {
+    /* NUEVO: contenedor para unificar tamaño de TODAS las imágenes de las galerías */
+    .gallery-item-web {
+      position: relative;
       width: 100%;
-      display: block;
+      /* 16:9: buen estándar para capturas de web/app/banners */
+      padding-bottom: 56.25%;
+      overflow: hidden;
       border-radius: 8px;
       box-shadow: 0 2px 15px rgba(0,0,0,0.06);
+      background: #f5f5f5;
+    }
+
+    .gallery-item-web img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* pon 'contain' si quieres ver todo sin recorte */
+      object-position: center;
+      display: block;
       cursor: zoom-in;
+      border-radius: 0;
+      box-shadow: none; /* para no duplicar sombra */
     }
 
     .gallery-caption {
@@ -436,31 +454,41 @@
       <div class="gallery-grid">
         <div class="gallery-item">
           <figure>
-            <img src="../assets/img/ikea-web-home-1.png" alt="Home de IKEA Cataluña con contenidos en catalán actualizados">
+            <div class="gallery-item-web">
+              <img src="../assets/img/ikea-web-home-1.png" alt="Home de IKEA Cataluña con contenidos en catalán actualizados">
+            </div>
             <figcaption class="gallery-caption">
-Página de categoría <i>Mobles d’emmagatzematge</i>, uno de los tipos de página que se revisan para asegurar que la selección de productos, <i>banners</i> y recursos visuales sea correcta y alineada con la estrategia.
+              Página de categoría <i>Mobles d’emmagatzematge</i>, uno de los tipos de página que se revisan para asegurar que la selección de productos, <i>banners</i> y recursos visuales sea correcta y alineada con la estrategia.
             </figcaption>
           </figure>
         </div>
         <div class="gallery-item">
           <figure>
-            <img src="../assets/img/ikea-web-home-2.png" alt="Módulos de contenido e inspiración en la página principal">
+            <div class="gallery-item-web">
+              <img src="../assets/img/ikea-web-home-2.png" alt="Módulos de contenido e inspiración en la página principal">
+            </div>
             <figcaption class="gallery-caption">
-Página de estancia <i>Cocinas</i>, dentro de las páginas de inspiración que se actualizan periódicamente para ofrecer nuevas ideas y facilitar que las personas encuentren productos según la zona del hogar.</figcaption>
+              Página de estancia <i>Cocinas</i>, dentro de las páginas de inspiración que se actualizan periódicamente para ofrecer nuevas ideas y facilitar que las personas encuentren productos según la zona del hogar.
+            </figcaption>
           </figure>
         </div>
         <div class="gallery-item">
           <figure>
-            <img src="../assets/img/ikea-web-home-3.png" alt="Secciones de la home con enfoque en servicios y catálogo">
+            <div class="gallery-item-web">
+              <img src="../assets/img/ikea-web-home-3.png" alt="Secciones de la home con enfoque en servicios y catálogo">
+            </div>
             <figcaption class="gallery-caption">
-Página de servicios, donde se prioriza la claridad y la actualización de la información para que se entienda fácilmente qué ofrece cada solución.            </figcaption>
+              Página de servicios, donde se prioriza la claridad y la actualización de la información para que se entienda fácilmente qué ofrece cada solución.
+            </figcaption>
           </figure>
         </div>
         <div class="gallery-item">
           <figure>
-            <img src="../assets/img/ikea-web-home-4.png" alt="Detalle de navegación en la home de IKEA Cataluña">
+            <div class="gallery-item-web">
+              <img src="../assets/img/ikea-web-home-4.png" alt="Detalle de navegación en la home de IKEA Cataluña">
+            </div>
             <figcaption class="gallery-caption">
-Página de inicio, optimizada como punto de partida para la navegación y conexión con el resto de contenidos.
+              Página de inicio, optimizada como punto de partida para la navegación y conexión con el resto de contenidos.
             </figcaption>
           </figure>
         </div>
@@ -484,33 +512,41 @@ Página de inicio, optimizada como punto de partida para la navegación y conexi
       <div class="gallery-grid">
         <div class="gallery-item">
           <figure>
-            <img src="../assets/img/ikea-seo-meta-1.png" alt="Metatitle y meta description optimizados en catalán">
+            <div class="gallery-item-web">
+              <img src="../assets/img/ikea-seo-meta-1.png" alt="Metatitle y meta description optimizados en catalán">
+            </div>
             <figcaption class="gallery-caption">
-Programa de <i>SEO</i> para adaptar las distintas páginas y optimizar las opciones de búsqueda y navegación disponibles.
+              Programa de <i>SEO</i> para adaptar las distintas páginas y optimizar las opciones de búsqueda y navegación disponibles.
             </figcaption>
           </figure>
         </div>
         <div class="gallery-item">
           <figure>
-            <img src="../assets/img/ikea-seo-meta-2.png" alt="Slugs y estructura de URL en la versión catalana">
+            <div class="gallery-item-web">
+              <img src="../assets/img/ikea-seo-meta-2.png" alt="Slugs y estructura de URL en la versión catalana">
+            </div>
             <figcaption class="gallery-caption">
-<i>SEO</i> on page en una página de categoría de producto, donde se trabaja un texto explicativo sobre el producto y sus relacionados para mejorar la relevancia y tráfico orgánico.
-
+              <i>SEO</i> on page en una página de categoría de producto, donde se trabaja un texto explicativo sobre el producto y sus relacionados para mejorar la relevancia y tráfico orgánico.
             </figcaption>
           </figure>
         </div>
         <div class="gallery-item">
           <figure>
-            <img src="../assets/img/ikea-seo-meta-3.png" alt="Filtros en páginas de categoría">
+            <div class="gallery-item-web">
+              <img src="../assets/img/ikea-seo-meta-3.png" alt="Filtros en páginas de categoría">
+            </div>
             <figcaption class="gallery-caption">
-Filtros de categoría que actúan como menú interno, facilitando la navegación entre productos y familias relacionadas.            </figcaption>
+              Filtros de categoría que actúan como menú interno, facilitando la navegación entre productos y familias relacionadas.
+            </figcaption>
           </figure>
         </div>
         <div class="gallery-item">
           <figure>
-            <img src="../assets/img/ikea-seo-meta-4.png" alt="Texto SEO on page al final de categoría">
+            <div class="gallery-item-web">
+              <img src="../assets/img/ikea-seo-meta-4.png" alt="Texto SEO on page al final de categoría">
+            </div>
             <figcaption class="gallery-caption">
-Página de filtros avanzada, personalizada para segmentar mejor los productos por atributos como color, material, forma u otras características.
+              Página de filtros avanzada, personalizada para segmentar mejor los productos por atributos como color, material, forma u otras características.
             </figcaption>
           </figure>
         </div>
@@ -531,7 +567,9 @@ Página de filtros avanzada, personalizada para segmentar mejor los productos po
       <div class="gallery-grid">
         <div class="gallery-item">
           <figure>
-            <img src="../assets/img/ikea-search-1.png" alt="Barra de búsqueda actualizada">
+            <div class="gallery-item-web">
+              <img src="../assets/img/ikea-search-1.png" alt="Barra de búsqueda actualizada">
+            </div>
             <figcaption class="gallery-caption">
               Barra de búsqueda optimizada con sugerencias y acceso rápido a los productos más consultados.
             </figcaption>
@@ -539,9 +577,12 @@ Página de filtros avanzada, personalizada para segmentar mejor los productos po
         </div>
         <div class="gallery-item">
           <figure>
-            <img src="../assets/img/ikea-search-2.png" alt="Página de resultados con zero results">
+            <div class="gallery-item-web">
+              <img src="../assets/img/ikea-search-2.png" alt="Página de resultados con zero results">
+            </div>
             <figcaption class="gallery-caption">
-Página de resultados de búsqueda con listado de productos, filtros activos y un mensaje sobre la personalización del producto o el uso del planificador.            </figcaption>
+              Página de resultados de búsqueda con listado de productos, filtros activos y un mensaje sobre la personalización del producto o el uso del planificador.
+            </figcaption>
           </figure>
         </div>
       </div>
@@ -561,7 +602,9 @@ Página de resultados de búsqueda con listado de productos, filtros activos y u
       <div class="gallery-grid">
         <div class="gallery-item">
           <figure>
-            <img src="../assets/img/ikea-product-names-1.png" alt="Revisión de nombres de categoría en catalán">
+            <div class="gallery-item-web">
+              <img src="../assets/img/ikea-product-names-1.png" alt="Revisión de nombres de categoría en catalán">
+            </div>
             <figcaption class="gallery-caption">
               Nombre de categoría <i>Cuina i electrodomèstics</i> en catalán, pensado para facilitar la búsqueda y mantener la coherencia del catálogo.
             </figcaption>
@@ -569,7 +612,9 @@ Página de resultados de búsqueda con listado de productos, filtros activos y u
         </div>
         <div class="gallery-item">
           <figure>
-            <img src="../assets/img/ikea-product-names-2.png" alt="Abreviaturas de producto pensadas para buscador">
+            <div class="gallery-item-web">
+              <img src="../assets/img/ikea-product-names-2.png" alt="Abreviaturas de producto pensadas para buscador">
+            </div>
             <figcaption class="gallery-caption">
               Abreviaturas optimizadas para que el buscador reconozca mejor la forma real en la que las usuarios buscan productos.
             </figcaption>
@@ -594,7 +639,9 @@ Página de resultados de búsqueda con listado de productos, filtros activos y u
       <div class="gallery-grid">
         <div class="gallery-item">
           <figure>
-            <img src="../assets/img/ikea-guide-1.png" alt="Portada de la guía de comunicación digital">
+            <div class="gallery-item-web">
+              <img src="../assets/img/ikea-guide-1.png" alt="Portada de la guía de comunicación digital">
+            </div>
             <figcaption class="gallery-caption">
               Guía de comunicación que recoge los formatos digitales disponibles en el ecosistema IKEA y el user flow para presentar las publicaciones.
             </figcaption>
@@ -602,24 +649,31 @@ Página de resultados de búsqueda con listado de productos, filtros activos y u
         </div>
         <div class="gallery-item">
           <figure>
-            <img src="../assets/img/ikea-guide-2.png" alt="Resumen de formatos de banners">
+            <div class="gallery-item-web">
+              <img src="../assets/img/ikea-guide-2.png" alt="Resumen de formatos de banners">
+            </div>
             <figcaption class="gallery-caption">
-<i>Navigation banner</i>, pieza situada en la cabecera principal de la web, adaptable en texto, color, idioma, hora de publicación y otros ajustes de configuración.
+              <i>Navigation banner</i>, pieza situada en la cabecera principal de la web, adaptable en texto, color, idioma, hora de publicación y otros ajustes de configuración.
             </figcaption>
           </figure>
         </div>
         <div class="gallery-item">
           <figure>
-            <img src="../assets/img/ikea-guide-3.png" alt="Layouts para app y móvil">
+            <div class="gallery-item-web">
+              <img src="../assets/img/ikea-guide-3.png" alt="Layouts para app y móvil">
+            </div>
             <figcaption class="gallery-caption">
-<i>Landscape banner</i>, configurable desde cero para adaptar creatividades, mensajes y características.            </figcaption>
+              <i>Landscape banner</i>, configurable desde cero para adaptar creatividades, mensajes y características.
+            </figcaption>
           </figure>
         </div>
         <div class="gallery-item">
           <figure>
-            <img src="../assets/img/ikea-guide-4.png" alt="Ejemplos de tono y mensajes">
+            <div class="gallery-item-web">
+              <img src="../assets/img/ikea-guide-4.png" alt="Ejemplos de tono y mensajes">
+            </div>
             <figcaption class="gallery-caption">
-Eventos para la página de actividades de cada tienda, que permite planificar talleres y SMÅLAND.
+              Eventos para la página de actividades de cada tienda, que permite planificar talleres y SMÅLAND.
             </figcaption>
           </figure>
         </div>
@@ -637,17 +691,21 @@ Eventos para la página de actividades de cada tienda, que permite planificar ta
       <div class="gallery-grid">
         <div class="gallery-item">
           <figure>
-            <img src="../assets/img/ikea-promo-10-1.png" alt="Banner web de promoción 10%">
+            <div class="gallery-item-web">
+              <img src="../assets/img/ikea-promo-10-1.png" alt="Banner web de promoción 10%">
+            </div>
             <figcaption class="gallery-caption">
-<i>Navigation menu </i> para la promoción IKEA Family en armarios independientes, que enlaza con toda la información.
+              <i>Navigation menu </i> para la promoción IKEA Family en armarios independientes, que enlaza con toda la información.
             </figcaption>
           </figure>
         </div>
         <div class="gallery-item">
           <figure>
-            <img src="../assets/img/ikea-promo-10-2.png" alt="Versión mobile de la campaña 10%">
+            <div class="gallery-item-web">
+              <img src="../assets/img/ikea-promo-10-2.png" alt="Versión mobile de la campaña 10%">
+            </div>
             <figcaption class="gallery-caption">
-<i>Landscape banner </i> para la promoción IKEA Family en armarios independientes, donde se detalla la oferta y sus principales condiciones.
+              <i>Landscape banner </i> para la promoción IKEA Family en armarios independientes, donde se detalla la oferta y sus principales condiciones.
             </figcaption>
           </figure>
         </div>
@@ -658,14 +716,19 @@ Eventos para la página de actividades de cada tienda, que permite planificar ta
       <div class="gallery-grid">
         <div class="gallery-item">
           <figure>
-            <img src="../assets/img/ikea-granollers-parking-1.png" alt="Banner de parking gratuito en Granollers">
+            <div class="gallery-item-web">
+              <img src="../assets/img/ikea-granollers-parking-1.png" alt="Banner de parking gratuito en Granollers">
+            </div>
             <figcaption class="gallery-caption">
-<i>Visual Pill Slider </i> para la promoción de parking gratuïto en Granollers, que enlaza con toda la información.           </figcaption>
+              <i>Visual Pill Slider </i> para la promoción de parking gratuïto en Granollers, que enlaza con toda la información.
+            </figcaption>
           </figure>
         </div>
         <div class="gallery-item">
           <figure>
-            <img src="../assets/img/ikea-granollers-parking-2.png" alt="Versión mobile de la campaña de parking gratuito">
+            <div class="gallery-item-web">
+              <img src="../assets/img/ikea-granollers-parking-2.png" alt="Versión mobile de la campaña de parking gratuito">
+            </div>
             <figcaption class="gallery-caption">
               <i>Landscape banner </i> para la promoción de parking gratuïto en Granollers, informando de este nuevo beneficio y animando a visitar la tienda.
             </figcaption>
@@ -678,18 +741,22 @@ Eventos para la página de actividades de cada tienda, que permite planificar ta
       <div class="gallery-grid">
         <div class="gallery-item">
           <figure>
-            <img src="../assets/img/ikea-delivery-1.png" alt="Creatividad web de servicio delivery">
+            <div class="gallery-item-web">
+              <img src="../assets/img/ikea-delivery-1.png" alt="Creatividad web de servicio delivery">
+            </div>
             <figcaption class="gallery-caption">
-<i>Landscape banner </i> para la promoción de sostenibilidad de vender tus muebles de segunda mano, donde se explican el servicio, las condiciones y se incluye un botón para contratarlo
-
+              <i>Landscape banner </i> para la promoción de sostenibilidad de vender tus muebles de segunda mano, donde se explican el servicio, las condiciones y se incluye un botón para contratarlo
             </figcaption>
           </figure>
         </div>
         <div class="gallery-item">
           <figure>
-            <img src="../assets/img/ikea-delivery-2.png" alt="Módulo mobile de servicio delivery">
+            <div class="gallery-item-web">
+              <img src="../assets/img/ikea-delivery-2.png" alt="Módulo mobile de servicio delivery">
+            </div>
             <figcaption class="gallery-caption">
-<i>Navigation menu </i> para la promoción de sostenibilidad de vender tus muebles de segunda mano, que enlaza con toda la información.            </figcaption>
+              <i>Navigation menu </i> para la promoción de sostenibilidad de vender tus muebles de segunda mano, que enlaza con toda la información.
+            </figcaption>
           </figure>
         </div>
       </div>
@@ -713,7 +780,9 @@ Eventos para la página de actividades de cada tienda, que permite planificar ta
       <div class="gallery-grid">
         <div class="gallery-item">
           <figure>
-            <img src="../assets/img/ikea-email-1.png" alt="Newsletter con módulos locales">
+            <div class="gallery-item-web">
+              <img src="../assets/img/ikea-email-1.png" alt="Newsletter con módulos locales">
+            </div>
             <figcaption class="gallery-caption">
               Newsletter nacional con módulos personalizados para Cataluña, combinando ofertas y servicios relevantes.
             </figcaption>
@@ -721,7 +790,9 @@ Eventos para la página de actividades de cada tienda, que permite planificar ta
         </div>
         <div class="gallery-item">
           <figure>
-            <img src="../assets/img/ikea-email-2.png" alt="Email promocional de servicios y productos">
+            <div class="gallery-item-web">
+              <img src="../assets/img/ikea-email-2.png" alt="Email promocional de servicios y productos">
+            </div>
             <figcaption class="gallery-caption">
               Email específico para comunicar novedades de producto y servicios, integrando inspiración, opciones de compra y llamadas a la acción.
             </figcaption>
@@ -744,7 +815,9 @@ Eventos para la página de actividades de cada tienda, que permite planificar ta
       <div class="gallery-grid">
         <div class="gallery-item">
           <figure>
-            <img src="../assets/img/ikea-talleres-1.png" alt="Página de talleres de SMÅLAND">
+            <div class="gallery-item-web">
+              <img src="../assets/img/ikea-talleres-1.png" alt="Página de talleres de SMÅLAND">
+            </div>
             <figcaption class="gallery-caption">
               Página de inicio de talleres con la tienda seleccionada, donde se muestran todas las actividades disponibles con su imagen y título, y desde la que se puede acceder a más información.
             </figcaption>
@@ -752,7 +825,9 @@ Eventos para la página de actividades de cada tienda, que permite planificar ta
         </div>
         <div class="gallery-item">
           <figure>
-            <img src="../assets/img/ikea-talleres-2.png" alt="Listado de actividades IKEA Family">
+            <div class="gallery-item-web">
+              <img src="../assets/img/ikea-talleres-2.png" alt="Listado de actividades IKEA Family">
+            </div>
             <figcaption class="gallery-caption">
               Página de actividad concreta que incluye fotografía, título, descripción corta y larga, información sobre IKEA Family, horarios para apuntarse y disponibilidad de plazas.
             </figcaption>
@@ -769,14 +844,17 @@ Eventos para la página de actividades de cada tienda, que permite planificar ta
         Cada tienda cuenta con una página local dentro de la web, donde se detalla la ubicación, el horario, los servicios disponibles, las opciones de recogida, las promociones activas y la información práctica para la visita. Estas páginas se actualizan de forma continuada para reflejar la realidad de cada centro.
       </p>
       <p>
-Entre las tiendas de Cataluña se encuentran las de Badalona, Sabadell, Gran Vía y Hospitalet. Además, contamos con tiendas urbanas como Diagonal, Glòries, Sant Pere de Ribes y Girona, así como puntos de planificación en Tarragona y Granollers. Junto a estas ubicaciones, ofrecemos secciones clave como <i>Todas las ofertas</i>, <i>Ventajas IKEA Family</i>, <i>Todas las tiendas</i>, <i>Todos los puntos de recogida</i> y las condiciones legales específicas      </p>
+        Entre las tiendas de Cataluña se encuentran las de Badalona, Sabadell, Gran Vía y Hospitalet. Además, contamos con tiendas urbanas como Diagonal, Glòries, Sant Pere de Ribes y Girona, así como puntos de planificación en Tarragona y Granollers. Junto a estas ubicaciones, ofrecemos secciones clave como <i>Todas las ofertas</i>, <i>Ventajas IKEA Family</i>, <i>Todas las tiendas</i>, <i>Todos los puntos de recogida</i> y las condiciones legales específicas
+      </p>
     </div>
 
     <section class="inline-gallery">
       <div class="gallery-grid">
         <div class="gallery-item">
           <figure>
-            <img src="../assets/img/ikea-tiendas-local-1.png" alt="Página local de tienda IKEA">
+            <div class="gallery-item-web">
+              <img src="../assets/img/ikea-tiendas-local-1.png" alt="Página local de tienda IKEA">
+            </div>
             <figcaption class="gallery-caption">
               Página local de tienda con información de horarios, servicios, dirección y enlaces a talleres y actividades.
             </figcaption>
@@ -784,7 +862,9 @@ Entre las tiendas de Cataluña se encuentran las de Badalona, Sabadell, Gran Ví
         </div>
         <div class="gallery-item">
           <figure>
-            <img src="../assets/img/ikea-tiendas-local-2.png" alt="Detalle de promociones y servicios en tienda">
+            <div class="gallery-item-web">
+              <img src="../assets/img/ikea-tiendas-local-2.png" alt="Detalle de promociones y servicios en tienda">
+            </div>
             <figcaption class="gallery-caption">
               Sección de promociones y servicios destacados adaptados a cada tienda.
             </figcaption>
@@ -807,7 +887,9 @@ Entre las tiendas de Cataluña se encuentran las de Badalona, Sabadell, Gran Ví
       <div class="gallery-grid">
         <div class="gallery-item">
           <figure>
-            <img src="../assets/img/ikea-google-business-1.png" alt="Perfil de Google Business de IKEA">
+            <div class="gallery-item-web">
+              <img src="../assets/img/ikea-google-business-1.png" alt="Perfil de Google Business de IKEA">
+            </div>
             <figcaption class="gallery-caption">
               Menú de selección con todas las cuentas disponibles con todas las tiendas verificadas.
             </figcaption>
@@ -815,7 +897,9 @@ Entre las tiendas de Cataluña se encuentran las de Badalona, Sabadell, Gran Ví
         </div>
         <div class="gallery-item">
           <figure>
-            <img src="../assets/img/ikea-google-business-2.png" alt="Vista de resultados de Google con tiendas IKEA">
+            <div class="gallery-item-web">
+              <img src="../assets/img/ikea-google-business-2.png" alt="Vista de resultados de Google con tiendas IKEA">
+            </div>
             <figcaption class="gallery-caption">
               Resultado de búsqueda de la tienda IKEA Diagonal con una ficha completamente optimizada.
             </figcaption>
@@ -840,7 +924,9 @@ Entre las tiendas de Cataluña se encuentran las de Badalona, Sabadell, Gran Ví
       <div class="gallery-grid">
         <div class="gallery-item">
           <figure>
-            <img src="../assets/img/ikea-expansion-granollers-1.png" alt="Comunicación apertura IKEA Granollers">
+            <div class="gallery-item-web">
+              <img src="../assets/img/ikea-expansion-granollers-1.png" alt="Comunicación apertura IKEA Granollers">
+            </div>
             <figcaption class="gallery-caption">
               Comunicación digital de la apertura de IKEA Granollers, con <i>banners</i> e información centrados en los servicios disponibles y los accesos a la tienda.
             </figcaption>
@@ -849,23 +935,30 @@ Entre las tiendas de Cataluña se encuentran las de Badalona, Sabadell, Gran Ví
 
         <div class="gallery-item">
           <figure>
-            <img src="../assets/img/ikea-expansion-girona-1.png" alt="Apertura futura de IKEA Girona">
+            <div class="gallery-item-web">
+              <img src="../assets/img/ikea-expansion-girona-1.png" alt="Apertura futura de IKEA Girona">
+            </div>
             <figcaption class="gallery-caption">
-Creatividad para la apertura de IKEA Girona enfocada en generar interés previo en canales digitales, con gráficos inspirados en la leona de la ciudad.            </figcaption>
+              Creatividad para la apertura de IKEA Girona enfocada en generar interés previo en canales digitales, con gráficos inspirados en la leona de la ciudad.
+            </figcaption>
           </figure>
         </div>
 
         <div class="gallery-item">
           <figure>
-            <img src="../assets/img/ikea-expansion-anecblau-1.png" alt="Punto de recogida en Ànecblau">
+            <div class="gallery-item-web">
+              <img src="../assets/img/ikea-expansion-anecblau-1.png" alt="Punto de recogida en Ànecblau">
+            </div>
             <figcaption class="gallery-caption">
               <i>Banner</i> integrado en la página de puntos de recogida que informa sobre el nuevo punto de recogida en Ànecblau.
             </figcaption>
           </figure>
         </div>
-                <div class="gallery-item">
+        <div class="gallery-item">
           <figure>
-            <img src="../assets/img/ikea-expansion-badalona-1.png" alt="Material para reforma de IKEA Badalona">
+            <div class="gallery-item-web">
+              <img src="../assets/img/ikea-expansion-badalona-1.png" alt="Material para reforma de IKEA Badalona">
+            </div>
             <figcaption class="gallery-caption">
               <i>Banner</i> para comunicar la reforma de IKEA Badalona y los cambios en la experiencia de tienda.
             </figcaption>
@@ -889,7 +982,9 @@ Creatividad para la apertura de IKEA Girona enfocada en generar interés previo 
       <div class="gallery-grid">
         <div class="gallery-item">
           <figure>
-            <img src="../assets/img/ikea-glovo-1.png" alt="Categorías de IKEA en la app de Glovo">
+            <div class="gallery-item-web">
+              <img src="../assets/img/ikea-glovo-1.png" alt="Categorías de IKEA en la app de Glovo">
+            </div>
             <figcaption class="gallery-caption">
               Product range de productos IKEA seleccionados para su venta en la aplicación de Glovo.
             </figcaption>
@@ -897,7 +992,9 @@ Creatividad para la apertura de IKEA Girona enfocada en generar interés previo 
         </div>
         <div class="gallery-item">
           <figure>
-            <img src="../assets/img/ikea-glovo-2.png" alt="Newsletter anunciando IKEA en Glovo">
+            <div class="gallery-item-web">
+              <img src="../assets/img/ikea-glovo-2.png" alt="Newsletter anunciando IKEA en Glovo">
+            </div>
             <figcaption class="gallery-caption">
               Integración de productos y categorías de IKEA dentro de la app de Glovo.
             </figcaption>
@@ -922,3 +1019,4 @@ Creatividad para la apertura de IKEA Girona enfocada en generar interés previo 
   <script src="../assets/js/ikea-page.js" defer></script>
 </body>
 </html>
+
