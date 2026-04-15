@@ -42,25 +42,10 @@
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
     }
-
     a { text-decoration:none; color:inherit; }
     ::-webkit-scrollbar{ width:5px; } ::-webkit-scrollbar-track{ background:var(--bg);} ::-webkit-scrollbar-thumb{ background:var(--border); border-radius:3px; }
 
     .container{ max-width:var(--page-max-width); margin:0 auto; padding:0 var(--page-side-padding); box-sizing:border-box; }
-
-    /* NAV */
-    nav{
-      position: fixed; top:0; left:0; right:0; z-index:200;
-      display:flex; align-items:center; justify-content:center;
-      padding:1.4rem var(--page-side-padding);
-      background: rgba(255,255,255,0.9);
-      backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
-    }
-    .nav-inner{ width:100%; max-width:1100px; display:flex; justify-content:space-between; align-items:center; }
-    .nav-logo{ font-weight:800; font-size:1.4rem; color:var(--title); letter-spacing:-0.02em; }
-    .nav-right{ display:flex; align-items:center; gap:2.5rem; }
-    .nav-link{ font-weight:600; font-size:1rem; color:var(--text); transition:color var(--transition), font-weight var(--transition); }
-    .nav-link.is-active, .nav-link:hover{ color:var(--title); font-weight:800; }
 
     .copy-btn{
       font-family:'Manrope',sans-serif;
@@ -364,21 +349,8 @@
   </style>
 </head>
 <body>
-  <nav>
-    <div class="nav-inner">
-      <a href="index.html#scroll" class="nav-logo">JEO</a>
-      <div class="nav-right">
-        <a href="index.html#work" class="nav-link is-active">Work</a>
-        <a href="about.html" class="nav-link">About</a>
-        <button class="copy-btn" id="copyBtn" onclick="copyEmail()">
-          <span class="label-default">Copy email</span>
-          <span class="label-copied" style="display:none;">
-            <svg class="check-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5"><polyline points="20 6 9 17 4 12"/></svg> Copied
-          </span>
-        </button>
-      </div>
-    </div>
-  </nav>
+    <!-- MENU (injected) -->
+  <div id="include-menu" data-include="menu.html"></div>
 
   <!-- HERO -->
   <div id="scroll">
@@ -395,7 +367,6 @@
     </div>
   </div>
 
-  <!-- WORK -->
   <section id="work">
     <div class="container">
       <div class="section-label reveal">Work</div>
@@ -406,7 +377,7 @@
             <p class="proj-meta">IKEA • 2024</p>
             <h2 class="proj-title">Local Marketing and Digital Content for Catalonia </h2>
           </div>
-                                  <div class="wip-badge">In progress</div>
+<div class="wip-badge">In progress</div>
 
           <div class="proj-tags">
             <span class="proj-tag">Digital</span>
@@ -578,16 +549,8 @@
       </div>
     </section>
 
-  < <!-- FOOTER -->
-  <footer>
-    <div class="footer-inner">
-      <p class="footer-copy">© Jan Escoda 2026. All rights reserved.</p>
-      <a href="#top" class="footer-up" onclick="scrollToTop(event)">
-        Scroll up
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
-      </a>
-    </div>
-  </footer>
+  <!-- FOOTER (injected) -->
+  <div id="include-footer" data-include="footer.html"></div>
 
   <script>
     /* COPY EMAIL */
