@@ -115,7 +115,7 @@
       color:var(--text);
     }
 
-    /* META EN RECUADRO GRIS CLARO, ALINEADO EN COLUMNAS */
+    /* META EN RECUADRO GRIS CLARO, CADA LABEL + VALOR EN SU COLUMNA */
     .project-meta-shell {
       grid-column: 1 / -1;
       margin-top: 2.2rem;
@@ -176,19 +176,24 @@
 
     .body-text {
       font-size:0.96rem;
-      /* sin max-width: usa todo el ancho de la columna */
     }
 
     .body-text p + p { margin-top:1rem; }
 
+    /* TODO WEB & SEO EN UNA SOLA COLUMNA (OCUPA ANCHO) */
+    .full-width-block {
+      max-width:var(--page-max-width);
+      margin:0 auto;
+    }
+
     .two-column {
       display:grid;
-      grid-template-columns:minmax(0,1.5fr) minmax(0,0.9fr);
-      gap:2.6rem;
+      grid-template-columns:minmax(0,1fr);
+      gap:2.2rem;
       align-items:flex-start;
     }
 
-    /* Recuadro "foco" – ocupar ancho de la columna, alineado a la izquierda */
+    /* Recuadro "foco" – ocupa todo el ancho del texto, alineado a la izquierda */
     .highlight-callout {
       margin-top:1.8rem;
       padding:1.1rem 1.2rem;
@@ -207,7 +212,7 @@
       color:var(--title);
     }
 
-    /* Recuadro gris tipo "Puntos SEO y UX" – ancho columna, texto izquierda */
+    /* Recuadro gris tipo "Puntos SEO y UX" – ancho texto, texto izquierda */
     .inline-card-full {
       margin-top:1.4rem;
       padding:1.1rem 1.2rem;
@@ -311,9 +316,6 @@
         grid-template-columns:1fr;
         gap:2.2rem;
       }
-      .two-column{
-        grid-template-columns:1fr;
-      }
       .takeaways-grid,
       .results-grid{
         grid-template-columns:1fr;
@@ -353,7 +355,6 @@
             </p>
           </div>
 
-          <!-- segunda columna vacía para que métricas + meta vayan a ancho completo -->
           <div></div>
 
           <!-- MÉTRICAS A ANCHO COMPLETO -->
@@ -379,7 +380,7 @@
             </div>
           </div>
 
-          <!-- META ALINEADA EN COLUMNAS -->
+          <!-- META EN COLUMNAS, TODO ALINEADO -->
           <div class="project-meta-shell">
             <div class="project-meta-grid">
               <div class="project-meta-item">
@@ -404,210 +405,196 @@
       </div>
     </section>
 
-    <!-- 1. WEB & SEO -->
+    <!-- 1. WEB & SEO – TODO A ANCHO COMPLETO -->
     <section class="section">
       <div class="container">
-        <div class="two-column">
-          <div>
-            <div class="section-kicker">01 · Web & SEO</div>
-            <h2 class="section-heading">Una web en catalán que no es solo traducción</h2>
-            <div class="body-text">
-              <p>
-                Revisé y actualicé las páginas clave de IKEA en catalán (home, categorías, fichas de producto, servicios y checkout) para que
-                no fueran un simple espejo del castellano, sino una experiencia clara y coherente para quien compra desde Cataluña.
-              </p>
-              <p>
-                En paralelo, definí un programa de SEO on‑page: metatítulos, descripciones, slugs, textos estratégicos al final de categoría
-                y estructura de filtros que actúan como un “menú interno” entre productos relacionados.
-              </p>
-            </div>
+        <div class="full-width-block">
+          <div class="section-kicker">01 · Web & SEO</div>
+          <h2 class="section-heading">Una web en catalán que no es solo traducción</h2>
 
-            <div class="highlight-callout">
-              El foco no era solo traducir, sino que la versión catalana fuese igual de fácil de encontrar y de usar que la global.
-            </div>
-
-            <div class="inline-card-full">
-              <div class="inline-card-title">Puntos SEO y UX</div>
-              <ul>
-                <li>Equilibrio entre términos de búsqueda reales y lenguaje natural de la marca.</li>
-                <li>Cadenas de navegación más claras entre categorías y servicios clave.</li>
-                <li>Mensajes de ayuda en momentos críticos (envío, devolución, disponibilidad).</li>
-              </ul>
-            </div>
-
-            <div class="body-text" style="margin-top:1.6rem;">
-              <p class="subsection-title">Qué hice en esta parte</p>
-              <ul>
-                <li>Revisión editorial completa de las páginas clave en catalán (categorías, servicios y checkout) para detectar incoherencias y vacíos de información.</li>
-                <li>Reescritura de copys clave para mejorar claridad y consistencia entre la versión catalana y la global, respetando el tono de IKEA.</li>
-                <li>Optimización SEO on‑page: metatítulos, descripciones y slugs que conectan con cómo la gente realmente busca productos en Cataluña.</li>
-                <li>Diseño de un “menú interno” a través de filtros y enlaces entre categorías relacionadas para reducir la fricción al navegar.</li>
-              </ul>
-            </div>
+          <div class="body-text">
+            <p>
+              Revisé y actualicé las páginas clave de IKEA en catalán (home, categorías, fichas de producto, servicios y checkout) para que
+              no fueran un simple espejo del castellano, sino una experiencia clara y coherente para quien compra desde Cataluña.
+            </p>
+            <p>
+              En paralelo, definí un programa de SEO on‑page: metatítulos, descripciones, slugs, textos estratégicos al final de categoría
+              y estructura de filtros que actúan como un “menú interno” entre productos relacionados.
+            </p>
           </div>
 
-          <!-- columna lateral vacía -->
-          <div></div>
+          <div class="highlight-callout">
+            El foco no era solo traducir, sino que la versión catalana fuese igual de fácil de encontrar y de usar que la global.
+          </div>
+
+          <div class="inline-card-full">
+            <div class="inline-card-title">Puntos SEO y UX</div>
+            <ul>
+              <li>Equilibrio entre términos de búsqueda reales y lenguaje natural de la marca.</li>
+              <li>Cadenas de navegación más claras entre categorías y servicios clave.</li>
+              <li>Mensajes de ayuda en momentos críticos (envío, devolución, disponibilidad).</li>
+            </ul>
+          </div>
+
+          <div class="body-text" style="margin-top:1.6rem;">
+            <p class="subsection-title">Qué hice en esta parte</p>
+            <ul>
+              <li>Revisión editorial completa de las páginas clave en catalán (categorías, servicios y checkout) para detectar incoherencias y vacíos de información.</li>
+              <li>Reescritura de copys clave para mejorar claridad y consistencia entre la versión catalana y la global, respetando el tono de IKEA.</li>
+              <li>Optimización SEO on‑page: metatítulos, descripciones y slugs que conectan con cómo la gente realmente busca productos en Cataluña.</li>
+              <li>Diseño de un “menú interno” a través de filtros y enlaces entre categorías relacionadas para reducir la fricción al navegar.</li>
+            </ul>
+          </div>
+
+          <!-- 2 IMÁGENES DESPUÉS DEL PUNTO 1 -->
+          <img src="images/ikea-web-catalan-1.jpg" alt="Vista de página de categoría en catalán con contenido optimizado" />
+          <p>Ejemplo de página de categoría en catalán con estructura, copys y filtros adaptados al comportamiento de búsqueda local.</p>
+
+          <img src="images/ikea-web-catalan-2.jpg" alt="Detalle de textos SEO y módulos informativos al final de la página" />
+          <p>Detalle de módulos informativos y textos SEO añadidos al final de página para mejorar comprensión y relevancia orgánica.</p>
         </div>
-
-        <!-- 2 IMÁGENES DESPUÉS DEL PUNTO 1 -->
-        <img src="images/ikea-web-catalan-1.jpg" alt="Vista de página de categoría en catalán con contenido optimizado" />
-        <p>Ejemplo de página de categoría en catalán con estructura, copys y filtros adaptados al comportamiento de búsqueda local.</p>
-
-        <img src="images/ikea-web-catalan-2.jpg" alt="Detalle de textos SEO y módulos informativos al final de la página" />
-        <p>Detalle de módulos informativos y textos SEO añadidos al final de página para mejorar comprensión y relevancia orgánica.</p>
       </div>
     </section>
 
     <!-- 2. ESTRATEGIA DIGITAL -->
     <section class="section">
       <div class="container">
-        <div class="two-column">
-          <div>
-            <div class="section-kicker">02 · Estrategia digital</div>
-            <h2 class="section-heading">Guía, campañas y email para hablar igual en todos los canales</h2>
+        <div class="full-width-block">
+          <div class="section-kicker">02 · Estrategia digital</div>
+          <h2 class="section-heading">Guía, campañas y email para hablar igual en todos los canales</h2>
 
-            <div class="body-text">
-              <p>
-                Para evitar que cada campaña se resolviera desde cero, ayudé a crear una guía de comunicación digital para Cataluña:
-                formatos de banners, módulos promocionales, mensajes de servicios y layouts para web, app y móvil.
-              </p>
-              <p>
-                Sobre esta base desarrollé campañas locales (promociones, servicios, parking, sostenibilidad…) adaptadas a los formatos
-                disponibles y coordinadas con el calendario global.
-              </p>
-              <p>
-                También trabajé bloques de email marketing específicos para Cataluña dentro de newsletters nacionales, para que las personas
-                recibieran mensajes relevantes según su ubicación sin romper la coherencia de marca.
-              </p>
-            </div>
-
-            <div class="inline-card-full">
-              <div class="inline-card-title">Puntos clave</div>
-              <ul>
-                <li>Guía de formatos digitales para banners, módulos y servicios.</li>
-                <li>Campañas locales coherentes con el ecosistema global de IKEA.</li>
-                <li>Bloques de email personalizados para el mercado catalán.</li>
-              </ul>
-            </div>
+          <div class="body-text">
+            <p>
+              Para evitar que cada campaña se resolviera desde cero, ayudé a crear una guía de comunicación digital para Cataluña:
+              formatos de banners, módulos promocionales, mensajes de servicios y layouts para web, app y móvil.
+            </p>
+            <p>
+              Sobre esta base desarrollé campañas locales (promociones, servicios, parking, sostenibilidad…) adaptadas a los formatos
+              disponibles y coordinadas con el calendario global.
+            </p>
+            <p>
+              También trabajé bloques de email marketing específicos para Cataluña dentro de newsletters nacionales, para que las personas
+              recibieran mensajes relevantes según su ubicación sin romper la coherencia de marca.
+            </p>
           </div>
 
-          <div></div>
+          <div class="inline-card-full">
+            <div class="inline-card-title">Puntos clave</div>
+            <ul>
+              <li>Guía de formatos digitales para banners, módulos y servicios.</li>
+              <li>Campañas locales coherentes con el ecosistema global de IKEA.</li>
+              <li>Bloques de email personalizados para el mercado catalán.</li>
+            </ul>
+          </div>
+
+          <!-- 2 IMÁGENES DESPUÉS DEL PUNTO 2 -->
+          <img src="images/ikea-campanas-locales-1.jpg" alt="Banners y módulos promocionales adaptados al mercado catalán" />
+          <p>Selección de banners y módulos promocionales diseñados para campañas locales, alineados con la guía digital.</p>
+
+          <img src="images/ikea-email-cataluna-1.jpg" alt="Bloques de email segmentados para Cataluña dentro de una newsletter nacional" />
+          <p>Bloques de email específicos para Cataluña integrados en newsletters nacionales sin perder coherencia de marca.</p>
         </div>
-
-        <!-- 2 IMÁGENES DESPUÉS DEL PUNTO 2 -->
-        <img src="images/ikea-campanas-locales-1.jpg" alt="Banners y módulos promocionales adaptados al mercado catalán" />
-        <p>Selección de banners y módulos promocionales diseñados para campañas locales, alineados con la guía digital.</p>
-
-        <img src="images/ikea-email-cataluna-1.jpg" alt="Bloques de email segmentados para Cataluña dentro de una newsletter nacional" />
-        <p>Bloques de email específicos para Cataluña integrados en newsletters nacionales sin perder coherencia de marca.</p>
       </div>
     </section>
 
     <!-- 3. TIENDAS -->
     <section class="section">
       <div class="container">
-        <div class="two-column">
-          <div>
-            <div class="section-kicker">03 · Tiendas</div>
-            <h2 class="section-heading">Páginas locales que reflejan lo que pasa en cada tienda</h2>
-            <div class="body-text">
-              <p>
-                Cada tienda de Cataluña tiene su propia página: horarios, servicios, opciones de recogida, promociones activas y talleres.
-                Me ocupo de que esta información esté actualizada y alineada con la realidad de Badalona, Sabadell, Gran Vía, Hospitalet y las
-                tiendas urbanas.
-              </p>
-              <p>
-                Además, las actividades de SMÅLAND e IKEA Family se publican y revisan mensualmente, para que las familias vean fácilmente
-                qué pueden hacer en su tienda más cercana.
-              </p>
-            </div>
-
-            <div class="inline-card-full">
-              <div class="inline-card-title">Impacto en tienda</div>
-              <ul>
-                <li>Páginas locales claras que conectan web, talleres y servicios.</li>
-                <li>Promociones y servicios destacados adaptados a cada ubicación.</li>
-                <li>Mayor visibilidad de talleres para reforzar el vínculo con la comunidad local.</li>
-              </ul>
-            </div>
+        <div class="full-width-block">
+          <div class="section-kicker">03 · Tiendas</div>
+          <h2 class="section-heading">Páginas locales que reflejan lo que pasa en cada tienda</h2>
+          <div class="body-text">
+            <p>
+              Cada tienda de Cataluña tiene su propia página: horarios, servicios, opciones de recogida, promociones activas y talleres.
+              Me ocupo de que esta información esté actualizada y alineada con la realidad de Badalona, Sabadell, Gran Vía, Hospitalet y las
+              tiendas urbanas.
+            </p>
+            <p>
+              Además, las actividades de SMÅLAND e IKEA Family se publican y revisan mensualmente, para que las familias vean fácilmente
+              qué pueden hacer en su tienda más cercana.
+            </p>
           </div>
 
-          <div></div>
-        </div>
+          <div class="inline-card-full">
+            <div class="inline-card-title">Impacto en tienda</div>
+            <ul>
+              <li>Páginas locales claras que conectan web, talleres y servicios.</li>
+              <li>Promociones y servicios destacados adaptados a cada ubicación.</li>
+              <li>Mayor visibilidad de talleres para reforzar el vínculo con la comunidad local.</li>
+            </ul>
+          </div>
 
-        <!-- 1 IMAGEN DESPUÉS DEL PUNTO 3 -->
-        <img src="images/ikea-pagina-tienda-1.jpg" alt="Página local de tienda IKEA en Cataluña con información actualizada" />
-        <p>Página local de tienda con horarios, servicios y actividades destacadas para cada ubicación en Cataluña.</p>
+          <!-- 1 IMAGEN DESPUÉS DEL PUNTO 3 -->
+          <img src="images/ikea-pagina-tienda-1.jpg" alt="Página local de tienda IKEA en Cataluña con información actualizada" />
+          <p>Página local de tienda con horarios, servicios y actividades destacadas para cada ubicación en Cataluña.</p>
+        </div>
       </div>
     </section>
 
     <!-- 4. EXPANSIÓN -->
     <section class="section">
       <div class="container">
-        <div class="two-column">
-          <div>
-            <div class="section-kicker">04 · Expansión</div>
-            <h2 class="section-heading">Acompañar aperturas y reformas desde lo digital</h2>
+        <div class="full-width-block">
+          <div class="section-kicker">04 · Expansión</div>
+          <h2 class="section-heading">Acompañar aperturas y reformas desde lo digital</h2>
 
-            <div class="body-text">
-              <p>
-                Desde el área digital doy soporte a nuevas aperturas y reformas en Cataluña, como IKEA Granollers, la reforma de Badalona
-                o la futura tienda de Girona.
-              </p>
-              <p>
-                Esto implica preparar la información en web, actualizar páginas locales, crear banners específicos y asegurar que las personas
-                entiendan qué hay de nuevo en su zona desde el primer día.
-              </p>
-            </div>
-
-            <div class="inline-card-full">
-              <div class="inline-card-title">Qué se asegura</div>
-              <ul>
-                <li>Las nuevas tiendas aparecen correctamente en la web desde el lanzamiento.</li>
-                <li>Las reformas se comunican con claridad en los canales digitales.</li>
-                <li>Las personas saben qué servicios, accesos y formatos hay disponibles en cada apertura.</li>
-              </ul>
-            </div>
+          <div class="body-text">
+            <p>
+              Desde el área digital doy soporte a nuevas aperturas y reformas en Cataluña, como IKEA Granollers, la reforma de Badalona
+              o la futura tienda de Girona.
+            </p>
+            <p>
+              Esto implica preparar la información en web, actualizar páginas locales, crear banners específicos y asegurar que las personas
+              entiendan qué hay de nuevo en su zona desde el primer día.
+            </p>
           </div>
 
-          <div></div>
-        </div>
+          <div class="inline-card-full">
+            <div class="inline-card-title">Qué se asegura</div>
+            <ul>
+              <li>Las nuevas tiendas aparecen correctamente en la web desde el lanzamiento.</li>
+              <li>Las reformas se comunican con claridad en los canales digitales.</li>
+              <li>Las personas saben qué servicios, accesos y formatos hay disponibles en cada apertura.</li>
+            </ul>
+          </div>
 
-        <!-- 1 IMAGEN DESPUÉS DEL PUNTO 4 -->
-        <img src="images/ikea-apertura-granollers-1.jpg" alt="Banner digital comunicando apertura o reforma de tienda IKEA en Cataluña" />
-        <p>Creatividad y módulos en web comunicando aperturas y reformas para que las personas entiendan qué cambia en su tienda.</p>
+          <!-- 1 IMAGEN DESPUÉS DEL PUNTO 4 -->
+          <img src="images/ikea-apertura-granollers-1.jpg" alt="Banner digital comunicando apertura o reforma de tienda IKEA en Cataluña" />
+          <p>Creatividad y módulos en web comunicando aperturas y reformas para que las personas entiendan qué cambia en su tienda.</p>
+        </div>
       </div>
     </section>
 
     <!-- RESULTS -->
     <section class="section">
       <div class="container">
-        <h2 class="results-section-title">Results</h2>
+        <div class="full-width-block">
+          <h2 class="results-section-title">Results</h2>
 
-        <div class="results-grid">
-          <div class="result-card">
-            <div class="result-card-emoji">🚀</div>
-            <div class="result-card-title">Más gente llega a la versión en catalán</div>
-            <p class="result-card-body">
-              El trabajo SEO y de contenido hizo que más personas entrasen directamente a categorías y servicios en catalán, sin tener que pasar por versiones mixtas o duplicadas.
-            </p>
-          </div>
+          <div class="results-grid">
+            <div class="result-card">
+              <div class="result-card-emoji">🚀</div>
+              <div class="result-card-title">Más gente llega a la versión en catalán</div>
+              <p class="result-card-body">
+                El trabajo SEO y de contenido hizo que más personas entrasen directamente a categorías y servicios en catalán, sin tener que pasar por versiones mixtas o duplicadas.
+              </p>
+            </div>
 
-          <div class="result-card">
-            <div class="result-card-emoji">📌</div>
-            <div class="result-card-title">Campañas locales más fáciles de lanzar</div>
-            <p class="result-card-body">
-              Tener una guía clara de formatos y mensajes redujo la improvisación: cada campaña local se puede montar más rápido y con menos idas y venidas entre equipos.
-            </p>
-          </div>
+            <div class="result-card">
+              <div class="result-card-emoji">📌</div>
+              <div class="result-card-title">Campañas locales más fáciles de lanzar</div>
+              <p class="result-card-body">
+                Tener una guía clara de formatos y mensajes redujo la improvisación: cada campaña local se puede montar más rápido y con menos idas y venidas entre equipos.
+              </p>
+            </div>
 
-          <div class="result-card">
-            <div class="result-card-emoji">🧭</div>
-            <div class="result-card-title">Tiendas mejor representadas online</div>
-            <p class="result-card-body">
-              Las páginas de tienda y las comunicaciones de aperturas y reformas reflejan mejor la realidad de cada punto de venta, ayudando a que la gente se oriente y aproveche mejor los servicios disponibles.
-            </p>
+            <div class="result-card">
+              <div class="result-card-emoji">🧭</div>
+              <div class="result-card-title">Tiendas mejor representadas online</div>
+              <p class="result-card-body">
+                Las páginas de tienda y las comunicaciones de aperturas y reformas reflejan mejor la realidad de cada punto de venta, ayudando a que la gente se oriente y aproveche mejor los servicios disponibles.
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -616,39 +603,41 @@
     <!-- TAKEAWAYS -->
     <section class="section">
       <div class="container">
-        <div class="section-kicker">Takeaways</div>
-        <h2 class="section-heading">Lo que me llevo de este proyecto</h2>
+        <div class="full-width-block">
+          <div class="section-kicker">Takeaways</div>
+          <h2 class="section-heading">Lo que me llevo de este proyecto</h2>
 
-        <div class="takeaways-grid">
-          <div>
-            <p class="takeaway-item-title">La localización va más allá del idioma</p>
-            <p>
-              Ajustar nombres de categorías, filtros y mensajes cambia mucho cómo se percibe la marca en cada mercado.
-            </p>
+          <div class="takeaways-grid">
+            <div>
+              <p class="takeaway-item-title">La localización va más allá del idioma</p>
+              <p>
+                Ajustar nombres de categorías, filtros y mensajes cambia mucho cómo se percibe la marca en cada mercado.
+              </p>
+            </div>
+            <div>
+              <p class="takeaway-item-title">Un sistema ahorra trabajo a futuro</p>
+              <p>
+                Tener una guía de formatos y plantillas hace que cada nueva campaña sea más rápida y menos caótica.
+              </p>
+            </div>
+            <div>
+              <p class="takeaway-item-title">Las tiendas necesitan visibilidad digital realista</p>
+              <p>
+                Lo que se cuenta en la web tiene que reflejar lo que pasa en tienda, no solo lo que dice el catálogo.
+              </p>
+            </div>
+            <div>
+              <p class="takeaway-item-title">Medir ayuda a priorizar</p>
+              <p>
+                Ver qué módulos y campañas locales funcionan mejor permite decidir dónde vale la pena invertir más esfuerzo.
+              </p>
+            </div>
           </div>
-          <div>
-            <p class="takeaway-item-title">Un sistema ahorra trabajo a futuro</p>
-            <p>
-              Tener una guía de formatos y plantillas hace que cada nueva campaña sea más rápida y menos caótica.
-            </p>
-          </div>
-          <div>
-            <p class="takeaway-item-title">Las tiendas necesitan visibilidad digital realista</p>
-            <p>
-              Lo que se cuenta en la web tiene que reflejar lo que pasa en tienda, no solo lo que dice el catálogo.
-            </p>
-          </div>
-          <div>
-            <p class="takeaway-item-title">Medir ayuda a priorizar</p>
-            <p>
-              Ver qué módulos y campañas locales funcionan mejor permite decidir dónde vale la pena invertir más esfuerzo.
-            </p>
-          </div>
-        </div>
 
-        <div class="project-nav">
-          <a href="../index.html#work" class="project-nav-up">← Back to works</a>
-          <a href="/projects/daina-media.html">Next: Daina →</a>
+          <div class="project-nav">
+            <a href="../index.html#work" class="project-nav-up">← Back to works</a>
+            <a href="/projects/daina-media.html">Next: Daina →</a>
+          </div>
         </div>
       </div>
     </section>
