@@ -532,73 +532,75 @@
   <!-- AQUÍ SE CARGA footer.html -->
   <div id="footer-container"></div>
 
-  <script>
-    // Funciones globales para menú y footer
-    function copyEmail() {
-      const email = 'janescoda49@gmail.com';
-      const btn = document.getElementById('copyBtn');
+<script>
+  // Funciones globales para menú y footer
+  function copyEmail() {
+    const email = 'janescoda49@gmail.com';
+    const btn = document.getElementById('copyBtn');
 
-      const animate = () => {
-        if (!btn) return;
-        btn.classList.add('copied');
-        setTimeout(() => btn.classList.remove('copied'), 2500);
-      };
+    const animate = () => {
+      if (!btn) return;
+      btn.classList.add('copied');
+      setTimeout(() => btn.classList.remove('copied'), 2500);
+    };
 
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(email).then(animate).catch(() => { fallback(email); animate(); });
-      } else {
-        fallback(email); animate();
-      }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(email)
+        .then(animate)
+        .catch(() => { fallback(email); animate(); });
+    } else {
+      fallback(email); 
+      animate();
     }
+  }
 
-    function fallback(text) {
-      const el = document.createElement('textarea');
-      el.value = text;
-      el.style.cssText = 'position:fixed;opacity:0;';
-      document.body.appendChild(el);
-      el.select();
-      document.execCommand('copy');
-      document.body.removeChild(el);
-    }
+  function fallback(text) {
+    const el = document.createElement('textarea');
+    el.value = text;
+    el.style.cssText = 'position:fixed;opacity:0;';
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
+  }
 
-    function scrollToTop(e) {
-      e && e.preventDefault();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+  function scrollToTop(e) {
+    e && e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 
-    // Cargar menu.html y footer.html
-    document.addEventListener('DOMContentLoaded', () => {
-      const menuContainer = document.getElementById('menu-container');
-      const footerContainer = document.getElementById('footer-container');
+  // Marcar el link activo del menú para ABOUT
+  function setActiveNavLinkAbout() {
+    const workLink  = document.querySelector('.nav-link[href="index.html#work"]');
+    const aboutLink = document.querySelector('.nav-link[href="about.html"]');
 
-      fetch('menu.html')
-        .then(r => r.text())
-        .then(html => { menuContainer.innerHTML = html; })
-        .catch(err => console.error('Error cargando menu.html', err));
+    if (!workLink || !aboutLink) return;
 
-      fetch('footer.html')
-        .then(r => r.text())
-        .then(html => { footerContainer.innerHTML = html; })
-        .catch(err => console.error('Error cargando footer.html', err));
-    });
+    workLink.classList.remove('is-active');
+    aboutLink.classList.add('is-active');
+  }
 
-    function setActiveNavLink() {
-  const workLink = document.querySelector('.nav-link[href="index.html#work"]');
-  const aboutLink = document.querySelector('.nav-link[href="about.html"]');
+  // Cargar menu.html y footer.html
+  document.addEventListener('DOMContentLoaded', () => {
+    const menuContainer   = document.getElementById('menu-container');
+    const footerContainer = document.getElementById('footer-container');
 
-  if (!workLink || !aboutLink) return;
+    // Cargamos el menú UNA sola vez y luego marcamos el link activo
+    fetch('menu.html')
+      .then(r => r.text())
+      .then(html => { 
+        menuContainer.innerHTML = html;
+        setActiveNavLinkAbout();       // ← aquí marcamos About en negrita
+      })
+      .catch(err => console.error('Error cargando menu.html', err));
 
-  workLink.classList.remove('is-active');
-  aboutLink.classList.add('is-active');
-}
-
-fetch('menu.html')
-  .then(r => r.text())
-  .then(html => {
-    menuContainer.innerHTML = html;
-    setActiveNavLink();
+    // Footer
+    fetch('footer.html')
+      .then(r => r.text())
+      .then(html => { footerContainer.innerHTML = html; })
+      .catch(err => console.error('Error cargando footer.html', err));
   });
+</script>
 
-  </script>
 </body>
 </html>
