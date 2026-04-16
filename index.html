@@ -783,164 +783,88 @@
   <!-- FOOTER IMPORTADO -->
   <div id="footer-container"></div>
 
+<!-- SOLO EL BLOQUE <script> CORREGIDO DE index.html
+     El resto del HTML (head, estilos, body) permanece igual que el original.
+     Reemplaza únicamente el <script> al final del <body>.
+-->
 <script>
-  // 1) Funciones globales
-  function copyEmail(){
-    const email = 'janescoda49@gmail.com';
-    const btn = document.getElementById('copyBtn');
-    const animate = ()=>{ 
-      if(!btn) return; 
-      btn.classList.add('copied'); 
-      setTimeout(()=>btn.classList.remove('copied'),2500); 
-    };
-    if(navigator.clipboard && navigator.clipboard.writeText){ 
-      navigator.clipboard.writeText(email)
-        .then(animate)
-        .catch(()=>{ fallback(email); animate(); }); 
-    } else { 
-      fallback(email); 
-      animate(); 
-    }
-  }
-
-  function fallback(text){ 
-    const el = document.createElement('textarea'); 
-    el.value=text; 
-    el.style.cssText='position:fixed;opacity:0;'; 
-    document.body.appendChild(el); 
-    el.select(); 
-    document.execCommand('copy'); 
-    document.body.removeChild(el); 
-  }
-
-  function scrollToTop(e){ 
-    e && e.preventDefault(); 
-    window.scrollTo({ top:0, behavior:'smooth' }); 
-  }
-
-  // 2) Inicializar comportamiento del menú (hamburguesa + copy + activo)
-  function initMenuBehaviorIndex() {
-    const nav = document.querySelector('.site-nav');
-    if (!nav) return;
-
-    const toggleBtn   = nav.querySelector('.nav-toggle');
-    const mobileMenu  = nav.querySelector('.nav-right-mobile');
-
-    // Hamburguesa
-    if (toggleBtn && mobileMenu) {
-      toggleBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const isOpen = nav.classList.toggle('is-open');
-        toggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-      });
-
-      mobileMenu.addEventListener('click', (e) => {
-        if (e.target.matches('.nav-link')) {
-          nav.classList.remove('is-open');
-          toggleBtn.setAttribute('aria-expanded', 'false');
-        }
-      });
-
-      document.addEventListener('click', (e) => {
-        if (!nav.contains(e.target)) {
-          nav.classList.remove('is-open');
-          toggleBtn.setAttribute('aria-expanded', 'false');
-        }
-      });
-    }
-
-    // Copy email (desktop y mobile)
-    function wireCopy(btnId) {
-      const btn = document.getElementById(btnId);
-      if (!btn) return;
-      btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        copyEmail();
-      });
-    }
-
-    wireCopy('copyBtn');
-    wireCopy('copyBtnMobile');
-
-    // Marcar activo: INDEX => Work
-    const workLink  = document.querySelector('.nav-link[href="index.html#work"]');
-    const aboutLink = document.querySelector('.nav-link[href="about.html"]');
-
-    if (workLink && aboutLink) {
-      workLink.classList.add('is-active');
-      aboutLink.classList.remove('is-active');
-    }
-  }
-
-  // 3) Lógica de la página (reveal + slider)
+  /* ========================================================
+     FUNCIONES DE PÁGINA (scroll reveal + slider)
+     No tocan el menú; el menú se auto-inicializa desde
+     el propio <script> de menu.html al inyectarse.
+  ======================================================== */
   function initPageScripts() {
+
     /* SCROLL REVEAL */
-    const observer = new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{
-        if(e.isIntersecting) e.target.classList.add('visible');
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) e.target.classList.add('visible');
       });
     }, { threshold: 0.08 });
 
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    document.querySelectorAll('.reveal').forEach(function (el) {
+      observer.observe(el);
+    });
 
     /* TESTIMONIAL SLIDER */
-    (function() {
-      const track = document.getElementById('testiTrack');
+    (function () {
+      var track   = document.getElementById('testiTrack');
       if (!track) return;
-      const wrapper = track.parentElement; // .testi-track-wrapper
-      const dots = Array.from(document.querySelectorAll('.testi-dot'));
-      const nextBtn = document.getElementById('testiNext');
-      const prevBtn = document.getElementById('testiPrev');
-      const cards = Array.from(track.querySelectorAll('.testi-card'));
-      const total = cards.length;
+      var wrapper = track.parentElement;
+      var dots    = Array.from(document.querySelectorAll('.testi-dot'));
+      var nextBtn = document.getElementById('testiNext');
+      var prevBtn = document.getElementById('testiPrev');
+      var cards   = Array.from(track.querySelectorAll('.testi-card'));
+      var total   = cards.length;
       if (!total) return;
 
-      let current = 0;
-      let auto = null;
-      const AUTO_DELAY = 6000;
+      var current    = 0;
+      var auto       = null;
+      var AUTO_DELAY = 6000;
 
-      const clamp = (v,a,b) => Math.min(Math.max(v,a),b);
+      function clamp(v, a, b) { return Math.min(Math.max(v, a), b); }
 
-      function centerCard(idx, animate = true) {
-        const normalized = ((idx % total) + total) % total;
+      function centerCard(idx, animate) {
+        var normalized = ((idx % total) + total) % total;
         current = normalized;
-        const card = cards[normalized];
+        var card        = cards[normalized];
+        var cardLeft    = card.offsetLeft;
+        var cardWidth   = card.offsetWidth;
+        var wrapperW    = wrapper.clientWidth;
+        var target      = cardLeft + (cardWidth / 2) - (wrapperW / 2);
+        var maxT        = Math.max(0, track.scrollWidth - wrapperW);
+        target = clamp(target, 0, maxT);
 
-        const cardLeft = card.offsetLeft;
-        const cardWidth = card.offsetWidth;
-        const wrapperWidth = wrapper.clientWidth;
+        if (animate === false) {
+          track.style.transition = 'none';
+        } else {
+          track.style.transition = 'transform 0.55s cubic-bezier(0.4,0,0.2,1)';
+        }
+        track.style.transform = 'translateX(-' + Math.round(target) + 'px)';
 
-        const cardCenter = cardLeft + (cardWidth / 2);
-        let target = cardCenter - (wrapperWidth / 2);
-
-        const maxTranslate = Math.max(0, track.scrollWidth - wrapperWidth);
-        target = clamp(target, 0, maxTranslate);
-
-        if (!animate) track.style.transition = 'none';
-        else track.style.transition = 'transform 0.55s cubic-bezier(0.4,0,0.2,1)';
-
-        track.style.transform = `translateX(-${Math.round(target)}px)`;
-
-        dots.forEach((d,i)=> d.classList.toggle('active', i===current));
-
-        if (!animate) requestAnimationFrame(()=> { 
-          track.style.transition = 'transform 0.55s cubic-bezier(0.4,0,0.2,1)'; 
+        dots.forEach(function (d, i) {
+          d.classList.toggle('active', i === current);
         });
+
+        if (animate === false) {
+          requestAnimationFrame(function () {
+            track.style.transition = 'transform 0.55s cubic-bezier(0.4,0,0.2,1)';
+          });
+        }
       }
 
-      function goTo(i){ centerCard(i, true); resetAuto(); }
+      function stopAuto()  { if (auto) { clearInterval(auto); auto = null; } }
+      function startAuto() { stopAuto(); auto = setInterval(function () { centerCard(current + 1, true); }, AUTO_DELAY); }
+      function resetAuto() { stopAuto(); startAuto(); }
+      function goTo(i)     { centerCard(i, true); resetAuto(); }
 
-      nextBtn && nextBtn.addEventListener('click', ()=> goTo(current + 1));
-      prevBtn && prevBtn.addEventListener('click', ()=> goTo(current - 1));
-      dots.forEach(d => d.addEventListener('click', ()=> goTo(parseInt(d.dataset.idx,10))));
+      if (nextBtn) nextBtn.addEventListener('click', function () { goTo(current + 1); });
+      if (prevBtn) prevBtn.addEventListener('click', function () { goTo(current - 1); });
+      dots.forEach(function (d) {
+        d.addEventListener('click', function () { goTo(parseInt(d.dataset.idx, 10)); });
+      });
 
-      function startAuto(){ stopAuto(); auto = setInterval(()=> centerCard(current+1), AUTO_DELAY); }
-      function stopAuto(){ if (auto){ clearInterval(auto); auto = null; } }
-      function resetAuto(){ stopAuto(); startAuto(); }
-
-      window.addEventListener('resize', () => centerCard(current, false));
-
+      window.addEventListener('resize', function () { centerCard(current, false); });
       wrapper.addEventListener('mouseenter', stopAuto);
       wrapper.addEventListener('mouseleave', startAuto);
 
@@ -949,25 +873,56 @@
     })();
   }
 
-  // 4) Importar menu.html y footer.html y luego iniciar todo
-  document.addEventListener('DOMContentLoaded', () => {
-    const menuContainer   = document.getElementById('menu-container');
-    const footerContainer = document.getElementById('footer-container');
+  /* ========================================================
+     MARCAR ENLACE ACTIVO EN EL MENÚ
+     Llamado después de que menu.html se haya inyectado.
+  ======================================================== */
+  function setActiveNav(page) {
+    /* page: 'index' | 'about' */
+    document.querySelectorAll('.nav-link').forEach(function (link) {
+      link.classList.remove('is-active');
+    });
+    if (page === 'index') {
+      document.querySelectorAll('.nav-link[href="index.html#work"]').forEach(function (l) {
+        l.classList.add('is-active');
+      });
+    } else if (page === 'about') {
+      document.querySelectorAll('.nav-link[href="about.html"]').forEach(function (l) {
+        l.classList.add('is-active');
+      });
+    }
+  }
 
-    const menuPromise = fetch('menu.html')
-      .then(r => r.text())
-      .then(html => { 
-        menuContainer.innerHTML = html; 
-        initMenuBehaviorIndex();   // ← aquí conectamos hamburguesa, copy, activo
+  /* ========================================================
+     ARRANQUE: cargar menu.html + footer.html en paralelo
+  ======================================================== */
+  document.addEventListener('DOMContentLoaded', function () {
+    var menuContainer   = document.getElementById('menu-container');
+    var footerContainer = document.getElementById('footer-container');
+
+    var menuPromise = fetch('menu.html')
+      .then(function (r) { return r.text(); })
+      .then(function (html) {
+        menuContainer.innerHTML = html;
+
+        /* El <script> dentro de menu.html se ejecuta automáticamente
+           al asignar innerHTML en la mayoría de navegadores modernos;
+           pero por seguridad re-ejecutamos initMenuBehavior si existe */
+        if (typeof window.initMenuBehavior === 'function') {
+          window.initMenuBehavior();
+        }
+
+        /* Marcar activo para esta página */
+        setActiveNav('index');
       })
-      .catch(err => console.error('Error cargando menu.html', err));
+      .catch(function (err) { console.error('Error cargando menu.html', err); });
 
-    const footerPromise = fetch('footer.html')
-      .then(r => r.text())
-      .then(html => { footerContainer.innerHTML = html; })
-      .catch(err => console.error('Error cargando footer.html', err));
+    var footerPromise = fetch('footer.html')
+      .then(function (r) { return r.text(); })
+      .then(function (html) { footerContainer.innerHTML = html; })
+      .catch(function (err) { console.error('Error cargando footer.html', err); });
 
-    Promise.all([menuPromise, footerPromise]).then(() => {
+    Promise.all([menuPromise, footerPromise]).then(function () {
       initPageScripts();
     });
   });
