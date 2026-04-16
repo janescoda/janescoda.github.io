@@ -607,6 +607,12 @@
       .then(r => r.text())
       .then(html => { 
         injectHtmlWithScripts(menuContainer, html);
+
+        // inicializar menú compartido si está definido
+        if (typeof window.initMenu === 'function') {
+          window.initMenu();
+        }
+
         setActiveNavLinkAbout();
       })
       .catch(err => console.error('Error cargando menu.html', err));
@@ -617,10 +623,11 @@
       .catch(err => console.error('Error cargando footer.html', err));
 
     Promise.all([menuPromise, footerPromise]).then(() => {
-      // Aquí podrías inicializar scripts específicos de ABOUT si algún día los hay.
+      // scripts específicos de about si los hubiera
     });
   });
 </script>
+
 
 
 </body>
