@@ -531,7 +531,6 @@
 
   <!-- AQUÍ SE CARGA footer.html -->
   <div id="footer-container"></div>
-
 <script>
   function copyEmail() {
     const email = 'janescoda49@gmail.com';
@@ -568,35 +567,59 @@
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  // Misma función de inyección que en index.html
-  function injectHtmlWithScripts(container, html) {
-    const temp = document.createElement('div');
-    temp.innerHTML = html;
+  // Inicializar comportamiento del menú para ABOUT
+  function initMenuBehaviorAbout() {
+    const nav = document.querySelector('.site-nav');
+    if (!nav) return;
 
-    const scripts = Array.from(temp.querySelectorAll('script'));
-    container.innerHTML = temp.innerHTML;
+    const toggleBtn   = nav.querySelector('.nav-toggle');
+    const mobileMenu  = nav.querySelector('.nav-right-mobile');
 
-    scripts.forEach(oldScript => {
-      const newScript = document.createElement('script');
-      if (oldScript.textContent) {
-        newScript.textContent = oldScript.textContent;
-      }
-      Array.from(oldScript.attributes).forEach(attr => {
-        newScript.setAttribute(attr.name, attr.value);
+    // Hamburguesa
+    if (toggleBtn && mobileMenu) {
+      toggleBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = nav.classList.toggle('is-open');
+        toggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
       });
-      document.body.appendChild(newScript);
-    });
-  }
 
-  // Marcar el link activo del menú para ABOUT
-  function setActiveNavLinkAbout() {
+      mobileMenu.addEventListener('click', (e) => {
+        if (e.target.matches('.nav-link')) {
+          nav.classList.remove('is-open');
+          toggleBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!nav.contains(e.target)) {
+          nav.classList.remove('is-open');
+          toggleBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+
+    // Copy email (desktop y mobile)
+    function wireCopy(btnId) {
+      const btn = document.getElementById(btnId);
+      if (!btn) return;
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        copyEmail();
+      });
+    }
+
+    wireCopy('copyBtn');
+    wireCopy('copyBtnMobile');
+
+    // Marcar activo: ABOUT
     const workLink  = document.querySelector('.nav-link[href="index.html#work"]');
     const aboutLink = document.querySelector('.nav-link[href="about.html"]');
 
-    if (!workLink || !aboutLink) return;
-
-    workLink.classList.remove('is-active');
-    aboutLink.classList.add('is-active');
+    if (workLink && aboutLink) {
+      workLink.classList.remove('is-active');
+      aboutLink.classList.add('is-active');
+    }
   }
 
   document.addEventListener('DOMContentLoaded', () => {
@@ -606,14 +629,8 @@
     const menuPromise = fetch('menu.html')
       .then(r => r.text())
       .then(html => { 
-        injectHtmlWithScripts(menuContainer, html);
-
-        // inicializar menú compartido si está definido
-        if (typeof window.initMenu === 'function') {
-          window.initMenu();
-        }
-
-        setActiveNavLinkAbout();
+        menuContainer.innerHTML = html;
+        initMenuBehaviorAbout();
       })
       .catch(err => console.error('Error cargando menu.html', err));
 
@@ -627,8 +644,6 @@
     });
   });
 </script>
-
-
 
 </body>
 </html>
