@@ -1,605 +1,922 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Jan Escoda - Junior Marketing & Digital Content</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jan Escoda - Junior Marketing & Digital Content</title>
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <style>
-    /***** SCALE: Increase base by 10% *****/
-    html { font-size: 110%; scroll-behavior: smooth; }
+  <style>
+    /***** SCALE: Increase base by 10% *****/
+    html { font-size: 110%; scroll-behavior: smooth; }
 
-    /***** BASE *****/
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    /***** BASE *****/
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    :root{
-      --bg: #ffffff;
-      --text: rgb(103,103,122);
-      --title: #000000;
-      --card-bg: #f4f3f0;
-      --border: #e4e2dd;
-      --transition: 0.28s cubic-bezier(0.4,0,0.2,1);
+    :root{
+      --bg: #ffffff;
+      --text: rgb(103,103,122);
+      --title: #000000;
+      --card-bg: #f4f3f0;
+      --border: #e4e2dd;
+      --transition: 0.28s cubic-bezier(0.4,0,0.2,1);
 
-      --page-max-width: 1056px;
-      --page-side-padding: 3.3rem;
-      
-      --hero-gap-top: clamp(2rem, 5vh, 4rem);     /* espacio arriba */
-  --hero-gap-bottom: clamp(1.2rem, 6vh, 3rem);/* espacio abajo */
-  --nav-height: 4.2rem; /* ajusta según tu nav (incluye padding) */
-    }
+      --page-max-width: 1056px;
+      --page-side-padding: 3.3rem;
+      
+      --hero-gap-top: clamp(2rem, 5vh, 4rem);     /* espacio arriba */
+      --hero-gap-bottom: clamp(1.2rem, 6vh, 3rem);/* espacio abajo */
+      --nav-height: 4.2rem; /* ajusta según tu nav (incluye padding) */
+    }
 
-    body{
-      font-family: 'Manrope', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-    }
+    body{
+      font-family: 'Manrope', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
 
-    a { text-decoration:none; color:inherit; }
-    ::-webkit-scrollbar{ width:5px; } ::-webkit-scrollbar-track{ background:var(--bg);} ::-webkit-scrollbar-thumb{ background:var(--border); border-radius:3px; }
+    a { text-decoration:none; color:inherit; }
+    ::-webkit-scrollbar{ width:5px; } 
+    ::-webkit-scrollbar-track{ background:var(--bg);} 
+    ::-webkit-scrollbar-thumb{ background:var(--border); border-radius:3px; }
 
-    .container{ max-width:var(--page-max-width); margin:0 auto; padding:0 var(--page-side-padding); box-sizing:border-box; }
+    .container{ 
+      max-width:var(--page-max-width); 
+      margin:0 auto; 
+      padding:0 var(--page-side-padding); 
+      box-sizing:border-box; 
+    }
 
-    .copy-btn{
-      font-family:'Manrope',sans-serif;
-      font-weight:700;
-      font-size:1rem;
-      padding:0.5rem 1.3rem;
-      border-radius:100px;
-      background:var(--title);
-      color:#fff;
-      border:1.5px solid var(--title);
-      display:inline-flex; align-items:center; gap:0.35rem;
-      cursor:pointer; transition: all var(--transition);
-    }
-    .copy-btn.copied{ background:transparent; color:var(--title); border-color:var(--title); pointer-events:none; }
-    .copy-btn:hover{ transform:translateY(-1px); background:transparent; color:var(--title); }
+    .copy-btn{
+      font-family:'Manrope',sans-serif;
+      font-weight:700;
+      font-size:1rem;
+      padding:0.5rem 1.3rem;
+      border-radius:100px;
+      background:var(--title);
+      color:#fff;
+      border:1.5px solid var(--title);
+      display:inline-flex; 
+      align-items:center; 
+      gap:0.35rem;
+      cursor:pointer; 
+      transition: all var(--transition);
+    }
+    .copy-btn.copied{ 
+      background:transparent; 
+      color:var(--title); 
+      border-color:var(--title); 
+      pointer-events:none; 
+    }
+    .copy-btn:hover{ 
+      transform:translateY(-1px); 
+      background:transparent; 
+      color:var(--title); 
+    }
 
-   /* HERO - comportamiento estable: evita huecos enormes arriba/abajo al hacer zoom */
-#scroll {
-  /* Quitamos min-height:100vh para evitar centrado vertical forzado */
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start; /* alinea hacia arriba en lugar de centrar verticalmente */
-  align-items: stretch;
-  padding-inline: var(--page-side-padding);
-  padding-top: calc(var(--nav-height) + var(--hero-gap-top));
-  padding-bottom: var(--hero-gap-bottom);
-  box-sizing: border-box;
-}
+    /* HERO */
+    #scroll {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: stretch;
+      padding-inline: var(--page-side-padding);
+      padding-top: calc(var(--nav-height) + var(--hero-gap-top));
+      padding-bottom: var(--hero-gap-bottom);
+      box-sizing: border-box;
+    }
 
-/* Mantener ancho máximo y centrado horizontal del contenido */
-.hero-inner {
-  max-width: var(--page-max-width);
-  margin: 0 auto;
-  width: 100%;
-  box-sizing: border-box;
-  margin-top: clamp(3.6rem, 12vh, 8rem);
-  margin-bottom: clamp(1rem, 5vh, 2.8rem);
-}
+    .hero-inner {
+      max-width: var(--page-max-width);
+      margin: 0 auto;
+      width: 100%;
+      box-sizing: border-box;
+      margin-top: clamp(3.6rem, 12vh, 8rem);
+      margin-bottom: clamp(1rem, 5vh, 2.8rem);
+    }
 
-/* Título: conservar tamaño pero con margen inferior predecible */
-.hero-title {
-  max-width: 800px;
-  font-weight: 800;
-  font-size: clamp(2.4rem, 5vw, 4.2rem);
-  line-height: 1.06;
-  letter-spacing: -0.03em;
-  margin-bottom: clamp(0.9rem, 3vw, 1.8rem); /* menos espacio por defecto que antes */
-  opacity: 0;
-  animation: fadeUp 0.85s 0.15s forwards;
-}
+    .hero-title {
+      max-width: 800px;
+      font-weight: 800;
+      font-size: clamp(2.4rem, 5vw, 4.2rem);
+      line-height: 1.06;
+      letter-spacing: -0.03em;
+      margin-bottom: clamp(0.9rem, 3vw, 1.8rem);
+      opacity: 0;
+      animation: fadeUp 0.85s 0.15s forwards;
+    }
 
-/* Color pequeño y la parte fuerte en negro */
-.hero-title .name { color: #8a8a8a; }
-.hero-title .strong { color: var(--title); }
+    .hero-title .name { color: #8a8a8a; }
+    .hero-title .strong { color: var(--title); }
 
-/* Tags */
-.hero-tags {
-  display: flex;
-  gap: .5rem;
-  opacity: 0;
-  animation: fadeUp 0.85s 0.32s forwards;
-  align-items: center;
-  flex-wrap: wrap;
-}
+    .hero-tags {
+      display: flex;
+      gap: .5rem;
+      opacity: 0;
+      animation: fadeUp 0.85s 0.32s forwards;
+      align-items: center;
+      flex-wrap: wrap;
+    }
 
-.hero-tag {
-  background: #fff;
-  border: 1px solid var(--border);
-  padding: .42rem 1rem;
-  border-radius: 100px;
-  font-weight: 600;
-  color: #8a8a8a;
-  line-height: 1;
-  white-space: nowrap;
-}
+    .hero-tag {
+      background: #fff;
+      border: 1px solid var(--border);
+      padding: .42rem 1rem;
+      border-radius: 100px;
+      font-weight: 600;
+      color: #8a8a8a;
+      line-height: 1;
+      white-space: nowrap;
+    }
 
-    /* SECTION HEADINGS */
-    .section-label{ font-weight:700; font-size:.72rem; text-transform:uppercase; letter-spacing:.13em; color:#8a8a8a; margin-bottom:2rem; }
-    .section-heading{ font-weight:800; font-size:clamp(1.7rem,3vw,2.2rem); margin:3.5rem 0 1.8rem; color:var(--title); }
+    /* SECTION HEADINGS */
+    .section-label{ 
+      font-weight:700; 
+      font-size:.72rem; 
+      text-transform:uppercase; 
+      letter-spacing:.13em; 
+      color:#8a8a8a; 
+      margin-bottom:2rem; 
+    }
+    .section-heading{ 
+      font-weight:800; 
+      font-size:clamp(1.7rem,3vw,2.2rem); 
+      margin:3.5rem 0 1.8rem; 
+      color:var(--title); 
+    }
 
-    /* WORK */
-    #work{ padding:3rem 0 4rem; }
-    .proj-card{ display:grid; grid-template-columns:1fr 400px; background:#fff; border:1px solid var(--border); border-radius:20px; overflow:hidden; margin-bottom:1.25rem; transition:transform var(--transition), box-shadow var(--transition); }
-    .proj-body{ padding:2.25rem 2.5rem; display:flex; flex-direction:column; justify-content:space-between; }
-    .proj-img-side{ background:var(--border); min-height:16.25rem; display:flex; align-items:center; justify-content:center; overflow:hidden; }
-    .proj-title {
-  color: var(--title);
-}
-    .proj-card:hover{ transform:translateY(-4px); box-shadow:0 20px 56px rgba(0,0,0,0.08); }
-    /* Tags en Work — estilo igual que las hero-tags (sin animación) */
-.proj-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-top: 1rem;
-  align-items: center;
-}
+    /* WORK */
+    #work{ padding:3rem 0 4rem; }
+    .proj-card{ 
+      display:grid; 
+      grid-template-columns:1fr 400px; 
+      background:#fff; 
+      border:1px solid var(--border); 
+      border-radius:20px; 
+      overflow:hidden; 
+      margin-bottom:1.25rem; 
+      transition:transform var(--transition), box-shadow var(--transition); 
+    }
+    .proj-body{ 
+      padding:2.25rem 2.5rem; 
+      display:flex; 
+      flex-direction:column; 
+      justify-content:space-between; 
+    }
+    .proj-img-side{ 
+      background:var(--border); 
+      min-height:16.25rem; 
+      display:flex; 
+      align-items:center; 
+      justify-content:center; 
+      overflow:hidden; 
+    }
+    .proj-title {
+      color: var(--title);
+    }
+    .proj-card:hover{ 
+      transform:translateY(-4px); 
+      box-shadow:0 20px 56px rgba(0,0,0,0.08); 
+    }
 
-.proj-tag {
-  background: #ffffff;                 /* mismo fondo que hero-tag */
-  border: 1px solid var(--border);     /* mismo borde sutil */
-  border-radius: 100px;                /* píldora */
-  padding: 0.42rem 1rem;               /* igual que .hero-tag */
-  font-size: 1rem;                     /* igual tamaño que hero-tag */
-  font-weight: 600;
-  color: var(--text-muted);            /* igual color que hero-tag */
-  line-height: 1;
-  white-space: nowrap;
-  box-shadow: none;                    /* SIN elevación/animación */
-  transition: none;                    /* quitar transiciones/animaciones */
-  cursor: default;
-}
+    .proj-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+      align-items: center;
+    }
 
-/* Variante 'oscura' si quieres destacar algunos (opcional) */
-.proj-tag--dark {
-  background: #000;
-  color: #fff;
-  border-color: #000;
-}
+    .proj-tag {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 0.42rem 1rem;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      line-height: 1;
+      white-space: nowrap;
+      box-shadow: none;
+      transition: none;
+      cursor: default;
+    }
 
-/* Responsive: reducir padding/tamaño si hace falta */
-@media (max-width: 540px) {
-  .proj-tag { padding: 0.36rem 0.8rem; font-size: 0.92rem; }
-}
-/* WIP badge */
-.wip-badge {
-  color: #1e7bf6;
-}
-    /* OTHER PROJECTS */
-    .other-heading{ font-size:clamp(1.5rem,3vw,2.2rem); font-weight:800; margin-bottom:2rem; margin-top:5rem; }
-    .mini-grid{ display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:2.2rem; }
-    .mini-img-frame{ background:#fff; border-radius:24px; border:1px solid #e5e5ed; padding:1.6rem 1.9rem; overflow:hidden; }
-    .mini-img{ width:100%; height:13.75rem; display:flex; align-items:center; justify-content:center; } /* 220px -> 13.75rem */
-    .mini-card{ position:relative; cursor:pointer; background:transparent; border-radius:12px; padding:0.6rem 0.5rem; min-height:5.6rem; display:flex; flex-direction:column; gap:.35rem; 
-      /* initial state for animation: invisible */
-      opacity:0; transform:translateY(10px); transition: opacity .5s ease, transform .5s ease;
-    }
-    /* when container .reveal becomes visible we reveal children with stagger */
-    .reveal.visible .mini-card{ opacity:1; transform:translateY(0); }
-    .reveal.visible .mini-card:nth-child(1){ transition-delay: .06s; }
-    .reveal.visible .mini-card:nth-child(2){ transition-delay: .12s; }
-    .reveal.visible .mini-card:nth-child(3){ transition-delay: .18s; }
-    .reveal.visible .mini-card:nth-child(4){ transition-delay: .24s; }
+    .proj-tag--dark {
+      background: #000;
+      color: #fff;
+      border-color: #000;
+    }
 
-    .mini-overlay{ position:absolute; top:0; left:0; right:0; bottom:-14px; border-radius:24px; background:#f2f5ff; padding:1.8rem 2rem 2.3rem; color:var(--text); font-size:0.9rem; line-height:1.8; opacity:0; pointer-events:none; transition:opacity var(--transition); z-index:2; }
-    .mini-card:hover .mini-overlay{ opacity:1; }
-    /* Make "Other projects" heading use the main title color */
-.other-heading {
-  color: var(--title);
-}
+    @media (max-width: 540px) {
+      .proj-tag { padding: 0.36rem 0.8rem; font-size: 0.92rem; }
+    }
 
-/* Make every mini project title use the same title color */
-.mini-title {
-  color: var(--title);
-  /* mantener el resto del estilo ya definido */
-}
+    .wip-badge {
+      color: #1e7bf6;
+    }
 
-    /* PRINCIPLES */
-    #principles{ padding:0rem 0 4rem; }
-    .principles-card{ background:#f7f9ff; border-radius:24px; padding:2.4rem; box-sizing:border-box; }
-    .principles-grid{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:2.2rem 3.5rem; }
-    .principle-item{ padding:0; }
-    .principle-emoji{ font-size:1.4rem; margin-bottom:.8rem; display:block; }
-    .principle-title{ font-weight:700; font-size:.98rem; margin-bottom:.35rem; }
-    .principle-text{ font-size:.86rem; color:#8a8a8a; line-height:1.7; }
+    /* OTHER PROJECTS */
+    .other-heading{ 
+      font-size:clamp(1.5rem,3vw,2.2rem); 
+      font-weight:800; 
+      margin-bottom:2rem; 
+      margin-top:5rem; 
+      color: var(--title);
+    }
 
-    /* TESTIMONIALS */
-    #testimonials{ padding:1rem 0; }
-    .testi-slider-outer{ position:relative; overflow:visible; padding-bottom:2.5rem; }
-    .testi-track-wrapper{ overflow:hidden; width:100%; box-sizing:border-box; }
-    .testi-track{ display:flex; gap:1.5rem; transition: transform .55s cubic-bezier(0.4,0,0.2,1); will-change:transform; }
-    .testi-card{ min-width:70%; max-width:70%; flex-shrink:0; background:#fff; border-radius:24px; border:1px solid #e5e5ed; padding:2.4rem 2.6rem; box-shadow:0 18px 45px rgba(15,23,42,0.05); }
-    .testi-quote{ font-size:.95rem; line-height:1.9; margin-bottom:2rem; color:var(--text); }
-    .testi-footer{ display:flex; align-items:center; gap:.85rem; }
-    .testi-avatar{ width:44px; height:44px; border-radius:50%; background:var(--border); border:2px solid #fff; box-shadow:0 0 0 1.5px var(--border); display:flex; align-items:center; justify-content:center; font-weight:800; color:#8a8a8a; }
-    .testi-arrow{ position:absolute; top:50%; transform:translateY(-50%); width:40px; height:40px; border-radius:999px; background:#fff; border:1px solid #e5e5ed; display:flex; align-items:center; justify-content:center; cursor:pointer; box-shadow:0 10px 25px rgba(15,23,42,0.08); transition:all var(--transition); }
-    .testi-arrow-left{ left:0.4rem; } .testi-arrow-right{ right:0.4rem; }
-    .testi-controls{ position:absolute; left:50%; bottom:0; transform:translateX(-50%); display:flex; gap:.6rem; align-items:center; }
-    .testi-dot{ width:8px; height:8px; border-radius:999px; background:#d7d7e3; border:none; cursor:pointer; transition: background var(--transition), width var(--transition); }
-    .testi-dot.active{ background:#9a9ab8; width:20px; }
+    .mini-grid{ 
+      display:grid; 
+      grid-template-columns: repeat(2, minmax(0,1fr)); 
+      gap:2.2rem; 
+    }
+    .mini-img-frame{ 
+      background:#fff; 
+      border-radius:24px; 
+      border:1px solid #e5e5ed; 
+      padding:1.6rem 1.9rem; 
+      overflow:hidden; 
+    }
+    .mini-img{ 
+      width:100%; 
+      height:13.75rem; 
+      display:flex; 
+      align-items:center; 
+      justify-content:center; 
+    }
 
-    /* HARD SKILLS */
-    #hard-skills{ padding:6rem 0; }
-    .hard-skills-inner{ display:flex; flex-direction:column; align-items:flex-start; gap:1.6rem; max-width:var(--page-max-width); margin:0 auto; padding-left:0; padding-right:0; box-sizing:border-box; }
-    .hard-skills-text{ font-size:clamp(2rem,4vw,3rem); font-weight:800; line-height:1.18; max-width:800px; color: var(--title)}
-    .hard-skills-btn{ display:inline-flex; align-items:center; justify-content:center; padding:.75rem 1.9rem; background:#000; color:#fff; border-radius:999px; border:1.5px solid #000; font-weight:700; }
+    .mini-card{ 
+      position:relative; 
+      cursor:pointer; 
+      background:transparent; 
+      border-radius:12px; 
+      padding:0.6rem 0.5rem; 
+      min-height:5.6rem; 
+      display:flex; 
+      flex-direction:column; 
+      gap:.35rem;
+      opacity:0; 
+      transform:translateY(10px); 
+      transition: opacity .5s ease, transform .5s ease;
+    }
 
-  /***** CONTACT (Get in touch) *****/
-    #contact {
-      padding: 3.5rem 0 2.5rem;
-    }
+    .reveal.visible .mini-card{ opacity:1; transform:translateY(0); }
+    .reveal.visible .mini-card:nth-child(1){ transition-delay: .06s; }
+    .reveal.visible .mini-card:nth-child(2){ transition-delay: .12s; }
+    .reveal.visible .mini-card:nth-child(3){ transition-delay: .18s; }
+    .reveal.visible .mini-card:nth-child(4){ transition-delay: .24s; }
 
-    .contact-title {
-      font-size: clamp(1.7rem, 3vw, 2.2rem);
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      margin-bottom: 1.6rem;
-      color: var(--title);
-    }
+    .mini-overlay{ 
+      position:absolute; 
+      top:0; 
+      left:0; 
+      right:0; 
+      bottom:-14px; 
+      border-radius:24px; 
+      background:#f2f5ff; 
+      padding:1.8rem 2rem 2.3rem; 
+      color:var(--text); 
+      font-size:0.9rem; 
+      line-height:1.8; 
+      opacity:0; 
+      pointer-events:none; 
+      transition:opacity var(--transition); 
+      z-index:2; 
+    }
+    .mini-card:hover .mini-overlay{ opacity:1; }
 
-    .contact-layout {
-      display: grid;
-      grid-template-columns: minmax(0, 1.8fr) minmax(0, 1fr);
-      gap: 2rem;
-      align-items: flex-start;
-    }
+    .mini-title {
+      color: var(--title);
+    }
 
-    .contact-card {
-      background: #ffffff;
-      border-radius: 18px;
-      border: 1px solid #e5e5ed;
-      padding: 1.8rem 2rem;
-    }
+    /* PRINCIPLES */
+    #principles{ padding:0rem 0 4rem; }
+    .principles-card{ 
+      background:#f7f9ff; 
+      border-radius:24px; 
+      padding:2.4rem; 
+      box-sizing:border-box; 
+    }
+    .principles-grid{ 
+      display:grid; 
+      grid-template-columns:repeat(2,minmax(0,1fr)); 
+      gap:2.2rem 3.5rem; 
+    }
+    .principle-item{ padding:0; }
+    .principle-emoji{ font-size:1.4rem; margin-bottom:.8rem; display:block; }
+    .principle-title{ font-weight:700; font-size:.98rem; margin-bottom:.35rem; }
+    .principle-text{ font-size:.86rem; color:#8a8a8a; line-height:1.7; }
 
-    .contact-sub {
-      color: var(--text);
-      font-size: 0.95rem;
-      line-height: 1.7;
-      margin-bottom: 1rem;
-      max-width: 540px;
-    }
+    /* TESTIMONIALS */
+    #testimonials{ padding:1rem 0; }
+    .testi-slider-outer{ position:relative; overflow:visible; padding-bottom:2.5rem; }
+    .testi-track-wrapper{ overflow:hidden; width:100%; box-sizing:border-box; }
+    .testi-track{ display:flex; gap:1.5rem; transition: transform .55s cubic-bezier(0.4,0,0.2,1); will-change:transform; }
+    .testi-card{ 
+      min-width:70%; 
+      max-width:70%; 
+      flex-shrink:0; 
+      background:#fff; 
+      border-radius:24px; 
+      border:1px solid #e5e5ed; 
+      padding:2.4rem 2.6rem; 
+      box-shadow:0 18px 45px rgba(15,23,42,0.05); 
+    }
+    .testi-quote{ font-size:.95rem; line-height:1.9; margin-bottom:2rem; color:var(--text); }
+    .testi-footer{ display:flex; align-items:center; gap:.85rem; }
+    .testi-avatar{ 
+      width:44px; 
+      height:44px; 
+      border-radius:50%; 
+      background:var(--border); 
+      border:2px solid #fff; 
+      box-shadow:0 0 0 1.5px var(--border); 
+      display:flex; 
+      align-items:center; 
+      justify-content:center; 
+      font-weight:800; 
+      color:#8a8a8a; 
+    }
+    .testi-arrow{ 
+      position:absolute; 
+      top:50%; 
+      transform:translateY(-50%); 
+      width:40px; 
+      height:40px; 
+      border-radius:999px; 
+      background:#fff; 
+      border:1px solid #e5e5ed; 
+      display:flex; 
+      align-items:center; 
+      justify-content:center; 
+      cursor:pointer; 
+      box-shadow:0 10px 25px rgba(15,23,42,0.08); 
+      transition:all var(--transition); 
+    }
+    .testi-arrow-left{ left:0.4rem; } 
+    .testi-arrow-right{ right:0.4rem; }
+    .testi-controls{ 
+      position:absolute; 
+      left:50%; 
+      bottom:0; 
+      transform:translateX(-50%); 
+      display:flex; 
+      gap:.6rem; 
+      align-items:center; 
+    }
+    .testi-dot{ 
+      width:8px; 
+      height:8px; 
+      border-radius:999px; 
+      background:#d7d7e3; 
+      border:none; 
+      cursor:pointer; 
+      transition: background var(--transition), width var(--transition); 
+    }
+    .testi-dot.active{ background:#9a9ab8; width:20px; }
 
-    .contact-email-link {
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: #4a4a6a;
-      text-decoration: underline;
-      text-underline-offset: 3px;
-    }
+    /* HARD SKILLS */
+    #hard-skills{ padding:6rem 0; }
+    .hard-skills-inner{ 
+      display:flex; 
+      flex-direction:column; 
+      align-items:flex-start; 
+      gap:1.6rem; 
+      max-width:var(--page-max-width); 
+      margin:0 auto; 
+      padding-left:0; 
+      padding-right:0; 
+      box-sizing:border-box; 
+    }
+    .hard-skills-text{ 
+      font-size:clamp(2rem,4vw,3rem); 
+      font-weight:800; 
+      line-height:1.18; 
+      max-width:800px; 
+      color: var(--title)
+    }
+    .hard-skills-btn{ 
+      display:inline-flex; 
+      align-items:center; 
+      justify-content:center; 
+      padding:.75rem 1.9rem; 
+      background:#000; 
+      color:#fff; 
+      border-radius:999px; 
+      border:1.5px solid #000; 
+      font-weight:700; 
+    }
 
-    .contact-elsewhere-title {
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 0.9rem;
-    }
+    /***** CONTACT (Get in touch) *****/
+    #contact {
+      padding: 3.5rem 0 2.5rem;
+    }
 
-    .contact-elsewhere-links {
-      display: flex;
-      flex-direction: column;
-      gap: 0.9rem;
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: var(--text);
-    }
+    .contact-title {
+      font-size: clamp(1.7rem, 3vw, 2.2rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.6rem;
+      color: var(--title);
+    }
 
-    .contact-elsewhere-links a {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      text-decoration: none;
-      color: inherit;
-    }
+    .contact-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.8fr) minmax(0, 1fr);
+      gap: 2rem;
+      align-items: flex-start;
+    }
 
-    .contact-elsewhere-links a .icon {
-      font-size: 0.95rem;
-      color: var(--text);
-    }
+    .contact-card {
+      background: #ffffff;
+      border-radius: 18px;
+      border: 1px solid #e5e5ed;
+      padding: 1.8rem 2rem;
+    }
 
-    /* general animations */
-    @keyframes fadeUp{ from{ opacity:0; transform:translateY(26px);} to{ opacity:1; transform:translateY(0);} }
-    .reveal{ opacity:0; transform:translateY(20px); transition: opacity .6s ease, transform .6s ease; }
-    .reveal.visible{ opacity:1; transform:translateY(0); }
+    .contact-sub {
+      color: var(--text);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin-bottom: 1rem;
+      max-width: 540px;
+    }
 
-    /* responsive tweaks */
-    @media (max-width:1024px){ .proj-card{ grid-template-columns:1fr; } .mini-grid{ grid-template-columns:1fr; } .principles-grid{ grid-template-columns:1fr 1fr; } }
-    @media (max-width:768px){ .container{ padding:0 1.5rem; } .mini-grid{ grid-template-columns:1fr; } .testi-card{ min-width:100%; max-width:100%; padding:2rem 1.8rem; } .principles-card{ padding:1.8rem; } .principles-grid{ grid-template-columns:1fr; gap:1.9rem; } .footer-inner{ padding:0 1.5rem; flex-direction:column; gap:.75rem; text-align:center; } }
-  </style>
+    .contact-email-link {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #4a4a6a;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .contact-elsewhere-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.9rem;
+    }
+
+    .contact-elsewhere-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .contact-elsewhere-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .contact-elsewhere-links a .icon {
+      font-size: 0.95rem;
+      color: var(--text);
+    }
+
+    /* general animations */
+    @keyframes fadeUp{ 
+      from{ opacity:0; transform:translateY(26px);} 
+      to{ opacity:1; transform:translateY(0);} 
+    }
+    .reveal{ 
+      opacity:0; 
+      transform:translateY(20px); 
+      transition: opacity .6s ease, transform .6s ease; 
+    }
+    .reveal.visible{ opacity:1; transform:translateY(0); }
+
+    /* responsive tweaks */
+    @media (max-width:1024px){ 
+      .proj-card{ grid-template-columns:1fr; } 
+      .mini-grid{ grid-template-columns:1fr; } 
+      .principles-grid{ grid-template-columns:1fr 1fr; } 
+    }
+    @media (max-width:768px){ 
+      .container{ padding:0 1.5rem; } 
+      .mini-grid{ grid-template-columns:1fr; } 
+      .testi-card{ min-width:100%; max-width:100%; padding:2rem 1.8rem; } 
+      .principles-card{ padding:1.8rem; } 
+      .principles-grid{ grid-template-columns:1fr; gap:1.9rem; } 
+    }
+  </style>
 </head>
 <body>
 
-  <!-- HERO -->
-  <div id="scroll">
-    <div class="hero-inner">
-      <h1 class="hero-title">
-        <span class="name">Hi, I'm Jan,</span>
-        <span class="strong">Marketing &amp; Digital Content Specialist creating ideas that make everyday brands work better.</span>
-      </h1>
-      <div class="hero-tags">
-        <span class="hero-tag">+2 years of experience</span>
-        <span class="hero-tag">Digital Marketing, Content, Web, SEO/GEO, E-commerce</span>
-        <span class="hero-tag">Based in Barcelona</span>
-      </div>
-    </div>
-  </div>
+  <!-- AQUÍ SE CARGARÁ menu.html -->
+  <div id="menu-container"></div>
 
-  <!-- WORK -->
-  <section id="work">
-    <div class="container">
-      <div class="section-label reveal">Work</div>
+  <!-- HERO -->
+  <div id="scroll">
+    <div class="hero-inner">
+      <h1 class="hero-title">
+        <span class="name">Hi, I'm Jan,</span>
+        <span class="strong">Marketing &amp; Digital Content Specialist creating ideas that make everyday brands work better.</span>
+      </h1>
+      <div class="hero-tags">
+        <span class="hero-tag">+2 years of experience</span>
+        <span class="hero-tag">Digital Marketing, Content, Web, SEO/GEO, E-commerce</span>
+        <span class="hero-tag">Based in Barcelona</span>
+      </div>
+    </div>
+  </div>
 
-      <a href="#" class="proj-card reveal">
-        <div class="proj-body">
-          <div>
-            <p class="proj-meta">IKEA • 2024</p>
-            <h2 class="proj-title">Local Marketing and Digital Content for Catalonia </h2>
-          </div>
-                                  <div class="wip-badge">In progress</div>
+  <!-- WORK -->
+  <section id="work">
+    <div class="container">
+      <div class="section-label reveal">Work</div>
 
-          <div class="proj-tags">
-            <span class="proj-tag">Digital</span>
-            <span class="proj-tag">SEO</span>
-            <span class="proj-tag">Localization</span>
-            <span class="proj-tag">Marketing</span>
-            <span class="proj-tag">Campaigns</span>
-          </div>
-        </div>
-        <div class="proj-img-side">
-          <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-        </div>
-      </a>
+      <a href="#" class="proj-card reveal">
+        <div class="proj-body">
+          <div>
+            <p class="proj-meta">IKEA • 2024</p>
+            <h2 class="proj-title">Local Marketing and Digital Content for Catalonia </h2>
+          </div>
+          <div class="wip-badge">In progress</div>
 
-      <div class="proj-card no-link reveal">
-        <div class="proj-body">
-          <div>
-            <p class="proj-meta">Daina • 2025</p>
-            <h2 class="proj-title">Website and strategy for a new agency</h2>
-          </div>
-          <div class="proj-tags">
-            <span class="proj-tag">Landing page</span>
-            <span class="proj-tag">Marketing</span>
-            <span class="proj-tag">Content</span>
-          </div>
-        </div>
-        <div class="proj-img-side">
-          <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-        </div>
-      </div>
+          <div class="proj-tags">
+            <span class="proj-tag">Digital</span>
+            <span class="proj-tag">SEO</span>
+            <span class="proj-tag">Localization</span>
+            <span class="proj-tag">Marketing</span>
+            <span class="proj-tag">Campaigns</span>
+          </div>
+        </div>
+        <div class="proj-img-side">
+          <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        </div>
+      </a>
 
-      <a href="#" class="proj-card reveal">
-        <div class="proj-body">
-          <div>
-            <p class="proj-meta">Coesuz • 2024</p>
-            <h2 class="proj-title">Digital product development and promotional video</h2>
-          </div>
-          <div class="proj-tags">
-            <span class="proj-tag">Product</span>
-            <span class="proj-tag">Digital</span>
-            <span class="proj-tag">Media</span>
-          </div>
-        </div>
-        <div class="proj-img-side">
-          <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-        </div>
-      </a>
+      <div class="proj-card no-link reveal">
+        <div class="proj-body">
+          <div>
+            <p class="proj-meta">Daina • 2025</p>
+            <h2 class="proj-title">Website and strategy for a new agency</h2>
+          </div>
+          <div class="proj-tags">
+            <span class="proj-tag">Landing page</span>
+            <span class="proj-tag">Marketing</span>
+            <span class="proj-tag">Content</span>
+          </div>
+        </div>
+        <div class="proj-img-side">
+          <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        </div>
+      </div>
 
-      <!-- Other projects (cards will animate individually via CSS when .reveal visible) -->
-      <div class="reveal" style="margin-top:1.5rem;">
-        <h2 class="other-heading">Other projects</h2>
-        <div class="mini-grid">
+      <a href="#" class="proj-card reveal">
+        <div class="proj-body">
+          <div>
+            <p class="proj-meta">Coesuz • 2024</p>
+            <h2 class="proj-title">Digital product development and promotional video</h2>
+          </div>
+          <div class="proj-tags">
+            <span class="proj-tag">Product</span>
+            <span class="proj-tag">Digital</span>
+            <span class="proj-tag">Media</span>
+          </div>
+        </div>
+        <div class="proj-img-side">
+          <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        </div>
+      </a>
 
-          <div class="mini-card">
-            <div class="mini-img-frame"><div class="mini-img"><svg width="160" height="160" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div></div>
-            <div class="mini-body"><p class="mini-meta">Accesorios3D · 3D Printing ·  E‑commerce · 2024</p><h3 class="mini-title">Branding, web and product production</h3></div>
-            <div class="mini-overlay"><p>Accesorios3d creates minimalist, durable home accessories produced with sustainable 3D printing. I developed the brand identity, product visuals and a responsive e‑commerce site that supports product personalization (size, color, finish). Deliverables include logo & icon, color palette, product renders, production files and landing page.
+      <!-- Other projects -->
+      <div class="reveal" style="margin-top:1.5rem;">
+        <h2 class="other-heading">Other projects</h2>
+        <div class="mini-grid">
 
-</p></div>
-          </div>
-<div class="mini-card">
-            <div class="mini-img-frame"><div class="mini-img"><svg width="160" height="160" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div></div>
-            <div class="mini-body"><p class="mini-meta">Category Five · Social media · Visual Identity · 2023</p><h3 class="mini-title">Brand digital strategy and implementation plan</h3></div>
-            <div class="mini-overlay"><p>Led art direction and content for a summer launch featuring three short films and a social campaign on Instagram and TikTok. Produced photography, animated logo variations and a content calendar (Stories, Reels, grid posts) to position the brand. The campaign drove organic reach through community challenges and cohesive visual storytelling.</p></div>
-          </div> 
-          <div class="mini-card">
-            <div class="mini-img-frame"><div class="mini-img"><svg width="160" height="160" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div></div>
-            <div class="mini-body"><p class="mini-meta">Airo · Digital · UX/UI · 2023</p><h3 class="mini-title">Create the visual identity and UX/UI.</h3></div>
-            <div class="mini-overlay"><p>Airo is a university concept for a universal transit card with a rewards program to encourage public transport use. I created the visual identity and mockups for a website and mobile app.</p></div>
-          </div>
+          <div class="mini-card">
+            <div class="mini-img-frame">
+              <div class="mini-img">
+                <svg width="160" height="160" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+              </div>
+            </div>
+            <div class="mini-body">
+              <p class="mini-meta">Accesorios3D · 3D Printing ·  E‑commerce · 2024</p>
+              <h3 class="mini-title">Branding, web and product production</h3>
+            </div>
+            <div class="mini-overlay">
+              <p>Accesorios3d creates minimalist, durable home accessories produced with sustainable 3D printing. I developed the brand identity, product visuals and a responsive e‑commerce site that supports product personalization (size, color, finish). Deliverables include logo & icon, color palette, product renders, production files and landing page.</p>
+            </div>
+          </div>
 
-          <div class="mini-card">
-            <div class="mini-img-frame"><div class="mini-img"><svg width="160" height="160" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div></div>
-            <div class="mini-body"><p class="mini-meta">Scan&Go · Development · Interactive · 2020</p><h3 class="mini-title">Produced an interactive video game and exhibition installation</h3></div>
-            <div class="mini-overlay"><p>Scan&Go Arcade is a motion‑controlled interactive installation built with Processing and sensor input. Players select moving targets with hand gestures; the system logs scores to a leaderboard. I handled concept, coding, sensor integration and assembly — the piece was exhibited at LAVS and tested with live audiences.</p></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+          <div class="mini-card">
+            <div class="mini-img-frame">
+              <div class="mini-img">
+                <svg width="160" height="160" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+              </div>
+            </div>
+            <div class="mini-body">
+              <p class="mini-meta">Category Five · Social media · Visual Identity · 2023</p>
+              <h3 class="mini-title">Brand digital strategy and implementation plan</h3>
+            </div>
+            <div class="mini-overlay">
+              <p>Led art direction and content for a summer launch featuring three short films and a social campaign on Instagram and TikTok. Produced photography, animated logo variations and a content calendar (Stories, Reels, grid posts) to position the brand. The campaign drove organic reach through community challenges and cohesive visual storytelling.</p>
+            </div>
+          </div> 
 
-  <!-- PRINCIPLES -->
-  <section id="principles">
-    <div class="container">
-      <h2 class="section-heading reveal">My principles</h2>
-      <div class="principles-card reveal">
-        <div class="principles-grid">
-          <div class="principle-item"><span class="principle-emoji">🚀</span><h3 class="principle-title">What ships matters more than what's perfect</h3><p class="principle-text">Beautiful design artifacts are great, but progress is better.</p></div>
-          <div class="principle-item"><span class="principle-emoji">🧠</span><h3 class="principle-title">Make intentional decisions</h3><p class="principle-text">Cultivate spaces of trust and collect diverse perspectives, and then use them to sharpen ideas.</p></div>
-          <div class="principle-item"><span class="principle-emoji">📐</span><h3 class="principle-title">Measurement as intervention</h3><p class="principle-text">As P. Drucker famously said — "What gets measured gets managed, and what gets managed gets done".</p></div>
-          <div class="principle-item"><span class="principle-emoji">💫</span><h3 class="principle-title">Never settle for mediocrity</h3><p class="principle-text">There's always room to make our designs better, one iteration at a time.</p></div>
-        </div>
-      </div>
-    </div>
-  </section>
+          <div class="mini-card">
+            <div class="mini-img-frame">
+              <div class="mini-img">
+                <svg width="160" height="160" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+              </div>
+            </div>
+            <div class="mini-body">
+              <p class="mini-meta">Airo · Digital · UX/UI · 2023</p>
+              <h3 class="mini-title">Create the visual identity and UX/UI.</h3>
+            </div>
+            <div class="mini-overlay">
+              <p>Airo is a university concept for a universal transit card with a rewards program to encourage public transport use. I created the visual identity and mockups for a website and mobile app.</p>
+            </div>
+          </div>
 
-  <!-- TESTIMONIALS -->
-  <section id="testimonials">
-    <div class="container">
-      <h2 class="section-heading reveal">In their words</h2>
+          <div class="mini-card">
+            <div class="mini-img-frame">
+              <div class="mini-img">
+                <svg width="160" height="160" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+              </div>
+            </div>
+            <div class="mini-body">
+              <p class="mini-meta">Scan&Go · Development · Interactive · 2020</p>
+              <h3 class="mini-title">Produced an interactive video game and exhibition installation</h3>
+            </div>
+            <div class="mini-overlay">
+              <p>Scan&Go Arcade is a motion‑controlled interactive installation built with Processing and sensor input. Players select moving targets with hand gestures; the system logs scores to a leaderboard. I handled concept, coding, sensor integration and assembly — the piece was exhibited at LAVS and tested with live audiences.</p>
+            </div>
+          </div>
 
-      <div class="testi-slider-outer reveal">
-        <div class="testi-track-wrapper">
-          <div class="testi-track" id="testiTrack">
-            <div class="testi-card">
-              <p class="testi-quote">"Combines strong UI &amp; UX skills with a genuine passion for understanding the user and tailoring solutions to the target audience. Always open to feedback and eager to collaborate."</p>
-              <div class="testi-footer"><div class="testi-avatar">DB</div><div><p class="testi-author">Dan Bayo</p><p class="testi-role">Marketing Campaign Specialist</p></div></div>
-            </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-            <div class="testi-card">
-              <p class="testi-quote">"Smoothly balances taking care of all the small details and understanding the importance of the bigger picture, whilst ensuring that everyone can succeed."</p>
-              <div class="testi-footer"><div class="testi-avatar">AG</div><div><p class="testi-author">Alberto Gonzalez</p><p class="testi-role">Marketing Specialist</p></div></div>
-            </div>
+  <!-- PRINCIPLES -->
+  <section id="principles">
+    <div class="container">
+      <h2 class="section-heading reveal">My principles</h2>
+      <div class="principles-card reveal">
+        <div class="principles-grid">
+          <div class="principle-item">
+            <span class="principle-emoji">🚀</span>
+            <h3 class="principle-title">What ships matters more than what's perfect</h3>
+            <p class="principle-text">Beautiful design artifacts are great, but progress is better.</p>
+          </div>
+          <div class="principle-item">
+            <span class="principle-emoji">🧠</span>
+            <h3 class="principle-title">Make intentional decisions</h3>
+            <p class="principle-text">Cultivate spaces of trust and collect diverse perspectives, and then use them to sharpen ideas.</p>
+          </div>
+          <div class="principle-item">
+            <span class="principle-emoji">📐</span>
+            <h3 class="principle-title">Measurement as intervention</h3>
+            <p class="principle-text">As P. Drucker famously said — "What gets measured gets managed, and what gets managed gets done".</p>
+          </div>
+          <div class="principle-item">
+            <span class="principle-emoji">💫</span>
+            <h3 class="principle-title">Never settle for mediocrity</h3>
+            <p class="principle-text">There's always room to make our designs better, one iteration at a time.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-            <div class="testi-card">
-              <p class="testi-quote">"Extremely organized and meticulous, designs are always thoughtful, clear, and beautifully executed."</p>
-              <div class="testi-footer"><div class="testi-avatar">TC</div><div><p class="testi-author">Tiffany Cachout</p><p class="testi-role">Insights</p></div></div>
-            </div>
-          </div>
-        </div>
+  <!-- TESTIMONIALS -->
+  <section id="testimonials">
+    <div class="container">
+      <h2 class="section-heading reveal">In their words</h2>
 
-        <button class="testi-arrow testi-arrow-left" id="testiPrev" aria-label="Previous testimonial">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
-        </button>
+      <div class="testi-slider-outer reveal">
+        <div class="testi-track-wrapper">
+          <div class="testi-track" id="testiTrack">
+            <div class="testi-card">
+              <p class="testi-quote">"Combines strong UI &amp; UX skills with a genuine passion for understanding the user and tailoring solutions to the target audience. Always open to feedback and eager to collaborate."</p>
+              <div class="testi-footer">
+                <div class="testi-avatar">DB</div>
+                <div>
+                  <p class="testi-author">Dan Bayo</p>
+                  <p class="testi-role">Marketing Campaign Specialist</p>
+                </div>
+              </div>
+            </div>
 
-        <button class="testi-arrow testi-arrow-right" id="testiNext" aria-label="Next testimonial">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-        </button>
+            <div class="testi-card">
+              <p class="testi-quote">"Smoothly balances taking care of all the small details and understanding the importance of the bigger picture, whilst ensuring that everyone can succeed."</p>
+              <div class="testi-footer">
+                <div class="testi-avatar">AG</div>
+                <div>
+                  <p class="testi-author">Alberto Gonzalez</p>
+                  <p class="testi-role">Marketing Specialist</p>
+                </div>
+              </div>
+            </div>
 
-        <div class="testi-controls" id="testiDots">
-          <button class="testi-dot active" data-idx="0"></button>
-          <button class="testi-dot" data-idx="1"></button>
-          <button class="testi-dot" data-idx="2"></button>
-        </div>
-      </div>
-    </div>
-  </section>
+            <div class="testi-card">
+              <p class="testi-quote">"Extremely organized and meticulous, designs are always thoughtful, clear, and beautifully executed."</p>
+              <div class="testi-footer">
+                <div class="testi-avatar">TC</div>
+                <div>
+                  <p class="testi-author">Tiffany Cachout</p>
+                  <p class="testi-role">Insights</p>
+                </div>
+              </div>
+            </div>
 
-  <!-- HARD SKILLS -->
-  <section id="hard-skills">
-    <div class="container">
-      <div class="hard-skills-inner reveal">
-        <p class="hard-skills-text">Hard skills can be learned, but the real magic happens when personalities click</p>
-        <a href="about.html" class="hard-skills-btn">More about me</a>
-      </div>
-    </div>
-  </section>
+          </div>
+        </div>
 
-  <!-- GET IN TOUCH -->
-    <section id="contact">
-      <div class="container">
-        <h2 class="contact-title">Get in touch</h2>
+        <button class="testi-arrow testi-arrow-left" id="testiPrev" aria-label="Previous testimonial">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
 
-        <div class="contact-layout">
-          <div class="contact-card">
-            <p class="contact-sub">Whether it's a quick question, a collaboration idea, or just a friendly chat, I'd love to hear from you.</p>
-            <a href="mailto:janescoda49@gmail.com" class="contact-email-link">janescoda49@gmail.com</a>
-          </div>
+        <button class="testi-arrow testi-arrow-right" id="testiNext" aria-label="Next testimonial">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
 
-          <div>
-            <p class="contact-elsewhere-title">Elsewhere</p>
-            <div class="contact-elsewhere-links">
-              <a href="https://www.linkedin.com/in/janescoda" target="_blank" rel="noopener noreferrer">
-                LinkedIn <span class="icon">↗</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+        <div class="testi-controls" id="testiDots">
+          <button class="testi-dot active" data-idx="0"></button>
+          <button class="testi-dot" data-idx="1"></button>
+          <button class="testi-dot" data-idx="2"></button>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <script>
-    /* COPY EMAIL */
-    function copyEmail(){
-      const email = 'janescoda49@gmail.com';
-      const btn = document.getElementById('copyBtn');
-      const animate = ()=>{ if(!btn) return; btn.classList.add('copied'); setTimeout(()=>btn.classList.remove('copied'),2500); };
-      if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(email).then(animate).catch(()=>{ fallback(email); animate(); }); }
-      else { fallback(email); animate(); }
-    }
-    function fallback(text){ const el = document.createElement('textarea'); el.value=text; el.style.cssText='position:fixed;opacity:0;'; document.body.appendChild(el); el.select(); document.execCommand('copy'); document.body.removeChild(el); }
+  <!-- HARD SKILLS -->
+  <section id="hard-skills">
+    <div class="container">
+      <div class="hard-skills-inner reveal">
+        <p class="hard-skills-text">Hard skills can be learned, but the real magic happens when personalities click</p>
+        <a href="about.html" class="hard-skills-btn">More about me</a>
+      </div>
+    </div>
+  </section>
 
-    function scrollToTop(e){ e && e.preventDefault(); window.scrollTo({ top:0, behavior:'smooth' }); }
+  <!-- GET IN TOUCH -->
+  <section id="contact">
+    <div class="container">
+      <h2 class="contact-title">Get in touch</h2>
 
-    /* SCROLL REVEAL (observa .reveal como en About) + activación de mini-cards via parent */
-    const observer = new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{
-        if(e.isIntersecting) e.target.classList.add('visible');
-      });
-    }, { threshold: 0.08 });
+      <div class="contact-layout">
+        <div class="contact-card">
+          <p class="contact-sub">Whether it's a quick question, a collaboration idea, or just a friendly chat, I'd love to hear from you.</p>
+          <a href="mailto:janescoda49@gmail.com" class="contact-email-link">janescoda49@gmail.com</a>
+        </div>
 
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        <div>
+          <p class="contact-elsewhere-title">Elsewhere</p>
+          <div class="contact-elsewhere-links">
+            <a href="https://www.linkedin.com/in/janescoda" target="_blank" rel="noopener noreferrer">
+              LinkedIn <span class="icon">↗</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  /* TESTIMONIAL SLIDER - centrado robusto y bucle (next vuelve al primero) */
-(function() {
-  const track = document.getElementById('testiTrack');
-  if (!track) return;
-  const wrapper = track.parentElement; // .testi-track-wrapper
-  const dots = Array.from(document.querySelectorAll('.testi-dot'));
-  const nextBtn = document.getElementById('testiNext');
-  const prevBtn = document.getElementById('testiPrev');
-  const cards = Array.from(track.querySelectorAll('.testi-card'));
-  const total = cards.length;
-  if (!total) return;
+  <!-- AQUÍ SE CARGARÁ footer.html -->
+  <div id="footer-container"></div>
 
-  let current = 0;
-  let auto = null;
-  const AUTO_DELAY = 6000;
+  <script>
+    // 1) Funciones globales (las puede usar tanto el menú como el resto de la página)
+    function copyEmail(){
+      const email = 'janescoda49@gmail.com';
+      const btn = document.getElementById('copyBtn');
+      const animate = ()=>{ if(!btn) return; btn.classList.add('copied'); setTimeout(()=>btn.classList.remove('copied'),2500); };
+      if(navigator.clipboard && navigator.clipboard.writeText){ 
+        navigator.clipboard.writeText(email).then(animate).catch(()=>{ fallback(email); animate(); }); 
+      }
+      else { 
+        fallback(email); 
+        animate(); 
+      }
+    }
+    function fallback(text){ 
+      const el = document.createElement('textarea'); 
+      el.value=text; 
+      el.style.cssText='position:fixed;opacity:0;'; 
+      document.body.appendChild(el); 
+      el.select(); 
+      document.execCommand('copy'); 
+      document.body.removeChild(el); 
+    }
 
-  const clamp = (v,a,b) => Math.min(Math.max(v,a),b);
+    function scrollToTop(e){ 
+      e && e.preventDefault(); 
+      window.scrollTo({ top:0, behavior:'smooth' }); 
+    }
 
-  function centerCard(idx, animate = true) {
-    // normalizar índice antes de usarlo (evita acceso a cards[total] undefined)
-    const normalized = ((idx % total) + total) % total;
-    current = normalized;
-    const card = cards[normalized];
+    // 2) Lógica de la página (reveal + slider), agrupada en una función
+    function initPageScripts() {
+      /* SCROLL REVEAL */
+      const observer = new IntersectionObserver((entries)=>{
+        entries.forEach(e=>{
+          if(e.isIntersecting) e.target.classList.add('visible');
+        });
+      }, { threshold: 0.08 });
 
-    const cardLeft = card.offsetLeft;
-    const cardWidth = card.offsetWidth;
-    const wrapperWidth = wrapper.clientWidth;
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    const cardCenter = cardLeft + (cardWidth / 2);
-    let target = cardCenter - (wrapperWidth / 2);
+      /* TESTIMONIAL SLIDER */
+      (function() {
+        const track = document.getElementById('testiTrack');
+        if (!track) return;
+        const wrapper = track.parentElement; // .testi-track-wrapper
+        const dots = Array.from(document.querySelectorAll('.testi-dot'));
+        const nextBtn = document.getElementById('testiNext');
+        const prevBtn = document.getElementById('testiPrev');
+        const cards = Array.from(track.querySelectorAll('.testi-card'));
+        const total = cards.length;
+        if (!total) return;
 
-    const maxTranslate = Math.max(0, track.scrollWidth - wrapperWidth);
-    target = clamp(target, 0, maxTranslate);
+        let current = 0;
+        let auto = null;
+        const AUTO_DELAY = 6000;
 
-    if (!animate) track.style.transition = 'none';
-    else track.style.transition = 'transform 0.55s cubic-bezier(0.4,0,0.2,1)';
+        const clamp = (v,a,b) => Math.min(Math.max(v,a),b);
 
-    track.style.transform = `translateX(-${Math.round(target)}px)`;
+        function centerCard(idx, animate = true) {
+          const normalized = ((idx % total) + total) % total;
+          current = normalized;
+          const card = cards[normalized];
 
-    dots.forEach((d,i)=> d.classList.toggle('active', i===current));
+          const cardLeft = card.offsetLeft;
+          const cardWidth = card.offsetWidth;
+          const wrapperWidth = wrapper.clientWidth;
 
-    if (!animate) requestAnimationFrame(()=> { track.style.transition = 'transform 0.55s cubic-bezier(0.4,0,0.2,1)'; });
-  }
+          const cardCenter = cardLeft + (cardWidth / 2);
+          let target = cardCenter - (wrapperWidth / 2);
 
-  function goTo(i){ centerCard(i, true); resetAuto(); }
+          const maxTranslate = Math.max(0, track.scrollWidth - wrapperWidth);
+          target = clamp(target, 0, maxTranslate);
 
-  nextBtn && nextBtn.addEventListener('click', ()=> goTo(current + 1)); // ahora cyclicará
-  prevBtn && prevBtn.addEventListener('click', ()=> goTo(current - 1)); // y aquí también
-  dots.forEach(d => d.addEventListener('click', ()=> goTo(parseInt(d.dataset.idx,10))));
+          if (!animate) track.style.transition = 'none';
+          else track.style.transition = 'transform 0.55s cubic-bezier(0.4,0,0.2,1)';
 
-  function startAuto(){ stopAuto(); auto = setInterval(()=> centerCard(current+1), AUTO_DELAY); }
-  function stopAuto(){ if (auto){ clearInterval(auto); auto = null; } }
-  function resetAuto(){ stopAuto(); startAuto(); }
+          track.style.transform = `translateX(-${Math.round(target)}px)`;
 
-  window.addEventListener('resize', () => centerCard(current, false));
+          dots.forEach((d,i)=> d.classList.toggle('active', i===current));
 
-  // pause on hover/focus
-  wrapper.addEventListener('mouseenter', stopAuto);
-  wrapper.addEventListener('mouseleave', startAuto);
+          if (!animate) requestAnimationFrame(()=> { 
+            track.style.transition = 'transform 0.55s cubic-bezier(0.4,0,0.2,1)'; 
+          });
+        }
 
-  centerCard(0, false);
-  startAuto();
-})();
-  </script>
+        function goTo(i){ centerCard(i, true); resetAuto(); }
+
+        nextBtn && nextBtn.addEventListener('click', ()=> goTo(current + 1));
+        prevBtn && prevBtn.addEventListener('click', ()=> goTo(current - 1));
+        dots.forEach(d => d.addEventListener('click', ()=> goTo(parseInt(d.dataset.idx,10))));
+
+        function startAuto(){ stopAuto(); auto = setInterval(()=> centerCard(current+1), AUTO_DELAY); }
+        function stopAuto(){ if (auto){ clearInterval(auto); auto = null; } }
+        function resetAuto(){ stopAuto(); startAuto(); }
+
+        window.addEventListener('resize', () => centerCard(current, false));
+
+        wrapper.addEventListener('mouseenter', stopAuto);
+        wrapper.addEventListener('mouseleave', startAuto);
+
+        centerCard(0, false);
+        startAuto();
+      })();
+    }
+
+    // 3) Importar menu.html y footer.html, y luego iniciar todo
+    document.addEventListener('DOMContentLoaded', () => {
+      const menuContainer = document.getElementById('menu-container');
+      const footerContainer = document.getElementById('footer-container');
+
+      const menuPromise = fetch('menu.html')
+        .then(r => r.text())
+        .then(html => { menuContainer.innerHTML = html; })
+        .catch(err => console.error('Error cargando menu.html', err));
+
+      const footerPromise = fetch('footer.html')
+        .then(r => r.text())
+        .then(html => { footerContainer.innerHTML = html; })
+        .catch(err => console.error('Error cargando footer.html', err));
+
+      // Cuando ambos estén cargados, inicializamos scripts
+      Promise.all([menuPromise, footerPromise]).then(() => {
+        initPageScripts();
+      });
+    });
+  </script>
 </body>
 </html>
+
