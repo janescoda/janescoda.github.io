@@ -529,9 +529,8 @@
 
   </main>
 
-  <!-- AQUÍ SE CARGA footer.html -->
-  <div id="footer-container"></div>
 <script>
+  // Funciones globales para menú y footer
   function copyEmail() {
     const email = 'janescoda49@gmail.com';
     const btn = document.getElementById('copyBtn');
@@ -567,83 +566,37 @@
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  // Inicializar comportamiento del menú para ABOUT
-  function initMenuBehaviorAbout() {
-    const nav = document.querySelector('.site-nav');
-    if (!nav) return;
-
-    const toggleBtn   = nav.querySelector('.nav-toggle');
-    const mobileMenu  = nav.querySelector('.nav-right-mobile');
-
-    // Hamburguesa
-    if (toggleBtn && mobileMenu) {
-      toggleBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const isOpen = nav.classList.toggle('is-open');
-        toggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-      });
-
-      mobileMenu.addEventListener('click', (e) => {
-        if (e.target.matches('.nav-link')) {
-          nav.classList.remove('is-open');
-          toggleBtn.setAttribute('aria-expanded', 'false');
-        }
-      });
-
-      document.addEventListener('click', (e) => {
-        if (!nav.contains(e.target)) {
-          nav.classList.remove('is-open');
-          toggleBtn.setAttribute('aria-expanded', 'false');
-        }
-      });
-    }
-
-    // Copy email (desktop y mobile)
-    function wireCopy(btnId) {
-      const btn = document.getElementById(btnId);
-      if (!btn) return;
-      btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        copyEmail();
-      });
-    }
-
-    wireCopy('copyBtn');
-    wireCopy('copyBtnMobile');
-
-    // Marcar activo: ABOUT
+  // Marcar el link activo del menú para ABOUT
+  function setActiveNavLinkAbout() {
     const workLink  = document.querySelector('.nav-link[href="index.html#work"]');
     const aboutLink = document.querySelector('.nav-link[href="about.html"]');
 
-    if (workLink && aboutLink) {
-      workLink.classList.remove('is-active');
-      aboutLink.classList.add('is-active');
-    }
+    if (!workLink || !aboutLink) return;
+
+    workLink.classList.remove('is-active');
+    aboutLink.classList.add('is-active');
   }
 
+  // Cargar menu.html y footer.html
   document.addEventListener('DOMContentLoaded', () => {
     const menuContainer   = document.getElementById('menu-container');
     const footerContainer = document.getElementById('footer-container');
 
-    const menuPromise = fetch('menu.html')
+    // Cargamos el menú UNA sola vez y luego marcamos el link activo
+    fetch('menu.html')
       .then(r => r.text())
       .then(html => { 
         menuContainer.innerHTML = html;
-        initMenuBehaviorAbout();
+        setActiveNavLinkAbout();       // ← aquí marcamos About en negrita
       })
       .catch(err => console.error('Error cargando menu.html', err));
 
-    const footerPromise = fetch('footer.html')
+    // Footer
+    fetch('footer.html')
       .then(r => r.text())
       .then(html => { footerContainer.innerHTML = html; })
       .catch(err => console.error('Error cargando footer.html', err));
-
-    Promise.all([menuPromise, footerPromise]).then(() => {
-      // scripts específicos de about si los hubiera
-    });
   });
 </script>
-
 </body>
 </html>
