@@ -929,7 +929,7 @@
     aboutLink.classList.remove('is-active');
   }
 
-  // 5) Importar menu.html y footer.html, ejecutar scripts de menu y luego iniciar todo
+  // 5) Importar menu.html y footer.html, ejecutar scripts de menú y luego iniciar todo
   document.addEventListener('DOMContentLoaded', () => {
     const menuContainer   = document.getElementById('menu-container');
     const footerContainer = document.getElementById('footer-container');
@@ -937,8 +937,11 @@
     const menuPromise = fetch('menu.html')
       .then(r => r.text())
       .then(html => { 
-        injectHtmlWithScripts(menuContainer, html); // ← inserta y ejecuta el script de menu.html
-        setActiveNavLinkIndex();                    // ← Work en negrita
+        injectHtmlWithScripts(menuContainer, html); // inserta + ejecuta
+        if (typeof initMenu === 'function') {
+          initMenu();                // ← inicializa hamburguesa y copy en móvil
+        }
+        setActiveNavLinkIndex();     // ← marca Work en negrita
       })
       .catch(err => console.error('Error cargando menu.html', err));
 
@@ -952,6 +955,7 @@
     });
   });
 </script>
+
 </body>
 </html>
 
