@@ -12,7 +12,6 @@
 
   <style>
     /***** SCALE: Increase base by 10% *****/
-    /* This will scale rem-based sizes ~+10% */
     html { font-size: 110%; scroll-behavior: smooth; }
 
     /***** BASE *****/
@@ -20,16 +19,15 @@
 
     :root {
       --bg: #ffffff;
-      --text: rgb(103, 103, 122); /* requested body/meta text color */
-      --title: #000000;           /* headings in black */
+      --text: rgb(103, 103, 122);
+      --title: #000000;
       --card-bg: #f4f3f0;
       --border: #e4e2dd;
       --tag-bg: #ebebeb;
       --transition: 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 
-      /* scaled layout variables (+10%) */
-      --page-max-width: 1056px;     /* 960 * 1.1 */
-      --page-side-padding: 3.3rem;  /* 3rem * 1.1 */
+      --page-max-width: 1056px;
+      --page-side-padding: 3.3rem;
     }
 
     body {
@@ -52,51 +50,6 @@
       margin: 0 auto;
       padding: 0 var(--page-side-padding);
     }
-
-    /***** NAVBAR *****/
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 200;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 1.4rem var(--page-side-padding);
-      background: rgba(255, 255, 255, 0.9);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-    }
-
-    .nav-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      width: 100%;
-      max-width: 1100px; /* same as home */
-    }
-
-    .nav-logo {
-      font-size: 1.4rem;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      color: var(--title);
-    }
-
-    .nav-right {
-      display: flex;
-      align-items: center;
-      gap: 2.5rem;
-    }
-
-    .nav-link {
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--text);
-      transition: color var(--transition), font-weight var(--transition);
-    }
-
-    .nav-link:hover { color: var(--title); font-weight: 800; }
-    .nav-link.is-active { color: var(--title); font-weight: 800; }
 
     .copy-btn {
       font-family: 'Manrope', sans-serif;
@@ -147,7 +100,7 @@
 
     /***** ABOUT HERO (Howdy) *****/
     .about-hero {
-      padding-top: 7rem;          /* space under nav */
+      padding-top: 7rem;          /* espacio bajo el nav importado */
       padding-bottom: 3rem;
     }
 
@@ -159,7 +112,7 @@
       display: flex;
       align-items: center;
       gap: 0.6rem;
-      color: var(--title); /* greeting in black */
+      color: var(--title);
     }
 
     .about-greeting-emoji { font-size: 2rem; }
@@ -171,7 +124,6 @@
       align-items: flex-start;
     }
 
-    /* Converted to rem so it scales with html font-size */
     .about-photo {
       border-radius: 18px;
       overflow: hidden;
@@ -179,7 +131,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      min-height: 16.25rem; /* 260px / 16px = 16.25rem */
+      min-height: 16.25rem;
     }
 
     .about-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
@@ -198,7 +150,7 @@
       font-weight: 800;
       letter-spacing: -0.03em;
       margin: 3.5rem 0 1.8rem;
-      color: var(--title); /* headings in black */
+      color: var(--title);
     }
 
     /***** EXPERIENCE *****/
@@ -220,7 +172,7 @@
       font-weight: 700;
       margin-bottom: 0.15rem;
       color: var(--text);
-        font-size: 1.15rem;
+      font-size: 1.15rem;
     }
 
     .exp-meta {
@@ -234,44 +186,42 @@
       margin-bottom: 4rem;
     }
 
-    /* Panel should be white background, grey border */
     .passions-grid-wrapper {
-      background: #ffffff;              /* white background */
+      background: #ffffff;
       border-radius: 22px;
-      border: 1px solid var(--border); /* grey border */
+      border: 1px solid var(--border);
       padding: 1.8rem 2rem;
     }
 
     .passions-grid {
-display: grid;
-grid-template-columns: repeat(3, minmax(0, 1fr));
-gap: 0.6rem 1.4rem; /* row-gap column-gap */
-font-size: 0.86rem;
-}
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.6rem 1.4rem;
+      font-size: 0.86rem;
+    }
 
- .passion-card {
-  background: transparent;
-  border-radius: 12px;
-  padding: 0.6rem 0.5rem;
-  min-height: 5.6rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
-}
+    .passion-card {
+      background: transparent;
+      border-radius: 12px;
+      padding: 0.6rem 0.5rem;
+      min-height: 5.6rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
 
-    /* Converted emoji size to rem so it scales properly */
-   .passion-emoji {
-  font-size: 1.15rem;
-  width: 2.25rem;
-  height: 2.25rem;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 9px;
-  background: transparent;     /* <-- transparente */
-  box-shadow: none;            /* <-- quitar sombra */
-  margin-bottom: 0.25rem;
-}
+    .passion-emoji {
+      font-size: 1.15rem;
+      width: 2.25rem;
+      height: 2.25rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 9px;
+      background: transparent;
+      box-shadow: none;
+      margin-bottom: 0.25rem;
+    }
 
     .passion-item-title {
       font-weight: 700;
@@ -358,7 +308,7 @@ font-size: 0.86rem;
       color: var(--text);
     }
 
-    /***** FOOTER *****/
+    /***** FOOTER (solo clases usadas por footer.html) *****/
     footer {
       border-top: 1px solid var(--border);
       padding: 1.75rem 0;
@@ -399,7 +349,6 @@ font-size: 0.86rem;
 
     @media (max-width: 768px) {
       .container { padding: 0 1.5rem; }
-      nav { padding: 1rem 1.5rem; }
       .footer-inner {
         flex-direction: column;
         gap: 0.75rem;
@@ -418,23 +367,8 @@ font-size: 0.86rem;
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <div class="nav-inner">
-      <a href="index.html" class="nav-logo">JEO</a>
-      <div class="nav-right">
-        <a href="index.html#work" class="nav-link">Work</a>
-        <a href="about.html" class="nav-link is-active">About</a>
-        <button class="copy-btn" id="copyBtn" onclick="copyEmail()">
-          <span class="label-default">Copy email</span>
-          <span class="label-copied">
-            <svg class="check-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-            Copied
-          </span>
-        </button>
-      </div>
-    </div>
-  </nav>
+  <!-- AQUÍ SE CARGA menu.html -->
+  <div id="menu-container"></div>
 
   <!-- ABOUT HERO -->
   <main>
@@ -595,19 +529,11 @@ font-size: 0.86rem;
 
   </main>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-inner">
-      <p class="footer-copy">© Jan Escoda 2026. All rights reserved.</p>
-      <a href="#top" class="footer-up" onclick="scrollToTop(event)">
-        Scroll up
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
-      </a>
-    </div>
-  </footer>
+  <!-- AQUÍ SE CARGA footer.html -->
+  <div id="footer-container"></div>
 
   <script>
-    // COPY EMAIL
+    // Funciones globales para menú y footer
     function copyEmail() {
       const email = 'janescoda49@gmail.com';
       const btn = document.getElementById('copyBtn');
@@ -639,6 +565,22 @@ font-size: 0.86rem;
       e && e.preventDefault();
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
+
+    // Cargar menu.html y footer.html
+    document.addEventListener('DOMContentLoaded', () => {
+      const menuContainer = document.getElementById('menu-container');
+      const footerContainer = document.getElementById('footer-container');
+
+      fetch('menu.html')
+        .then(r => r.text())
+        .then(html => { menuContainer.innerHTML = html; })
+        .catch(err => console.error('Error cargando menu.html', err));
+
+      fetch('footer.html')
+        .then(r => r.text())
+        .then(html => { footerContainer.innerHTML = html; })
+        .catch(err => console.error('Error cargando footer.html', err));
+    });
   </script>
 </body>
 </html>
