@@ -1,7 +1,8 @@
 <!-- menu.html -->
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap');
+
 :root{
-  @import url('https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap');
   --nav-height: 4.6rem;
   --page-side-padding: 3.3rem;
   --title: #000;
@@ -18,7 +19,7 @@
   height: var(--nav-height);
   display:flex; align-items:center; justify-content:center;
   background: #fff;
-  z-index: 9999; /* muy arriba para evitar solapes */
+  z-index: 9999;
   border-bottom: none;
 }
 
@@ -92,12 +93,13 @@
   width: 40px;
   height: 40px;
   border-radius: 999px;
-  border: none;               /* sin borde */
-  background: transparent;    /* mismo color que la página */
+  border: none;
+  background: transparent;
   cursor: pointer;
   align-items: center;
   justify-content: center;
   padding: 0;
+  z-index: 10000; /* por si acaso */
 }
 
 .nav-toggle-box {
@@ -243,36 +245,62 @@
 
 <script>
   (function(){
-    const nav        = document.querySelector('.site-nav');
-    if (!nav) return;
-    const toggleBtn  = nav.querySelector('.nav-toggle');
-    const mobileMenu = nav.querySelector('.nav-right-mobile');
+    // Esperamos a que el HTML de menu.html esté en el DOM
+    document.addEventListener('DOMContentLoaded', function(){
+      const nav = document.querySelector('.site-nav');
+      if (!nav) return;
 
-    // Abrir/cerrar menú móvil
-    if (toggleBtn && mobileMenu) {
-      toggleBtn.addEventListener('click', () => {
-        const isOpen = nav.classList.toggle('is-open');
-        toggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-      });
+      const toggleBtn   = nav.querySelector('.nav-toggle');
+      const mobileMenu  = nav.querySelector('.nav-right-mobile');
+      const logoLink    = nav.querySelector('.nav-logo');
 
-      // Cerrar menú al hacer click en un enlace móvil
-      mobileMenu.addEventListener('click', (e) => {
-        if (e.target.matches('.nav-link')) {
-          nav.classList.remove('is-open');
-          toggleBtn.setAttribute('aria-expanded', 'false');
-        }
-      });
-    }
+      // Debug básico por si acaso
+      // console.log('nav', nav, 'toggleBtn', toggleBtn, 'mobileMenu', mobileMenu);
 
-    // Botón de copiar del menú móvil
-    const copyBtnMobile = nav.querySelector('#copyBtnMobile');
-    if (copyBtnMobile) {
-      copyBtnMobile.addEventListener('click', (e) => {
-        e.preventDefault();
-        if (typeof copyEmail === 'function') {
-          copyEmail();
-        }
-      });
-    }
+      // Asegurarnos de que el logo es clicable (ya lo es por defecto, pero por si acaso)
+      if (logoLink) {
+        logoLink.style.pointerEvents = 'auto';
+      }
+
+      // Abrir/cerrar menú móvil
+      if (toggleBtn && mobileMenu) {
+        toggleBtn.style.pointerEvents = 'auto';
+
+        toggleBtn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          const isOpen = nav.classList.toggle('is-open');
+          toggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+
+        // Cerrar menú al hacer click en un enlace móvil
+        mobileMenu.addEventListener('click', function(e) {
+          if (e.target.matches('.nav-link')) {
+            nav.classList.remove('is-open');
+            toggleBtn.setAttribute('aria-expanded', 'false');
+          }
+        });
+
+        // Cerrar si hago click en cualquier sitio fuera del nav
+        document.addEventListener('click', function(e) {
+          if (!nav.contains(e.target)) {
+            nav.classList.remove('is-open');
+            toggleBtn.setAttribute('aria-expanded', 'false');
+          }
+        });
+      }
+
+      // Botón de copiar del menú móvil
+      const copyBtnMobile = nav.querySelector('#copyBtnMobile');
+      if (copyBtnMobile) {
+        copyBtnMobile.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          if (typeof copyEmail === 'function') {
+            copyEmail();
+          }
+        });
+      }
+    });
   })();
 </script>
+
