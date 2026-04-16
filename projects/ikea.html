@@ -80,12 +80,16 @@
       max-width: 34rem;
     }
 
-    /* MÉTRICAS – 3 columnas */
+    /* MÉTRICAS – 3 columnas a ancho de página */
+    .metrics-wrapper {
+      grid-column: 1 / -1;
+      margin-top: 2.4rem;
+    }
+
     .metrics-row {
       display:grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap:1.8rem;
-      margin-top:2.4rem;
       font-size:0.9rem;
     }
 
@@ -111,8 +115,10 @@
       color:var(--text);
     }
 
-    /* META EN RECUADRO + VALORES EN LÍNEA */
+    /* META EN RECUADRO + VALORES EN LÍNEA, A ANCHO COMPLETO */
     .project-meta-shell {
+      grid-column: 1 / -1;
+      margin-top: 1.8rem;
       border-radius:18px;
       border:1px solid var(--border);
       background:#fff;
@@ -152,7 +158,7 @@
       font-size:0.8rem;
       color:var(--text);
       margin-top:0.35rem;
-      max-width:17rem;
+      max-width:100%;
     }
 
     .section {
@@ -222,21 +228,12 @@
       font-weight:600;
     }
 
-    .results-grid {
-      display:grid;
-      grid-template-columns:repeat(2,minmax(0,1fr));
-      gap:1.6rem 2.4rem;
-      font-size:0.92rem;
-      margin-top:0.8rem;
-    }
-
-    .result-item-title {
+    .subsection-title {
+      margin-top:1.2rem;
       font-weight:700;
+      font-size:0.95rem;
       color:var(--title);
-      margin-bottom:0.25rem;
     }
-
-    .result-item-body { font-size:0.9rem; }
 
     .takeaways-grid {
       display:grid;
@@ -282,7 +279,6 @@
       .two-column{
         grid-template-columns:1fr;
       }
-      .results-grid,
       .takeaways-grid{
         grid-template-columns:1fr;
       }
@@ -321,7 +317,13 @@
             <p class="project-subtitle">
               Trabajo continuo de contenido, SEO y campañas locales para que la experiencia digital en catalán sea tan clara como la global, pero adaptada al contexto de cada tienda.
             </p>
+          </div>
 
+          <!-- dejamos la segunda columna vacía para que métricas + meta puedan ir a ancho completo debajo -->
+          <div></div>
+
+          <!-- MÉTRICAS A ANCHO COMPLETO -->
+          <div class="metrics-wrapper">
             <div class="metrics-row">
               <div class="metric-block">
                 <div class="metric-block-title">+32%</div>
@@ -343,6 +345,7 @@
             </div>
           </div>
 
+          <!-- META A ANCHO COMPLETO, JUSTO DESPUÉS DE LAS 3 COLUMNAS -->
           <div class="project-meta-shell">
             <div class="project-meta-grid">
               <div class="project-meta-item-inline">
@@ -390,41 +393,60 @@
             <div class="highlight-callout">
               El foco no era solo traducir, sino que la versión catalana fuese igual de fácil de encontrar y de usar que la global.
             </div>
+
+            <!-- Qué hice en esta parte (fuera del recuadro) -->
+            <div class="body-text">
+              <p class="subsection-title">Qué hice en esta parte</p>
+              <ul>
+                <li>Revisión editorial completa de las páginas clave en catalán (categorías, servicios y checkout) para detectar incoherencias y vacíos de información.</li>
+                <li>Reescritura de copys clave para mejorar claridad y consistencia entre la versión catalana y la global, respetando el tono de IKEA.</li>
+                <li>Optimización SEO on‑page: metatítulos, descripciones y slugs que conectan con cómo la gente realmente busca productos en Cataluña.</li>
+                <li>Diseño de un “menú interno” a través de filtros y enlaces entre categorías relacionadas para reducir la fricción al navegar.</li>
+              </ul>
+            </div>
           </div>
 
           <div class="key-points">
-            <p class="key-points-title">Qué hice en esta parte</p>
+            <p class="key-points-title">Puntos SEO y UX</p>
             <ul>
-              <li>Revisión completa de contenidos en catalán en páginas de categoría y servicios.</li>
-              <li>Optimización SEO on‑page equivalente a la versión en castellano.</li>
-              <li>Textos SEO pensados para lenguaje natural y tono de marca.</li>
-              <li>Filtros y nombres de categoría revisados para alinearlos con cómo la gente busca productos.</li>
+              <li>Equilibrio entre términos de búsqueda reales y lenguaje natural de la marca.</li>
+              <li>Cadenas de navegación más claras entre categorías y servicios clave.</li>
+              <li>Mensajes de ayuda en momentos críticos (envío, devolución, disponibilidad).</li>
             </ul>
           </div>
         </div>
+
+        <!-- 2 IMÁGENES DESPUÉS DEL PUNTO 1 -->
+        <img src="images/ikea-web-catalan-1.jpg" alt="Vista de página de categoría en catalán con contenido optimizado" />
+        <p>Ejemplo de página de categoría en catalán con estructura, copys y filtros adaptados al comportamiento de búsqueda local.</p>
+
+        <img src="images/ikea-web-catalan-2.jpg" alt="Detalle de textos SEO y módulos informativos al final de la página" />
+        <p>Detalle de módulos informativos y textos SEO añadidos al final de página para mejorar comprensión y relevancia orgánica.</p>
       </div>
     </section>
 
     <!-- 2. ESTRATEGIA DIGITAL -->
     <section class="section">
       <div class="container">
-        <div class="section-kicker">02 · Estrategia digital</div>
-        <h2 class="section-heading">Guía, campañas y email para hablar igual en todos los canales</h2>
-
         <div class="two-column">
-          <div class="body-text">
-            <p>
-              Para evitar que cada campaña se resolviera desde cero, ayudé a crear una guía de comunicación digital para Cataluña:
-              formatos de banners, módulos promocionales, mensajes de servicios y layouts para web, app y móvil.
-            </p>
-            <p>
-              Sobre esta base desarrollé campañas locales (promociones, servicios, parking, sostenibilidad…) adaptadas a los formatos
-              disponibles y coordinadas con el calendario global.
-            </p>
-            <p>
-              También trabajé bloques de email marketing específicos para Cataluña dentro de newsletters nacionales, para que las personas
-              recibieran mensajes relevantes según su ubicación sin romper la coherencia de marca.
-            </p>
+          <div>
+            <div class="section-kicker">02 · Estrategia digital</div>
+            <h2 class="section-heading">Guía, campañas y email para hablar igual en todos los canales</h2>
+
+            <div class="body-text">
+              <p>
+                Para evitar que cada campaña se resolviera desde cero, ayudé a crear una guía de comunicación digital para Cataluña:
+                formatos de banners, módulos promocionales, mensajes de servicios y layouts para web, app y móvil.
+              </p>
+              <p>
+                Sobre esta base desarrollé campañas locales (promociones, servicios, parking, sostenibilidad…) adaptadas a los formatos
+                disponibles y coordinadas con el calendario global.
+              </p>
+              <p>
+                También trabajé bloques de email marketing específicos para Cataluña dentro de newsletters nacionales, para que las personas
+                recibieran mensajes relevantes según su ubicación sin romper la coherencia de marca.
+              </p>
+            </div>
           </div>
 
           <div class="key-points">
@@ -436,6 +458,13 @@
             </ul>
           </div>
         </div>
+
+        <!-- 2 IMÁGENES DESPUÉS DEL PUNTO 2 -->
+        <img src="images/ikea-campanas-locales-1.jpg" alt="Banners y módulos promocionales adaptados al mercado catalán" />
+        <p>Selección de banners y módulos promocionales diseñados para campañas locales, alineados con la guía digital.</p>
+
+        <img src="images/ikea-email-cataluna-1.jpg" alt="Bloques de email segmentados para Cataluña dentro de una newsletter nacional" />
+        <p>Bloques de email específicos para Cataluña integrados en newsletters nacionales sin perder coherencia de marca.</p>
       </div>
     </section>
 
@@ -468,25 +497,31 @@
             </ul>
           </div>
         </div>
+
+        <!-- 1 IMAGEN DESPUÉS DEL PUNTO 3 -->
+        <img src="images/ikea-pagina-tienda-1.jpg" alt="Página local de tienda IKEA en Cataluña con información actualizada" />
+        <p>Página local de tienda con horarios, servicios y actividades destacadas para cada ubicación en Cataluña.</p>
       </div>
     </section>
 
     <!-- 4. EXPANSIÓN -->
     <section class="section">
       <div class="container">
-        <div class="section-kicker">04 · Expansión</div>
-        <h2 class="section-heading">Acompañar aperturas y reformas desde lo digital</h2>
-
         <div class="two-column">
-          <div class="body-text">
-            <p>
-              Desde el área digital doy soporte a nuevas aperturas y reformas en Cataluña, como IKEA Granollers, la reforma de Badalona
-              o la futura tienda de Girona.
-            </p>
-            <p>
-              Esto implica preparar la información en web, actualizar páginas locales, crear banners específicos y asegurar que las personas
-              entiendan qué hay de nuevo en su zona desde el primer día.
-            </p>
+          <div>
+            <div class="section-kicker">04 · Expansión</div>
+            <h2 class="section-heading">Acompañar aperturas y reformas desde lo digital</h2>
+
+            <div class="body-text">
+              <p>
+                Desde el área digital doy soporte a nuevas aperturas y reformas en Cataluña, como IKEA Granollers, la reforma de Badalona
+                o la futura tienda de Girona.
+              </p>
+              <p>
+                Esto implica preparar la información en web, actualizar páginas locales, crear banners específicos y asegurar que las personas
+                entiendan qué hay de nuevo en su zona desde el primer día.
+              </p>
+            </div>
           </div>
 
           <div class="key-points">
@@ -498,6 +533,10 @@
             </ul>
           </div>
         </div>
+
+        <!-- 1 IMAGEN DESPUÉS DEL PUNTO 4 -->
+        <img src="images/ikea-apertura-granollers-1.jpg" alt="Banner digital comunicando apertura o reforma de tienda IKEA en Cataluña" />
+        <p>Creatividad y módulos en web comunicando aperturas y reformas para que las personas entiendan qué cambia en su tienda.</p>
       </div>
     </section>
 
@@ -667,9 +706,4 @@
 </script>
 
 </body>
-</html>
-
-
-    <script src="./script.js"></script>
-  </body>
 </html>
