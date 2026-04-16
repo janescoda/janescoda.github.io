@@ -37,15 +37,15 @@
 
     a { text-decoration:none; color:inherit; }
 
-    ::-webkit-scrollbar{ width:5px; } 
-    ::-webkit-scrollbar-track{ background:var(--bg);} 
+    ::-webkit-scrollbar{ width:5px; }
+    ::-webkit-scrollbar-track{ background:var(--bg);}
     ::-webkit-scrollbar-thumb{ background:var(--border); border-radius:3px; }
 
-    .container{ 
-      max-width:var(--page-max-width); 
-      margin:0 auto; 
-      padding:0 var(--page-side-padding); 
-      box-sizing:border-box; 
+    .container{
+      max-width:var(--page-max-width);
+      margin:0 auto;
+      padding:0 var(--page-side-padding);
+      box-sizing:border-box;
     }
 
     main {
@@ -80,17 +80,17 @@
       max-width: 34rem;
     }
 
-    /* MÉTRICAS */
+    /* MÉTRICAS – 3 columnas */
     .metrics-row {
-      display:flex;
-      flex-wrap:wrap;
-      gap:3.2rem;
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap:1.8rem;
       margin-top:2.4rem;
       font-size:0.9rem;
     }
 
     .metric-block {
-      min-width:10rem;
+      min-width:0;
     }
 
     .metric-block-title {
@@ -111,19 +111,27 @@
       color:var(--text);
     }
 
-    /* META */
+    /* META EN RECUADRO + VALORES EN LÍNEA */
     .project-meta-shell {
       border-radius:18px;
       border:1px solid var(--border);
       background:#fff;
-      padding:1.5rem 1.9rem;
+      padding:1.2rem 1.5rem;
       font-size:0.86rem;
     }
 
     .project-meta-grid {
-      display:grid;
-      grid-template-columns:repeat(4, minmax(0,1fr));
-      gap:1rem 2.2rem;
+      display:flex;
+      flex-wrap:wrap;
+      gap:0.8rem 1.6rem;
+      align-items:center;
+    }
+
+    .project-meta-item-inline {
+      display:flex;
+      align-items:baseline;
+      gap:0.45rem;
+      white-space:nowrap;
     }
 
     .project-meta-label {
@@ -132,18 +140,19 @@
       letter-spacing:.13em;
       font-weight:700;
       color:#9a9aa8;
-      margin-bottom:0.25rem;
     }
 
     .project-meta-value {
       font-weight:600;
       color:var(--title);
+      font-size:0.9rem;
     }
 
     .project-meta-note {
       font-size:0.8rem;
       color:var(--text);
-      margin-top:0.15rem;
+      margin-top:0.35rem;
+      max-width:17rem;
     }
 
     .section {
@@ -187,7 +196,7 @@
       border-radius:18px;
       border:1px solid var(--border);
       padding:1.4rem 1.5rem;
-      max-width:260px;          /* evita que se estire como en tu captura */
+      max-width:260px;
       line-height:1.6;
     }
 
@@ -270,9 +279,6 @@
         grid-template-columns:1fr;
         gap:2.2rem;
       }
-      .project-meta-grid{
-        grid-template-columns:repeat(2,minmax(0,1fr));
-      }
       .two-column{
         grid-template-columns:1fr;
       }
@@ -289,10 +295,16 @@
         padding-top:calc(var(--nav-height) + 2.4rem);
         padding-bottom:3rem;
       }
-      .project-meta-grid{
+      .metrics-row{
         grid-template-columns:1fr;
       }
-      .metrics-row{ gap:1.8rem; }
+      .project-meta-grid{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+      .project-meta-item-inline{
+        white-space:normal;
+      }
     }
   </style>
 </head>
@@ -333,24 +345,26 @@
 
           <div class="project-meta-shell">
             <div class="project-meta-grid">
-              <div>
+              <div class="project-meta-item-inline">
                 <p class="project-meta-label">Client</p>
                 <p class="project-meta-value">IKEA · Cataluña</p>
               </div>
-              <div>
+              <div class="project-meta-item-inline">
                 <p class="project-meta-label">Year</p>
                 <p class="project-meta-value">2024 – Act.</p>
               </div>
-              <div>
+              <div class="project-meta-item-inline">
                 <p class="project-meta-label">My role</p>
                 <p class="project-meta-value">Contenido digital y marketing</p>
-                <p class="project-meta-note">Web, SEO, campañas, email y coordinación con tiendas.</p>
               </div>
-              <div>
+              <div class="project-meta-item-inline">
                 <p class="project-meta-label">Domain</p>
                 <p class="project-meta-value">Muebles y decoración</p>
               </div>
             </div>
+            <p class="project-meta-note">
+              Web, SEO, campañas, email y coordinación con tiendas.
+            </p>
           </div>
         </div>
       </div>
@@ -655,3 +669,7 @@
 </body>
 </html>
 
+
+    <script src="./script.js"></script>
+  </body>
+</html>
