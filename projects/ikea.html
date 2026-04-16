@@ -115,8 +115,7 @@
       color:var(--text);
     }
 
-    /* META EN RECUADRO GRIS CLARO,
-       PRIMERA FILA LABELS, SEGUNDA FILA VALORES */
+    /* META EN RECUADRO GRIS CLARO, ALINEADO EN COLUMNAS */
     .project-meta-shell {
       grid-column: 1 / -1;
       margin-top: 2.2rem;
@@ -127,13 +126,14 @@
       font-size:0.86rem;
     }
 
-    .project-meta-label-row,
-    .project-meta-value-row {
-      display:flex;
-      flex-wrap:wrap;
-      gap:1.8rem;
-      align-items:center;
-      justify-content:flex-start;
+    .project-meta-grid {
+      display:grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap:0.6rem 1.8rem;
+    }
+
+    .project-meta-item {
+      min-width:0;
     }
 
     .project-meta-label {
@@ -142,16 +142,15 @@
       letter-spacing:.13em;
       font-weight:700;
       color:#9a9aa8;
+      margin-bottom:0.18rem;
+      display:block;
     }
 
     .project-meta-value {
       font-weight:600;
       color:var(--title);
       font-size:0.9rem;
-    }
-
-    .project-meta-value-row {
-      margin-top:0.25rem;
+      display:block;
     }
 
     .section {
@@ -177,7 +176,7 @@
 
     .body-text {
       font-size:0.96rem;
-      /* sin max-width: que pueda usar todo el ancho de la columna */
+      /* sin max-width: usa todo el ancho de la columna */
     }
 
     .body-text p + p { margin-top:1rem; }
@@ -189,20 +188,16 @@
       align-items:flex-start;
     }
 
-    /* Recuadro "foco" – ancho cómodo centrado */
+    /* Recuadro "foco" – ocupar ancho de la columna, alineado a la izquierda */
     .highlight-callout {
       margin-top:1.8rem;
-      padding:1.2rem 1.4rem;
+      padding:1.1rem 1.2rem;
       border-radius:16px;
       background:#f8f8fb;
       border:1px solid var(--border);
       font-size:0.92rem;
       color:var(--title);
       font-weight:500;
-      text-align:center;
-      max-width:720px;
-      margin-left:auto;
-      margin-right:auto;
     }
 
     .subsection-title {
@@ -212,24 +207,20 @@
       color:var(--title);
     }
 
-    /* Recuadro gris tipo "Puntos SEO y UX" a ancho completo y centrado */
+    /* Recuadro gris tipo "Puntos SEO y UX" – ancho columna, texto izquierda */
     .inline-card-full {
       margin-top:1.4rem;
-      padding:1.2rem 1.4rem;
+      padding:1.1rem 1.2rem;
       border-radius:16px;
       background:#f5f5f7;
       border:1px solid #e4e2dd;
       font-size:0.9rem;
-      max-width:720px;
-      margin-left:auto;
-      margin-right:auto;
     }
 
     .inline-card-title {
       font-weight:700;
       margin-bottom:0.4rem;
       color:var(--title);
-      text-align:center;
     }
 
     .inline-card-full ul {
@@ -327,6 +318,9 @@
       .results-grid{
         grid-template-columns:1fr;
       }
+      .project-meta-grid{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+      }
     }
 
     @media (max-width:768px){
@@ -338,11 +332,8 @@
       .metrics-row{
         grid-template-columns:1fr;
       }
-      .project-meta-label-row,
-      .project-meta-value-row{
-        flex-direction:column;
-        align-items:flex-start;
-        gap:0.2rem;
+      .project-meta-grid{
+        grid-template-columns:1fr;
       }
     }
   </style>
@@ -388,19 +379,25 @@
             </div>
           </div>
 
-          <!-- META: LABELS ARRIBA, VALORES ABAJO, RECUADRO GRIS CLARO -->
+          <!-- META ALINEADA EN COLUMNAS -->
           <div class="project-meta-shell">
-            <div class="project-meta-label-row">
-              <span class="project-meta-label">Client</span>
-              <span class="project-meta-label">Year</span>
-              <span class="project-meta-label">My role</span>
-              <span class="project-meta-label">Domain</span>
-            </div>
-            <div class="project-meta-value-row">
-              <span class="project-meta-value">IKEA · Cataluña</span>
-              <span class="project-meta-value">2024 – Act.</span>
-              <span class="project-meta-value">Contenido digital y marketing</span>
-              <span class="project-meta-value">Muebles y decoración</span>
+            <div class="project-meta-grid">
+              <div class="project-meta-item">
+                <span class="project-meta-label">Client</span>
+                <span class="project-meta-value">IKEA · Cataluña</span>
+              </div>
+              <div class="project-meta-item">
+                <span class="project-meta-label">Year</span>
+                <span class="project-meta-value">2024 – Act.</span>
+              </div>
+              <div class="project-meta-item">
+                <span class="project-meta-label">My role</span>
+                <span class="project-meta-value">Contenido digital y marketing</span>
+              </div>
+              <div class="project-meta-item">
+                <span class="project-meta-label">Domain</span>
+                <span class="project-meta-value">Muebles y decoración</span>
+              </div>
             </div>
           </div>
         </div>
@@ -424,35 +421,33 @@
                 y estructura de filtros que actúan como un “menú interno” entre productos relacionados.
               </p>
             </div>
+
+            <div class="highlight-callout">
+              El foco no era solo traducir, sino que la versión catalana fuese igual de fácil de encontrar y de usar que la global.
+            </div>
+
+            <div class="inline-card-full">
+              <div class="inline-card-title">Puntos SEO y UX</div>
+              <ul>
+                <li>Equilibrio entre términos de búsqueda reales y lenguaje natural de la marca.</li>
+                <li>Cadenas de navegación más claras entre categorías y servicios clave.</li>
+                <li>Mensajes de ayuda en momentos críticos (envío, devolución, disponibilidad).</li>
+              </ul>
+            </div>
+
+            <div class="body-text" style="margin-top:1.6rem;">
+              <p class="subsection-title">Qué hice en esta parte</p>
+              <ul>
+                <li>Revisión editorial completa de las páginas clave en catalán (categorías, servicios y checkout) para detectar incoherencias y vacíos de información.</li>
+                <li>Reescritura de copys clave para mejorar claridad y consistencia entre la versión catalana y la global, respetando el tono de IKEA.</li>
+                <li>Optimización SEO on‑page: metatítulos, descripciones y slugs que conectan con cómo la gente realmente busca productos en Cataluña.</li>
+                <li>Diseño de un “menú interno” a través de filtros y enlaces entre categorías relacionadas para reducir la fricción al navegar.</li>
+              </ul>
+            </div>
           </div>
 
-          <!-- columna lateral vacía (ya no usamos key-points aquí) -->
+          <!-- columna lateral vacía -->
           <div></div>
-        </div>
-
-        <!-- Foco + Puntos SEO y UX a ancho cómodo y centrados -->
-        <div class="highlight-callout">
-          El foco no era solo traducir, sino que la versión catalana fuese igual de fácil de encontrar y de usar que la global.
-        </div>
-
-        <div class="inline-card-full">
-          <div class="inline-card-title">Puntos SEO y UX</div>
-          <ul>
-            <li>Equilibrio entre términos de búsqueda reales y lenguaje natural de la marca.</li>
-            <li>Cadenas de navegación más claras entre categorías y servicios clave.</li>
-            <li>Mensajes de ayuda en momentos críticos (envío, devolución, disponibilidad).</li>
-          </ul>
-        </div>
-
-        <!-- Qué hice en esta parte, debajo de los recuadros -->
-        <div class="body-text" style="margin-top:1.6rem;">
-          <p class="subsection-title">Qué hice en esta parte</p>
-          <ul>
-            <li>Revisión editorial completa de las páginas clave en catalán (categorías, servicios y checkout) para detectar incoherencias y vacíos de información.</li>
-            <li>Reescritura de copys clave para mejorar claridad y consistencia entre la versión catalana y la global, respetando el tono de IKEA.</li>
-            <li>Optimización SEO on‑page: metatítulos, descripciones y slugs que conectan con cómo la gente realmente busca productos en Cataluña.</li>
-            <li>Diseño de un “menú interno” a través de filtros y enlaces entre categorías relacionadas para reducir la fricción al navegar.</li>
-          </ul>
         </div>
 
         <!-- 2 IMÁGENES DESPUÉS DEL PUNTO 1 -->
@@ -486,18 +481,18 @@
                 recibieran mensajes relevantes según su ubicación sin romper la coherencia de marca.
               </p>
             </div>
+
+            <div class="inline-card-full">
+              <div class="inline-card-title">Puntos clave</div>
+              <ul>
+                <li>Guía de formatos digitales para banners, módulos y servicios.</li>
+                <li>Campañas locales coherentes con el ecosistema global de IKEA.</li>
+                <li>Bloques de email personalizados para el mercado catalán.</li>
+              </ul>
+            </div>
           </div>
 
           <div></div>
-        </div>
-
-        <div class="inline-card-full">
-          <div class="inline-card-title">Puntos clave</div>
-          <ul>
-            <li>Guía de formatos digitales para banners, módulos y servicios.</li>
-            <li>Campañas locales coherentes con el ecosistema global de IKEA.</li>
-            <li>Bloques de email personalizados para el mercado catalán.</li>
-          </ul>
         </div>
 
         <!-- 2 IMÁGENES DESPUÉS DEL PUNTO 2 -->
@@ -527,18 +522,18 @@
                 qué pueden hacer en su tienda más cercana.
               </p>
             </div>
+
+            <div class="inline-card-full">
+              <div class="inline-card-title">Impacto en tienda</div>
+              <ul>
+                <li>Páginas locales claras que conectan web, talleres y servicios.</li>
+                <li>Promociones y servicios destacados adaptados a cada ubicación.</li>
+                <li>Mayor visibilidad de talleres para reforzar el vínculo con la comunidad local.</li>
+              </ul>
+            </div>
           </div>
 
           <div></div>
-        </div>
-
-        <div class="inline-card-full">
-          <div class="inline-card-title">Impacto en tienda</div>
-          <ul>
-            <li>Páginas locales claras que conectan web, talleres y servicios.</li>
-            <li>Promociones y servicios destacados adaptados a cada ubicación.</li>
-            <li>Mayor visibilidad de talleres para reforzar el vínculo con la comunidad local.</li>
-          </ul>
         </div>
 
         <!-- 1 IMAGEN DESPUÉS DEL PUNTO 3 -->
@@ -565,18 +560,18 @@
                 entiendan qué hay de nuevo en su zona desde el primer día.
               </p>
             </div>
+
+            <div class="inline-card-full">
+              <div class="inline-card-title">Qué se asegura</div>
+              <ul>
+                <li>Las nuevas tiendas aparecen correctamente en la web desde el lanzamiento.</li>
+                <li>Las reformas se comunican con claridad en los canales digitales.</li>
+                <li>Las personas saben qué servicios, accesos y formatos hay disponibles en cada apertura.</li>
+              </ul>
+            </div>
           </div>
 
           <div></div>
-        </div>
-
-        <div class="inline-card-full">
-          <div class="inline-card-title">Qué se asegura</div>
-          <ul>
-            <li>Las nuevas tiendas aparecen correctamente en la web desde el lanzamiento.</li>
-            <li>Las reformas se comunican con claridad en los canales digitales.</li>
-            <li>Las personas saben qué servicios, accesos y formatos hay disponibles en cada apertura.</li>
-          </ul>
         </div>
 
         <!-- 1 IMAGEN DESPUÉS DEL PUNTO 4 -->
@@ -652,8 +647,8 @@
         </div>
 
         <div class="project-nav">
-          <a href="../index.html#work" class="project-nav-up">← Back to work</a>
-          <a href="../about.html">Next: About me →</a>
+          <a href="../index.html#work" class="project-nav-up">← Back to works</a>
+          <a href="/projects/daina-media.html">Next: Daina →</a>
         </div>
       </div>
     </section>
@@ -785,4 +780,3 @@
 
 </body>
 </html>
-
