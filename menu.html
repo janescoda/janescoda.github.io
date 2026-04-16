@@ -1,6 +1,6 @@
 <!-- menu.html -->
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Marope:wght@100..800&display=swap');
+/* Ya no importamos Sora; Manrope viene desde index/about */
 
 :root{
   --nav-height: 4.6rem;
@@ -23,6 +23,7 @@
   background: #fff;
   z-index: 9999;
   border-bottom: none;
+  font-family: 'Manrope', sans-serif; /* fuente base del nav */
 }
 
 .site-nav .nav-inner {
@@ -32,11 +33,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: relative; /* necesario para el menú móvil absoluto */
+  position: relative;
 }
 
 .nav-logo {
-  font-family: 'Sora', sans-serif;
   font-weight: 800;
   color: var(--title);
   letter-spacing: -0.02em;
@@ -53,7 +53,6 @@
 
 .nav-link {
   color: var(--text);
-  font-family: 'Sora', sans-serif;
   font-weight: 600;
   font-size: 1.045rem;
   padding: .25rem .15rem;
@@ -68,7 +67,6 @@
 
 /* Copy email button */
 .copy-btn {
-  font-family: 'Sora', sans-serif;
   font-weight: 700;
   font-size: 1.078rem;
   padding: 0.7rem 1.6rem;
@@ -192,7 +190,7 @@
 
   .nav-right-mobile {
     position: absolute;
-    top: 100%;                 /* justo debajo de la barra, sin duplicar nav-height */
+    top: 100%;
     left: 0;
     right: 0;
     background: #fff;
