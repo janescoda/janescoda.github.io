@@ -937,11 +937,14 @@
     const menuPromise = fetch('menu.html')
       .then(r => r.text())
       .then(html => { 
-        injectHtmlWithScripts(menuContainer, html); // inserta + ejecuta
-        if (typeof initMenu === 'function') {
-          initMenu();                // ← inicializa hamburguesa y copy en móvil
+        injectHtmlWithScripts(menuContainer, html); // inserta + ejecuta script de menu.html
+
+        // si menu.html ha definido window.initMenu, la llamamos
+        if (typeof window.initMenu === 'function') {
+          window.initMenu();          // inicializa hamburguesa y copyBtnMobile
         }
-        setActiveNavLinkIndex();     // ← marca Work en negrita
+
+        setActiveNavLinkIndex();      // marca Work en negrita
       })
       .catch(err => console.error('Error cargando menu.html', err));
 
@@ -955,6 +958,7 @@
     });
   });
 </script>
+
 
 </body>
 </html>
