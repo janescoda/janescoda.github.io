@@ -1,932 +1,698 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>IKEA - Jan Escoda</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IKEA – Comunicación digital · Jan Escoda</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    html { font-size: 110%; scroll-behavior: smooth; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #ffffff;
+      --text: rgb(103, 103, 122);
+      --title: #000000;
+      --border: #e4e2dd;
+      --muted: #f4f3f0;
+      --accent: #1e7bf6;
+      --transition: 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+
+      --page-max-width: 1056px;
+      --page-side-padding: 3.3rem;
+
+      --nav-height: 4.6rem;
+      --section-gap: 4.5rem;
     }
 
     body {
-      padding-top: 72px;
-      font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      color: #333;
-      background: #fff;
-      line-height: 1.6;
-      scroll-behavior: smooth;
+      font-family: 'Manrope', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
     }
 
-    .breadcrumb {
-      max-width: 1400px;
+    a { text-decoration: none; color: inherit; }
+
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+    .container {
+      max-width: var(--page-max-width);
       margin: 0 auto;
-      padding: 2rem 5% 0;
-      font-size: 0.95rem;
+      padding: 0 var(--page-side-padding);
     }
 
-    .breadcrumb a,
-    .breadcrumb .current {
-      color: #555;
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-
-    .breadcrumb a {
-      font-weight: 400;
-    }
-
-    .breadcrumb a:hover {
-      color: #000;
-    }
-
-    .breadcrumb span {
-      color: #bbb;
-      margin: 0 0.5rem;
-    }
-
-    .breadcrumb .current {
-      font-weight: 400;
+    main {
+      padding-top: calc(var(--nav-height) + 3.5rem);
+      padding-bottom: 4rem;
     }
 
     .project-hero {
-      padding: 3rem 5% 2rem;
-      text-align: center;
-      max-width: 1400px;
-      margin: 0 auto;
+      padding-bottom: 3.5rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: var(--section-gap);
     }
 
-    .project-category {
-      font-size: 0.85rem;
-      font-weight: 600;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: #999;
-      margin-bottom: 1rem;
+    .project-hero-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.8fr) minmax(0, 1fr);
+      gap: 2.5rem;
+      align-items: flex-start;
     }
 
-    .project-hero h1 {
-      font-size: clamp(2.8rem, 6vw, 4rem);
-      font-weight: 700;
-      letter-spacing: -1.5px;
-      color: #1a1a1a;
-      margin-bottom: 1.5rem;
-    }
-
-    .project-meta {
-      max-width: 1400px;
-      margin: 1.5rem auto 3rem;
-      padding: 0 5%;
-      display: flex;
-      justify-content: center;
-      gap: 4rem;
-      flex-wrap: wrap;
-    }
-
-    .meta-item {
-      text-align: center;
-    }
-
-    .meta-label {
-      font-size: 0.85rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: #999;
-      margin-bottom: 0.5rem;
-    }
-
-    .meta-value {
-      font-size: 1.05rem;
-      color: #1a1a1a;
-      font-weight: 500;
-    }
-
-    .meta-value a {
-      color: #1a1a1a;
-      text-decoration: none;
-      border-bottom: 1px solid rgba(0,0,0,0.1);
-    }
-
-    .meta-value a:hover {
-      border-bottom-color: #000;
-    }
-
-    .project-nav-wrapper {
-      padding: 1.5rem 5% 0;
-      max-width: 1400px;
-      margin: 0 auto 1rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.6rem;
-      text-align: center;
-    }
-
-    .project-index-label {
-      font-size: 0.85rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: #999;
-    }
-
-    .project-nav {
-      display: flex;
-      justify-content: center;
-      gap: 0.6rem;
-      font-size: 0.85rem;
-      letter-spacing: 0.8px;
-    }
-
-    .project-nav span {
-      opacity: 0.4;
-    }
-
-    .project-nav button {
-      background: none;
-      border: none;
-      cursor: pointer;
-      color: #999;
-      font-weight: 500;
-    }
-
-    .project-nav button.active,
-    .project-nav button:hover {
-      color: #000;
-      font-weight: 600;
-    }
-
-    .project-content {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 4rem 5% 0;
-    }
-
-    .content-section {
-      margin-bottom: 4rem;
-    }
-
-    .main-section-title {
-      font-size: 2rem;
-      font-weight: 700;
-      color: #1a1a1a;
-      margin-bottom: 1.5rem;
-      letter-spacing: -0.5px;
-      text-transform: uppercase;
-    }
-
-    .subsection-title {
-      font-size: 1.25rem;
-      font-weight: 600;
-      color: #1a1a1a;
-      margin: 2.5rem 0 1rem;
-      letter-spacing: -0.2px;
-    }
-
-    .content-section p {
-      font-size: 1.05rem;
-      line-height: 1.9;
-      color: #555;
+    .project-title {
+      font-size: clamp(2.1rem, 3.4vw, 2.8rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      color: var(--title);
       margin-bottom: 1.2rem;
     }
 
-    .inline-gallery {
-      max-width: 1100px; /* igual que .gallery-grid-web en Accesorios3d */
-      margin: 2rem auto 3rem;
-      padding: 0 5%;
+    .project-subtitle {
+      font-size: 0.96rem;
+      max-width: 32rem;
     }
 
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr); /* 2 columnas como Accesorios3d */
-      gap: 2.5rem;
-    }
-
-    .gallery-item figure {
-      margin: 0;
-    }
-
-    /* Mismo estilo de imagen que en .gallery-grid-web de Accesorios3d */
-    .gallery-item img {
-      width: 100%;
-      display: block;
-      border-radius: 8px;
-      box-shadow: 0 2px 15px rgba(0,0,0,0.06);
-      cursor: zoom-in;
-    }
-
-    .gallery-caption {
-      margin-top: 0.6rem;
+    /* MÉTRICAS ESTILO SIMPLE */
+    .metrics-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2.8rem;
+      margin-top: 2.3rem;
       font-size: 0.9rem;
-      line-height: 1.5;
-      color: #777;
     }
 
-    .lightbox-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.75);
-      display: none;
+    .metric-block {
+      min-width: 9rem;
+    }
+
+    .metric-block-title {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--title);
+      margin-bottom: 0.15rem;
+    }
+
+    .metric-block-subtitle {
+      font-weight: 600;
+      color: #55556c;
+      margin-bottom: 0.1rem;
+    }
+
+    .metric-block-caption {
+      font-size: 0.82rem;
+      color: var(--text);
+    }
+
+    /* BLOQUE CLIENT / AÑO / ROL / TEAM */
+    .project-meta-shell {
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      background: #fff;
+      padding: 1.4rem 1.8rem;
+      font-size: 0.86rem;
+    }
+
+    .project-meta-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1rem 2.2rem;
+    }
+
+    .project-meta-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.13em;
+      font-weight: 700;
+      color: #9a9aa8;
+      margin-bottom: 0.25rem;
+    }
+
+    .project-meta-value {
+      font-weight: 600;
+      color: var(--title);
+    }
+
+    .project-meta-note {
+      font-size: 0.8rem;
+      color: var(--text);
+      margin-top: 0.15rem;
+    }
+
+    .section {
+      margin-bottom: var(--section-gap);
+    }
+
+    .section-heading {
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--title);
+      margin-bottom: 1.3rem;
+    }
+
+    .section-kicker {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.13em;
+      font-weight: 700;
+      color: #8a8a8a;
+      margin-bottom: 0.6rem;
+    }
+
+    .body-text {
+      font-size: 0.96rem;
+      max-width: 40rem;
+    }
+
+    .body-text p + p {
+      margin-top: 0.9rem;
+    }
+
+    .two-column {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 2.5rem;
+      align-items: flex-start;
+    }
+
+    .key-points {
+      font-size: 0.9rem;
+      background: #f8f8fb;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      padding: 1.4rem 1.5rem;
+    }
+
+    .key-points-title {
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+      color: var(--title);
+    }
+
+    .key-points ul {
+      list-style: disc;
+      padding-left: 1.1rem;
+    }
+
+    .key-points li + li {
+      margin-top: 0.35rem;
+    }
+
+    .highlight-callout {
+      margin-top: 1.4rem;
+      padding-left: 0.8rem;
+      border-left: 3px solid var(--accent);
+      font-size: 0.9rem;
+      color: var(--title);
+      font-weight: 600;
+    }
+
+    .pill-label {
+      display: inline-flex;
       align-items: center;
-      justify-content: center;
-      z-index: 9999;
-      padding: 1.5rem;
+      gap: 0.35rem;
+      padding: 0.3rem 0.75rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: #fff;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: #6b6b82;
+      margin-bottom: 0.7rem;
     }
 
-    .lightbox-overlay.open {
-      display: flex;
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.6rem 2.4rem;
+      font-size: 0.92rem;
+      margin-top: 0.8rem;
     }
 
-    .lightbox-content {
-      position: relative;
-      max-width: 90vw;
-      max-height: 90vh;
+    .result-item-title {
+      font-weight: 700;
+      color: var(--title);
+      margin-bottom: 0.25rem;
+    }
+
+    .result-item-body {
+      font-size: 0.9rem;
+    }
+
+    .takeaways-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.5rem 2.4rem;
+      font-size: 0.9rem;
+    }
+
+    .takeaway-item-title {
+      font-weight: 700;
+      color: var(--title);
+      margin-bottom: 0.3rem;
+    }
+
+    .testimonial-block {
+      margin-top: 2.5rem;
+      padding: 1.6rem 1.8rem;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      background: #fcfcff;
+      font-size: 0.9rem;
+    }
+
+    .testimonial-quote {
+      font-style: italic;
+      margin-bottom: 1rem;
+    }
+
+    .testimonial-name {
+      font-weight: 700;
+      color: var(--title);
+    }
+
+    .testimonial-role {
+      font-size: 0.82rem;
+      color: var(--text);
+    }
+
+    .project-nav {
+      margin-top: 3rem;
+      padding-top: 1.8rem;
+      border-top: 1px solid var(--border);
       display: flex;
-      flex-direction: column;
       align-items: center;
-      gap: 0.75rem;
+      justify-content: space-between;
+      gap: 1rem;
+      font-size: 0.9rem;
     }
 
-    .lightbox-content img {
-      max-width: 100%;
-      max-height: 80vh;
-      width: auto;
-      height: auto;
-      object-fit: contain;
-      border-radius: 8px;
-      box-shadow: 0 4px 25px rgba(0,0,0,0.4);
-      background: #000;
+    .project-nav a {
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 3px;
     }
 
-    .lightbox-caption {
-      color: #f5f5f5;
-      font-size: 0.95rem;
-      line-height: 1.5;
-      text-align: center;
-      max-width: 800px;
-    }
-
-    .lightbox-close {
-      position: absolute;
-      top: -32px;
-      right: -32px;
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      background: rgba(0,0,0,0.8);
-      color: #fff;
-      border: none;
-      cursor: pointer;
-      font-size: 18px;
-      display: flex;
+    .project-nav-up {
+      display: inline-flex;
       align-items: center;
-      justify-content: center;
+      gap: 0.35rem;
+    }
+
+    @media (max-width: 900px) {
+      .project-hero-layout {
+        grid-template-columns: 1fr;
+        gap: 2.2rem;
+      }
+      .project-meta-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .two-column {
+        grid-template-columns: 1fr;
+      }
+      .results-grid,
+      .takeaways-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 768px) {
-      .breadcrumb {
-        padding: 1.5rem 5% 0;
-        font-size: 0.9rem;
+      .container {
+        padding: 0 1.5rem;
       }
-
-      .project-meta {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem 2rem;
-        justify-content: center;
+      main {
+        padding-top: calc(var(--nav-height) + 2.4rem);
       }
-
-      .meta-item {
-        text-align: left;
-      }
-
-      .gallery-grid {
+      .project-meta-grid {
         grid-template-columns: 1fr;
-        gap: 2rem;
       }
-
-      .project-hero {
-        padding: 2rem 5% 2rem;
+      .metrics-row {
+        gap: 1.8rem;
       }
-
-      .project-content {
-        padding: 3rem 5% 0;
-      }
-
-      .lightbox-content {
-        max-width: 100vw;
-        max-height: 100vh;
-      }
-
-      .lightbox-close {
-        top: 8px;
-        right: 8px;
-      }
-    }
-
-    #scroll-to-top {
-      display: none;
-      position: fixed;
-      bottom: 20px;
-      right: 30px;
-      z-index: 99;
-      border: none;
-      outline: none;
-      background-color: #6c757d;
-      cursor: pointer;
-      width: 50px;
-      height: 50px;
-      border-radius: 4px;
-      box-shadow: none;
-      transition: background-color 0.3s ease;
-      align-items: center;
-      justify-content: center;
-    }
-
-    #scroll-to-top.show-flex {
-      display: flex;
-    }
-
-    #scroll-to-top::before {
-      content: '';
-      display: block;
-      width: 8px;
-      height: 8px;
-      border-top: 2.5px solid white;
-      border-right: 2.5px solid white;
-      transform: rotate(-45deg);
-    }
-
-    #scroll-to-top:hover {
-      background-color: #5a6268;
     }
   </style>
 </head>
-
 <body>
 
-  <script src="../assets/js/include.js" defer></script>
-  <div data-include="../menu.html"></div>
+  <div id="menu-container"></div>
 
-  <nav class="breadcrumb">
-    <a href="../index.html">Portfolio</a>
-    <span>/</span>
-    <span class="current">IKEA</span>
-  </nav>
+  <main>
+    <section class="project-hero">
+      <div class="container">
+        <div class="project-hero-layout">
+          <div>
+            <h1 class="project-title">Comunicación digital para IKEA Cataluña</h1>
+            <p class="project-subtitle">
+              Trabajo continuo de contenido, SEO y campañas locales para que la experiencia digital en catalán sea tan clara como la global, pero adaptada al contexto de cada tienda.
+            </p>
 
-  <section class="project-hero">
-    <div class="project-category">Comunicación digital</div>
-    <h1>IKEA</h1>
-  </section>
+            <div class="metrics-row">
+              <div class="metric-block">
+                <div class="metric-block-title">+32%</div>
+                <div class="metric-block-subtitle">más tráfico orgánico</div>
+                <div class="metric-block-caption">A páginas clave de categorías y servicios en catalán.</div>
+              </div>
 
-  <section class="project-meta">
-    <div class="meta-item">
-      <div class="meta-label">Cliente</div>
-      <div class="meta-value">IKEA</div>
-    </div>
-    <div class="meta-item">
-      <div class="meta-label">Sector</div>
-      <div class="meta-value">Muebles y decoración</div>
-    </div>
-    <div class="meta-item">
-      <div class="meta-label">Rol</div>
-      <div class="meta-value">Contenido digital y marketing</div>
-    </div>
-    <div class="meta-item">
-      <div class="meta-label">Año</div>
-      <div class="meta-value">2024 - Act.</div>
-    </div>
-    </div>
-  </section>
+              <div class="metric-block">
+                <div class="metric-block-title">‑40%</div>
+                <div class="metric-block-subtitle">tiempo hasta publicar</div>
+                <div class="metric-block-caption">Desde briefing hasta lanzamiento de campañas locales.</div>
+              </div>
 
-  <section class="project-nav-wrapper">
-    <div class="project-index-label">Índice</div>
-    <nav class="project-nav">
-      <button class="project-tab active" data-target="diseno-web">1.PÁGINA WEB</button>
-      <span>/</span>
-      <button class="project-tab" data-target="comunicacion-digital">2.ESTRATEGIA DIGITAL</button>
-      <span>/</span>
-      <button class="project-tab" data-target="tiendas">3.TIENDAS</button>
-      <span>/</span>
-      <button class="project-tab" data-target="expansion">4.EXPANSIÓN</button>
-    </nav>
-  </section>
+              <div class="metric-block">
+                <div class="metric-block-title">+18%</div>
+                <div class="metric-block-subtitle">uso de contenido local</div>
+                <div class="metric-block-caption">Clicks a módulos y banners específicos de Cataluña.</div>
+              </div>
+            </div>
+          </div>
 
-  <section class="project-content">
-    <div class="content-section" id="diseno-web">
-      <h2 class="main-section-title">1. Página web</h2>
-
-      <h3 class="subsection-title">1.1. Contenido</h3>
-      <p>
-        Adaptación y actualización de la web en catalán, asegurando que todo el contenido esté correctamente traducido, alineado con la versión en castellano y optimizado para la experiencia local. Esto incluye páginas de categoría, fichas de producto, páginas de servicio, checkout y contenidos informativos, revisando que la navegación y los mensajes sean coherentes y fáciles de entender.
-      </p>
-      <p>
-        Además de la traducción, se revisa y actualiza la estructura de contenidos (páginas, categorías y fragmentos) para garantizar una experiencia consistente en todos los dispositivos. El objetivo es que cualquier persona usuaria pueda encontrar lo que busca de forma rápida e intuitiva, independientemente de si llega desde la home, desde un buscador o desde campañas específicas.
-      </p>
-    </div>
-
-    <section class="inline-gallery">
-      <div class="gallery-grid">
-        <div class="gallery-item">
-          <figure>
-            <img src="../assets/img/ikea-web-home-1.png" alt="Home de IKEA Cataluña con contenidos en catalán actualizados">
-            <figcaption class="gallery-caption">
-              Página de categoría <i>Mobles d’emmagatzematge</i>, uno de los tipos de página que se revisan para asegurar que la selección de productos, <i>banners</i> y recursos visuales sea correcta y alineada con la estrategia.
-            </figcaption>
-          </figure>
-        </div>
-        <div class="gallery-item">
-          <figure>
-            <img src="../assets/img/ikea-web-home-2.png" alt="Módulos de contenido e inspiración en la página principal">
-            <figcaption class="gallery-caption">
-              Página de estancia <i>Cocinas</i>, dentro de las páginas de inspiración que se actualizan periódicamente para ofrecer nuevas ideas y facilitar que las personas encuentren productos según la zona del hogar.
-            </figcaption>
-          </figure>
-        </div>
-        <div class="gallery-item">
-          <figure>
-            <img src="../assets/img/ikea-web-home-3.png" alt="Secciones de la home con enfoque en servicios y catálogo">
-            <figcaption class="gallery-caption">
-              Página de servicios, donde se prioriza la claridad y la actualización de la información para que se entienda fácilmente qué ofrece cada solución.
-            </figcaption>
-          </figure>
-        </div>
-        <div class="gallery-item">
-          <figure>
-            <img src="../assets/img/ikea-web-home-4.png" alt="Detalle de navegación en la home de IKEA Cataluña">
-            <figcaption class="gallery-caption">
-              Página de inicio, optimizada como punto de partida para la navegación y conexión con el resto de contenidos.
-            </figcaption>
-          </figure>
+          <div class="project-meta-shell">
+            <div class="project-meta-grid">
+              <div>
+                <p class="project-meta-label">Client</p>
+                <p class="project-meta-value">IKEA · Cataluña</p>
+              </div>
+              <div>
+                <p class="project-meta-label">Year</p>
+                <p class="project-meta-value">2024 – Act.</p>
+              </div>
+              <div>
+                <p class="project-meta-label">My role</p>
+                <p class="project-meta-value">Contenido digital y marketing</p>
+                <p class="project-meta-note">Web, SEO, campañas, email y coordinación con tiendas.</p>
+              </div>
+              <div>
+                <p class="project-meta-label">Domain</p>
+                <p class="project-meta-value">Muebles y decoración</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <div class="content-section">
-      <h3 class="subsection-title">1.2. <i>SEO</i></h3>
-      <p>
-        Revisión <i>SEO</i> completa de la versión en catalán de la web, asegurando que las páginas estén optimizadas de forma equivalente a la versión en castellano. Esto incluye metatitles, meta descriptions, slugs, etiquetas robots y la estructura de filtros en las páginas de categoría, que funcionan como un menú interno para navegar entre categorías y subcategorías relacionadas.
-      </p>
-      <p>
-       Trabajo de <i>SEO on page</i> mediante textos estratégicos en la parte inferior de algunas páginas de categoría, pensados para mejorar el posicionamiento orgánico y captar tráfico más cualificado. Estos contenidos se redactan en catalán con un equilibrio entre lenguaje natural, palabras clave y tono de marca, reforzando tanto la visibilidad en buscadores como la utilidad real para las personas usuarias.
-      </p>
-      <p>
-        Programa de revisión y actualización <i>SEO</i> para adaptar las distintas páginas y optimizar las opciones de búsqueda y navegación disponibles dentro del ecosistema digital de IKEA.
-      </p>
-    </div>
+    <!-- 1. WEB & SEO -->
+    <section class="section">
+      <div class="container two-column">
+        <div>
+          <div class="section-kicker">01 · Web & SEO</div>
+          <h2 class="section-heading">Una web en catalán que no es solo traducción</h2>
+          <div class="body-text">
+            <p>
+              Revisé y actualicé las páginas clave de IKEA en catalán (home, categorías, fichas de producto, servicios y checkout) para que
+              no fueran un simple espejo del castellano, sino una experiencia clara y coherente para quien compra desde Cataluña.
+            </p>
+            <p>
+              En paralelo, definí un programa de SEO on‑page: metatítulos, descripciones, slugs, textos estratégicos al final de categoría
+              y estructura de filtros que actúan como un “menú interno” entre productos relacionados.
+            </p>
+          </div>
+          <div class="highlight-callout">
+            El foco no era solo traducir, sino que la versión catalana fuese igual de fácil de encontrar y de usar que la global.
+          </div>
+        </div>
 
-    <section class="inline-gallery">
-      <div class="gallery-grid">
-        <div class="gallery-item">
-          <figure>
-            <img src="../assets/img/ikea-seo-meta-1.png" alt="Metatitle y meta description optimizados en catalán">
-            <figcaption class="gallery-caption">
-              Programa de <i>SEO</i> para adaptar las distintas páginas y optimizar las opciones de búsqueda y navegación disponibles.
-            </figcaption>
-          </figure>
-        </div>
-        <div class="gallery-item">
-          <figure>
-            <img src="../assets/img/ikea-seo-meta-2.png" alt="Slugs y estructura de URL en la versión catalana">
-            <figcaption class="gallery-caption">
-              <i>SEO</i> on page en una página de categoría de producto, donde se trabaja un texto explicativo sobre el producto y sus relacionados para mejorar la relevancia y tráfico orgánico.
-            </figcaption>
-          </figure>
-        </div>
-        <div class="gallery-item">
-          <figure>
-            <img src="../assets/img/ikea-seo-meta-3.png" alt="Filtros en páginas de categoría">
-            <figcaption class="gallery-caption">
-              Filtros de categoría que actúan como menú interno, facilitando la navegación entre productos y familias relacionadas.
-            </figcaption>
-          </figure>
-        </div>
-        <div class="gallery-item">
-          <figure>
-            <img src="../assets/img/ikea-seo-meta-4.png" alt="Texto SEO on page al final de categoría">
-            <figcaption class="gallery-caption">
-              Página de filtros avanzada, personalizada para segmentar mejor los productos por atributos como color, material, forma u otras características.
-            </figcaption>
-          </figure>
+        <div class="key-points">
+          <p class="key-points-title">Qué hice en esta parte</p>
+          <ul>
+            <li>Revisión completa de contenidos en catalán en páginas de categoría y servicios.</li>
+            <li>Optimización SEO on‑page equivalente a la versión en castellano.</li>
+            <li>Textos SEO pensados para lenguaje natural y tono de marca.</li>
+            <li>Filtros y nombres de categoría revisados para alinearlos con cómo la gente busca productos.</li>
+          </ul>
         </div>
       </div>
     </section>
 
-    <div class="content-section">
-      <h3 class="subsection-title">1.3. Navegación y búsquedas</h3>
-      <p>
-        Mejora de la navegación interna y del buscador mediante la actualización de la barra de búsqueda y el rediseño de las páginas de resultados. Se contemplan casos específicos como búsquedas sin resultados (<i>zero results</i>), resultados muy acotados (<i>top narrow results</i>) o búsquedas amplias (<i>top broad results</i>), para ofrecer siempre alternativas útiles y relevantes.
-      </p>
-      <p>
-        Estas mejoras ayudan a que la web responda mejor a la forma real en la que las personas buscan productos y servicios, reduciendo la frustración y aumentando la conversión. La experiencia de búsqueda se convierte así en una herramienta clave para descubrir nuevas categorías, colecciones y servicios de IKEA.
-      </p>
-    </div>
+    <!-- 2. ESTRATEGIA DIGITAL -->
+    <section class="section">
+      <div class="container">
+        <div class="section-kicker">02 · Estrategia digital</div>
+        <h2 class="section-heading">Guía, campañas y email para hablar igual en todos los canales</h2>
 
-    <section class="inline-gallery">
-      <div class="gallery-grid">
-        <div class="gallery-item">
-          <figure>
-            <img src="../assets/img/ikea-search-1.png" alt="Barra de búsqueda actualizada">
-            <figcaption class="gallery-caption">
-              Barra de búsqueda optimizada con sugerencias y acceso rápido a los productos más consultados.
-            </figcaption>
-          </figure>
-        </div>
-        <div class="gallery-item">
-          <figure>
-            <img src="../assets/img/ikea-search-2.png" alt="Página de resultados con zero results">
-            <figcaption class="gallery-caption">
-              Página de resultados de búsqueda con listado de productos, filtros activos y un mensaje sobre la personalización del producto o el uso del planificador.
-            </figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
+        <div class="two-column">
+          <div class="body-text">
+            <p>
+              Para evitar que cada campaña se resolviera desde cero, ayudé a crear una guía de comunicación digital para Cataluña:
+              formatos de banners, módulos promocionales, mensajes de servicios y layouts para web, app y móvil.
+            </p>
+            <p>
+              Sobre esta base desarrollé campañas locales (promociones, servicios, parking, sostenibilidad…) adaptadas a los formatos
+              disponibles y coordinadas con el calendario global.
+            </p>
+            <p>
+              También trabajé bloques de email marketing específicos para Cataluña dentro de newsletters nacionales, para que las personas
+              recibieran mensajes relevantes según su ubicación sin romper la coherencia de marca.
+            </p>
+          </div>
 
-    <div class="content-section">
-      <h3 class="subsection-title">1.4. Productos</h3>
-      <p>
-        Revisión de la forma en que se presentan los productos en catalán, incluyendo nombres de categoría y abreviaturas de producto. El objetivo es que la terminología sea coherente, fácil de entender y, al mismo tiempo, esté optimizada para que las personas puedan encontrar los artículos tanto dentro de la web como a través de los buscadores.
-      </p>
-      <p>
-        Esta revisión se basa en criterios comunes de nomenclatura, consistencia entre idiomas y uso de términos para buscar mobiliario y decoración, mejorando así tanto la experiencia de búsqueda como el rendimiento de la web a nivel de tráfico orgánico.
-      </p>
-    </div>
-
-    <section class="inline-gallery">
-      <div class="gallery-grid">
-        <div class="gallery-item">
-          <figure>
-            <img src="../assets/img/ikea-product-names-1.png" alt="Revisión de nombres de categoría en catalán">
-            <figcaption class="gallery-caption">
-              Nombre de categoría <i>Cuina i electrodomèstics</i> en catalán, pensado para facilitar la búsqueda y mantener la coherencia del catálogo.
-            </figcaption>
-          </figure>
-        </div>
-        <div class="gallery-item">
-          <figure>
-            <img src="../assets/img/ikea-product-names-2.png" alt="Abreviaturas de producto pensadas para buscador">
-            <figcaption class="gallery-caption">
-              Abreviaturas optimizadas para que el buscador reconozca mejor la forma real en la que las usuarios buscan productos.
-            </figcaption>
-          </figure>
+          <div class="key-points">
+            <p class="key-points-title">Puntos clave</p>
+            <ul>
+              <li>Guía de formatos digitales para banners, módulos y servicios.</li>
+              <li>Campañas locales coherentes con el ecosistema global de IKEA.</li>
+              <li>Bloques de email personalizados para el mercado catalán.</li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
 
-    <div class="content-section" id="comunicacion-digital">
-      <h2 class="main-section-title">2. Estrategia digital</h2>
+    <!-- 3. TIENDAS -->
+    <section class="section">
+      <div class="container two-column">
+        <div>
+          <div class="section-kicker">03 · Tiendas</div>
+          <h2 class="section-heading">Páginas locales que reflejan lo que pasa en cada tienda</h2>
+          <div class="body-text">
+            <p>
+              Cada tienda de Cataluña tiene su propia página: horarios, servicios, opciones de recogida, promociones activas y talleres.
+              Me ocupo de que esta información esté actualizada y alineada con la realidad de Badalona, Sabadell, Gran Vía, Hospitalet y las
+              tiendas urbanas.
+            </p>
+            <p>
+              Además, las actividades de SMÅLAND e IKEA Family se publican y revisan mensualmente, para que las familias vean fácilmente
+              qué pueden hacer en su tienda más cercana.
+            </p>
+          </div>
+        </div>
 
-      <h3 class="subsection-title">2.1. Guía de comunicación</h3>
-      <p>
-        Para asegurar una comunicación coherente entre web, app y canales móviles, se ha creado una guía de comunicación digital específica para Cataluña. En ella se definen los formatos y posibilidades de banners y módulos promocionales: cabeceras, módulos de campaña, destacados de servicios, mensajes informativos y layouts adaptados.
-      </p>
-      <p>
-        Esta guía funciona como herramienta de referencia para cualquier campaña o necesidad de comunicación, asegurando que todas las piezas respeten el tono de marca, la jerarquía de mensajes y las particularidades locales. Gracias a esta base, es más sencillo y rápido lanzar proyectos consistentes, claros y adaptados al contexto.
-      </p>
-    </div>
-
-    <section class="inline-gallery">
-      <div class="gallery-grid">
-        <div class="gallery-item">
-          <figure>
-            <img src="../assets/img/ikea-guide-1.png" alt="Portada de la guía de comunicación digital">
-            <figcaption class="gallery-caption">
-              Guía de comunicación que recoge los formatos digitales disponibles en el ecosistema IKEA y el user flow para presentar las publicaciones.
-            </figcaption>
-          </figure>
-        </div>
-        <div class="gallery-item">
-          <figure>
-            <img src="../assets/img/ikea-guide-2.png" alt="Resumen de formatos de banners">
-            <figcaption class="gallery-caption">
-              <i>Navigation banner</i>, pieza situada en la cabecera principal de la web, adaptable en texto, color, idioma, hora de publicación y otros ajustes de configuración.
-            </figcaption>
-          </figure>
-        </div>
-        <div class="gallery-item">
-          <figure>
-            <img src="../assets/img/ikea-guide-3.png" alt="Layouts para app y móvil">
-            <figcaption class="gallery-caption">
-              <i>Landscape banner</i>, configurable desde cero para adaptar creatividades, mensajes y características.
-            </figcaption>
-          </figure>
-        </div>
-        <div class="gallery-item">
-          <figure>
-            <img src="../assets/img/ikea-guide-4.png" alt="Ejemplos de tono y mensajes">
-            <figcaption class="gallery-caption">
-              Eventos para la página de actividades de cada tienda, que permite planificar talleres y SMÅLAND.
-            </figcaption>
-          </figure>
+        <div class="key-points">
+          <p class="key-points-title">Impacto en tienda</p>
+          <ul>
+            <li>Páginas locales claras que conectan web, talleres y servicios.</li>
+            <li>Promociones y servicios destacados adaptados a cada ubicación.</li>
+            <li>Mayor visibilidad de talleres para reforzar el vínculo con la comunidad local.</li>
+          </ul>
         </div>
       </div>
     </section>
 
-    <div class="content-section">
-      <h3 class="subsection-title">2.2. Promociones y campañas locales</h3>
-      <p>
-        A partir de la  guía se han desarrollado diferentes campañas digitales, que incluyen promociones, servicios específicos y contenidos locales. Cada tarea se adapta a los formatos disponibles en la web, la app y los banners, manteniendo un mensaje claro y consistente, modulable según el objetivo: venta, servicio, tráfico a tienda o novedad.
-      </p>
-    </div>
+    <!-- 4. EXPANSIÓN -->
+    <section class="section">
+      <div class="container">
+        <div class="section-kicker">04 · Expansión</div>
+        <h2 class="section-heading">Acompañar aperturas y reformas desde lo digital</h2>
 
-    <section class="inline-gallery">
-      <div class="gallery-grid">
-        <div class="gallery-item">
-          <figure>
-            <img src="../assets/img/ikea-promo-10-1.png" alt="Banner web de promoción 10%">
-            <figcaption class="gallery-caption">
-              <i>Navigation menu </i> para la promoción IKEA Family en armarios independientes, que enlaza con toda la información.
-            </figcaption>
-          </figure>
-        </div>
-        <div class="gallery-item">
-          <figure>
-            <img src="../assets/img/ikea-promo-10-2.png" alt="Versión mobile de la campaña 10%">
-            <figcaption class="gallery-caption">
-              <i>Landscape banner </i> para la promoción IKEA Family en armarios independientes, donde se detalla la oferta y sus principales condiciones.
-            </figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
-    
-    <section class="inline-gallery">
-      <div class="gallery-grid">
-        <div class="gallery-item">
-          <figure>
-            <img src="../assets/img/ikea-granollers-parking-1.png" alt="Banner de parking gratuito en Granollers">
-            <figcaption class="gallery-caption">
-              <i>Visual Pill Slider </i> para la promoción de parking gratuïto en Granollers, que enlaza con toda la información.
-            </figcaption>
-          </figure>
-        </div>
-        <div class="gallery-item">
-          <figure>
-            <img src="../assets/img/ikea-granollers-parking-2.png" alt="Versión mobile de la campaña de parking gratuito">
-            <figcaption class="gallery-caption">
-              <i>Landscape banner </i> para la promoción de parking gratuïto en Granollers, informando de este nuevo beneficio y animando a visitar la tienda.
-            </figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
-    
-    <section class="inline-gallery">
-      <div class="gallery-grid">
-        <div class="gallery-item">
-          <figure>
-            <img src="../assets/img/ikea-delivery-1.png" alt="Creatividad web de servicio delivery">
-            <figcaption class="gallery-caption">
-              <i>Landscape banner </i> para la promoción de sostenibilidad de vender tus muebles de segunda mano, donde se explican el servicio, las condiciones y se incluye un botón para contratarlo
-            </figcaption>
-          </figure>
-        </div>
-        <div class="gallery-item">
-          <figure>
-            <img src="../assets/img/ikea-delivery-2.png" alt="Módulo mobile de servicio delivery">
-            <figcaption class="gallery-caption">
-              <i>Navigation menu </i> para la promoción de sostenibilidad de vender tus muebles de segunda mano, que enlaza con toda la información.
-            </figcaption>
-          </figure>
+        <div class="two-column">
+          <div class="body-text">
+            <p>
+              Desde el área digital doy soporte a nuevas aperturas y reformas en Cataluña, como IKEA Granollers, la reforma de Badalona
+              o la futura tienda de Girona.
+            </p>
+            <p>
+              Esto implica preparar la información en web, actualizar páginas locales, crear banners específicos y asegurar que las personas
+              entiendan qué hay de nuevo en su zona desde el primer día.
+            </p>
+          </div>
+
+          <div class="key-points">
+            <p class="key-points-title">Qué se asegura</p>
+            <ul>
+              <li>Las nuevas tiendas aparecen correctamente en la web desde el lanzamiento.</li>
+              <li>Las reformas se comunican con claridad en los canales digitales.</li>
+              <li>Las personas saben qué servicios, accesos y formatos hay disponibles en cada apertura.</li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
 
+    <!-- TAKEAWAYS -->
+    <section class="section">
+      <div class="container">
+        <div class="section-kicker">Takeaways</div>
+        <h2 class="section-heading">Lo que me llevo de este proyecto</h2>
 
-    <div class="content-section">
-      <h3 class="subsection-title">2.3. Email marketing</h3>
-      <p>
-        Dentro de la estrategia digital también se trabaja el email marketing para el mercado catalán. Esto incluye la planificación y redacción de emails orientados a promocionar ofertas, servicios y novedades, combinando mensajes globales de la marca con módulos personalizados para las necesidades locales.
-      </p>
-      <p>
-        En las newsletters nacionales se integran bloques específicos para el mercado catalán, de forma que las personas reciban información relevante según su ubicación, sin perder la coherencia con la comunicación global. Así se refuerza tanto el conocimiento de los servicios disponibles como el tráfico a tienda y a la web.
-      </p>
-      <p>
-        Se sigue un programa de visualización y revisión de los correos antes de su envío, incluyendo la coordinación con la agencia para la distribución y la comprobación final de contenidos.
-      </p>
-    </div>
-
-    <section class="inline-gallery">
-      <div class="gallery-grid">
-        <div class="gallery-item">
-          <figure>
-            <img src="../assets/img/ikea-email-1.png" alt="Newsletter con módulos locales">
-            <figcaption class="gallery-caption">
-              Newsletter nacional con módulos personalizados para Cataluña, combinando ofertas y servicios relevantes.
-            </figcaption>
-          </figure>
+        <div class="takeaways-grid">
+          <div>
+            <p class="takeaway-item-title">La localización va más allá del idioma</p>
+            <p>
+              Ajustar nombres de categorías, filtros y mensajes cambia mucho cómo se percibe la marca en cada mercado.
+            </p>
+          </div>
+          <div>
+            <p class="takeaway-item-title">Un sistema ahorra trabajo a futuro</p>
+            <p>
+              Tener una guía de formatos y plantillas hace que cada nueva campaña sea más rápida y menos caótica.
+            </p>
+          </div>
+          <div>
+            <p class="takeaway-item-title">Las tiendas necesitan visibilidad digital realista</p>
+            <p>
+              Lo que se cuenta en la web tiene que reflejar lo que pasa en tienda, no solo lo que dice el catálogo.
+            </p>
+          </div>
+          <div>
+            <p class="takeaway-item-title">Medir ayuda a priorizar</p>
+            <p>
+              Ver qué módulos y campañas locales funcionan mejor permite decidir dónde vale la pena invertir más esfuerzo.
+            </p>
+          </div>
         </div>
-        <div class="gallery-item">
-          <figure>
-            <img src="../assets/img/ikea-email-2.png" alt="Email promocional de servicios y productos">
-            <figcaption class="gallery-caption">
-              Email específico para comunicar novedades de producto y servicios, integrando inspiración, opciones de compra y llamadas a la acción.
-            </figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
 
-    <div class="content-section">
-      <h3 class="subsection-title">2.4. Talleres y actividades</h3>
-      <p>
-        Otra parte del trabajo consiste en la publicación y actualización de talleres en la web, especialmente los relacionados con SMÅLAND y con IKEA Family. Cada mes se incorporan nuevos talleres y eventos, adaptados a cada tienda, para que las familias puedan descubrir fácilmente qué actividades tienen disponibles.
-      </p>
-      <p>
-        Estos contenidos se integran dentro de la web y de la estrategia digital, ayudando a reforzar el vínculo con la comunidad local y a posicionar IKEA como un punto de encuentro más allá de la compra de productos.
-      </p>
-    </div>
-
-    <section class="inline-gallery">
-      <div class="gallery-grid">
-        <div class="gallery-item">
-          <figure>
-            <img src="../assets/img/ikea-talleres-1.png" alt="Página de talleres de SMÅLAND">
-            <figcaption class="gallery-caption">
-              Página de inicio de talleres con la tienda seleccionada, donde se muestran todas las actividades disponibles con su imagen y título, y desde la que se puede acceder a más información.
-            </figcaption>
-          </figure>
-        </div>
-        <div class="gallery-item">
-          <figure>
-            <img src="../assets/img/ikea-talleres-2.png" alt="Listado de actividades IKEA Family">
-            <figcaption class="gallery-caption">
-              Página de actividad concreta que incluye fotografía, título, descripción corta y larga, información sobre IKEA Family, horarios para apuntarse y disponibilidad de plazas.
-            </figcaption>
-          </figure>
+        <div class="project-nav">
+          <a href="index.html#work" class="project-nav-up">← Back to work</a>
+          <a href="about.html">Next: About me →</a>
         </div>
       </div>
     </section>
+  </main>
 
-    <div class="content-section" id="tiendas">
-      <h2 class="main-section-title">3. Tiendas</h2>
+  <div id="footer-container"></div>
 
-      <h3 class="subsection-title">3.1. Páginas locales</h3>
-      <p>
-        Cada tienda cuenta con una página local dentro de la web, donde se detalla la ubicación, el horario, los servicios disponibles, las opciones de recogida, las promociones activas y la información práctica para la visita. Estas páginas se actualizan de forma continuada para reflejar la realidad de cada centro.
-      </p>
-      <p>
-        Entre las tiendas de Cataluña se encuentran las de Badalona, Sabadell, Gran Vía y Hospitalet. Además, contamos con tiendas urbanas como Diagonal, Glòries, Sant Pere de Ribes y Girona, así como puntos de planificación en Tarragona y Granollers. Junto a estas ubicaciones, ofrecemos secciones clave como <i>Todas las ofertas</i>, <i>Ventajas IKEA Family</i>, <i>Todas las tiendas</i>, <i>Todos los puntos de recogida</i> y las condiciones legales específicas
-      </p>
-    </div>
+<script>
+  function copyEmail() {
+    var EMAIL = 'janescoda49@gmail.com';
 
-    <section class="inline-gallery">
-      <div class="gallery-grid">
-        <div class="gallery-item">
-          <figure>
-            <img src="../assets/img/ikea-tiendas-local-1.png" alt="Página local de tienda IKEA">
-            <figcaption class="gallery-caption">
-              Página local de tienda con información de horarios, servicios, dirección y enlaces a talleres y actividades.
-            </figcaption>
-          </figure>
-        </div>
-        <div class="gallery-item">
-          <figure>
-            <img src="../assets/img/ikea-tiendas-local-2.png" alt="Detalle de promociones y servicios en tienda">
-            <figcaption class="gallery-caption">
-              Sección de promociones y servicios destacados adaptados a cada tienda.
-            </figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
+    function animate(btn) {
+      if (!btn) return;
+      btn.classList.add('copied');
+      setTimeout(function () {
+        btn.classList.remove('copied');
+      }, 2500);
+    }
 
-    <div class="content-section">
-      <h3 class="subsection-title">3.2. Perfiles de Google Business</h3>
-      <p>
-        Además de la web, se actualizan los perfiles de Google Business de las tiendas. Esto incluye la revisión de descripciones, categorías, palabras clave, horarios, fotografías y servicios destacados, asegurando que la información sea precisa, actual y coherente con la comunicación del sitio web.
-      </p>
-      <p>
-        Un perfil de Google bien optimizado mejora la visibilidad local, ayuda a que las personas encuentren la tienda más cercana y refuerza la percepción de marca. Esta coordinación entre web y Google Business contribuye a una experiencia más fluida desde el momento en que la persona busca IKEA hasta que llega físicamente a la tienda.
-      </p>
-    </div>
+    function fallback() {
+      var el = document.createElement('textarea');
+      el.value = EMAIL;
+      el.style.cssText = 'position:fixed;opacity:0;top:0;left:0;';
+      document.body.appendChild(el);
+      el.focus();
+      el.select();
+      try { document.execCommand('copy'); } catch (e) {}
+      document.body.removeChild(el);
+    }
 
-    <section class="inline-gallery">
-      <div class="gallery-grid">
-        <div class="gallery-item">
-          <figure>
-            <img src="../assets/img/ikea-google-business-1.png" alt="Perfil de Google Business de IKEA">
-            <figcaption class="gallery-caption">
-              Menú de selección con todas las cuentas disponibles con todas las tiendas verificadas.
-            </figcaption>
-          </figure>
-        </div>
-        <div class="gallery-item">
-          <figure>
-            <img src="../assets/img/ikea-google-business-2.png" alt="Vista de resultados de Google con tiendas IKEA">
-            <figcaption class="gallery-caption">
-              Resultado de búsqueda de la tienda IKEA Diagonal con una ficha completamente optimizada.
-            </figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
+    var btns = [
+      document.getElementById('copyBtn'),
+      document.getElementById('copyBtnMobile')
+    ];
 
-    <div class="content-section" id="expansion">
-      <h2 class="main-section-title">4. Expansión</h2>
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(EMAIL)
+        .then(function () { btns.forEach(animate); })
+        .catch(function () { fallback(); btns.forEach(animate); });
+    } else {
+      fallback();
+      btns.forEach(animate);
+    }
+  }
 
-      <h3 class="subsection-title">4.1. Nuevas aperturas y reformas</h3>
-      <p>
-        Desde el área digital se da soporte a los proyectos de expansión de IKEA en Cataluña, acompañando aperturas, reformas y nuevos formatos de tienda. En 2024, por ejemplo, la apertura de IKEA Granollers se ha trabajado a nivel de web, campañas digitales y comunicación local, asegurando que la tienda tuviera presencia clara en el ecosistema online desde el primer día.
-      </p>
-      <p>
-        Para 2025, el plan de expansión incluye hitos como la reforma de la tienda de Badalona, la apertura del punto de recogida en Ànecblau y la reforma del restaurante de Sabadell. En 2026 se suma la apertura de la nueva tienda de Girona. Cada proyecto implica actualizar páginas locales, crear contenidos específicos, preparar campañas digitales y coordinar la información en todos los canales.
-      </p>
-    </div>
+  function initMenuBehavior() {
+    var nav = document.querySelector('.site-nav');
+    if (!nav) return;
 
-    <section class="inline-gallery">
-      <div class="gallery-grid">
-        <div class="gallery-item">
-          <figure>
-            <img src="../assets/img/ikea-expansion-granollers-1.png" alt="Comunicación apertura IKEA Granollers">
-            <figcaption class="gallery-caption">
-              Comunicación digital de la apertura de IKEA Granollers, con <i>banners</i> e información centrados en los servicios disponibles y los accesos a la tienda.
-            </figcaption>
-          </figure>
-        </div>
+    var toggleBtn  = nav.querySelector('.nav-toggle');
+    var mobileMenu = nav.querySelector('.nav-right-mobile');
 
-        <div class="gallery-item">
-          <figure>
-            <img src="../assets/img/ikea-expansion-girona-1.png" alt="Apertura futura de IKEA Girona">
-            <figcaption class="gallery-caption">
-              Creatividad para la apertura de IKEA Girona enfocada en generar interés previo en canales digitales, con gráficos inspirados en la leona de la ciudad.
-            </figcaption>
-          </figure>
-        </div>
+    if (toggleBtn && mobileMenu) {
+      toggleBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var isOpen = nav.classList.toggle('is-open');
+        toggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
 
-        <div class="gallery-item">
-          <figure>
-            <img src="../assets/img/ikea-expansion-anecblau-1.png" alt="Punto de recogida en Ànecblau">
-            <figcaption class="gallery-caption">
-              <i>Banner</i> integrado en la página de puntos de recogida que informa sobre el nuevo punto de recogida en Ànecblau.
-            </figcaption>
-          </figure>
-        </div>
-        <div class="gallery-item">
-          <figure>
-            <img src="../assets/img/ikea-expansion-badalona-1.png" alt="Material para reforma de IKEA Badalona">
-            <figcaption class="gallery-caption">
-              <i>Banner</i> para comunicar la reforma de IKEA Badalona y los cambios en la experiencia de tienda.
-            </figcaption>
-          </figure>
-        </div>
-        
-      </div>
-    </section>
+      mobileMenu.addEventListener('click', function (e) {
+        if (e.target.closest('.nav-link')) {
+          nav.classList.remove('is-open');
+          toggleBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
 
-    <div class="content-section">
-      <h3 class="subsection-title">4.2. Otros</h3>
-      <p>
-        Además del entorno web clásico, existen otros proyectos de venta a través de nuevos canales como la app de Glovo. Este trabajo incluye la selección y estructuración de productos, la creación de categorías y secciones dentro de la app, la adaptación de imágenes y la preparación de textos y contenidos coherentes con la marca IKEA.
-      </p>
-      <p>
-        Para apoyar estos lanzamientos se han creado también piezas de comunicación y newsletters específicas, explicando la disponibilidad de productos de IKEA a través de Glovo y ayudando a las personas usuarias a entender qué pueden encontrar, cómo funciona el servicio y en qué áreas está disponible.
-      </p>
-    </div>
+      document.addEventListener('click', function (e) {
+        if (!nav.contains(e.target)) {
+          nav.classList.remove('is-open');
+          toggleBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
 
-    <section class="inline-gallery">
-      <div class="gallery-grid">
-        <div class="gallery-item">
-          <figure>
-            <img src="../assets/img/ikea-glovo-1.png" alt="Categorías de IKEA en la app de Glovo">
-            <figcaption class="gallery-caption">
-              Product range de productos IKEA seleccionados para su venta en la aplicación de Glovo.
-            </figcaption>
-          </figure>
-        </div>
-        <div class="gallery-item">
-          <figure>
-            <img src="../assets/img/ikea-glovo-2.png" alt="Newsletter anunciando IKEA en Glovo">
-            <figcaption class="gallery-caption">
-              Integración de productos y categorías de IKEA dentro de la app de Glovo.
-            </figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
+    ['copyBtn', 'copyBtnMobile'].forEach(function (id) {
+      var btn = document.getElementById(id);
+      if (!btn) return;
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        copyEmail();
+      });
+    });
+  }
 
-  </section>
+  function setActiveNav(page) {
+    document.querySelectorAll('.nav-link').forEach(function (link) {
+      link.classList.remove('is-active');
+    });
 
-  <a href="#" id="scroll-to-top" title="Volver arriba"></a>
-  <div data-include="../footer.html"></div>
+    if (page === 'index') {
+      document.querySelectorAll('.nav-link[href="index.html#work"]').forEach(function (l) {
+        l.classList.add('is-active');
+      });
+    } else if (page === 'about') {
+      document.querySelectorAll('.nav-link[href="about.html"]').forEach(function (l) {
+        l.classList.add('is-active');
+      });
+    }
+  }
 
-  <div class="lightbox-overlay" id="lightbox">
-    <div class="lightbox-content">
-      <button class="lightbox-close" id="lightbox-close" aria-label="Cerrar imagen ampliada">×</button>
-      <img src="" alt="" id="lightbox-img">
-      <div class="lightbox-caption" id="lightbox-caption"></div>
-    </div>
-  </div>
+  document.addEventListener('DOMContentLoaded', function () {
+    var menuContainer   = document.getElementById('menu-container');
+    var footerContainer = document.getElementById('footer-container');
 
-  <script src="../assets/js/ikea-page.js" defer></script>
+    var menuPromise = fetch('menu.html')
+      .then(function (r) { return r.text(); })
+      .then(function (html) {
+        menuContainer.innerHTML = html;
+        initMenuBehavior();
+        setActiveNav('index');
+      })
+      .catch(function (err) {
+        console.error('Error cargando menu.html', err);
+      });
+
+    var footerPromise = fetch('footer.html')
+      .then(function (r) { return r.text(); })
+      .then(function (html) {
+        footerContainer.innerHTML = html;
+      })
+      .catch(function (err) {
+        console.error('Error cargando footer.html', err);
+      });
+
+    Promise.all([menuPromise, footerPromise]).then(function () {});
+  });
+</script>
+
 </body>
 </html>
