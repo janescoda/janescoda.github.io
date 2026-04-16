@@ -105,8 +105,15 @@
       border-radius: 100px;
       font-weight: 600;
       color: #8a8a8a;
-      line-height: 1;
-      white-space: nowrap;
+      line-height: 1.4;
+      white-space: normal;        /* permite salto de línea en móvil */
+    }
+
+    /* En pantallas más grandes mantenemos el estilo pill en una línea */
+    @media (min-width: 769px) {
+      .hero-tag {
+        white-space: nowrap;
+      }
     }
 
     /* SECTION HEADINGS */
@@ -406,7 +413,7 @@
       font-weight:700; 
     }
 
-    /***** CONTACT (Get in touch) *****/
+    /***** CONTACT (Get in touch) – igual que about.html *****/
     #contact {
       padding: 3.5rem 0 2.5rem;
     }
@@ -502,6 +509,7 @@
       .testi-card{ min-width:100%; max-width:100%; padding:2rem 1.8rem; } 
       .principles-card{ padding:1.8rem; } 
       .principles-grid{ grid-template-columns:1fr; gap:1.9rem; } 
+      .contact-layout { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -1044,5 +1052,3 @@
 
 </body>
 </html>
-
-
