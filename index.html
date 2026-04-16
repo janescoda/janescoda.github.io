@@ -916,6 +916,35 @@
         initPageScripts();
       });
     });
+    
+    // después de insertar menu.html
+function setActiveNavLink() {
+  const path = window.location.pathname;     // /index.html o /about.html
+  const hash = window.location.hash;         // #work, etc
+
+  const workLink = document.querySelector('.nav-link[href="index.html#work"]');
+  const aboutLink = document.querySelector('.nav-link[href="about.html"]');
+
+  if (!workLink || !aboutLink) return;
+
+  // reset
+  workLink.classList.remove('is-active');
+  aboutLink.classList.remove('is-active');
+
+  // En index: si hash es #work (o estás en la home), marcamos Work
+  if (path.endsWith('index.html') || path === '/' ) {
+    workLink.classList.add('is-active');
+  }
+}
+
+// Llama a esto después de meter el HTML del menú
+fetch('menu.html')
+  .then(r => r.text())
+  .then(html => {
+    menuContainer.innerHTML = html;
+    setActiveNavLink();
+  });
+
   </script>
 </body>
 </html>
