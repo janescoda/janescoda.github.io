@@ -21,15 +21,39 @@
   z-index: 999;
   border-bottom: none; 
 }
+
 .site-nav .nav-inner {
   width:100%; max-width:1200px; padding:0 var(--page-side-padding);
   display:flex; justify-content:space-between; align-items:center;
 }
-.nav-logo { font-weight:800; color:var(--title); letter-spacing:-0.02em; font-size:1.155rem; } 
-.nav-right { display:flex; gap:1.6rem; align-items:center; }
-.nav-link { color:var(--text); font-weight:600; font-size:1.045rem; padding:.25rem .15rem; } 
-.nav-link:hover, .nav-link.is-active { color:var(--title); font-weight:800; }
 
+.nav-logo { 
+  font-weight:800; 
+  color:var(--title); 
+  letter-spacing:-0.02em; 
+  font-size:1.155rem; 
+}
+
+/* Zona derecha en desktop */
+.nav-right { 
+  display:flex; 
+  gap:1.6rem; 
+  align-items:center; 
+}
+
+.nav-link { 
+  color:var(--text); 
+  font-weight:600; 
+  font-size:1.045rem; 
+  padding:.25rem .15rem; 
+} 
+
+.nav-link:hover, .nav-link.is-active { 
+  color:var(--title); 
+  font-weight:800; 
+}
+
+/* Botón Copy email */
 .copy-btn{
   font-family: 'Sora', sans-serif;
   font-weight:700;
@@ -39,24 +63,147 @@
   background:var(--title);
   color:#fff;
   border:1.5px solid var(--title);
-  display:inline-flex; align-items:center; gap:.35rem;
-  cursor:pointer; transition: all var(--transition);
+  display:inline-flex; 
+  align-items:center; 
+  gap:.35rem;
+  cursor:pointer; 
+  transition: all var(--transition);
 }
-.copy-btn.copied { background:transparent; color:var(--title); border-color:var(--title); pointer-events:none; }
-.copy-btn:hover { transform:translateY(-1px); background:transparent; color:var(--title); }
+.copy-btn.copied { 
+  background:transparent; 
+  color:var(--title); 
+  border-color:var(--title); 
+  pointer-events:none; 
+}
+.copy-btn:hover { 
+  transform:translateY(-1px); 
+  background:transparent; 
+  color:var(--title); 
+}
 
-.site-nav a:focus, .site-nav button:focus { outline: none; }
+.site-nav a:focus, 
+.site-nav button:focus { 
+  outline: none; 
+}
 
+/* HAMBURGER (móvil) */
+.nav-toggle {
+  display: none; /* solo se ve en móvil */
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: #fff;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.nav-toggle-box {
+  width: 18px;
+  height: 14px;
+  position: relative;
+}
+
+.nav-toggle-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #000;
+  border-radius: 999px;
+  transition: transform var(--transition), opacity var(--transition), top var(--transition), bottom var(--transition);
+}
+
+.nav-toggle-line:nth-child(1) { top: 0; }
+.nav-toggle-line:nth-child(2) { top: 6px; }
+.nav-toggle-line:nth-child(3) { bottom: 0; }
+
+/* Estado abierto (clase .is-open en nav) */
+.site-nav.is-open .nav-toggle-line:nth-child(1) {
+  top: 6px;
+  transform: rotate(45deg);
+}
+.site-nav.is-open .nav-toggle-line:nth-child(2) {
+  opacity: 0;
+}
+.site-nav.is-open .nav-toggle-line:nth-child(3) {
+  bottom: 6px;
+  transform: rotate(-45deg);
+}
+
+/* Menú desplegable móvil */
+.nav-right-mobile {
+  display: none;
+}
+
+/* DESKTOP */
+@media (min-width:769px){
+  .nav-right {
+    display:flex;
+  }
+  .nav-toggle {
+    display:none;
+  }
+}
+
+/* MOBILE */
 @media (max-width:768px){
-  .nav-right { gap:12px; }
-  .nav-logo { font-size:1.1rem; } 
+  .site-nav .nav-inner {
+    padding: 0 1.5rem;
+  }
+
+  .nav-logo { 
+    font-size:1.1rem; 
+  }
+
+  .nav-right {
+    display:none; /* oculto el menú horizontal */
+  }
+
+  .nav-toggle {
+    display: inline-flex; /* muestro el botón hamburguesa */
+  }
+
+  .nav-right-mobile {
+    position: fixed;
+    top: var(--nav-height);
+    left: 0;
+    right: 0;
+    background: #fff;
+    border-bottom: 1px solid var(--border);
+    display: none;
+    flex-direction: column;
+    padding: 0.8rem 1.5rem 1.3rem;
+    gap: 0.6rem;
+    z-index: 998;
+  }
+
+  .site-nav.is-open + .nav-right-mobile {
+    display: flex;
+  }
+
+  .nav-right-mobile a.nav-link {
+    padding: 0.35rem 0;
+    font-size: 1rem;
+  }
+
+  .nav-right-mobile .copy-btn {
+    width: 100%;
+    justify-content: center;
+    font-size: 0.98rem;
+    padding: 0.6rem 1.2rem;
+  }
 }
 </style>
 
+<!-- NAV -->
 <nav class="site-nav" role="navigation" aria-label="Main navigation">
   <div class="nav-inner">
     <a class="nav-logo" href="index.html#scroll">JEO</a>
 
+    <!-- Menú desktop -->
     <div class="nav-right" role="menubar">
       <a class="nav-link" href="index.html#work" role="menuitem">Work</a>
       <a class="nav-link" href="about.html" role="menuitem">About</a>
@@ -69,5 +216,62 @@
         </span>
       </button>
     </div>
+
+    <!-- Botón hamburguesa (solo móvil) -->
+    <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
+      <span class="nav-toggle-box">
+        <span class="nav-toggle-line"></span>
+        <span class="nav-toggle-line"></span>
+        <span class="nav-toggle-line"></span>
+      </span>
+    </button>
   </div>
 </nav>
+
+<!-- Menú móvil desplegable -->
+<div class="nav-right-mobile" role="menubar">
+  <a class="nav-link" href="index.html#work" role="menuitem">Work</a>
+  <a class="nav-link" href="about.html" role="menuitem">About</a>
+
+  <button class="copy-btn" id="copyBtnMobile" aria-label="Copy email">
+    <span class="label-default">Copy email</span>
+    <span class="label-copied" style="display:none;">
+      <svg class="check-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5"><polyline points="20 6 9 17 4 12"/></svg>
+      Copied
+    </span>
+  </button>
+</div>
+
+<script>
+  (function(){
+    const nav       = document.querySelector('.site-nav');
+    const toggleBtn = nav ? nav.querySelector('.nav-toggle') : null;
+    const mobileMenu = document.querySelector('.nav-right-mobile');
+
+    if (toggleBtn && nav && mobileMenu) {
+      toggleBtn.addEventListener('click', () => {
+        const isOpen = nav.classList.toggle('is-open');
+        toggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+
+      // Cerrar el menú cuando se hace clic en algún enlace del móvil
+      mobileMenu.addEventListener('click', (e) => {
+        if (e.target.matches('.nav-link')) {
+          nav.classList.remove('is-open');
+          toggleBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+
+    // Conectar botón de copiar del móvil con la función global copyEmail()
+    const copyBtnMobile = document.getElementById('copyBtnMobile');
+    if (copyBtnMobile) {
+      copyBtnMobile.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (typeof copyEmail === 'function') {
+          copyEmail();
+        }
+      });
+    }
+  })();
+</script>
