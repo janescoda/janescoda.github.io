@@ -13,45 +13,43 @@
     html { font-size: 110%; scroll-behavior: smooth; }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    :root {
+    :root{
       --bg: #ffffff;
-      --text: rgb(103, 103, 122);
+      --text: rgb(103,103,122);
       --title: #000000;
+      --card-bg: #f4f3f0;
       --border: #e4e2dd;
-      --muted: #f4f3f0;
-      --accent: #1e7bf6;
-      --transition: 0.28s cubic-bezier(0.4, 0, 0.2, 1);
-
+      --transition: 0.28s cubic-bezier(0.4,0,0.2,1);
       --page-max-width: 1056px;
       --page-side-padding: 3.3rem;
-
       --nav-height: 4.6rem;
       --section-gap: 4.5rem;
     }
 
-    body {
+    body{
       font-family: 'Manrope', sans-serif;
       background: var(--bg);
       color: var(--text);
-      line-height: 1.7;
-      overflow-x: hidden;
+      line-height: 1.6;
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
 
-    a { text-decoration: none; color: inherit; }
+    a { text-decoration:none; color:inherit; }
 
-    ::-webkit-scrollbar { width: 5px; }
-    ::-webkit-scrollbar-track { background: var(--bg); }
-    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+    ::-webkit-scrollbar{ width:5px; } 
+    ::-webkit-scrollbar-track{ background:var(--bg);} 
+    ::-webkit-scrollbar-thumb{ background:var(--border); border-radius:3px; }
 
-    .container {
-      max-width: var(--page-max-width);
-      margin: 0 auto;
-      padding: 0 var(--page-side-padding);
+    .container{ 
+      max-width:var(--page-max-width); 
+      margin:0 auto; 
+      padding:0 var(--page-side-padding); 
+      box-sizing:border-box; 
     }
 
     main {
-      padding-top: calc(var(--nav-height) + 3.5rem);
+      padding-top: calc(var(--nav-height) + 4.5rem);
       padding-bottom: 4rem;
     }
 
@@ -62,283 +60,239 @@
     }
 
     .project-hero-layout {
-      display: grid;
+      display:grid;
       grid-template-columns: minmax(0, 1.8fr) minmax(0, 1fr);
-      gap: 2.5rem;
-      align-items: flex-start;
+      gap:3rem;
+      align-items:flex-start;
     }
 
     .project-title {
-      font-size: clamp(2.1rem, 3.4vw, 2.8rem);
+      font-size: clamp(2.3rem, 3.8vw, 3rem);
       font-weight: 800;
       letter-spacing: -0.03em;
-      line-height: 1.15;
+      line-height: 1.1;
       color: var(--title);
-      margin-bottom: 1.2rem;
+      margin-bottom: 1.3rem;
     }
 
     .project-subtitle {
       font-size: 0.96rem;
-      max-width: 32rem;
+      max-width: 34rem;
     }
 
-    /* MÉTRICAS ESTILO SIMPLE */
+    /* MÉTRICAS */
     .metrics-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2.8rem;
-      margin-top: 2.3rem;
-      font-size: 0.9rem;
+      display:flex;
+      flex-wrap:wrap;
+      gap:3.2rem;
+      margin-top:2.4rem;
+      font-size:0.9rem;
     }
 
     .metric-block {
-      min-width: 9rem;
+      min-width:10rem;
     }
 
     .metric-block-title {
-      font-size: 1.2rem;
-      font-weight: 800;
-      color: var(--title);
-      margin-bottom: 0.15rem;
+      font-size:1.3rem;
+      font-weight:800;
+      color:var(--title);
+      margin-bottom:0.18rem;
     }
 
     .metric-block-subtitle {
-      font-weight: 600;
-      color: #55556c;
-      margin-bottom: 0.1rem;
+      font-weight:600;
+      color:#55556c;
+      margin-bottom:0.12rem;
     }
 
     .metric-block-caption {
-      font-size: 0.82rem;
-      color: var(--text);
+      font-size:0.82rem;
+      color:var(--text);
     }
 
-    /* BLOQUE CLIENT / AÑO / ROL / TEAM */
+    /* META */
     .project-meta-shell {
-      border-radius: 18px;
-      border: 1px solid var(--border);
-      background: #fff;
-      padding: 1.4rem 1.8rem;
-      font-size: 0.86rem;
+      border-radius:18px;
+      border:1px solid var(--border);
+      background:#fff;
+      padding:1.5rem 1.9rem;
+      font-size:0.86rem;
     }
 
     .project-meta-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 1rem 2.2rem;
+      display:grid;
+      grid-template-columns:repeat(4, minmax(0,1fr));
+      gap:1rem 2.2rem;
     }
 
     .project-meta-label {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.13em;
-      font-weight: 700;
-      color: #9a9aa8;
-      margin-bottom: 0.25rem;
+      font-size:0.75rem;
+      text-transform:uppercase;
+      letter-spacing:.13em;
+      font-weight:700;
+      color:#9a9aa8;
+      margin-bottom:0.25rem;
     }
 
     .project-meta-value {
-      font-weight: 600;
-      color: var(--title);
+      font-weight:600;
+      color:var(--title);
     }
 
     .project-meta-note {
-      font-size: 0.8rem;
-      color: var(--text);
-      margin-top: 0.15rem;
+      font-size:0.8rem;
+      color:var(--text);
+      margin-top:0.15rem;
     }
 
     .section {
       margin-bottom: var(--section-gap);
     }
 
-    .section-heading {
-      font-size: 1.25rem;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      color: var(--title);
-      margin-bottom: 1.3rem;
+    .section-kicker {
+      font-size:0.8rem;
+      text-transform:uppercase;
+      letter-spacing:.13em;
+      font-weight:700;
+      color:#8a8a8a;
+      margin-bottom:0.6rem;
     }
 
-    .section-kicker {
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.13em;
-      font-weight: 700;
-      color: #8a8a8a;
-      margin-bottom: 0.6rem;
+    .section-heading {
+      font-size:clamp(1.7rem,3vw,2.2rem);
+      font-weight:800;
+      letter-spacing:-0.02em;
+      color:var(--title);
+      margin-bottom:1.3rem;
     }
 
     .body-text {
-      font-size: 0.96rem;
-      max-width: 40rem;
+      font-size:0.96rem;
+      max-width:40rem;
     }
 
-    .body-text p + p {
-      margin-top: 0.9rem;
-    }
+    .body-text p + p { margin-top:0.9rem; }
 
     .two-column {
-      display: grid;
-      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-      gap: 2.5rem;
-      align-items: flex-start;
+      display:grid;
+      grid-template-columns:minmax(0,1.5fr) minmax(0,0.9fr);
+      gap:2.2rem;
+      align-items:flex-start;
     }
 
     .key-points {
-      font-size: 0.9rem;
-      background: #f8f8fb;
-      border-radius: 18px;
-      border: 1px solid var(--border);
-      padding: 1.4rem 1.5rem;
+      font-size:0.9rem;
+      background:#f8f8fb;
+      border-radius:18px;
+      border:1px solid var(--border);
+      padding:1.4rem 1.5rem;
+      max-width:260px;          /* evita que se estire como en tu captura */
+      line-height:1.6;
     }
 
     .key-points-title {
-      font-weight: 700;
-      margin-bottom: 0.6rem;
-      color: var(--title);
+      font-weight:700;
+      margin-bottom:0.6rem;
+      color:var(--title);
     }
 
     .key-points ul {
-      list-style: disc;
-      padding-left: 1.1rem;
+      list-style:disc;
+      padding-left:1.1rem;
     }
 
-    .key-points li + li {
-      margin-top: 0.35rem;
-    }
+    .key-points li + li { margin-top:0.35rem; }
 
     .highlight-callout {
-      margin-top: 1.4rem;
-      padding-left: 0.8rem;
-      border-left: 3px solid var(--accent);
-      font-size: 0.9rem;
-      color: var(--title);
-      font-weight: 600;
-    }
-
-    .pill-label {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      padding: 0.3rem 0.75rem;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      background: #fff;
-      font-size: 0.78rem;
-      font-weight: 600;
-      color: #6b6b82;
-      margin-bottom: 0.7rem;
+      margin-top:1.4rem;
+      padding-left:0.8rem;
+      border-left:3px solid var(--accent);
+      font-size:0.9rem;
+      color:var(--title);
+      font-weight:600;
     }
 
     .results-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 1.6rem 2.4rem;
-      font-size: 0.92rem;
-      margin-top: 0.8rem;
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:1.6rem 2.4rem;
+      font-size:0.92rem;
+      margin-top:0.8rem;
     }
 
     .result-item-title {
-      font-weight: 700;
-      color: var(--title);
-      margin-bottom: 0.25rem;
+      font-weight:700;
+      color:var(--title);
+      margin-bottom:0.25rem;
     }
 
-    .result-item-body {
-      font-size: 0.9rem;
-    }
+    .result-item-body { font-size:0.9rem; }
 
     .takeaways-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 1.5rem 2.4rem;
-      font-size: 0.9rem;
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:1.5rem 2.4rem;
+      font-size:0.9rem;
     }
 
     .takeaway-item-title {
-      font-weight: 700;
-      color: var(--title);
-      margin-bottom: 0.3rem;
-    }
-
-    .testimonial-block {
-      margin-top: 2.5rem;
-      padding: 1.6rem 1.8rem;
-      border-radius: 18px;
-      border: 1px solid var(--border);
-      background: #fcfcff;
-      font-size: 0.9rem;
-    }
-
-    .testimonial-quote {
-      font-style: italic;
-      margin-bottom: 1rem;
-    }
-
-    .testimonial-name {
-      font-weight: 700;
-      color: var(--title);
-    }
-
-    .testimonial-role {
-      font-size: 0.82rem;
-      color: var(--text);
+      font-weight:700;
+      color:var(--title);
+      margin-bottom:0.3rem;
     }
 
     .project-nav {
-      margin-top: 3rem;
-      padding-top: 1.8rem;
-      border-top: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      font-size: 0.9rem;
+      margin-top:3rem;
+      padding-top:1.8rem;
+      border-top:1px solid var(--border);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:1rem;
+      font-size:0.9rem;
     }
 
     .project-nav a {
-      font-weight: 600;
-      text-decoration: underline;
-      text-underline-offset: 3px;
+      font-weight:600;
+      text-decoration:underline;
+      text-underline-offset:3px;
     }
 
     .project-nav-up {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
+      display:inline-flex;
+      align-items:center;
+      gap:0.35rem;
     }
 
-    @media (max-width: 900px) {
-      .project-hero-layout {
-        grid-template-columns: 1fr;
-        gap: 2.2rem;
+    @media (max-width:900px){
+      .project-hero-layout{
+        grid-template-columns:1fr;
+        gap:2.2rem;
       }
-      .project-meta-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+      .project-meta-grid{
+        grid-template-columns:repeat(2,minmax(0,1fr));
       }
-      .two-column {
-        grid-template-columns: 1fr;
+      .two-column{
+        grid-template-columns:1fr;
       }
       .results-grid,
-      .takeaways-grid {
-        grid-template-columns: 1fr;
+      .takeaways-grid{
+        grid-template-columns:1fr;
       }
+      .key-points{ max-width:none; }
     }
 
-    @media (max-width: 768px) {
-      .container {
-        padding: 0 1.5rem;
+    @media (max-width:768px){
+      .container{ padding:0 1.5rem; }
+      main{
+        padding-top:calc(var(--nav-height) + 2.4rem);
+        padding-bottom:3rem;
       }
-      main {
-        padding-top: calc(var(--nav-height) + 2.4rem);
+      .project-meta-grid{
+        grid-template-columns:1fr;
       }
-      .project-meta-grid {
-        grid-template-columns: 1fr;
-      }
-      .metrics-row {
-        gap: 1.8rem;
-      }
+      .metrics-row{ gap:1.8rem; }
     }
   </style>
 </head>
@@ -404,33 +358,35 @@
 
     <!-- 1. WEB & SEO -->
     <section class="section">
-      <div class="container two-column">
-        <div>
-          <div class="section-kicker">01 · Web & SEO</div>
-          <h2 class="section-heading">Una web en catalán que no es solo traducción</h2>
-          <div class="body-text">
-            <p>
-              Revisé y actualicé las páginas clave de IKEA en catalán (home, categorías, fichas de producto, servicios y checkout) para que
-              no fueran un simple espejo del castellano, sino una experiencia clara y coherente para quien compra desde Cataluña.
-            </p>
-            <p>
-              En paralelo, definí un programa de SEO on‑page: metatítulos, descripciones, slugs, textos estratégicos al final de categoría
-              y estructura de filtros que actúan como un “menú interno” entre productos relacionados.
-            </p>
+      <div class="container">
+        <div class="two-column">
+          <div>
+            <div class="section-kicker">01 · Web & SEO</div>
+            <h2 class="section-heading">Una web en catalán que no es solo traducción</h2>
+            <div class="body-text">
+              <p>
+                Revisé y actualicé las páginas clave de IKEA en catalán (home, categorías, fichas de producto, servicios y checkout) para que
+                no fueran un simple espejo del castellano, sino una experiencia clara y coherente para quien compra desde Cataluña.
+              </p>
+              <p>
+                En paralelo, definí un programa de SEO on‑page: metatítulos, descripciones, slugs, textos estratégicos al final de categoría
+                y estructura de filtros que actúan como un “menú interno” entre productos relacionados.
+              </p>
+            </div>
+            <div class="highlight-callout">
+              El foco no era solo traducir, sino que la versión catalana fuese igual de fácil de encontrar y de usar que la global.
+            </div>
           </div>
-          <div class="highlight-callout">
-            El foco no era solo traducir, sino que la versión catalana fuese igual de fácil de encontrar y de usar que la global.
-          </div>
-        </div>
 
-        <div class="key-points">
-          <p class="key-points-title">Qué hice en esta parte</p>
-          <ul>
-            <li>Revisión completa de contenidos en catalán en páginas de categoría y servicios.</li>
-            <li>Optimización SEO on‑page equivalente a la versión en castellano.</li>
-            <li>Textos SEO pensados para lenguaje natural y tono de marca.</li>
-            <li>Filtros y nombres de categoría revisados para alinearlos con cómo la gente busca productos.</li>
-          </ul>
+          <div class="key-points">
+            <p class="key-points-title">Qué hice en esta parte</p>
+            <ul>
+              <li>Revisión completa de contenidos en catalán en páginas de categoría y servicios.</li>
+              <li>Optimización SEO on‑page equivalente a la versión en castellano.</li>
+              <li>Textos SEO pensados para lenguaje natural y tono de marca.</li>
+              <li>Filtros y nombres de categoría revisados para alinearlos con cómo la gente busca productos.</li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
@@ -471,30 +427,32 @@
 
     <!-- 3. TIENDAS -->
     <section class="section">
-      <div class="container two-column">
-        <div>
-          <div class="section-kicker">03 · Tiendas</div>
-          <h2 class="section-heading">Páginas locales que reflejan lo que pasa en cada tienda</h2>
-          <div class="body-text">
-            <p>
-              Cada tienda de Cataluña tiene su propia página: horarios, servicios, opciones de recogida, promociones activas y talleres.
-              Me ocupo de que esta información esté actualizada y alineada con la realidad de Badalona, Sabadell, Gran Vía, Hospitalet y las
-              tiendas urbanas.
-            </p>
-            <p>
-              Además, las actividades de SMÅLAND e IKEA Family se publican y revisan mensualmente, para que las familias vean fácilmente
-              qué pueden hacer en su tienda más cercana.
-            </p>
+      <div class="container">
+        <div class="two-column">
+          <div>
+            <div class="section-kicker">03 · Tiendas</div>
+            <h2 class="section-heading">Páginas locales que reflejan lo que pasa en cada tienda</h2>
+            <div class="body-text">
+              <p>
+                Cada tienda de Cataluña tiene su propia página: horarios, servicios, opciones de recogida, promociones activas y talleres.
+                Me ocupo de que esta información esté actualizada y alineada con la realidad de Badalona, Sabadell, Gran Vía, Hospitalet y las
+                tiendas urbanas.
+              </p>
+              <p>
+                Además, las actividades de SMÅLAND e IKEA Family se publican y revisan mensualmente, para que las familias vean fácilmente
+                qué pueden hacer en su tienda más cercana.
+              </p>
+            </div>
           </div>
-        </div>
 
-        <div class="key-points">
-          <p class="key-points-title">Impacto en tienda</p>
-          <ul>
-            <li>Páginas locales claras que conectan web, talleres y servicios.</li>
-            <li>Promociones y servicios destacados adaptados a cada ubicación.</li>
-            <li>Mayor visibilidad de talleres para reforzar el vínculo con la comunidad local.</li>
-          </ul>
+          <div class="key-points">
+            <p class="key-points-title">Impacto en tienda</p>
+            <ul>
+              <li>Páginas locales claras que conectan web, talleres y servicios.</li>
+              <li>Promociones y servicios destacados adaptados a cada ubicación.</li>
+              <li>Mayor visibilidad de talleres para reforzar el vínculo con la comunidad local.</li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
@@ -563,8 +521,8 @@
         </div>
 
         <div class="project-nav">
-          <a href="index.html#work" class="project-nav-up">← Back to work</a>
-          <a href="about.html">Next: About me →</a>
+          <a href="../index.html#work" class="project-nav-up">← Back to work</a>
+          <a href="../about.html">Next: About me →</a>
         </div>
       </div>
     </section>
@@ -670,7 +628,7 @@
     var menuContainer   = document.getElementById('menu-container');
     var footerContainer = document.getElementById('footer-container');
 
-    var menuPromise = fetch('menu.html')
+    var menuPromise = fetch('../menu.html')
       .then(function (r) { return r.text(); })
       .then(function (html) {
         menuContainer.innerHTML = html;
@@ -681,7 +639,7 @@
         console.error('Error cargando menu.html', err);
       });
 
-    var footerPromise = fetch('footer.html')
+    var footerPromise = fetch('../footer.html')
       .then(function (r) { return r.text(); })
       .then(function (html) {
         footerContainer.innerHTML = html;
@@ -696,3 +654,4 @@
 
 </body>
 </html>
+
