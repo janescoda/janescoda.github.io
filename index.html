@@ -818,28 +818,59 @@
     window.scrollTo({ top:0, behavior:'smooth' }); 
   }
 
-  // 2) Función para inyectar HTML que contiene <script> y ejecutar esos scripts
-  function injectHtmlWithScripts(container, html) {
-    const temp = document.createElement('div');
-    temp.innerHTML = html;
+  // 2) Inicializar comportamiento del menú (hamburguesa + copy + activo)
+  function initMenuBehaviorIndex() {
+    const nav = document.querySelector('.site-nav');
+    if (!nav) return;
 
-    // Extraer <script> del fragmento
-    const scripts = Array.from(temp.querySelectorAll('script'));
+    const toggleBtn   = nav.querySelector('.nav-toggle');
+    const mobileMenu  = nav.querySelector('.nav-right-mobile');
 
-    // Insertar el HTML (incluye estilos y nav)
-    container.innerHTML = temp.innerHTML;
-
-    // Ejecutar scripts como si estuvieran en la página
-    scripts.forEach(oldScript => {
-      const newScript = document.createElement('script');
-      if (oldScript.textContent) {
-        newScript.textContent = oldScript.textContent;
-      }
-      Array.from(oldScript.attributes).forEach(attr => {
-        newScript.setAttribute(attr.name, attr.value);
+    // Hamburguesa
+    if (toggleBtn && mobileMenu) {
+      toggleBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = nav.classList.toggle('is-open');
+        toggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
       });
-      document.body.appendChild(newScript);
-    });
+
+      mobileMenu.addEventListener('click', (e) => {
+        if (e.target.matches('.nav-link')) {
+          nav.classList.remove('is-open');
+          toggleBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!nav.contains(e.target)) {
+          nav.classList.remove('is-open');
+          toggleBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+
+    // Copy email (desktop y mobile)
+    function wireCopy(btnId) {
+      const btn = document.getElementById(btnId);
+      if (!btn) return;
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        copyEmail();
+      });
+    }
+
+    wireCopy('copyBtn');
+    wireCopy('copyBtnMobile');
+
+    // Marcar activo: INDEX => Work
+    const workLink  = document.querySelector('.nav-link[href="index.html#work"]');
+    const aboutLink = document.querySelector('.nav-link[href="about.html"]');
+
+    if (workLink && aboutLink) {
+      workLink.classList.add('is-active');
+      aboutLink.classList.remove('is-active');
+    }
   }
 
   // 3) Lógica de la página (reveal + slider)
@@ -918,18 +949,7 @@
     })();
   }
 
-  // 4) Marcar el link activo del menú para INDEX
-  function setActiveNavLinkIndex() {
-    const workLink  = document.querySelector('.nav-link[href="index.html#work"]');
-    const aboutLink = document.querySelector('.nav-link[href="about.html"]');
-
-    if (!workLink || !aboutLink) return;
-
-    workLink.classList.add('is-active');
-    aboutLink.classList.remove('is-active');
-  }
-
-  // 5) Importar menu.html y footer.html, ejecutar scripts de menú y luego iniciar todo
+  // 4) Importar menu.html y footer.html y luego iniciar todo
   document.addEventListener('DOMContentLoaded', () => {
     const menuContainer   = document.getElementById('menu-container');
     const footerContainer = document.getElementById('footer-container');
@@ -937,14 +957,8 @@
     const menuPromise = fetch('menu.html')
       .then(r => r.text())
       .then(html => { 
-        injectHtmlWithScripts(menuContainer, html); // inserta + ejecuta script de menu.html
-
-        // si menu.html ha definido window.initMenu, la llamamos
-        if (typeof window.initMenu === 'function') {
-          window.initMenu();          // inicializa hamburguesa y copyBtnMobile
-        }
-
-        setActiveNavLinkIndex();      // marca Work en negrita
+        menuContainer.innerHTML = html; 
+        initMenuBehaviorIndex();   // ← aquí conectamos hamburguesa, copy, activo
       })
       .catch(err => console.error('Error cargando menu.html', err));
 
@@ -958,7 +972,6 @@
     });
   });
 </script>
-
 
 </body>
 </html>
