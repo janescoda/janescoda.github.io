@@ -28,9 +28,9 @@
       --page-max-width: 1056px;
       --page-side-padding: 3.3rem;
       
-      --hero-gap-top: clamp(2rem, 5vh, 4rem);     /* espacio arriba */
-      --hero-gap-bottom: clamp(1.2rem, 6vh, 3rem);/* espacio abajo */
-      --nav-height: 4.2rem; /* ajusta según tu nav (incluye padding) */
+      --hero-gap-top: clamp(2rem, 5vh, 4rem);
+      --hero-gap-bottom: clamp(1.2rem, 6vh, 3rem);
+      --nav-height: 4.6rem; /* debe coincidir con menu.html */
     }
 
     body{
@@ -52,33 +52,6 @@
       margin:0 auto; 
       padding:0 var(--page-side-padding); 
       box-sizing:border-box; 
-    }
-
-    .copy-btn{
-      font-family:'Manrope',sans-serif;
-      font-weight:700;
-      font-size:1rem;
-      padding:0.5rem 1.3rem;
-      border-radius:100px;
-      background:var(--title);
-      color:#fff;
-      border:1.5px solid var(--title);
-      display:inline-flex; 
-      align-items:center; 
-      gap:0.35rem;
-      cursor:pointer; 
-      transition: all var(--transition);
-    }
-    .copy-btn.copied{ 
-      background:transparent; 
-      color:var(--title); 
-      border-color:var(--title); 
-      pointer-events:none; 
-    }
-    .copy-btn:hover{ 
-      transform:translateY(-1px); 
-      background:transparent; 
-      color:var(--title); 
     }
 
     /* HERO */
@@ -154,6 +127,7 @@
 
     /* WORK */
     #work{ padding:3rem 0 4rem; }
+
     .proj-card{ 
       display:grid; 
       grid-template-columns:1fr 400px; 
@@ -163,13 +137,25 @@
       overflow:hidden; 
       margin-bottom:1.25rem; 
       transition:transform var(--transition), box-shadow var(--transition); 
+      text-decoration: none;
+      color: inherit;
     }
+
+    .proj-card a,
+    .proj-card a:visited,
+    .proj-card a:hover,
+    .proj-card a:active {
+      color: inherit;
+      text-decoration: none;
+    }
+
     .proj-body{ 
       padding:2.25rem 2.5rem; 
       display:flex; 
       flex-direction:column; 
       justify-content:space-between; 
     }
+
     .proj-img-side{ 
       background:var(--border); 
       min-height:16.25rem; 
@@ -178,9 +164,15 @@
       justify-content:center; 
       overflow:hidden; 
     }
+
     .proj-title {
       color: var(--title);
     }
+
+    .proj-meta {
+      color: var(--text);
+    }
+
     .proj-card:hover{ 
       transform:translateY(-4px); 
       box-shadow:0 20px 56px rgba(0,0,0,0.08); 
@@ -201,7 +193,7 @@
       padding: 0.42rem 1rem;
       font-size: 1rem;
       font-weight: 600;
-      color: var(--text-muted);
+      color: var(--text);
       line-height: 1;
       white-space: nowrap;
       box-shadow: none;
@@ -515,7 +507,7 @@
 </head>
 <body>
 
-  <!-- AQUÍ SE CARGARÁ menu.html -->
+  <!-- MENÚ IMPORTADO -->
   <div id="menu-container"></div>
 
   <!-- HERO -->
@@ -542,7 +534,7 @@
         <div class="proj-body">
           <div>
             <p class="proj-meta">IKEA • 2024</p>
-            <h2 class="proj-title">Local Marketing and Digital Content for Catalonia </h2>
+            <h2 class="proj-title">Local Marketing and Digital Content for Catalonia</h2>
           </div>
           <div class="wip-badge">In progress</div>
 
@@ -788,156 +780,155 @@
     </div>
   </section>
 
-  <!-- AQUÍ SE CARGARÁ footer.html -->
+  <!-- FOOTER IMPORTADO -->
   <div id="footer-container"></div>
 
- <script>
-  // 1) Funciones globales (las puede usar tanto el menú como el resto de la página)
-  function copyEmail(){
-    const email = 'janescoda49@gmail.com';
-    const btn = document.getElementById('copyBtn');
-    const animate = ()=>{ 
-      if(!btn) return; 
-      btn.classList.add('copied'); 
-      setTimeout(()=>btn.classList.remove('copied'),2500); 
-    };
-    if(navigator.clipboard && navigator.clipboard.writeText){ 
-      navigator.clipboard.writeText(email)
-        .then(animate)
-        .catch(()=>{ fallback(email); animate(); }); 
-    } else { 
-      fallback(email); 
-      animate(); 
-    }
-  }
-
-  function fallback(text){ 
-    const el = document.createElement('textarea'); 
-    el.value = text; 
-    el.style.cssText = 'position:fixed;opacity:0;'; 
-    document.body.appendChild(el); 
-    el.select(); 
-    document.execCommand('copy'); 
-    document.body.removeChild(el); 
-  }
-
-  function scrollToTop(e){ 
-    e && e.preventDefault(); 
-    window.scrollTo({ top:0, behavior:'smooth' }); 
-  }
-
-  // 2) Lógica de la página (reveal + slider), agrupada en una función
-  function initPageScripts() {
-    /* SCROLL REVEAL */
-    const observer = new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{
-        if(e.isIntersecting) e.target.classList.add('visible');
-      });
-    }, { threshold: 0.08 });
-
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-    /* TESTIMONIAL SLIDER */
-    (function() {
-      const track = document.getElementById('testiTrack');
-      if (!track) return;
-      const wrapper = track.parentElement; // .testi-track-wrapper
-      const dots = Array.from(document.querySelectorAll('.testi-dot'));
-      const nextBtn = document.getElementById('testiNext');
-      const prevBtn = document.getElementById('testiPrev');
-      const cards = Array.from(track.querySelectorAll('.testi-card'));
-      const total = cards.length;
-      if (!total) return;
-
-      let current = 0;
-      let auto = null;
-      const AUTO_DELAY = 6000;
-
-      const clamp = (v,a,b) => Math.min(Math.max(v,a),b);
-
-      function centerCard(idx, animate = true) {
-        const normalized = ((idx % total) + total) % total;
-        current = normalized;
-        const card = cards[normalized];
-
-        const cardLeft = card.offsetLeft;
-        const cardWidth = card.offsetWidth;
-        const wrapperWidth = wrapper.clientWidth;
-
-        const cardCenter = cardLeft + (cardWidth / 2);
-        let target = cardCenter - (wrapperWidth / 2);
-
-        const maxTranslate = Math.max(0, track.scrollWidth - wrapperWidth);
-        target = clamp(target, 0, maxTranslate);
-
-        if (!animate) track.style.transition = 'none';
-        else track.style.transition = 'transform 0.55s cubic-bezier(0.4,0,0.2,1)';
-
-        track.style.transform = `translateX(-${Math.round(target)}px)`;
-
-        dots.forEach((d,i)=> d.classList.toggle('active', i===current));
-
-        if (!animate) requestAnimationFrame(()=> { 
-          track.style.transition = 'transform 0.55s cubic-bezier(0.4,0,0.2,1)'; 
-        });
+  <script>
+    // Funciones globales
+    function copyEmail(){
+      const email = 'janescoda49@gmail.com';
+      const btn = document.getElementById('copyBtn');
+      const animate = ()=>{ 
+        if(!btn) return; 
+        btn.classList.add('copied'); 
+        setTimeout(()=>btn.classList.remove('copied'),2500); 
+      };
+      if(navigator.clipboard && navigator.clipboard.writeText){ 
+        navigator.clipboard.writeText(email)
+          .then(animate)
+          .catch(()=>{ fallback(email); animate(); }); 
+      } else { 
+        fallback(email); 
+        animate(); 
       }
+    }
 
-      function goTo(i){ centerCard(i, true); resetAuto(); }
+    function fallback(text){ 
+      const el = document.createElement('textarea'); 
+      el.value=text; 
+      el.style.cssText='position:fixed;opacity:0;'; 
+      document.body.appendChild(el); 
+      el.select(); 
+      document.execCommand('copy'); 
+      document.body.removeChild(el); 
+    }
 
-      nextBtn && nextBtn.addEventListener('click', ()=> goTo(current + 1));
-      prevBtn && prevBtn.addEventListener('click', ()=> goTo(current - 1));
-      dots.forEach(d => d.addEventListener('click', ()=> goTo(parseInt(d.dataset.idx,10)));
+    function scrollToTop(e){ 
+      e && e.preventDefault(); 
+      window.scrollTo({ top:0, behavior:'smooth' }); 
+    }
 
-      function startAuto(){ stopAuto(); auto = setInterval(()=> centerCard(current+1), AUTO_DELAY); }
-      function stopAuto(){ if (auto){ clearInterval(auto); auto = null; } }
-      function resetAuto(){ stopAuto(); startAuto(); }
+    // Lógica de la página (reveal + slider)
+    function initPageScripts() {
+      /* SCROLL REVEAL */
+      const observer = new IntersectionObserver((entries)=>{
+        entries.forEach(e=>{
+          if(e.isIntersecting) e.target.classList.add('visible');
+        });
+      }, { threshold: 0.08 });
 
-      window.addEventListener('resize', () => centerCard(current, false));
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-      wrapper.addEventListener('mouseenter', stopAuto);
-      wrapper.addEventListener('mouseleave', startAuto);
+      /* TESTIMONIAL SLIDER */
+      (function() {
+        const track = document.getElementById('testiTrack');
+        if (!track) return;
+        const wrapper = track.parentElement; // .testi-track-wrapper
+        const dots = Array.from(document.querySelectorAll('.testi-dot'));
+        const nextBtn = document.getElementById('testiNext');
+        const prevBtn = document.getElementById('testiPrev');
+        const cards = Array.from(track.querySelectorAll('.testi-card'));
+        const total = cards.length;
+        if (!total) return;
 
-      centerCard(0, false);
-      startAuto();
-    })();
-  }
+        let current = 0;
+        let auto = null;
+        const AUTO_DELAY = 6000;
 
-  // 3) Marcar el link activo del menú para INDEX
-  function setActiveNavLinkIndex() {
-    const workLink  = document.querySelector('.nav-link[href="index.html#work"]');
-    const aboutLink = document.querySelector('.nav-link[href="about.html"]');
+        const clamp = (v,a,b) => Math.min(Math.max(v,a),b);
 
-    if (!workLink || !aboutLink) return;
+        function centerCard(idx, animate = true) {
+          const normalized = ((idx % total) + total) % total;
+          current = normalized;
+          const card = cards[normalized];
 
-    workLink.classList.add('is-active');
-    aboutLink.classList.remove('is-active');
-  }
+          const cardLeft = card.offsetLeft;
+          const cardWidth = card.offsetWidth;
+          const wrapperWidth = wrapper.clientWidth;
 
-  // 4) Importar menu.html y footer.html, y luego iniciar todo
-  document.addEventListener('DOMContentLoaded', () => {
-    const menuContainer   = document.getElementById('menu-container');
-    const footerContainer = document.getElementById('footer-container');
+          const cardCenter = cardLeft + (cardWidth / 2);
+          let target = cardCenter - (wrapperWidth / 2);
 
-    const menuPromise = fetch('menu.html')
-      .then(r => r.text())
-      .then(html => { 
-        menuContainer.innerHTML = html; 
-        setActiveNavLinkIndex();   // ← importante: después de insertar el menú
-      })
-      .catch(err => console.error('Error cargando menu.html', err));
+          const maxTranslate = Math.max(0, track.scrollWidth - wrapperWidth);
+          target = clamp(target, 0, maxTranslate);
 
-    const footerPromise = fetch('footer.html')
-      .then(r => r.text())
-      .then(html => { footerContainer.innerHTML = html; })
-      .catch(err => console.error('Error cargando footer.html', err));
+          if (!animate) track.style.transition = 'none';
+          else track.style.transition = 'transform 0.55s cubic-bezier(0.4,0,0.2,1)';
 
-    // Cuando ambos estén cargados, inicializamos scripts de la página
-    Promise.all([menuPromise, footerPromise]).then(() => {
-      initPageScripts();
+          track.style.transform = `translateX(-${Math.round(target)}px)`;
+
+          dots.forEach((d,i)=> d.classList.toggle('active', i===current));
+
+          if (!animate) requestAnimationFrame(()=> { 
+            track.style.transition = 'transform 0.55s cubic-bezier(0.4,0,0.2,1)'; 
+          });
+        }
+
+        function goTo(i){ centerCard(i, true); resetAuto(); }
+
+        nextBtn && nextBtn.addEventListener('click', ()=> goTo(current + 1));
+        prevBtn && prevBtn.addEventListener('click', ()=> goTo(current - 1));
+        dots.forEach(d => d.addEventListener('click', ()=> goTo(parseInt(d.dataset.idx,10))));
+
+        function startAuto(){ stopAuto(); auto = setInterval(()=> centerCard(current+1), AUTO_DELAY); }
+        function stopAuto(){ if (auto){ clearInterval(auto); auto = null; } }
+        function resetAuto(){ stopAuto(); startAuto(); }
+
+        window.addEventListener('resize', () => centerCard(current, false));
+
+        wrapper.addEventListener('mouseenter', stopAuto);
+        wrapper.addEventListener('mouseleave', startAuto);
+
+        centerCard(0, false);
+        startAuto();
+      })();
+    }
+
+    // Marcar el link activo del menú para INDEX
+    function setActiveNavLinkIndex() {
+      const workLink  = document.querySelector('.nav-link[href="index.html#work"]');
+      const aboutLink = document.querySelector('.nav-link[href="about.html"]');
+
+      if (!workLink || !aboutLink) return;
+
+      workLink.classList.add('is-active');
+      aboutLink.classList.remove('is-active');
+    }
+
+    // Importar menu.html y footer.html, y luego iniciar todo
+    document.addEventListener('DOMContentLoaded', () => {
+      const menuContainer   = document.getElementById('menu-container');
+      const footerContainer = document.getElementById('footer-container');
+
+      const menuPromise = fetch('menu.html')
+        .then(r => r.text())
+        .then(html => { 
+          menuContainer.innerHTML = html; 
+          setActiveNavLinkIndex();
+        })
+        .catch(err => console.error('Error cargando menu.html', err));
+
+      const footerPromise = fetch('footer.html')
+        .then(r => r.text())
+        .then(html => { footerContainer.innerHTML = html; })
+        .catch(err => console.error('Error cargando footer.html', err));
+
+      Promise.all([menuPromise, footerPromise]).then(() => {
+        initPageScripts();
+      });
     });
-  });
-</script>
-
+  </script>
 </body>
 </html>
+
 
