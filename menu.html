@@ -1,6 +1,4 @@
-<!-- menu.html -->
 <style>
-/* Ya no importamos Sora; Manrope viene desde index/about */
 
 :root{
   --nav-height: 4.6rem;
@@ -12,7 +10,6 @@
   --accent-blue: #1e7bf6;
 }
 
-/* NAV BASE */
 .site-nav {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -23,7 +20,7 @@
   background: #fff;
   z-index: 9999;
   border-bottom: none;
-  font-family: 'Manrope', sans-serif; /* fuente base del nav */
+  font-family: 'Manrope', sans-serif;
 }
 
 .site-nav .nav-inner {
@@ -44,7 +41,6 @@
   text-decoration: none;
 }
 
-/* DESKTOP RIGHT AREA */
 .nav-right {
   display: flex;
   gap: 1.6rem;
@@ -65,7 +61,6 @@
   font-weight: 800;
 }
 
-/* Copy email button */
 .copy-btn {
   font-weight: 700;
   font-size: 1.078rem;
@@ -81,7 +76,6 @@
   transition: all var(--transition);
 }
 
-/* label-copied siempre inline-flex pero oculto por defecto */
 .copy-btn .label-copied {
   display: none;
   align-items: center;
@@ -109,7 +103,6 @@
   outline: none;
 }
 
-/* HAMBURGER BUTTON */
 .nav-toggle {
   display: none;
   width: 40px;
@@ -145,7 +138,6 @@
 .nav-toggle-line:nth-child(2) { top: 6px; }
 .nav-toggle-line:nth-child(3) { bottom: 0; }
 
-/* Estado abierto */
 .site-nav.is-open .nav-toggle-line:nth-child(1) {
   top: 6px;
   transform: rotate(45deg);
@@ -158,19 +150,16 @@
   transform: rotate(-45deg);
 }
 
-/* MENÚ MÓVIL DENTRO DEL NAV */
 .nav-right-mobile {
   display: none;
 }
 
-/* DESKTOP */
 @media (min-width: 769px) {
   .nav-right        { display: flex; }
   .nav-toggle       { display: none; }
   .nav-right-mobile { display: none !important; }
 }
 
-/* MOBILE */
 @media (max-width: 768px) {
   .site-nav .nav-inner {
     padding: 0 1.5rem;
@@ -222,10 +211,8 @@
 
 <nav class="site-nav" role="navigation" aria-label="Main navigation">
   <div class="nav-inner">
-    <!-- LOGO -->
     <a class="nav-logo" href="index.html#scroll">JEO</a>
 
-    <!-- MENÚ DESKTOP -->
     <div class="nav-right" role="menubar">
       <a class="nav-link" href="index.html#work" role="menuitem">Work</a>
       <a class="nav-link" href="about.html" role="menuitem">About</a>
@@ -241,7 +228,6 @@
       </button>
     </div>
 
-    <!-- HAMBURGUESA (MÓVIL) -->
     <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
       <span class="nav-toggle-box">
         <span class="nav-toggle-line"></span>
@@ -250,7 +236,6 @@
       </span>
     </button>
 
-    <!-- MENÚ MÓVIL -->
     <div class="nav-right-mobile" role="menubar" aria-label="Mobile navigation">
       <a class="nav-link" href="index.html#work" role="menuitem">Work</a>
       <a class="nav-link" href="about.html" role="menuitem">About</a>
