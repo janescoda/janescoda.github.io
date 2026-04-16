@@ -783,17 +783,125 @@
   <!-- FOOTER IMPORTADO -->
   <div id="footer-container"></div>
 
-<!-- SOLO EL BLOQUE <script> CORREGIDO DE index.html
-     El resto del HTML (head, estilos, body) permanece igual que el original.
-     Reemplaza únicamente el <script> al final del <body>.
--->
+<script>
+  /* ============================
+     UTILIDAD: copiar email
+  ============================ */
+  function copyEmail() {
+    var EMAIL = 'janescoda49@gmail.com';
 
-  <script>
-  /* ========================================================
-     FUNCIONES DE PÁGINA (scroll reveal + slider)
-  ========================================================= */
+    function animate(btn) {
+      if (!btn) return;
+      btn.classList.add('copied');
+      setTimeout(function () {
+        btn.classList.remove('copied');
+      }, 2500);
+    }
+
+    function fallback() {
+      var el = document.createElement('textarea');
+      el.value = EMAIL;
+      el.style.cssText = 'position:fixed;opacity:0;top:0;left:0;';
+      document.body.appendChild(el);
+      el.focus();
+      el.select();
+      try {
+        document.execCommand('copy');
+      } catch (e) {}
+      document.body.removeChild(el);
+    }
+
+    var btns = [
+      document.getElementById('copyBtn'),
+      document.getElementById('copyBtnMobile')
+    ];
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(EMAIL)
+        .then(function () {
+          btns.forEach(animate);
+        })
+        .catch(function () {
+          fallback();
+          btns.forEach(animate);
+        });
+    } else {
+      fallback();
+      btns.forEach(animate);
+    }
+  }
+
+  /* ============================
+     MENÚ: hamburguesa + copy
+     (se llama después de inyectar menu.html)
+  ============================ */
+  function initMenuBehavior() {
+    var nav = document.querySelector('.site-nav');
+    if (!nav) return;
+
+    var toggleBtn  = nav.querySelector('.nav-toggle');
+    var mobileMenu = nav.querySelector('.nav-right-mobile');
+
+    /* hamburguesa */
+    if (toggleBtn && mobileMenu) {
+      toggleBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var isOpen = nav.classList.toggle('is-open');
+        toggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+
+      /* cierra al pulsar un enlace del menú móvil */
+      mobileMenu.addEventListener('click', function (e) {
+        if (e.target.closest('.nav-link')) {
+          nav.classList.remove('is-open');
+          toggleBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      /* cierra al pulsar fuera */
+      document.addEventListener('click', function (e) {
+        if (!nav.contains(e.target)) {
+          nav.classList.remove('is-open');
+          toggleBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+
+    /* botones copy */
+    ['copyBtn', 'copyBtnMobile'].forEach(function (id) {
+      var btn = document.getElementById(id);
+      if (!btn) return;
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        copyEmail();
+      });
+    });
+  }
+
+  /* ============================
+     MARCAR ENLACE ACTIVO
+  ============================ */
+  function setActiveNav(page) {
+    document.querySelectorAll('.nav-link').forEach(function (link) {
+      link.classList.remove('is-active');
+    });
+
+    if (page === 'index') {
+      document.querySelectorAll('.nav-link[href="index.html#work"]').forEach(function (l) {
+        l.classList.add('is-active');
+      });
+    } else if (page === 'about') {
+      document.querySelectorAll('.nav-link[href="about.html"]').forEach(function (l) {
+        l.classList.add('is-active');
+      });
+    }
+  }
+
+  /* ============================
+     SCRIPTS DE PÁGINA
+  ============================ */
   function initPageScripts() {
-
     /* SCROLL REVEAL */
     var observer = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
@@ -899,29 +1007,9 @@
     })();
   }
 
-  /* ========================================================
-     MARCAR ENLACE ACTIVO EN EL MENÚ
-  ========================================================= */
-  function setActiveNav(page) {
-    document.querySelectorAll('.nav-link').forEach(function (link) {
-      link.classList.remove('is-active');
-    });
-
-    if (page === 'index') {
-      // Marca "Work" como activo en escritorio y móvil
-      document.querySelectorAll('.nav-link[href="index.html#work"]').forEach(function (l) {
-        l.classList.add('is-active');
-      });
-    } else if (page === 'about') {
-      document.querySelectorAll('.nav-link[href="about.html"]').forEach(function (l) {
-        l.classList.add('is-active');
-      });
-    }
-  }
-
-  /* ========================================================
-     ARRANQUE: cargar menu.html + footer.html
-  ========================================================= */
+  /* ============================
+     ARRANQUE: cargar menú + footer
+  ============================ */
   document.addEventListener('DOMContentLoaded', function () {
     var menuContainer   = document.getElementById('menu-container');
     var footerContainer = document.getElementById('footer-container');
@@ -931,12 +1019,8 @@
       .then(function (html) {
         menuContainer.innerHTML = html;
 
-        // Por si el script dentro de menu.html no se ejecutara solo:
-        if (typeof window.initMenuBehavior === 'function') {
-          window.initMenuBehavior();
-        }
-
-        // Marca el enlace activo de esta página
+        // Ahora que los elementos del menú existen, inicializamos
+        initMenuBehavior();
         setActiveNav('index');
       })
       .catch(function (err) {
@@ -957,7 +1041,6 @@
     });
   });
 </script>
-
 
 </body>
 </html>
