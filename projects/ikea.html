@@ -319,7 +319,7 @@
             </p>
           </div>
 
-          <!-- dejamos la segunda columna vacía para que métricas + meta puedan ir a ancho completo debajo -->
+          <!-- segunda columna vacía para que métricas + meta vayan a ancho completo -->
           <div></div>
 
           <!-- MÉTRICAS A ANCHO COMPLETO -->
@@ -345,7 +345,7 @@
             </div>
           </div>
 
-          <!-- META A ANCHO COMPLETO, JUSTO DESPUÉS DE LAS 3 COLUMNAS -->
+          <!-- META A ANCHO COMPLETO -->
           <div class="project-meta-shell">
             <div class="project-meta-grid">
               <div class="project-meta-item-inline">
@@ -394,7 +394,7 @@
               El foco no era solo traducir, sino que la versión catalana fuese igual de fácil de encontrar y de usar que la global.
             </div>
 
-            <!-- Qué hice en esta parte (fuera del recuadro) -->
+            <!-- Qué hice en esta parte + Puntos SEO y UX en flujo de texto -->
             <div class="body-text">
               <p class="subsection-title">Qué hice en esta parte</p>
               <ul>
@@ -403,17 +403,18 @@
                 <li>Optimización SEO on‑page: metatítulos, descripciones y slugs que conectan con cómo la gente realmente busca productos en Cataluña.</li>
                 <li>Diseño de un “menú interno” a través de filtros y enlaces entre categorías relacionadas para reducir la fricción al navegar.</li>
               </ul>
+
+              <p class="subsection-title">Puntos SEO y UX</p>
+              <ul>
+                <li>Equilibrio entre términos de búsqueda reales y lenguaje natural de la marca.</li>
+                <li>Cadenas de navegación más claras entre categorías y servicios clave.</li>
+                <li>Mensajes de ayuda en momentos críticos (envío, devolución, disponibilidad).</li>
+              </ul>
             </div>
           </div>
 
-          <div class="key-points">
-            <p class="key-points-title">Puntos SEO y UX</p>
-            <ul>
-              <li>Equilibrio entre términos de búsqueda reales y lenguaje natural de la marca.</li>
-              <li>Cadenas de navegación más claras entre categorías y servicios clave.</li>
-              <li>Mensajes de ayuda en momentos críticos (envío, devolución, disponibilidad).</li>
-            </ul>
-          </div>
+          <!-- columna lateral vacía (quitamos key-points aquí) -->
+          <div></div>
         </div>
 
         <!-- 2 IMÁGENES DESPUÉS DEL PUNTO 1 -->
@@ -447,16 +448,19 @@
                 recibieran mensajes relevantes según su ubicación sin romper la coherencia de marca.
               </p>
             </div>
+
+            <div class="body-text">
+              <p class="subsection-title">Puntos clave</p>
+              <ul>
+                <li>Guía de formatos digitales para banners, módulos y servicios.</li>
+                <li>Campañas locales coherentes con el ecosistema global de IKEA.</li>
+                <li>Bloques de email personalizados para el mercado catalán.</li>
+              </ul>
+            </div>
           </div>
 
-          <div class="key-points">
-            <p class="key-points-title">Puntos clave</p>
-            <ul>
-              <li>Guía de formatos digitales para banners, módulos y servicios.</li>
-              <li>Campañas locales coherentes con el ecosistema global de IKEA.</li>
-              <li>Bloques de email personalizados para el mercado catalán.</li>
-            </ul>
-          </div>
+          <!-- columna lateral vacía (quitamos key-points aquí también) -->
+          <div></div>
         </div>
 
         <!-- 2 IMÁGENES DESPUÉS DEL PUNTO 2 -->
@@ -486,16 +490,20 @@
                 qué pueden hacer en su tienda más cercana.
               </p>
             </div>
+
+            <!-- Impacto en tienda en el flujo de texto -->
+            <div class="body-text">
+              <p class="subsection-title">Impacto en tienda</p>
+              <ul>
+                <li>Páginas locales claras que conectan web, talleres y servicios.</li>
+                <li>Promociones y servicios destacados adaptados a cada ubicación.</li>
+                <li>Mayor visibilidad de talleres para reforzar el vínculo con la comunidad local.</li>
+              </ul>
+            </div>
           </div>
 
-          <div class="key-points">
-            <p class="key-points-title">Impacto en tienda</p>
-            <ul>
-              <li>Páginas locales claras que conectan web, talleres y servicios.</li>
-              <li>Promociones y servicios destacados adaptados a cada ubicación.</li>
-              <li>Mayor visibilidad de talleres para reforzar el vínculo con la comunidad local.</li>
-            </ul>
-          </div>
+          <!-- columna lateral vacía -->
+          <div></div>
         </div>
 
         <!-- 1 IMAGEN DESPUÉS DEL PUNTO 3 -->
@@ -522,16 +530,20 @@
                 entiendan qué hay de nuevo en su zona desde el primer día.
               </p>
             </div>
+
+            <!-- Qué se asegura en flujo de texto -->
+            <div class="body-text">
+              <p class="subsection-title">Qué se asegura</p>
+              <ul>
+                <li>Las nuevas tiendas aparecen correctamente en la web desde el lanzamiento.</li>
+                <li>Las reformas se comunican con claridad en los canales digitales.</li>
+                <li>Las personas saben qué servicios, accesos y formatos hay disponibles en cada apertura.</li>
+              </ul>
+            </div>
           </div>
 
-          <div class="key-points">
-            <p class="key-points-title">Qué se asegura</p>
-            <ul>
-              <li>Las nuevas tiendas aparecen correctamente en la web desde el lanzamiento.</li>
-              <li>Las reformas se comunican con claridad en los canales digitales.</li>
-              <li>Las personas saben qué servicios, accesos y formatos hay disponibles en cada apertura.</li>
-            </ul>
-          </div>
+          <!-- columna lateral vacía -->
+          <div></div>
         </div>
 
         <!-- 1 IMAGEN DESPUÉS DEL PUNTO 4 -->
@@ -667,11 +679,11 @@
     });
 
     if (page === 'index') {
-      document.querySelectorAll('.nav-link[href="index.html#work"]').forEach(function (l) {
+      document.querySelectorAll('.nav-link[href="../index.html#work"]').forEach(function (l) {
         l.classList.add('is-active');
       });
     } else if (page === 'about') {
-      document.querySelectorAll('.nav-link[href="about.html"]').forEach(function (l) {
+      document.querySelectorAll('.nav-link[href="../about.html"]').forEach(function (l) {
         l.classList.add('is-active');
       });
     }
