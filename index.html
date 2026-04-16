@@ -787,12 +787,11 @@
      El resto del HTML (head, estilos, body) permanece igual que el original.
      Reemplaza únicamente el <script> al final del <body>.
 -->
-<script>
+
+  <script>
   /* ========================================================
      FUNCIONES DE PÁGINA (scroll reveal + slider)
-     No tocan el menú; el menú se auto-inicializa desde
-     el propio <script> de menu.html al inyectarse.
-  ======================================================== */
+  ========================================================= */
   function initPageScripts() {
 
     /* SCROLL REVEAL */
@@ -810,6 +809,7 @@
     (function () {
       var track   = document.getElementById('testiTrack');
       if (!track) return;
+
       var wrapper = track.parentElement;
       var dots    = Array.from(document.querySelectorAll('.testi-dot'));
       var nextBtn = document.getElementById('testiNext');
@@ -827,12 +827,13 @@
       function centerCard(idx, animate) {
         var normalized = ((idx % total) + total) % total;
         current = normalized;
-        var card        = cards[normalized];
-        var cardLeft    = card.offsetLeft;
-        var cardWidth   = card.offsetWidth;
-        var wrapperW    = wrapper.clientWidth;
-        var target      = cardLeft + (cardWidth / 2) - (wrapperW / 2);
-        var maxT        = Math.max(0, track.scrollWidth - wrapperW);
+
+        var card      = cards[normalized];
+        var cardLeft  = card.offsetLeft;
+        var cardWidth = card.offsetWidth;
+        var wrapperW  = wrapper.clientWidth;
+        var target    = cardLeft + (cardWidth / 2) - (wrapperW / 2);
+        var maxT      = Math.max(0, track.scrollWidth - wrapperW);
         target = clamp(target, 0, maxT);
 
         if (animate === false) {
@@ -853,18 +854,43 @@
         }
       }
 
-      function stopAuto()  { if (auto) { clearInterval(auto); auto = null; } }
-      function startAuto() { stopAuto(); auto = setInterval(function () { centerCard(current + 1, true); }, AUTO_DELAY); }
-      function resetAuto() { stopAuto(); startAuto(); }
-      function goTo(i)     { centerCard(i, true); resetAuto(); }
+      function stopAuto()  {
+        if (auto) {
+          clearInterval(auto);
+          auto = null;
+        }
+      }
+
+      function startAuto() {
+        stopAuto();
+        auto = setInterval(function () {
+          centerCard(current + 1, true);
+        }, AUTO_DELAY);
+      }
+
+      function resetAuto() {
+        stopAuto();
+        startAuto();
+      }
+
+      function goTo(i) {
+        centerCard(i, true);
+        resetAuto();
+      }
 
       if (nextBtn) nextBtn.addEventListener('click', function () { goTo(current + 1); });
       if (prevBtn) prevBtn.addEventListener('click', function () { goTo(current - 1); });
+
       dots.forEach(function (d) {
-        d.addEventListener('click', function () { goTo(parseInt(d.dataset.idx, 10)); });
+        d.addEventListener('click', function () {
+          goTo(parseInt(d.dataset.idx, 10));
+        });
       });
 
-      window.addEventListener('resize', function () { centerCard(current, false); });
+      window.addEventListener('resize', function () {
+        centerCard(current, false);
+      });
+
       wrapper.addEventListener('mouseenter', stopAuto);
       wrapper.addEventListener('mouseleave', startAuto);
 
@@ -875,14 +901,14 @@
 
   /* ========================================================
      MARCAR ENLACE ACTIVO EN EL MENÚ
-     Llamado después de que menu.html se haya inyectado.
-  ======================================================== */
+  ========================================================= */
   function setActiveNav(page) {
-    /* page: 'index' | 'about' */
     document.querySelectorAll('.nav-link').forEach(function (link) {
       link.classList.remove('is-active');
     });
+
     if (page === 'index') {
+      // Marca "Work" como activo en escritorio y móvil
       document.querySelectorAll('.nav-link[href="index.html#work"]').forEach(function (l) {
         l.classList.add('is-active');
       });
@@ -894,8 +920,8 @@
   }
 
   /* ========================================================
-     ARRANQUE: cargar menu.html + footer.html en paralelo
-  ======================================================== */
+     ARRANQUE: cargar menu.html + footer.html
+  ========================================================= */
   document.addEventListener('DOMContentLoaded', function () {
     var menuContainer   = document.getElementById('menu-container');
     var footerContainer = document.getElementById('footer-container');
@@ -905,28 +931,33 @@
       .then(function (html) {
         menuContainer.innerHTML = html;
 
-        /* El <script> dentro de menu.html se ejecuta automáticamente
-           al asignar innerHTML en la mayoría de navegadores modernos;
-           pero por seguridad re-ejecutamos initMenuBehavior si existe */
+        // Por si el script dentro de menu.html no se ejecutara solo:
         if (typeof window.initMenuBehavior === 'function') {
           window.initMenuBehavior();
         }
 
-        /* Marcar activo para esta página */
+        // Marca el enlace activo de esta página
         setActiveNav('index');
       })
-      .catch(function (err) { console.error('Error cargando menu.html', err); });
+      .catch(function (err) {
+        console.error('Error cargando menu.html', err);
+      });
 
     var footerPromise = fetch('footer.html')
       .then(function (r) { return r.text(); })
-      .then(function (html) { footerContainer.innerHTML = html; })
-      .catch(function (err) { console.error('Error cargando footer.html', err); });
+      .then(function (html) {
+        footerContainer.innerHTML = html;
+      })
+      .catch(function (err) {
+        console.error('Error cargando footer.html', err);
+      });
 
     Promise.all([menuPromise, footerPromise]).then(function () {
       initPageScripts();
     });
   });
 </script>
+
 
 </body>
 </html>
