@@ -11,15 +11,15 @@
   --accent-blue: #1e7bf6;
 }
 
+/* NAV BASE */
 .site-nav {
   position: fixed;
   top: 0; left: 0; right: 0;
   height: var(--nav-height);
   display:flex; align-items:center; justify-content:center;
-  background: #fff; 
-  backdrop-filter: none; 
-  z-index: 999;
-  border-bottom: none; 
+  background: #fff;
+  z-index: 9999; /* muy arriba para evitar solapes */
+  border-bottom: none;
 }
 
 .site-nav .nav-inner {
@@ -34,7 +34,7 @@
   font-size:1.155rem; 
 }
 
-/* Zona derecha en desktop */
+/* DESKTOP RIGHT AREA */
 .nav-right { 
   display:flex; 
   gap:1.6rem; 
@@ -53,7 +53,7 @@
   font-weight:800; 
 }
 
-/* Botón Copy email */
+/* Copy email button */
 .copy-btn{
   font-family: 'Sora', sans-serif;
   font-weight:700;
@@ -86,14 +86,14 @@
   outline: none; 
 }
 
-/* HAMBURGER (móvil) */
+/* HAMBURGER BUTTON */
 .nav-toggle {
   display: none; /* solo se ve en móvil */
   width: 40px;
   height: 40px;
   border-radius: 999px;
-  border: 1px solid var(--border);
-  background: #fff;
+  border: none;               /* sin borde */
+  background: transparent;    /* mismo color que la página */
   cursor: pointer;
   align-items: center;
   justify-content: center;
@@ -120,7 +120,7 @@
 .nav-toggle-line:nth-child(2) { top: 6px; }
 .nav-toggle-line:nth-child(3) { bottom: 0; }
 
-/* Estado abierto (clase .is-open en nav) */
+/* Estado abierto */
 .site-nav.is-open .nav-toggle-line:nth-child(1) {
   top: 6px;
   transform: rotate(45deg);
@@ -133,7 +133,7 @@
   transform: rotate(-45deg);
 }
 
-/* Menú desplegable móvil */
+/* MENÚ MÓVIL DENTRO DEL NAV */
 .nav-right-mobile {
   display: none;
 }
@@ -159,15 +159,15 @@
   }
 
   .nav-right {
-    display:none; /* oculto el menú horizontal */
+    display:none; /* ocultar menú horizontal */
   }
 
   .nav-toggle {
-    display: inline-flex; /* muestro el botón hamburguesa */
+    display: inline-flex; /* mostrar botón hamburguesa */
   }
 
   .nav-right-mobile {
-    position: fixed;
+    position: absolute;
     top: var(--nav-height);
     left: 0;
     right: 0;
@@ -177,10 +177,9 @@
     flex-direction: column;
     padding: 0.8rem 1.5rem 1.3rem;
     gap: 0.6rem;
-    z-index: 998;
   }
 
-  .site-nav.is-open + .nav-right-mobile {
+  .site-nav.is-open .nav-right-mobile {
     display: flex;
   }
 
@@ -198,12 +197,12 @@
 }
 </style>
 
-<!-- NAV -->
 <nav class="site-nav" role="navigation" aria-label="Main navigation">
   <div class="nav-inner">
+    <!-- LOGO -->
     <a class="nav-logo" href="index.html#scroll">JEO</a>
 
-    <!-- Menú desktop -->
+    <!-- MENÚ DESKTOP -->
     <div class="nav-right" role="menubar">
       <a class="nav-link" href="index.html#work" role="menuitem">Work</a>
       <a class="nav-link" href="about.html" role="menuitem">About</a>
@@ -217,7 +216,7 @@
       </button>
     </div>
 
-    <!-- Botón hamburguesa (solo móvil) -->
+    <!-- HAMBURGUESA (MÓVIL) -->
     <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
       <span class="nav-toggle-box">
         <span class="nav-toggle-line"></span>
@@ -226,35 +225,37 @@
       </span>
     </button>
   </div>
+
+  <!-- MENÚ MÓVIL DENTRO DEL NAV -->
+  <div class="nav-right-mobile" role="menubar">
+    <a class="nav-link" href="index.html#work" role="menuitem">Work</a>
+    <a class="nav-link" href="about.html" role="menuitem">About</a>
+
+    <button class="copy-btn" id="copyBtnMobile" aria-label="Copy email">
+      <span class="label-default">Copy email</span>
+      <span class="label-copied" style="display:none;">
+        <svg class="check-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5"><polyline points="20 6 9 17 4 12"/></svg>
+        Copied
+      </span>
+    </button>
+  </div>
 </nav>
-
-<!-- Menú móvil desplegable -->
-<div class="nav-right-mobile" role="menubar">
-  <a class="nav-link" href="index.html#work" role="menuitem">Work</a>
-  <a class="nav-link" href="about.html" role="menuitem">About</a>
-
-  <button class="copy-btn" id="copyBtnMobile" aria-label="Copy email">
-    <span class="label-default">Copy email</span>
-    <span class="label-copied" style="display:none;">
-      <svg class="check-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5"><polyline points="20 6 9 17 4 12"/></svg>
-      Copied
-    </span>
-  </button>
-</div>
 
 <script>
   (function(){
-    const nav       = document.querySelector('.site-nav');
-    const toggleBtn = nav ? nav.querySelector('.nav-toggle') : null;
-    const mobileMenu = document.querySelector('.nav-right-mobile');
+    const nav        = document.querySelector('.site-nav');
+    if (!nav) return;
+    const toggleBtn  = nav.querySelector('.nav-toggle');
+    const mobileMenu = nav.querySelector('.nav-right-mobile');
 
-    if (toggleBtn && nav && mobileMenu) {
+    // Abrir/cerrar menú móvil
+    if (toggleBtn && mobileMenu) {
       toggleBtn.addEventListener('click', () => {
         const isOpen = nav.classList.toggle('is-open');
         toggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
       });
 
-      // Cerrar el menú cuando se hace clic en algún enlace del móvil
+      // Cerrar menú al hacer click en un enlace móvil
       mobileMenu.addEventListener('click', (e) => {
         if (e.target.matches('.nav-link')) {
           nav.classList.remove('is-open');
@@ -263,8 +264,8 @@
       });
     }
 
-    // Conectar botón de copiar del móvil con la función global copyEmail()
-    const copyBtnMobile = document.getElementById('copyBtnMobile');
+    // Botón de copiar del menú móvil
+    const copyBtnMobile = nav.querySelector('#copyBtnMobile');
     if (copyBtnMobile) {
       copyBtnMobile.addEventListener('click', (e) => {
         e.preventDefault();
