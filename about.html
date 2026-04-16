@@ -530,73 +530,158 @@
   </main>
 
 <script>
-  // Funciones globales para menú y footer
+  /* ============================
+     UTILIDAD: copiar email
+  ============================ */
   function copyEmail() {
-    const email = 'janescoda49@gmail.com';
-    const btn = document.getElementById('copyBtn');
+    var EMAIL = 'janescoda49@gmail.com';
 
-    const animate = () => {
+    function animate(btn) {
       if (!btn) return;
       btn.classList.add('copied');
-      setTimeout(() => btn.classList.remove('copied'), 2500);
-    };
+      setTimeout(function () {
+        btn.classList.remove('copied');
+      }, 2500);
+    }
+
+    function fallback() {
+      var el = document.createElement('textarea');
+      el.value = EMAIL;
+      el.style.cssText = 'position:fixed;opacity:0;top:0;left:0;';
+      document.body.appendChild(el);
+      el.focus();
+      el.select();
+      try {
+        document.execCommand('copy');
+      } catch (e) {}
+      document.body.removeChild(el);
+    }
+
+    var btns = [
+      document.getElementById('copyBtn'),
+      document.getElementById('copyBtnMobile')
+    ];
 
     if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(email)
-        .then(animate)
-        .catch(() => { fallback(email); animate(); });
+      navigator.clipboard.writeText(EMAIL)
+        .then(function () {
+          btns.forEach(animate);
+        })
+        .catch(function () {
+          fallback();
+          btns.forEach(animate);
+        });
     } else {
-      fallback(email); 
-      animate();
+      fallback();
+      btns.forEach(animate);
     }
   }
 
-  function fallback(text) {
-    const el = document.createElement('textarea');
-    el.value = text;
-    el.style.cssText = 'position:fixed;opacity:0;';
-    document.body.appendChild(el);
-    el.select();
-    document.execCommand('copy');
-    document.body.removeChild(el);
+  /* ============================
+     MENÚ: hamburguesa + copy
+     (se llama después de inyectar menu.html)
+  ============================ */
+  function initMenuBehavior() {
+    var nav = document.querySelector('.site-nav');
+    if (!nav) return;
+
+    var toggleBtn  = nav.querySelector('.nav-toggle');
+    var mobileMenu = nav.querySelector('.nav-right-mobile');
+
+    /* hamburguesa */
+    if (toggleBtn && mobileMenu) {
+      toggleBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var isOpen = nav.classList.toggle('is-open');
+        toggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+
+      /* cierra al pulsar un enlace del menú móvil */
+      mobileMenu.addEventListener('click', function (e) {
+        if (e.target.closest('.nav-link')) {
+          nav.classList.remove('is-open');
+          toggleBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      /* cierra al pulsar fuera */
+      document.addEventListener('click', function (e) {
+        if (!nav.contains(e.target)) {
+          nav.classList.remove('is-open');
+          toggleBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+
+    /* botones copy */
+    ['copyBtn', 'copyBtnMobile'].forEach(function (id) {
+      var btn = document.getElementById(id);
+      if (!btn) return;
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        copyEmail();
+      });
+    });
   }
 
-  function scrollToTop(e) {
-    e && e.preventDefault();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  /* ============================
+     MARCAR ENLACE ACTIVO (ABOUT)
+  ============================ */
+  function setActiveNav(page) {
+    document.querySelectorAll('.nav-link').forEach(function (link) {
+      link.classList.remove('is-active');
+    });
+
+    if (page === 'index') {
+      document.querySelectorAll('.nav-link[href="index.html#work"]').forEach(function (l) {
+        l.classList.add('is-active');
+      });
+    } else if (page === 'about') {
+      document.querySelectorAll('.nav-link[href="about.html"]').forEach(function (l) {
+        l.classList.add('is-active');
+      });
+    }
   }
 
-  // Marcar el link activo del menú para ABOUT
-  function setActiveNavLinkAbout() {
-    const workLink  = document.querySelector('.nav-link[href="index.html#work"]');
-    const aboutLink = document.querySelector('.nav-link[href="about.html"]');
+  /* ============================
+     ARRANQUE: cargar menú + footer
+  ============================ */
+  document.addEventListener('DOMContentLoaded', function () {
+    var menuContainer   = document.getElementById('menu-container');
+    var footerContainer = document.getElementById('footer-container');
 
-    if (!workLink || !aboutLink) return;
-
-    workLink.classList.remove('is-active');
-    aboutLink.classList.add('is-active');
-  }
-
-  // Cargar menu.html y footer.html
-  document.addEventListener('DOMContentLoaded', () => {
-    const menuContainer   = document.getElementById('menu-container');
-    const footerContainer = document.getElementById('footer-container');
-
-    // Cargamos el menú UNA sola vez y luego marcamos el link activo
-    fetch('menu.html')
-      .then(r => r.text())
-      .then(html => { 
+    var menuPromise = fetch('menu.html')
+      .then(function (r) { return r.text(); })
+      .then(function (html) {
         menuContainer.innerHTML = html;
-        setActiveNavLinkAbout();       // ← aquí marcamos About en negrita
-      })
-      .catch(err => console.error('Error cargando menu.html', err));
 
-    // Footer
-    fetch('footer.html')
-      .then(r => r.text())
-      .then(html => { footerContainer.innerHTML = html; })
-      .catch(err => console.error('Error cargando footer.html', err));
+        // Ahora que los elementos del menú existen, lo inicializamos
+        initMenuBehavior();
+
+        // Marcamos About como activo
+        setActiveNav('about');
+      })
+      .catch(function (err) {
+        console.error('Error cargando menu.html', err);
+      });
+
+    var footerPromise = fetch('footer.html')
+      .then(function (r) { return r.text(); })
+      .then(function (html) {
+        footerContainer.innerHTML = html;
+      })
+      .catch(function (err) {
+        console.error('Error cargando footer.html', err);
+      });
+
+    // No hace falta esperar nada más para esta página,
+    // pero dejamos la estructura por si quieres añadir scripts aquí
+    Promise.all([menuPromise, footerPromise]).then(function () {
+      // Aquí podrías añadir animaciones específicas de "about" si quisieras
+    });
   });
 </script>
+
 </body>
 </html>
