@@ -17,79 +17,101 @@
   position: fixed;
   top: 0; left: 0; right: 0;
   height: var(--nav-height);
-  display:flex; align-items:center; justify-content:center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: #fff;
   z-index: 9999;
   border-bottom: none;
 }
 
 .site-nav .nav-inner {
-  width:100%; max-width:1200px; padding:0 var(--page-side-padding);
-  display:flex; justify-content:space-between; align-items:center;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 var(--page-side-padding);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
 }
 
-.nav-logo { 
-  font-weight:800; 
-  color:var(--title); 
-  letter-spacing:-0.02em; 
-  font-size:1.155rem; 
+.nav-logo {
+  font-weight: 800;
+  color: var(--title);
+  letter-spacing: -0.02em;
+  font-size: 1.155rem;
+  text-decoration: none;
 }
 
 /* DESKTOP RIGHT AREA */
-.nav-right { 
-  display:flex; 
-  gap:1.6rem; 
-  align-items:center; 
+.nav-right {
+  display: flex;
+  gap: 1.6rem;
+  align-items: center;
 }
 
-.nav-link { 
-  color:var(--text); 
-  font-weight:600; 
-  font-size:1.045rem; 
-  padding:.25rem .15rem; 
-} 
+.nav-link {
+  color: var(--text);
+  font-weight: 600;
+  font-size: 1.045rem;
+  padding: .25rem .15rem;
+  text-decoration: none;
+}
 
-.nav-link:hover, .nav-link.is-active { 
-  color:var(--title); 
-  font-weight:800; 
+.nav-link:hover,
+.nav-link.is-active {
+  color: var(--title);
+  font-weight: 800;
 }
 
 /* Copy email button */
-.copy-btn{
+.copy-btn {
   font-family: 'Sora', sans-serif;
-  font-weight:700;
-  font-size:1.078rem;
-  padding:0.7rem 1.6rem;
-  border-radius:999px;
-  background:var(--title);
-  color:#fff;
-  border:1.5px solid var(--title);
-  display:inline-flex; 
-  align-items:center; 
-  gap:.35rem;
-  cursor:pointer; 
+  font-weight: 700;
+  font-size: 1.078rem;
+  padding: 0.7rem 1.6rem;
+  border-radius: 999px;
+  background: var(--title);
+  color: #fff;
+  border: 1.5px solid var(--title);
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  cursor: pointer;
   transition: all var(--transition);
 }
-.copy-btn.copied { 
-  background:transparent; 
-  color:var(--title); 
-  border-color:var(--title); 
-  pointer-events:none; 
-}
-.copy-btn:hover { 
-  transform:translateY(-1px); 
-  background:transparent; 
-  color:var(--title); 
+
+/* label-copied siempre inline-flex pero oculto por defecto */
+.copy-btn .label-copied {
+  display: none;
+  align-items: center;
+  gap: .35rem;
 }
 
-.site-nav a:focus, 
-.site-nav button:focus { 
-  outline: none; 
+.copy-btn.copied .label-default { display: none; }
+.copy-btn.copied .label-copied  { display: inline-flex; }
+
+.copy-btn.copied {
+  background: transparent;
+  color: var(--title);
+  border-color: var(--title);
+  pointer-events: none;
+}
+
+.copy-btn:hover {
+  transform: translateY(-1px);
+  background: transparent;
+  color: var(--title);
+}
+
+.site-nav a:focus,
+.site-nav button:focus {
+  outline: none;
 }
 
 /* HAMBURGER BUTTON */
 .nav-toggle {
-  display: none; /* solo se ve en móvil */
+  display: none;
   width: 40px;
   height: 40px;
   border-radius: 999px;
@@ -106,6 +128,7 @@
   width: 18px;
   height: 14px;
   position: relative;
+  pointer-events: none;
 }
 
 .nav-toggle-line {
@@ -141,31 +164,28 @@
 }
 
 /* DESKTOP */
-@media (min-width:769px){
-  .nav-right {
-    display:flex;
-  }
-  .nav-toggle {
-    display:none;
-  }
+@media (min-width: 769px) {
+  .nav-right    { display: flex; }
+  .nav-toggle   { display: none; }
+  .nav-right-mobile { display: none !important; }
 }
 
 /* MOBILE */
-@media (max-width:768px){
+@media (max-width: 768px) {
   .site-nav .nav-inner {
     padding: 0 1.5rem;
   }
 
-  .nav-logo { 
-    font-size:1.1rem; 
+  .nav-logo {
+    font-size: 1.1rem;
   }
 
   .nav-right {
-    display:none; /* ocultar menú horizontal */
+    display: none;
   }
 
   .nav-toggle {
-    display: inline-flex; /* mostrar botón hamburguesa */
+    display: inline-flex;
   }
 
   .nav-right-mobile {
@@ -175,10 +195,11 @@
     right: 0;
     background: #fff;
     border-bottom: 1px solid var(--border);
-    display: none;
     flex-direction: column;
     padding: 0.8rem 1.5rem 1.3rem;
     gap: 0.6rem;
+    /* hidden by default */
+    display: none;
   }
 
   .site-nav.is-open .nav-right-mobile {
@@ -195,6 +216,7 @@
     justify-content: center;
     font-size: 0.98rem;
     padding: 0.6rem 1.2rem;
+    margin-top: 0.2rem;
   }
 }
 </style>
@@ -209,10 +231,10 @@
       <a class="nav-link" href="index.html#work" role="menuitem">Work</a>
       <a class="nav-link" href="about.html" role="menuitem">About</a>
 
-      <button class="copy-btn" id="copyBtn" aria-label="Copy email">
+      <button class="copy-btn" id="copyBtn" type="button" aria-label="Copy email address">
         <span class="label-default">Copy email</span>
-        <span class="label-copied" style="display:none;">
-          <svg class="check-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5"><polyline points="20 6 9 17 4 12"/></svg>
+        <span class="label-copied">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5"><polyline points="20 6 9 17 4 12"/></svg>
           Copied
         </span>
       </button>
@@ -226,19 +248,124 @@
         <span class="nav-toggle-line"></span>
       </span>
     </button>
-  </div>
 
-  <!-- MENÚ MÓVIL DENTRO DEL NAV -->
-  <div class="nav-right-mobile" role="menubar">
-    <a class="nav-link" href="index.html#work" role="menuitem">Work</a>
-    <a class="nav-link" href="about.html" role="menuitem">About</a>
+    <!-- MENÚ MÓVIL DENTRO DEL NAV (dentro de nav-inner para heredar position:relative) -->
+    <div class="nav-right-mobile" role="menubar" aria-label="Mobile navigation">
+      <a class="nav-link" href="index.html#work" role="menuitem">Work</a>
+      <a class="nav-link" href="about.html" role="menuitem">About</a>
 
-    <button class="copy-btn" id="copyBtnMobile" aria-label="Copy email">
-      <span class="label-default">Copy email</span>
-      <span class="label-copied" style="display:none;">
-        <svg class="check-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5"><polyline points="20 6 9 17 4 12"/></svg>
-        Copied
-      </span>
-    </button>
+      <button class="copy-btn" id="copyBtnMobile" type="button" aria-label="Copy email address">
+        <span class="label-default">Copy email</span>
+        <span class="label-copied">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Copied
+        </span>
+      </button>
+    </div>
   </div>
 </nav>
+
+<!-- =========================================================
+     SCRIPT DEL MENÚ
+     Se ejecuta en cuanto el fragmento se inyecta en el DOM.
+     initMenuBehavior() es llamado desde la página host,
+     pero aquí también lanzamos un fallback por si el script
+     de la página ya pasó el DOMContentLoaded.
+========================================================== -->
+<script>
+(function () {
+  'use strict';
+
+  /* ---- utilidad copy ---- */
+  function copyEmail() {
+    var EMAIL = 'janescoda49@gmail.com';
+
+    function animate(btn) {
+      if (!btn) return;
+      btn.classList.add('copied');
+      setTimeout(function () { btn.classList.remove('copied'); }, 2500);
+    }
+
+    function fallback() {
+      var el = document.createElement('textarea');
+      el.value = EMAIL;
+      el.style.cssText = 'position:fixed;opacity:0;top:0;left:0;';
+      document.body.appendChild(el);
+      el.focus();
+      el.select();
+      try { document.execCommand('copy'); } catch (e) {}
+      document.body.removeChild(el);
+    }
+
+    /* animamos AMBOS botones */
+    var btns = [
+      document.getElementById('copyBtn'),
+      document.getElementById('copyBtnMobile')
+    ];
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(EMAIL)
+        .then(function ()  { btns.forEach(animate); })
+        .catch(function () { fallback(); btns.forEach(animate); });
+    } else {
+      fallback();
+      btns.forEach(animate);
+    }
+  }
+
+  /* ---- lógica del menú ---- */
+  function initMenuBehavior() {
+    var nav        = document.querySelector('.site-nav');
+    if (!nav) return;
+
+    var toggleBtn  = nav.querySelector('.nav-toggle');
+    var mobileMenu = nav.querySelector('.nav-right-mobile');
+
+    /* --- hamburguesa --- */
+    if (toggleBtn && mobileMenu) {
+      toggleBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var isOpen = nav.classList.toggle('is-open');
+        toggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+
+      /* cierra al pulsar un enlace del menú móvil */
+      mobileMenu.addEventListener('click', function (e) {
+        if (e.target.closest('.nav-link')) {
+          nav.classList.remove('is-open');
+          toggleBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      /* cierra al pulsar fuera */
+      document.addEventListener('click', function (e) {
+        if (!nav.contains(e.target)) {
+          nav.classList.remove('is-open');
+          toggleBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+
+    /* --- botones copy --- */
+    ['copyBtn', 'copyBtnMobile'].forEach(function (id) {
+      var btn = document.getElementById(id);
+      if (!btn) return;
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        copyEmail();
+      });
+    });
+  }
+
+  /* Exponer para que la página host pueda llamarla */
+  window.initMenuBehavior = initMenuBehavior;
+
+  /* Fallback: si el DOM ya está listo (p.ej. innerHTML asíncrono), arranca solo */
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initMenuBehavior);
+  } else {
+    initMenuBehavior();
+  }
+})();
+</script>
