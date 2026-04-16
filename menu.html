@@ -1,5 +1,4 @@
 <style>
-
 :root{
   @import url('https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap');
   --nav-height: 4.6rem;
@@ -30,12 +29,11 @@
 .nav-link { color:var(--text); font-weight:600; font-size:1.045rem; padding:.25rem .15rem; } 
 .nav-link:hover, .nav-link.is-active { color:var(--title); font-weight:800; }
 
-
 .copy-btn{
   font-family: 'Sora', sans-serif;
   font-weight:700;
-  font-size:1.078rem; 
-  padding:0.45rem 1rem;
+  font-size:1.078rem;    /* texto vuelve a su tamaño original */
+  padding:0.7rem 1.6rem; /* botón más grande, más alto y ancho */
   border-radius:999px;
   background:var(--title);
   color:#fff;
@@ -46,8 +44,8 @@
 .copy-btn.copied { background:transparent; color:var(--title); border-color:var(--title); pointer-events:none; }
 .copy-btn:hover { transform:translateY(-1px); background:transparent; color:var(--title); }
 
-
 .site-nav a:focus, .site-nav button:focus { outline: none; }
+
 @media (max-width:768px){
   .nav-right { gap:12px; }
   .nav-logo { font-size:1.1rem; } 
@@ -74,7 +72,6 @@
 </nav>
 
 <script>
-
 (function(){
   function fallbackCopy(text){
     const el = document.createElement('textarea');
