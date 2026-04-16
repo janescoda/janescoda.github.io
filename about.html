@@ -3,18 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About — Jan Escoda</title>
+  <title>About - Jan Escoda</title>
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
-    /***** SCALE: Increase base by 10% *****/
     html { font-size: 110%; scroll-behavior: smooth; }
 
-    /***** BASE *****/
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
@@ -98,9 +95,8 @@
     }
     .copy-btn.copied .check-icon { animation: checkPop 0.32s ease forwards; }
 
-    /***** ABOUT HERO (Howdy) *****/
     .about-hero {
-      padding-top: 7rem;          /* espacio bajo el nav importado */
+      padding-top: 7rem;
       padding-bottom: 3rem;
     }
 
@@ -144,7 +140,6 @@
       gap: 1rem;
     }
 
-    /***** SECTION HEADING *****/
     .section-heading {
       font-size: clamp(1.7rem, 3vw, 2.2rem);
       font-weight: 800;
@@ -153,7 +148,6 @@
       color: var(--title);
     }
 
-    /***** EXPERIENCE *****/
     .experience-grid {
       display: grid;
       grid-template-columns: 140px 1fr;
@@ -180,7 +174,6 @@
       font-size: 0.85rem;
     }
 
-    /***** NON-DIGITAL PASSIONS *****/
     .passions-section {
       margin-top: 4rem;
       margin-bottom: 4rem;
@@ -236,7 +229,6 @@
       font-size: 0.84rem;
     }
 
-    /***** CONTACT (Get in touch) *****/
     #contact {
       padding: 3.5rem 0 2.5rem;
     }
@@ -308,7 +300,6 @@
       color: var(--text);
     }
 
-    /***** FOOTER (solo clases usadas por footer.html) *****/
     footer {
       border-top: 1px solid var(--border);
       padding: 1.75rem 0;
@@ -341,7 +332,6 @@
 
     .footer-up:hover { color: var(--title); }
 
-    /***** RESPONSIVE *****/
     @media (max-width: 900px) {
       .about-top-grid { grid-template-columns: 1fr; }
       .about-photo { max-width: 320px; }
@@ -367,23 +357,18 @@
 </head>
 <body>
 
-  <!-- AQUÍ SE CARGA menu.html -->
   <div id="menu-container"></div>
 
-  <!-- ABOUT HERO -->
   <main>
     <section class="about-hero">
       <div class="container">
         <h1 class="about-greeting">Howdy <span class="about-greeting-emoji">👋</span></h1>
 
         <div class="about-top-grid">
-          <!-- Photo -->
           <div class="about-photo">
-            <!-- <img src="jan.jpg" alt="Jan Escoda"> -->
             <span style="font-size:0.8rem; color:var(--text);">Photo here</span>
           </div>
 
-          <!-- Copy -->
           <div class="about-copy">
             <p>
               I'm Jan, a Marketing &amp; Digital Content Specialist with 2+ years of experience,
@@ -403,7 +388,6 @@
       </div>
     </section>
 
-    <!-- EXPERIENCE -->
     <section>
       <div class="container">
         <h2 class="section-heading">Experience</h2>
@@ -430,7 +414,6 @@
       </div>
     </section>
 
-    <!-- EDUCATION -->
     <section>
       <div class="container">
         <h2 class="section-heading">Education</h2>
@@ -457,7 +440,6 @@
       </div>
     </section>
 
-    <!-- NON-DIGITAL PASSIONS -->
     <section class="passions-section">
       <div class="container">
         <h2 class="section-heading">Non‑digital passions</h2>
@@ -504,7 +486,6 @@
       </div>
     </section>
 
-    <!-- GET IN TOUCH -->
     <section id="contact">
       <div class="container">
         <h2 class="contact-title">Get in touch</h2>
@@ -530,9 +511,6 @@
   </main>
 
 <script>
-  /* ============================
-     UTILIDAD: copiar email
-  ============================ */
   function copyEmail() {
     var EMAIL = 'janescoda49@gmail.com';
 
@@ -577,10 +555,6 @@
     }
   }
 
-  /* ============================
-     MENÚ: hamburguesa + copy
-     (se llama después de inyectar menu.html)
-  ============================ */
   function initMenuBehavior() {
     var nav = document.querySelector('.site-nav');
     if (!nav) return;
@@ -588,7 +562,6 @@
     var toggleBtn  = nav.querySelector('.nav-toggle');
     var mobileMenu = nav.querySelector('.nav-right-mobile');
 
-    /* hamburguesa */
     if (toggleBtn && mobileMenu) {
       toggleBtn.addEventListener('click', function (e) {
         e.stopPropagation();
@@ -596,7 +569,6 @@
         toggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
       });
 
-      /* cierra al pulsar un enlace del menú móvil */
       mobileMenu.addEventListener('click', function (e) {
         if (e.target.closest('.nav-link')) {
           nav.classList.remove('is-open');
@@ -604,7 +576,6 @@
         }
       });
 
-      /* cierra al pulsar fuera */
       document.addEventListener('click', function (e) {
         if (!nav.contains(e.target)) {
           nav.classList.remove('is-open');
@@ -613,7 +584,6 @@
       });
     }
 
-    /* botones copy */
     ['copyBtn', 'copyBtnMobile'].forEach(function (id) {
       var btn = document.getElementById(id);
       if (!btn) return;
@@ -625,9 +595,6 @@
     });
   }
 
-  /* ============================
-     MARCAR ENLACE ACTIVO (ABOUT)
-  ============================ */
   function setActiveNav(page) {
     document.querySelectorAll('.nav-link').forEach(function (link) {
       link.classList.remove('is-active');
@@ -644,9 +611,6 @@
     }
   }
 
-  /* ============================
-     ARRANQUE: cargar menú + footer
-  ============================ */
   document.addEventListener('DOMContentLoaded', function () {
     var menuContainer   = document.getElementById('menu-container');
     var footerContainer = document.getElementById('footer-container');
@@ -656,10 +620,7 @@
       .then(function (html) {
         menuContainer.innerHTML = html;
 
-        // Ahora que los elementos del menú existen, lo inicializamos
         initMenuBehavior();
-
-        // Marcamos About como activo
         setActiveNav('about');
       })
       .catch(function (err) {
@@ -675,10 +636,7 @@
         console.error('Error cargando footer.html', err);
       });
 
-    // No hace falta esperar nada más para esta página,
-    // pero dejamos la estructura por si quieres añadir scripts aquí
     Promise.all([menuPromise, footerPromise]).then(function () {
-      // Aquí podrías añadir animaciones específicas de "about" si quisieras
     });
   });
 </script>
