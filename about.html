@@ -581,6 +581,24 @@
         .then(html => { footerContainer.innerHTML = html; })
         .catch(err => console.error('Error cargando footer.html', err));
     });
+
+    function setActiveNavLink() {
+  const workLink = document.querySelector('.nav-link[href="index.html#work"]');
+  const aboutLink = document.querySelector('.nav-link[href="about.html"]');
+
+  if (!workLink || !aboutLink) return;
+
+  workLink.classList.remove('is-active');
+  aboutLink.classList.add('is-active');
+}
+
+fetch('menu.html')
+  .then(r => r.text())
+  .then(html => {
+    menuContainer.innerHTML = html;
+    setActiveNavLink();
+  });
+
   </script>
 </body>
 </html>
