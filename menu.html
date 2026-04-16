@@ -36,6 +36,7 @@
 }
 
 .nav-logo {
+  font-family: 'Sora', sans-serif;
   font-weight: 800;
   color: var(--title);
   letter-spacing: -0.02em;
@@ -52,6 +53,7 @@
 
 .nav-link {
   color: var(--text);
+  font-family: 'Sora', sans-serif;
   font-weight: 600;
   font-size: 1.045rem;
   padding: .25rem .15rem;
@@ -165,9 +167,9 @@
 
 /* DESKTOP */
 @media (min-width: 769px) {
-  .nav-right    { display: flex; }
-  .nav-toggle   { display: none; }
-  .nav-right-mobile { display: none !important; }
+  .nav-right          { display: flex; }
+  .nav-toggle         { display: none; }
+  .nav-right-mobile   { display: none !important; }
 }
 
 /* MOBILE */
@@ -198,7 +200,6 @@
     flex-direction: column;
     padding: 0.8rem 1.5rem 1.3rem;
     gap: 0.6rem;
-    /* hidden by default */
     display: none;
   }
 
@@ -234,7 +235,9 @@
       <button class="copy-btn" id="copyBtn" type="button" aria-label="Copy email address">
         <span class="label-default">Copy email</span>
         <span class="label-copied">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
           Copied
         </span>
       </button>
@@ -249,7 +252,7 @@
       </span>
     </button>
 
-    <!-- MENÚ MÓVIL DENTRO DEL NAV (dentro de nav-inner para heredar position:relative) -->
+    <!-- MENÚ MÓVIL -->
     <div class="nav-right-mobile" role="menubar" aria-label="Mobile navigation">
       <a class="nav-link" href="index.html#work" role="menuitem">Work</a>
       <a class="nav-link" href="about.html" role="menuitem">About</a>
@@ -257,7 +260,9 @@
       <button class="copy-btn" id="copyBtnMobile" type="button" aria-label="Copy email address">
         <span class="label-default">Copy email</span>
         <span class="label-copied">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
           Copied
         </span>
       </button>
@@ -265,13 +270,6 @@
   </div>
 </nav>
 
-<!-- =========================================================
-     SCRIPT DEL MENÚ
-     Se ejecuta en cuanto el fragmento se inyecta en el DOM.
-     initMenuBehavior() es llamado desde la página host,
-     pero aquí también lanzamos un fallback por si el script
-     de la página ya pasó el DOMContentLoaded.
-========================================================== -->
 <script>
 (function () {
   'use strict';
@@ -283,7 +281,9 @@
     function animate(btn) {
       if (!btn) return;
       btn.classList.add('copied');
-      setTimeout(function () { btn.classList.remove('copied'); }, 2500);
+      setTimeout(function () {
+        btn.classList.remove('copied');
+      }, 2500);
     }
 
     function fallback() {
@@ -293,11 +293,12 @@
       document.body.appendChild(el);
       el.focus();
       el.select();
-      try { document.execCommand('copy'); } catch (e) {}
+      try {
+        document.execCommand('copy');
+      } catch (e) {}
       document.body.removeChild(el);
     }
 
-    /* animamos AMBOS botones */
     var btns = [
       document.getElementById('copyBtn'),
       document.getElementById('copyBtnMobile')
@@ -305,8 +306,13 @@
 
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(EMAIL)
-        .then(function ()  { btns.forEach(animate); })
-        .catch(function () { fallback(); btns.forEach(animate); });
+        .then(function () {
+          btns.forEach(animate);
+        })
+        .catch(function () {
+          fallback();
+          btns.forEach(animate);
+        });
     } else {
       fallback();
       btns.forEach(animate);
@@ -315,13 +321,13 @@
 
   /* ---- lógica del menú ---- */
   function initMenuBehavior() {
-    var nav        = document.querySelector('.site-nav');
+    var nav = document.querySelector('.site-nav');
     if (!nav) return;
 
     var toggleBtn  = nav.querySelector('.nav-toggle');
     var mobileMenu = nav.querySelector('.nav-right-mobile');
 
-    /* --- hamburguesa --- */
+    /* hamburguesa */
     if (toggleBtn && mobileMenu) {
       toggleBtn.addEventListener('click', function (e) {
         e.stopPropagation();
@@ -346,7 +352,7 @@
       });
     }
 
-    /* --- botones copy --- */
+    /* botones copy */
     ['copyBtn', 'copyBtnMobile'].forEach(function (id) {
       var btn = document.getElementById(id);
       if (!btn) return;
@@ -358,10 +364,10 @@
     });
   }
 
-  /* Exponer para que la página host pueda llamarla */
+  /* Exponer función para la página host (index/about) */
   window.initMenuBehavior = initMenuBehavior;
 
-  /* Fallback: si el DOM ya está listo (p.ej. innerHTML asíncrono), arranca solo */
+  /* Fallback: si el DOM ya está listo, inicia el menú */
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initMenuBehavior);
   } else {
