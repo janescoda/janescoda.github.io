@@ -533,7 +533,6 @@
   <div id="footer-container"></div>
 
 <script>
-  // Funciones globales para menú y footer
   function copyEmail() {
     const email = 'janescoda49@gmail.com';
     const btn = document.getElementById('copyBtn');
@@ -569,6 +568,26 @@
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
+  // Misma función de inyección que en index.html
+  function injectHtmlWithScripts(container, html) {
+    const temp = document.createElement('div');
+    temp.innerHTML = html;
+
+    const scripts = Array.from(temp.querySelectorAll('script'));
+    container.innerHTML = temp.innerHTML;
+
+    scripts.forEach(oldScript => {
+      const newScript = document.createElement('script');
+      if (oldScript.textContent) {
+        newScript.textContent = oldScript.textContent;
+      }
+      Array.from(oldScript.attributes).forEach(attr => {
+        newScript.setAttribute(attr.name, attr.value);
+      });
+      document.body.appendChild(newScript);
+    });
+  }
+
   // Marcar el link activo del menú para ABOUT
   function setActiveNavLinkAbout() {
     const workLink  = document.querySelector('.nav-link[href="index.html#work"]');
@@ -580,27 +599,29 @@
     aboutLink.classList.add('is-active');
   }
 
-  // Cargar menu.html y footer.html
   document.addEventListener('DOMContentLoaded', () => {
     const menuContainer   = document.getElementById('menu-container');
     const footerContainer = document.getElementById('footer-container');
 
-    // Cargamos el menú UNA sola vez y luego marcamos el link activo
-    fetch('menu.html')
+    const menuPromise = fetch('menu.html')
       .then(r => r.text())
       .then(html => { 
-        menuContainer.innerHTML = html;
-        setActiveNavLinkAbout();       // ← aquí marcamos About en negrita
+        injectHtmlWithScripts(menuContainer, html);
+        setActiveNavLinkAbout();
       })
       .catch(err => console.error('Error cargando menu.html', err));
 
-    // Footer
-    fetch('footer.html')
+    const footerPromise = fetch('footer.html')
       .then(r => r.text())
       .then(html => { footerContainer.innerHTML = html; })
       .catch(err => console.error('Error cargando footer.html', err));
+
+    Promise.all([menuPromise, footerPromise]).then(() => {
+      // Aquí podrías inicializar scripts específicos de ABOUT si algún día los hay.
+    });
   });
 </script>
+
 
 </body>
 </html>
