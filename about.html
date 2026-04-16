@@ -22,7 +22,6 @@
       --border: #e4e2dd;
       --tag-bg: #ebebeb;
       --transition: 0.28s cubic-bezier(0.4, 0, 0.2, 1);
-
       --page-max-width: 1056px;
       --page-side-padding: 3.3rem;
     }
@@ -100,19 +99,6 @@
       padding-bottom: 3rem;
     }
 
-    .about-greeting {
-      font-size: clamp(2.5rem, 4vw, 3.3rem);
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      margin-bottom: 2rem;
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      color: var(--title);
-    }
-
-    .about-greeting-emoji { font-size: 2rem; }
-
     .about-top-grid {
       display: grid;
       grid-template-columns: 260px 1fr;
@@ -120,14 +106,14 @@
       align-items: flex-start;
     }
 
-.about-photo {
-  border-radius: 18px;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 16.25rem;
-}
+    .about-photo {
+      border-radius: 18px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 16.25rem;
+    }
 
     .about-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
@@ -361,12 +347,10 @@
   <main>
     <section class="about-hero">
       <div class="container">
-        <h1 class="about-greeting">Howdy <span class="about-greeting-emoji">👋</span></h1>
-
         <div class="about-top-grid">
-         <div class="about-photo">
-  <img src="assets/img/foto-jan.png" alt="Foto Jan">
-</div>
+          <div class="about-photo">
+            <img src="assets/img/foto-jan.png" alt="Foto Jan">
+          </div>
 
           <div class="about-copy">
             <p>
@@ -618,7 +602,6 @@
       .then(function (r) { return r.text(); })
       .then(function (html) {
         menuContainer.innerHTML = html;
-
         initMenuBehavior();
         setActiveNav('about');
       })
@@ -635,8 +618,7 @@
         console.error('Error cargando footer.html', err);
       });
 
-    Promise.all([menuPromise, footerPromise]).then(function () {
-    });
+    Promise.all([menuPromise, footerPromise]).then(function () {});
   });
 </script>
 
