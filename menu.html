@@ -1,6 +1,6 @@
 <!-- menu.html -->
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Marope:wght@100..800&display=swap');
 
 :root{
   --nav-height: 4.6rem;
@@ -32,7 +32,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: relative;
+  position: relative; /* necesario para el menú móvil absoluto */
 }
 
 .nav-logo {
@@ -192,7 +192,7 @@
 
   .nav-right-mobile {
     position: absolute;
-    top: var(--nav-height);
+    top: 100%;                 /* justo debajo de la barra, sin duplicar nav-height */
     left: 0;
     right: 0;
     background: #fff;
