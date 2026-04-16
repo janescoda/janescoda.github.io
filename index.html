@@ -5,16 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jan Escoda - Junior Marketing & Digital Content</title>
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
-    /***** SCALE: Increase base by 10% *****/
     html { font-size: 110%; scroll-behavior: smooth; }
 
-    /***** BASE *****/
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root{
@@ -24,13 +21,11 @@
       --card-bg: #f4f3f0;
       --border: #e4e2dd;
       --transition: 0.28s cubic-bezier(0.4,0,0.2,1);
-
       --page-max-width: 1056px;
       --page-side-padding: 3.3rem;
-      
       --hero-gap-top: clamp(2rem, 5vh, 4rem);
       --hero-gap-bottom: clamp(1.2rem, 6vh, 3rem);
-      --nav-height: 4.6rem; /* debe coincidir con menu.html */
+      --nav-height: 4.6rem;
     }
 
     body{
@@ -54,7 +49,6 @@
       box-sizing:border-box; 
     }
 
-    /* HERO */
     #scroll {
       display: flex;
       flex-direction: column;
@@ -106,17 +100,15 @@
       font-weight: 600;
       color: #8a8a8a;
       line-height: 1.4;
-      white-space: normal;        /* permite salto de línea en móvil */
+      white-space: normal;
     }
 
-    /* En pantallas más grandes mantenemos el estilo pill en una línea */
     @media (min-width: 769px) {
       .hero-tag {
         white-space: nowrap;
       }
     }
 
-    /* SECTION HEADINGS */
     .section-label{ 
       font-weight:700; 
       font-size:.72rem; 
@@ -132,7 +124,6 @@
       color:var(--title); 
     }
 
-    /* WORK */
     #work{ padding:3rem 0 4rem; }
 
     .proj-card{ 
@@ -222,7 +213,6 @@
       color: #1e7bf6;
     }
 
-    /* OTHER PROJECTS */
     .other-heading{ 
       font-size:clamp(1.5rem,3vw,2.2rem); 
       font-weight:800; 
@@ -295,7 +285,6 @@
       color: var(--title);
     }
 
-    /* PRINCIPLES */
     #principles{ padding:0rem 0 4rem; }
     .principles-card{ 
       background:#f7f9ff; 
@@ -313,7 +302,6 @@
     .principle-title{ font-weight:700; font-size:.98rem; margin-bottom:.35rem; }
     .principle-text{ font-size:.86rem; color:#8a8a8a; line-height:1.7; }
 
-    /* TESTIMONIALS */
     #testimonials{ padding:1rem 0; }
     .testi-slider-outer{ position:relative; overflow:visible; padding-bottom:2.5rem; }
     .testi-track-wrapper{ overflow:hidden; width:100%; box-sizing:border-box; }
@@ -381,7 +369,6 @@
     }
     .testi-dot.active{ background:#9a9ab8; width:20px; }
 
-    /* HARD SKILLS */
     #hard-skills{ padding:6rem 0; }
     .hard-skills-inner{ 
       display:flex; 
@@ -413,7 +400,6 @@
       font-weight:700; 
     }
 
-    /***** CONTACT (Get in touch) – igual que about.html *****/
     #contact {
       padding: 3.5rem 0 2.5rem;
     }
@@ -485,7 +471,6 @@
       color: var(--text);
     }
 
-    /* general animations */
     @keyframes fadeUp{ 
       from{ opacity:0; transform:translateY(26px);} 
       to{ opacity:1; transform:translateY(0);} 
@@ -497,7 +482,6 @@
     }
     .reveal.visible{ opacity:1; transform:translateY(0); }
 
-    /* responsive tweaks */
     @media (max-width:1024px){ 
       .proj-card{ grid-template-columns:1fr; } 
       .mini-grid{ grid-template-columns:1fr; } 
@@ -515,10 +499,8 @@
 </head>
 <body>
 
-  <!-- MENÚ IMPORTADO -->
   <div id="menu-container"></div>
 
-  <!-- HERO -->
   <div id="scroll">
     <div class="hero-inner">
       <h1 class="hero-title">
@@ -533,7 +515,6 @@
     </div>
   </div>
 
-  <!-- WORK -->
   <section id="work">
     <div class="container">
       <div class="section-label reveal">Work</div>
@@ -593,7 +574,6 @@
         </div>
       </a>
 
-      <!-- Other projects -->
       <div class="reveal" style="margin-top:1.5rem;">
         <h2 class="other-heading">Other projects</h2>
         <div class="mini-grid">
@@ -663,7 +643,6 @@
     </div>
   </section>
 
-  <!-- PRINCIPLES -->
   <section id="principles">
     <div class="container">
       <h2 class="section-heading reveal">My principles</h2>
@@ -694,7 +673,6 @@
     </div>
   </section>
 
-  <!-- TESTIMONIALS -->
   <section id="testimonials">
     <div class="container">
       <h2 class="section-heading reveal">In their words</h2>
@@ -755,7 +733,6 @@
     </div>
   </section>
 
-  <!-- HARD SKILLS -->
   <section id="hard-skills">
     <div class="container">
       <div class="hard-skills-inner reveal">
@@ -765,7 +742,6 @@
     </div>
   </section>
 
-  <!-- GET IN TOUCH -->
   <section id="contact">
     <div class="container">
       <h2 class="contact-title">Get in touch</h2>
@@ -788,13 +764,9 @@
     </div>
   </section>
 
-  <!-- FOOTER IMPORTADO -->
   <div id="footer-container"></div>
 
 <script>
-  /* ============================
-     UTILIDAD: copiar email
-  ============================ */
   function copyEmail() {
     var EMAIL = 'janescoda49@gmail.com';
 
@@ -839,10 +811,6 @@
     }
   }
 
-  /* ============================
-     MENÚ: hamburguesa + copy
-     (se llama después de inyectar menu.html)
-  ============================ */
   function initMenuBehavior() {
     var nav = document.querySelector('.site-nav');
     if (!nav) return;
@@ -850,7 +818,6 @@
     var toggleBtn  = nav.querySelector('.nav-toggle');
     var mobileMenu = nav.querySelector('.nav-right-mobile');
 
-    /* hamburguesa */
     if (toggleBtn && mobileMenu) {
       toggleBtn.addEventListener('click', function (e) {
         e.stopPropagation();
@@ -858,7 +825,6 @@
         toggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
       });
 
-      /* cierra al pulsar un enlace del menú móvil */
       mobileMenu.addEventListener('click', function (e) {
         if (e.target.closest('.nav-link')) {
           nav.classList.remove('is-open');
@@ -866,7 +832,6 @@
         }
       });
 
-      /* cierra al pulsar fuera */
       document.addEventListener('click', function (e) {
         if (!nav.contains(e.target)) {
           nav.classList.remove('is-open');
@@ -875,7 +840,6 @@
       });
     }
 
-    /* botones copy */
     ['copyBtn', 'copyBtnMobile'].forEach(function (id) {
       var btn = document.getElementById(id);
       if (!btn) return;
@@ -887,9 +851,6 @@
     });
   }
 
-  /* ============================
-     MARCAR ENLACE ACTIVO
-  ============================ */
   function setActiveNav(page) {
     document.querySelectorAll('.nav-link').forEach(function (link) {
       link.classList.remove('is-active');
@@ -906,11 +867,7 @@
     }
   }
 
-  /* ============================
-     SCRIPTS DE PÁGINA
-  ============================ */
   function initPageScripts() {
-    /* SCROLL REVEAL */
     var observer = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
         if (e.isIntersecting) e.target.classList.add('visible');
@@ -921,7 +878,6 @@
       observer.observe(el);
     });
 
-    /* TESTIMONIAL SLIDER */
     (function () {
       var track   = document.getElementById('testiTrack');
       if (!track) return;
@@ -1015,9 +971,6 @@
     })();
   }
 
-  /* ============================
-     ARRANQUE: cargar menú + footer
-  ============================ */
   document.addEventListener('DOMContentLoaded', function () {
     var menuContainer   = document.getElementById('menu-container');
     var footerContainer = document.getElementById('footer-container');
@@ -1026,8 +979,6 @@
       .then(function (r) { return r.text(); })
       .then(function (html) {
         menuContainer.innerHTML = html;
-
-        // Ahora que los elementos del menú existen, inicializamos
         initMenuBehavior();
         setActiveNav('index');
       })
@@ -1049,6 +1000,5 @@
     });
   });
 </script>
-
 </body>
 </html>
