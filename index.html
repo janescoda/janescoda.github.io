@@ -18,7 +18,7 @@
       --bg: #ffffff;
       --text: rgb(103,103,122);
       --title: #000000;
-      --card-bg: #f4f3f0;
+      --card-bg: #ffffff;
       --border: #e4e2dd;
       --transition: 0.28s cubic-bezier(0.4,0,0.2,1);
       --page-max-width: 1056px;
@@ -129,7 +129,7 @@
     .proj-card{ 
       display:grid; 
       grid-template-columns:1fr 400px; 
-      background:#fff; 
+      background:#fffff; 
       border:1px solid var(--border); 
       border-radius:20px; 
       overflow:hidden; 
@@ -154,14 +154,22 @@
       justify-content:space-between; 
     }
 
-    .proj-img-side{ 
-      background:var(--border); 
-      min-height:16.25rem; 
-      display:flex; 
-      align-items:center; 
-      justify-content:center; 
-      overflow:hidden; 
-    }
+.proj-img-side { 
+  background: #ffffff;         
+  min-height: 16.25rem;
+  display: flex;
+  align-items: stretch;      
+  justify-content: stretch;
+  overflow: hidden;
+  padding: 0;             
+}
+
+.proj-img-side img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;  
+  display: block;
+}
 
     .proj-title {
       color: var(--title);
@@ -536,9 +544,9 @@
     </div>
   </div>
 
-  <div class="proj-img-side">
-    <img src="assets/img/index_ikea.png" alt="Proyecto IKEA" width="52" height="52">
-  </div>
+<div class="proj-img-side">
+  <img src="assets/img/index_ikea.png" alt="Project IKEA">
+</div>
 </a>
 
     <a href="projects/daina-media.html" class="proj-card reveal">
@@ -553,9 +561,9 @@
           <span class="proj-tag">Content</span>
         </div>
       </div>
-      <div class="proj-img-side">
-        <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-      </div>
+<div class="proj-img-side">
+  <img src="assets/img/index_daina.png" alt="Project Daina">
+</div>
     </a>
 
     <a href="projects/coesuz.html" class="proj-card reveal">
