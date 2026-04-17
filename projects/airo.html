@@ -2,412 +2,280 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Airo – Jan Escoda</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Airo · Public transport concept · Jan Escoda</title>
 
-  <!-- Manrope (same style as new template) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet"
-  />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
-    :root {
+    html { font-size: 110%; scroll-behavior: smooth; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root{
       --bg: #ffffff;
-      --fg: #050816;
-      --muted: #6b7280;
-      --border-subtle: #e5e7eb;
-      --accent-soft: #f3f4ff;
-      --radius-lg: 20px;
-      --radius-xl: 32px;
-      --shadow-soft: 0 16px 60px rgba(15, 23, 42, 0.08);
-      --shadow-subtle: 0 18px 50px rgba(148, 163, 184, 0.18);
+      --text: rgb(103,103,122);
+      --title: #000000;
+      --card-bg: #f4f3f0;
+      --border: #e4e2dd;
+      --transition: 0.28s cubic-bezier(0.4,0,0.2,1);
+      --page-max-width: 1056px;
+      --page-side-padding: 3.3rem;
+      --nav-height: 4.6rem;
+      --section-gap: 4.5rem;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html,
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: "Manrope", system-ui, -apple-system, BlinkMacSystemFont,
-        "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #f4f4ff 0, #f9fafb 40%, #ffffff 100%);
-      color: var(--fg);
+    body{
+      font-family: 'Manrope', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
       -webkit-font-smoothing: antialiased;
-      scroll-behavior: smooth;
+      overflow-x: hidden;
     }
 
-    body {
-      min-height: 100vh;
-      padding: 40px 0 80px;
-      display: flex;
-      flex-direction: column;
-      gap: 32px;
+    a { text-decoration:none; color:inherit; }
+
+    ::-webkit-scrollbar{ width:5px; }
+    ::-webkit-scrollbar-track{ background:var(--bg);}
+    ::-webkit-scrollbar-thumb{ background:var(--border); border-radius:3px; }
+
+    .container{
+      max-width:var(--page-max-width);
+      margin:0 auto;
+      padding:0 var(--page-side-padding);
+      box-sizing:border-box;
     }
 
-    /* Layout shell */
-    .page-shell {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 0 24px;
+    main {
+      padding-top: calc(var(--nav-height) + 4.5rem);
+      padding-bottom: 4rem;
     }
 
-    /* Breadcrumb */
-    .breadcrumb {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 13px;
-      color: var(--muted);
-      margin-bottom: 12px;
-    }
-
-    .breadcrumb a {
-      color: inherit;
-      text-decoration: none;
-      position: relative;
-      padding-bottom: 2px;
-    }
-
-    .breadcrumb a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 0;
-      height: 1px;
-      background: rgba(15, 23, 42, 0.35);
-      transition: width 0.18s ease-out;
-    }
-
-    .breadcrumb a:hover::after {
-      width: 100%;
-    }
-
-    .breadcrumb-separator {
-      opacity: 0.45;
-    }
-
-    .breadcrumb-current {
-      color: rgba(15, 23, 42, 0.88);
-    }
-
-    /* Hero */
+    /* HERO */
     .project-hero {
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-      padding: 20px 24px 24px;
-      border-radius: 24px;
-      background: linear-gradient(
-          135deg,
-          rgba(37, 99, 235, 0.04),
-          rgba(79, 70, 229, 0.06)
-        ),
-        #ffffff;
-      border: 1px solid rgba(148, 163, 184, 0.22);
-      box-shadow: 0 22px 80px rgba(15, 23, 42, 0.12);
-      backdrop-filter: blur(16px);
-      margin-bottom: 28px;
+      padding-bottom: 3.5rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: var(--section-gap);
     }
 
-    .project-pill-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-    }
-
-    .project-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 4px 11px;
-      border-radius: 999px;
-      background: rgba(15, 23, 42, 0.03);
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: rgba(15, 23, 42, 0.7);
-    }
-
-    .project-status-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, #4f46e5, #22c55e);
-      box-shadow: 0 0 10px rgba(34, 197, 94, 0.6);
-      flex-shrink: 0;
-    }
-
-    .project-title-block {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .project-title-row {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: baseline;
-      gap: 10px;
+    .project-hero-layout {
+      display:grid;
+      grid-template-columns: minmax(0, 1.8fr) minmax(0, 1fr);
+      gap:3rem;
+      align-items:flex-start;
     }
 
     .project-title {
-      font-size: clamp(30px, 4vw, 38px);
-      letter-spacing: -0.04em;
-      font-weight: 700;
-      color: #020617;
-    }
-
-    .project-type-tag {
-      padding: 3px 9px;
-      border-radius: 999px;
-      background: rgba(37, 99, 235, 0.07);
-      color: #1d4ed8;
-      font-size: 11px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
+      font-size: clamp(2.3rem, 3.8vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      color: var(--title);
+      margin-bottom: 1.3rem;
     }
 
     .project-subtitle {
-      font-size: 14px;
-      color: rgba(15, 23, 42, 0.75);
-      max-width: 540px;
+      font-size: 0.96rem;
+      max-width: 34rem;
     }
 
-    /* Meta / Overview */
-    .project-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
-      gap: 28px;
-      margin-bottom: 40px;
-    }
-
-    .project-overview-card {
-      padding: 20px 22px;
-      border-radius: 24px;
-      background: #ffffff;
-      border: 1px solid var(--border-subtle);
-      box-shadow: var(--shadow-soft);
-    }
-
-    .project-overview-label {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: rgba(15, 23, 42, 0.6);
-      margin-bottom: 8px;
-    }
-
-    .project-overview-text {
-      font-size: 14px;
-      line-height: 1.8;
-      color: rgba(15, 23, 42, 0.8);
-    }
-
-    .project-meta-card {
-      padding: 18px 20px;
-      border-radius: 24px;
-      background: rgba(248, 250, 252, 0.88);
-      border: 1px solid rgba(148, 163, 184, 0.45);
-      box-shadow: 0 18px 50px rgba(148, 163, 184, 0.18);
+    /* META CARD */
+    .project-meta-shell {
+      grid-column: 1 / -1;
+      margin-top: 2.2rem;
+      border-radius:18px;
+      border:1px solid var(--border);
+      background:#f7f7f7;
+      padding:1.1rem 1.4rem 1.2rem;
+      font-size:0.86rem;
     }
 
     .project-meta-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px 18px;
-      font-size: 13px;
+      display:grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap:0.6rem 1.8rem;
     }
 
-    .meta-item {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
+    .project-meta-item {
+      min-width:0;
     }
 
-    .meta-label {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: rgba(15, 23, 42, 0.6);
-      font-weight: 600;
+    .project-meta-label {
+      font-size:0.75rem;
+      text-transform:uppercase;
+      letter-spacing:.13em;
+      font-weight:700;
+      color:#9a9aa8;
+      margin-bottom:0.18rem;
+      display:block;
     }
 
-    .meta-value {
-      font-size: 13px;
-      color: #020617;
-      font-weight: 500;
+    .project-meta-value {
+      font-weight:600;
+      color:var(--title);
+      font-size:0.9rem;
+      display:block;
     }
 
-    /* Sections */
     .section {
-      padding: 28px 0 8px;
-      border-top: 1px solid rgba(226, 232, 240, 0.9);
-      margin-top: 12px;
+      margin-bottom: var(--section-gap);
     }
 
-    .section-header {
-      margin-bottom: 16px;
+    .section-kicker {
+      font-size:0.8rem;
+      text-transform:uppercase;
+      letter-spacing:.13em;
+      font-weight:700;
+      color:#8a8a8a;
+      margin-bottom:0.6rem;
     }
 
-    .section-eyebrow {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: rgba(15, 23, 42, 0.6);
-      margin-bottom: 4px;
+    .section-heading {
+      font-size:clamp(1.7rem,3vw,2.2rem);
+      font-weight:800;
+      letter-spacing:-0.02em;
+      color:var(--title);
+      margin-bottom:1.3rem;
     }
 
-    .section-title {
-      font-size: 18px;
-      font-weight: 600;
-      letter-spacing: -0.03em;
-      color: #020617;
-      margin-bottom: 4px;
+    .body-text {
+      font-size:0.96rem;
     }
 
-    .section-lead {
-      font-size: 13px;
-      color: rgba(15, 23, 42, 0.7);
-      max-width: 540px;
+    .body-text p + p { margin-top:1rem; }
+
+    .full-width-block {
+      max-width:var(--page-max-width);
+      margin:0 auto;
     }
 
-    .section-body {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-top: 8px;
+    /* Inline card */
+    .inline-card-full {
+      margin-top:1.4rem;
+      padding:1.1rem 1.2rem;
+      border-radius:16px;
+      background:#f5f5f7;
+      border:1px solid #e4e2dd;
+      font-size:0.9rem;
     }
 
-    .section-body p {
-      font-size: 14px;
-      line-height: 1.85;
-      color: rgba(15, 23, 42, 0.85);
+    .inline-card-title {
+      font-weight:700;
+      margin-bottom:0.4rem;
+      color:var(--title);
     }
 
-    /* Inline galleries */
-    .inline-gallery {
-      margin-top: 32px;
-      padding: 22px 22px 20px;
-      border-radius: var(--radius-xl);
-      background: #ffffff;
-      border: 1px solid rgba(226, 232, 240, 0.9);
-      box-shadow: var(--shadow-subtle);
+    .inline-card-full ul {
+      padding-left:1.2rem;
+      list-style:disc;
     }
 
-    .inline-gallery-header {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      margin-bottom: 18px;
+    .inline-card-full li + li { margin-top:0.35rem; }
+
+    /* Galleries */
+    .gallery-wrapper {
+      margin-top:2rem;
     }
 
-    .inline-gallery-title {
-      font-size: 16px;
-      font-weight: 600;
-      letter-spacing: -0.02em;
-      color: #020617;
-    }
-
-    .inline-gallery-subtitle {
-      font-size: 13px;
-      color: rgba(15, 23, 42, 0.7);
+    .gallery-title {
+      font-size:clamp(1.4rem,2.4vw,1.8rem);
+      font-weight:800;
+      letter-spacing:-0.02em;
+      color:var(--title);
+      margin-bottom:1.6rem;
     }
 
     .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap:1.8rem;
     }
 
     .gallery-item figure {
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
+      margin:0;
     }
 
     .gallery-item img {
-      width: 100%;
-      display: block;
-      border-radius: 18px;
-      border: 1px solid rgba(148, 163, 184, 0.4);
+      width:100%;
+      display:block;
+      border-radius:12px;
+      border:1px solid #e5e7eb;
+      box-shadow:0 12px 40px rgba(15,23,42,0.12);
       cursor: zoom-in;
-      transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
-      box-shadow: 0 14px 45px rgba(15, 23, 42, 0.14);
-    }
-
-    .gallery-item img:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 18px 55px rgba(15, 23, 42, 0.18);
     }
 
     .gallery-caption {
-      font-size: 12px;
-      line-height: 1.6;
-      color: rgba(15, 23, 42, 0.7);
+      margin-top:0.6rem;
+      font-size:0.86rem;
+      line-height:1.5;
+      color:#777;
     }
 
     /* Credits */
     .credits-section {
-      margin-top: 40px;
-      padding: 22px 22px 20px;
-      border-radius: var(--radius-xl);
-      background: #ffffff;
-      border: 1px solid rgba(226, 232, 240, 0.9);
-      box-shadow: var(--shadow-subtle);
+      margin-top:0;
     }
 
-    .credits-title {
-      font-size: 15px;
-      font-weight: 600;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: rgba(15, 23, 42, 0.7);
-      margin-bottom: 14px;
+    .credits-heading {
+      font-size:clamp(1.6rem,2.6vw,2rem);
+      font-weight:800;
+      letter-spacing:-0.02em;
+      color:var(--title);
+      margin-bottom:1.6rem;
     }
 
     .credits-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 8px 18px;
-      font-size: 13px;
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap:1rem 2.4rem;
+      font-size:0.9rem;
     }
 
     .credit-item {
-      line-height: 1.6;
-      color: rgba(15, 23, 42, 0.85);
+      color:var(--text);
+      line-height:1.8;
     }
 
     .credit-role {
-      font-weight: 600;
-      color: #020617;
+      font-weight:700;
+      color:var(--title);
     }
 
-    /* Lightbox overlay (reusing ikea-page.js behaviour) */
+    .project-nav {
+      margin-top:3rem;
+      padding-top:1.8rem;
+      border-top:1px solid var(--border);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:1rem;
+      font-size:0.9rem;
+    }
+
+    .project-nav a {
+      font-weight:600;
+      text-decoration:underline;
+      text-underline-offset:3px;
+    }
+
+    .project-nav-up {
+      display:inline-flex;
+      align-items:center;
+      gap:0.35rem;
+    }
+
+    /* Lightbox & scroll-to-top (reused by ikea-page.js) */
     .lightbox-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(15, 23, 42, 0.78);
+      background: rgba(0,0,0,0.75);
       display: none;
       align-items: center;
       justify-content: center;
-      z-index: 50;
-      padding: 18px;
+      z-index: 9999;
+      padding: 1.5rem;
     }
 
     .lightbox-overlay.open {
@@ -416,64 +284,67 @@
 
     .lightbox-content {
       position: relative;
-      max-width: 920px;
-      width: 100%;
+      max-width: 90vw;
       max-height: 90vh;
       display: flex;
       flex-direction: column;
-      gap: 8px;
       align-items: center;
+      gap: 0.75rem;
     }
 
     .lightbox-content img {
       max-width: 100%;
       max-height: 80vh;
-      border-radius: 18px;
-      border: 1px solid rgba(148, 163, 184, 0.7);
-      box-shadow: 0 30px 80px rgba(15, 23, 42, 0.65);
-      background: #020617;
+      width: auto;
+      height: auto;
       object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 4px 25px rgba(0,0,0,0.4);
+      background: #000;
     }
 
     .lightbox-caption {
-      font-size: 13px;
-      color: #e5e7eb;
+      color: #f5f5f5;
+      font-size: 0.95rem;
+      line-height: 1.5;
       text-align: center;
-      max-width: 720px;
+      max-width: 800px;
     }
 
     .lightbox-close {
       position: absolute;
-      top: -28px;
-      right: -28px;
-      width: 28px;
-      height: 28px;
-      border-radius: 999px;
+      top: -32px;
+      right: -32px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(0,0,0,0.8);
+      color: #fff;
       border: none;
-      background: rgba(15, 23, 42, 0.92);
-      color: #f9fafb;
+      cursor: pointer;
       font-size: 18px;
       display: flex;
       align-items: center;
       justify-content: center;
-      cursor: pointer;
     }
 
-    /* Scroll to top */
     #scroll-to-top {
       display: none;
       position: fixed;
       bottom: 20px;
-      right: 26px;
-      width: 46px;
-      height: 46px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.8);
-      background: #111827;
+      right: 30px;
+      z-index: 99;
+      border: none;
+      outline: none;
+      background-color: #6c757d;
       cursor: pointer;
-      z-index: 40;
+      width: 50px;
+      height: 50px;
+      border-radius: 4px;
+      box-shadow: none;
       align-items: center;
       justify-content: center;
+      transition: background-color 0.3s ease;
     }
 
     #scroll-to-top.show-flex {
@@ -481,331 +352,431 @@
     }
 
     #scroll-to-top::before {
-      content: "";
+      content: '';
       display: block;
-      width: 9px;
-      height: 9px;
-      border-top: 2px solid #f9fafb;
-      border-right: 2px solid #f9fafb;
-      transform: rotate(-45deg) translateY(2px);
+      width: 8px;
+      height: 8px;
+      border-top: 2.5px solid white;
+      border-right: 2.5px solid white;
+      transform: rotate(-45deg);
     }
 
-    /* Responsive */
-    @media (max-width: 900px) {
-      body {
-        padding-top: 28px;
-      }
+    #scroll-to-top:hover {
+      background-color: #5a6268;
+    }
 
-      .page-shell {
-        padding: 0 18px;
+    @media (max-width:900px){
+      .project-hero-layout{
+        grid-template-columns:1fr;
+        gap:2.2rem;
       }
-
-      .project-hero {
-        padding: 18px 18px 20px;
-        border-radius: 20px;
+      .project-meta-grid{
+        grid-template-columns:repeat(2,minmax(0,1fr));
       }
-
-      .project-grid {
-        grid-template-columns: minmax(0, 1fr);
+      .gallery-grid{
+        grid-template-columns:repeat(2,minmax(0,1fr));
       }
-
-      .project-meta-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+      .credits-grid{
+        grid-template-columns:repeat(2,minmax(0,1fr));
       }
+    }
 
-      .inline-gallery,
-      .credits-section {
-        padding: 18px 18px 18px;
-        border-radius: 20px;
+    @media (max-width:768px){
+      .container{ padding:0 1.5rem; }
+      main{
+        padding-top:calc(var(--nav-height) + 2.4rem);
+        padding-bottom:3rem;
       }
-
-      .gallery-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+      .project-meta-grid{
+        grid-template-columns:1fr;
       }
-
-      .credits-grid {
-        grid-template-columns: minmax(0, 1fr);
+      .gallery-grid{
+        grid-template-columns:1fr;
       }
-
+      .credits-grid{
+        grid-template-columns:1fr;
+      }
+      .lightbox-content {
+        max-width: 100vw;
+        max-height: 100vh;
+      }
       .lightbox-close {
         top: 8px;
         right: 8px;
       }
     }
-
-    @media (max-width: 600px) {
-      .gallery-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
   </style>
 </head>
-
 <body>
-  <script src="../assets/js/include.js" defer></script>
-  <div data-include="../menu.html"></div>
 
-  <main class="page-shell">
-    <!-- Breadcrumb -->
-    <nav class="breadcrumb" aria-label="Breadcrumb">
-      <a href="../index.html">Portfolio</a>
-      <span class="breadcrumb-separator">/</span>
-      <span class="breadcrumb-current">Airo</span>
-    </nav>
+  <div id="menu-container"></div>
 
-    <!-- Hero -->
-    <header class="project-hero">
-      <div class="project-pill-row">
-        <span class="project-pill">
-          <span class="project-status-dot"></span>
-          Platforms · Mobility
-        </span>
-      </div>
-
-      <div class="project-title-block">
-        <div class="project-title-row">
-          <h1 class="project-title">Airo</h1>
-          <span class="project-type-tag">University project</span>
-        </div>
-        <p class="project-subtitle">
-          A universal public transport card and digital service designed to
-          reward sustainable mobility habits in large cities.
-        </p>
-      </div>
-    </header>
-
-    <!-- Meta + Overview -->
-    <section class="project-grid" aria-label="Project overview">
-      <article class="project-overview-card">
-        <div class="project-overview-label">Overview</div>
-        <p class="project-overview-text">
-          Airo was a university entrepreneurship and innovation proposal created with a
-          team of classmates. The project envisioned a universal transport card for train,
-          tram, bus and metro, designed to encourage the use of public transport through
-          a reward system and to promote a more sustainable and active lifestyle.
-        </p>
-      </article>
-
-      <aside class="project-meta-card">
-        <div class="project-meta-grid">
-          <div class="meta-item">
-            <span class="meta-label">Client</span>
-            <span class="meta-value">University project</span>
+  <main>
+    <!-- HERO -->
+    <section class="project-hero">
+      <div class="container">
+        <div class="project-hero-layout">
+          <div>
+            <h1 class="project-title">Airo – Universal public transport card</h1>
+            <p class="project-subtitle">
+              A university concept for a universal public transport card and digital service
+              that rewards sustainable mobility and makes buses, trains, trams and metro feel
+              like one connected system.
+            </p>
           </div>
-          <div class="meta-item">
-            <span class="meta-label">Year</span>
-            <span class="meta-value">2023</span>
+
+          <div></div>
+
+          <!-- META -->
+          <div class="project-meta-shell">
+            <div class="project-meta-grid">
+              <div class="project-meta-item">
+                <span class="project-meta-label">Client</span>
+                <span class="project-meta-value">University project</span>
+              </div>
+              <div class="project-meta-item">
+                <span class="project-meta-label">Year</span>
+                <span class="project-meta-value">2023</span>
+              </div>
+              <div class="project-meta-item">
+                <span class="project-meta-label">Sector</span>
+                <span class="project-meta-value">Mobility</span>
+              </div>
+              <div class="project-meta-item">
+                <span class="project-meta-label">My role</span>
+                <span class="project-meta-value">Visual design & content</span>
+              </div>
+            </div>
           </div>
-          <div class="meta-item">
-            <span class="meta-label">Sector</span>
-            <span class="meta-value">Mobility</span>
-          </div>
-          <div class="meta-item">
-            <span class="meta-label">Role</span>
-            <span class="meta-value">Visual design & content</span>
-          </div>
-        </div>
-      </aside>
-    </section>
-
-    <!-- Challenge / Context -->
-    <section class="section" aria-labelledby="airo-context">
-      <header class="section-header">
-        <div class="section-eyebrow">Context</div>
-        <h2 class="section-title" id="airo-context">Making public transport more attractive</h2>
-        <p class="section-lead">
-          Encouraging people to swap the private car for a unified, connected
-          public transport experience.
-        </p>
-      </header>
-
-      <div class="section-body">
-        <p>
-          The main goal was to reduce car usage and CO₂ emissions in large cities while
-          ensuring public transport remained affordable, comfortable, safe and efficient.
-          To orchestrate the experience, the concept included both a website and a mobile
-          app where users could check routes, benefits and redeem the rewards generated by
-          their everyday mobility.
-        </p>
-        <p>
-          The proposal also incorporated a fully digital card option to minimise the
-          consumption of physical materials and align the service with environmental
-          sustainability principles. Bringing every transport mode together under a single
-          card simplified the user experience and strengthened the idea of a more connected,
-          intelligent and environmentally friendly urban mobility ecosystem.
-        </p>
-      </div>
-    </section>
-
-    <!-- App gallery -->
-    <section class="inline-gallery" aria-labelledby="airo-app">
-      <header class="inline-gallery-header">
-        <div class="section-eyebrow">Product</div>
-        <h2 class="inline-gallery-title" id="airo-app">Mobile app</h2>
-        <p class="inline-gallery-subtitle">
-          Key screens that articulate the loyalty mechanics and day‑to‑day mobility tools.
-        </p>
-      </header>
-
-      <div class="gallery-grid">
-        <div class="gallery-item">
-          <figure>
-            <img
-              src="../assets/img/airo-app-design-1.png"
-              alt="Airo app home screen showcasing the rewards system"
-            />
-            <figcaption class="gallery-caption">
-              Home screen of the Airo app highlighting the reward system for sustainable mobility.
-            </figcaption>
-          </figure>
-        </div>
-        <div class="gallery-item">
-          <figure>
-            <img
-              src="../assets/img/airo-app-design-2.png"
-              alt="Airo app route planning interface"
-            />
-            <figcaption class="gallery-caption">
-              Interface for checking routes and planning journeys across different public transport modes.
-            </figcaption>
-          </figure>
-        </div>
-        <div class="gallery-item">
-          <figure>
-            <img
-              src="../assets/img/airo-app-design-3.png"
-              alt="Airo app rewards redemption screen"
-            />
-            <figcaption class="gallery-caption">
-              Benefits dashboard and reward redemption flow based on accumulated sustainable trips.
-            </figcaption>
-          </figure>
-        </div>
-        <div class="gallery-item">
-          <figure>
-            <img
-              src="../assets/img/airo-app-design-4.png"
-              alt="Airo app digital card management screen"
-            />
-            <figcaption class="gallery-caption">
-              Management of the integrated digital transport card directly from the app.
-            </figcaption>
-          </figure>
-        </div>
-        <div class="gallery-item">
-          <figure>
-            <img
-              src="../assets/img/airo-app-design-5.png"
-              alt="Airo app usage statistics and CO2 savings"
-            />
-            <figcaption class="gallery-caption">
-              Usage statistics and estimated CO₂ savings to make the environmental impact more tangible.
-            </figcaption>
-          </figure>
-        </div>
-        <div class="gallery-item">
-          <figure>
-            <img
-              src="../assets/img/airo-app-design-6.png"
-              alt="Airo app user profile and preferences screen"
-            />
-            <figcaption class="gallery-caption">
-              User profile with preferences and configuration options for a more personalised experience.
-            </figcaption>
-          </figure>
         </div>
       </div>
     </section>
 
-    <!-- Brand / Style guide -->
-    <section class="inline-gallery" aria-labelledby="airo-style-guide">
-      <header class="inline-gallery-header">
-        <div class="section-eyebrow">Brand</div>
-        <h2 class="inline-gallery-title" id="airo-style-guide">Style guide</h2>
-        <p class="inline-gallery-subtitle">
-          Visual identity foundations that keep the card, app and communications coherent.
-        </p>
-      </header>
+    <!-- 01 · Concept -->
+    <section class="section">
+      <div class="container">
+        <div class="full-width-block">
+          <div class="section-kicker">01 · Concept</div>
+          <h2 class="section-heading">A card that rewards everyday sustainable mobility</h2>
 
-      <div class="gallery-grid">
-        <div class="gallery-item">
-          <figure>
-            <img
-              src="../assets/img/airo-brand-book-1.png"
-              alt="Airo brand book page showing visual identity and color palette"
-            />
-            <figcaption class="gallery-caption">
-              Visual identity and core colour palette for the Airo brand.
-            </figcaption>
-          </figure>
+          <div class="body-text">
+            <p>
+              Airo was a university entrepreneurship and innovation proposal created with a group of classmates.
+              The project envisioned a universal transport card for train, tram, bus and metro, designed to
+              encourage the use of public transport through a reward system and promote a more sustainable
+              and active lifestyle.
+            </p>
+            <p>
+              The main objective was to reduce private car use and CO₂ emissions in large cities while keeping
+              public transport affordable, comfortable, safe and efficient.
+            </p>
+            <p>
+              To manage the experience, we proposed both a website and a mobile app where users could check
+              routes, see the benefits they were unlocking and redeem rewards generated by their daily trips.
+            </p>
+            <p>
+              The concept also included a fully digital card, reducing the need for physical materials and
+              aligning the service with environmental sustainability criteria. Bringing all transport modes
+              together on a single medium simplified the user experience and reinforced the idea of a more
+              connected, intelligent and environmentally friendly urban mobility system.
+            </p>
+          </div>
+
+          <div class="inline-card-full">
+            <div class="inline-card-title">What Airo aims to solve</div>
+            <ul>
+              <li>Fragmented tickets and apps across different public transport operators.</li>
+              <li>Lack of clear incentives for people to switch from private car to public transport.</li>
+              <li>Low visibility of the positive environmental impact of everyday mobility choices.</li>
+            </ul>
+          </div>
         </div>
-        <div class="gallery-item">
-          <figure>
-            <img
-              src="../assets/img/airo-brand-book-2.png"
-              alt="Airo brand book page with typography and logo applications"
-            />
-            <figcaption class="gallery-caption">
-              Brand typography and examples of logo usage across different touchpoints.
-            </figcaption>
-          </figure>
+      </div>
+    </section>
+
+    <!-- 02 · App screens -->
+    <section class="section">
+      <div class="container">
+        <div class="full-width-block">
+          <div class="section-kicker">02 · Product</div>
+          <h2 class="section-heading">Mobile app to track trips, rewards and impact</h2>
+
+          <div class="body-text">
+            <p>
+              The app is the main touchpoint where people see their journeys, earned points and available
+              rewards. It brings together route planning, a loyalty system and a digital card so that the
+              service lives entirely on the phone.
+            </p>
+          </div>
+
+          <div class="gallery-wrapper">
+            <h3 class="gallery-title">Application</h3>
+            <div class="gallery-grid">
+              <div class="gallery-item">
+                <figure>
+                  <img src="../assets/img/airo-app-design-1.png" alt="Airo app home screen showing rewards system">
+                  <figcaption class="gallery-caption">
+                    Home screen of the Airo app highlighting the reward system for sustainable mobility.
+                  </figcaption>
+                </figure>
+              </div>
+              <div class="gallery-item">
+                <figure>
+                  <img src="../assets/img/airo-app-design-2.png" alt="Airo app route planning interface">
+                  <figcaption class="gallery-caption">
+                    Interface for checking routes and planning journeys across public transport.
+                  </figcaption>
+                </figure>
+              </div>
+              <div class="gallery-item">
+                <figure>
+                  <img src="../assets/img/airo-app-design-3.png" alt="Airo app rewards redemption screen">
+                  <figcaption class="gallery-caption">
+                    Rewards and benefits dashboard where users redeem points earned from daily trips.
+                  </figcaption>
+                </figure>
+              </div>
+              <div class="gallery-item">
+                <figure>
+                  <img src="../assets/img/airo-app-design-4.png" alt="Airo app digital card management screen">
+                  <figcaption class="gallery-caption">
+                    Management of the digital transport card integrated directly in the app.
+                  </figcaption>
+                </figure>
+              </div>
+              <div class="gallery-item">
+                <figure>
+                  <img src="../assets/img/airo-app-design-5.png" alt="Airo app statistics and CO2 savings view">
+                  <figcaption class="gallery-caption">
+                    Usage statistics and estimated CO₂ savings to make the impact of behaviour visible.
+                  </figcaption>
+                </figure>
+              </div>
+              <div class="gallery-item">
+                <figure>
+                  <img src="../assets/img/airo-app-design-6.png" alt="Airo app user profile and preferences screen">
+                  <figcaption class="gallery-caption">
+                    User profile with preferences and configuration options for a more tailored experience.
+                  </figcaption>
+                </figure>
+              </div>
+            </div>
+          </div>
+
         </div>
-        <div class="gallery-item">
-          <figure>
-            <img
-              src="../assets/img/airo-brand-book-3.png"
-              alt="Airo brand book page with graphic elements and visual assets"
-            />
-            <figcaption class="gallery-caption">
-              Graphic elements and visual resources that support the identity across product and marketing.
-            </figcaption>
-          </figure>
+      </div>
+    </section>
+
+    <!-- 03 · Brand / style guide -->
+    <section class="section">
+      <div class="container">
+        <div class="full-width-block">
+          <div class="section-kicker">03 · Brand</div>
+          <h2 class="section-heading">A visual identity that supports a calm, trustworthy service</h2>
+
+          <div class="body-text">
+            <p>
+              The visual identity was designed to feel clean, approachable and trustworthy — closer to a
+              daily utility than a purely promotional campaign. The brand system had to work on the card,
+              the app and future communication touchpoints.
+            </p>
+          </div>
+
+          <div class="gallery-wrapper">
+            <h3 class="gallery-title">Style guide</h3>
+            <div class="gallery-grid">
+              <div class="gallery-item">
+                <figure>
+                  <img src="../assets/img/airo-brand-book-1.png" alt="Airo brand book page with visual identity and color palette">
+                  <figcaption class="gallery-caption">
+                    Visual identity and colour palette for the Airo project.
+                  </figcaption>
+                </figure>
+              </div>
+              <div class="gallery-item">
+                <figure>
+                  <img src="../assets/img/airo-brand-book-2.png" alt="Airo brand book page with typography and logo applications">
+                  <figcaption class="gallery-caption">
+                    Brand typography and logo applications across different materials.
+                  </figcaption>
+                </figure>
+              </div>
+              <div class="gallery-item">
+                <figure>
+                  <img src="../assets/img/airo-brand-book-3.png" alt="Airo brand book page with graphic elements and visual assets">
+                  <figcaption class="gallery-caption">
+                    Graphic elements and visual resources that support the brand in product and communication.
+                  </figcaption>
+                </figure>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
 
     <!-- Credits -->
-    <section class="credits-section" aria-labelledby="airo-credits">
-      <h2 class="credits-title" id="airo-credits">Credits</h2>
-      <div class="credits-grid">
-        <p class="credit-item">
-          <span class="credit-role">Visual design & app content:</span>
-          &nbsp;Jan Escoda
-        </p>
-        <p class="credit-item">
-          <span class="credit-role">UX/UI design:</span>
-          &nbsp;Laura Delgado
-        </p>
-        <p class="credit-item">
-          <span class="credit-role">Scripting & project management:</span>
-          &nbsp;Eric Corvo
-        </p>
+    <section class="section credits-section">
+      <div class="container">
+        <div class="full-width-block">
+          <h2 class="credits-heading">Credits</h2>
+          <div class="credits-grid">
+            <div class="credit-item">
+              <span class="credit-role">Visual design & app content:</span> Jan Escoda
+            </div>
+            <div class="credit-item">
+              <span class="credit-role">UX/UI design:</span> Laura Delgado
+            </div>
+            <div class="credit-item">
+              <span class="credit-role">Scripting & project management:</span> Eric Corvo
+            </div>
+          </div>
+
+          <div class="project-nav">
+            <a href="../index.html#work" class="project-nav-up">← Back to works</a>
+            <a href="./scan-and-go.html">Next: Scan&Go Arcade →</a>
+          </div>
+        </div>
       </div>
     </section>
   </main>
 
+  <div id="footer-container"></div>
+
   <!-- Scroll to top -->
   <button id="scroll-to-top" title="Back to top" aria-label="Back to top"></button>
-
-  <div data-include="../footer.html"></div>
 
   <!-- Lightbox -->
   <div class="lightbox-overlay" id="lightbox">
     <div class="lightbox-content">
-      <button
-        class="lightbox-close"
-        id="lightbox-close"
-        aria-label="Close enlarged image"
-      >
-        ×
-      </button>
-      <img src="" alt="" id="lightbox-img" />
+      <button class="lightbox-close" id="lightbox-close" aria-label="Close enlarged image">×</button>
+      <img src="" alt="" id="lightbox-img">
       <div class="lightbox-caption" id="lightbox-caption"></div>
     </div>
   </div>
 
-  <!-- Reuse same JS used in the IKEA / Scan & Go pages for lightbox & scroll-to-top -->
-  <script src="../assets/js/ikea-page.js" defer></script>
+<script>
+  function copyEmail() {
+    var EMAIL = 'janescoda49@gmail.com';
+
+    function animate(btn) {
+      if (!btn) return;
+      btn.classList.add('copied');
+      setTimeout(function () {
+        btn.classList.remove('copied');
+      }, 2500);
+    }
+
+    function fallback() {
+      var el = document.createElement('textarea');
+      el.value = EMAIL;
+      el.style.cssText = 'position:fixed;opacity:0;top:0;left:0;';
+      document.body.appendChild(el);
+      el.focus();
+      el.select();
+      try { document.execCommand('copy'); } catch (e) {}
+      document.body.removeChild(el);
+    }
+
+    var btns = [
+      document.getElementById('copyBtn'),
+      document.getElementById('copyBtnMobile')
+    ];
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(EMAIL)
+        .then(function () { btns.forEach(animate); })
+        .catch(function () { fallback(); btns.forEach(animate); });
+    } else {
+      fallback();
+      btns.forEach(animate);
+    }
+  }
+
+  function initMenuBehavior() {
+    var nav = document.querySelector('.site-nav');
+    if (!nav) return;
+
+    var toggleBtn  = nav.querySelector('.nav-toggle');
+    var mobileMenu = nav.querySelector('.nav-right-mobile');
+
+    if (toggleBtn && mobileMenu) {
+      toggleBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var isOpen = nav.classList.toggle('is-open');
+        toggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+
+      mobileMenu.addEventListener('click', function (e) {
+        if (e.target.closest('.nav-link')) {
+          nav.classList.remove('is-open');
+          toggleBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      document.addEventListener('click', function (e) {
+        if (!nav.contains(e.target)) {
+          nav.classList.remove('is-open');
+          toggleBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+
+    ['copyBtn', 'copyBtnMobile'].forEach(function (id) {
+      var btn = document.getElementById(id);
+      if (!btn) return;
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        copyEmail();
+      });
+    });
+  }
+
+  function setActiveNav(page) {
+    document.querySelectorAll('.nav-link').forEach(function (link) {
+      link.classList.remove('is-active');
+    });
+
+    if (page === 'index') {
+      document.querySelectorAll('.nav-link[href="../index.html#work"]').forEach(function (l) {
+        l.classList.add('is-active');
+      });
+    } else if (page === 'about') {
+      document.querySelectorAll('.nav-link[href="../about.html"]').forEach(function (l) {
+        l.classList.add('is-active');
+      });
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    var menuContainer   = document.getElementById('menu-container');
+    var footerContainer = document.getElementById('footer-container');
+
+    var menuPromise = fetch('../menu.html')
+      .then(function (r) { return r.text(); })
+      .then(function (html) {
+        menuContainer.innerHTML = html;
+        initMenuBehavior();
+        setActiveNav('index');
+      })
+      .catch(function (err) {
+        console.error('Error loading menu.html', err);
+      });
+
+    var footerPromise = fetch('../footer.html')
+      .then(function (r) { return r.text(); })
+      .then(function (html) {
+        footerContainer.innerHTML = html;
+      })
+      .catch(function (err) {
+        console.error('Error loading footer.html', err);
+      });
+
+    Promise.all([menuPromise, footerPromise]).then(function () {});
+  });
+</script>
+
 </body>
 </html>
-
