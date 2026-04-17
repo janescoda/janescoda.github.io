@@ -1,174 +1,215 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Accesorios3d - Jan Escoda</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Accesorios3d – 3D printed home accessories · Jan Escoda</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    html { font-size: 110%; scroll-behavior: smooth; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root{
+      --bg: #ffffff;
+      --text: rgb(103,103,122);
+      --title: #000000;
+      --card-bg: #f4f3f0;
+      --border: #e4e2dd;
+      --transition: 0.28s cubic-bezier(0.4,0,0.2,1);
+      --page-max-width: 1056px;
+      --page-side-padding: 3.3rem;
+      --nav-height: 4.6rem;
+      --section-gap: 4.5rem;
     }
 
-    body {
-      padding-top: 72px;
-      font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      color: #333;
-      background: #fff;
+    body{
+      font-family: 'Manrope', sans-serif;
+      background: var(--bg);
+      color: var(--text);
       line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
 
-    .breadcrumb {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 2rem 5% 0;
-      font-size: 0.95rem;
+    a { text-decoration:none; color:inherit; }
+
+    ::-webkit-scrollbar{ width:5px; }
+    ::-webkit-scrollbar-track{ background:var(--bg);}
+    ::-webkit-scrollbar-thumb{ background:var(--border); border-radius:3px; }
+
+    .container{
+      max-width:var(--page-max-width);
+      margin:0 auto;
+      padding:0 var(--page-side-padding);
+      box-sizing:border-box;
     }
 
-    .breadcrumb a,
-    .breadcrumb .current {
-      color: #555;
-      text-decoration: none;
-      transition: color 0.3s ease;
+    main {
+      padding-top: calc(var(--nav-height) + 4.5rem);
+      padding-bottom: 4rem;
     }
 
-    .breadcrumb a {
-      font-weight: 400;
-    }
-
-    .breadcrumb a:hover {
-      color: #000;
-    }
-
-    .breadcrumb span {
-      color: #bbb;
-      margin: 0 0.5rem;
-    }
-
-    .breadcrumb .current {
-      font-weight: 400;
-    }
-
+    /* HERO */
     .project-hero {
-      padding: 3rem 5% 2rem;
-      text-align: center;
-      max-width: 1400px;
-      margin: 0 auto;
+      padding-bottom: 3.5rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: var(--section-gap);
     }
 
-    .project-category {
-      font-size: 0.85rem;
-      font-weight: 600;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: #999;
-      margin-bottom: 1rem;
+    .project-hero-layout {
+      display:grid;
+      grid-template-columns: minmax(0, 1.8fr) minmax(0, 1fr);
+      gap:3rem;
+      align-items:flex-start;
     }
 
-    .project-hero h1 {
-      font-size: clamp(2.8rem, 6vw, 4rem);
-      font-weight: 700;
-      letter-spacing: -1.5px;
-      color: #1a1a1a;
-      margin-bottom: 1.5rem;
+    .project-title {
+      font-size: clamp(2.3rem, 3.8vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      color: var(--title);
+      margin-bottom: 1.3rem;
     }
 
-    .project-meta {
-      max-width: 1400px;
-      margin: 1.5rem auto 3rem;
-      padding: 0 5%;
-      display: flex;
-      justify-content: center;
-      gap: 4rem;
-      flex-wrap: wrap;
+    .project-subtitle {
+      font-size: 0.96rem;
+      max-width: 34rem;
     }
 
-    .meta-item {
-      text-align: center;
+    /* META */
+    .project-meta-shell {
+      grid-column: 1 / -1;
+      margin-top: 2.2rem;
+      border-radius:18px;
+      border:1px solid var(--border);
+      background:#f7f7f7;
+      padding:1.1rem 1.4rem 1.2rem;
+      font-size:0.86rem;
     }
 
-    .meta-label {
-      font-size: 0.85rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: #999;
-      margin-bottom: 0.5rem;
+    .project-meta-grid {
+      display:grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap:0.6rem 1.8rem;
     }
 
-    .meta-value {
-      font-size: 1.05rem;
-      color: #1a1a1a;
-      font-weight: 500;
+    .project-meta-item {
+      min-width:0;
     }
 
-    .project-content {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 4rem 5% 0;
+    .project-meta-label {
+      font-size:0.75rem;
+      text-transform:uppercase;
+      letter-spacing:.13em;
+      font-weight:700;
+      color:#9a9aa8;
+      margin-bottom:0.18rem;
+      display:block;
     }
 
-    .content-section {
-      margin-bottom: 4rem;
+    .project-meta-value {
+      font-weight:600;
+      color:var(--title);
+      font-size:0.9rem;
+      display:block;
     }
 
-    .content-section p {
-      font-size: 1.05rem;
-      line-height: 1.9;
-      color: #555;
-      margin-bottom: 1.2rem;
+    /* SECTIONS */
+    .section {
+      margin-bottom: var(--section-gap);
     }
 
-    .project-gallery {
-      max-width: 1400px;
-      margin: 4rem auto;
-      padding: 0 5%;
+    .section-kicker {
+      font-size:0.8rem;
+      text-transform:uppercase;
+      letter-spacing:.13em;
+      font-weight:700;
+      color:#8a8a8a;
+      margin-bottom:0.6rem;
     }
 
-    .gallery-title {
-      font-size: 2rem;
-      font-weight: 700;
-      color: #1a1a1a;
-      margin-bottom: 2.5rem;
-      letter-spacing: -0.5px;
-      text-align: center;
+    .section-heading {
+      font-size:clamp(1.7rem,3vw,2.2rem);
+      font-weight:800;
+      letter-spacing:-0.02em;
+      color:var(--title);
+      margin-bottom:1.3rem;
     }
 
-    .single-image {
-      max-width: 500px;
-      margin: 0 auto;
+    .body-text {
+      font-size:0.96rem;
     }
 
-    .single-image figure {
+    .body-text p + p { margin-top:1rem; }
+
+    .full-width-block {
+      max-width:var(--page-max-width);
+      margin:0 auto;
+    }
+
+    /* SIMPLE INLINE CARD */
+    .inline-card-full {
+      margin-top:1.4rem;
+      padding:1.1rem 1.2rem;
+      border-radius:16px;
+      background:#f5f5f7;
+      border:1px solid #e4e2dd;
+      font-size:0.9rem;
+    }
+
+    .inline-card-title {
+      font-weight:700;
+      margin-bottom:0.4rem;
+      color:var(--title);
+    }
+
+    .inline-card-full ul {
+      padding-left:1.2rem;
+      list-style:disc;
+    }
+
+    .inline-card-full li + li { margin-top:0.35rem; }
+
+    /* GALLERIES */
+    .gallery-single {
+      max-width: 480px;
       margin: 0;
     }
 
-    .single-image img {
-      width: 100%;
-      display: block;
-      border-radius: 8px;
-      box-shadow: 0 2px 15px rgba(0,0,0,0.06);
-      cursor: zoom-in;
+    .gallery-single figure {
+      margin:0;
+    }
+
+    .gallery-single img {
+      width:100%;
+      border-radius:14px;
+      box-shadow:0 14px 45px rgba(15,23,42,0.12);
+      display:block;
+    }
+
+    .gallery-caption {
+      font-size:0.82rem;
+      color:#6b7280;
+      line-height:1.5;
+      margin-top:0.55rem;
     }
 
     .gallery-grid-4 {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 2.5rem;
-      max-width: 1400px;
-      margin: 0 auto;
+      display:grid;
+      grid-template-columns: repeat(4, minmax(0,1fr));
+      gap:2rem;
     }
 
     .gallery-grid-4 .gallery-item figure {
-      margin: 0;
-      display: flex;
-      flex-direction: column;
+      margin:0;
+      display:flex;
+      flex-direction:column;
+      gap:0.5rem;
     }
 
     .gallery-grid-4.productos .gallery-item-image {
@@ -176,423 +217,526 @@
       width: 100%;
       padding-bottom: 100%;
       overflow: hidden;
-      border-radius: 8px;
-      box-shadow: 0 2px 15px rgba(0,0,0,0.06);
+      border-radius: 12px;
       background: #f5f5f5;
+      box-shadow:0 14px 45px rgba(15,23,42,0.12);
     }
 
     .gallery-grid-4.productos .gallery-item-image img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-      display: block;
-      cursor: zoom-in;
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:center;
+      display:block;
     }
 
     .gallery-grid-web {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2.5rem;
-      max-width: 1100px;
-      margin: 0 auto;
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap:2rem;
     }
 
     .gallery-grid-web .gallery-item figure {
-      margin: 0;
+      margin:0;
+      display:flex;
+      flex-direction:column;
+      gap:0.5rem;
     }
 
     .gallery-grid-web .gallery-item img {
-      width: 100%;
-      display: block;
-      border-radius: 8px;
-      box-shadow: 0 2px 15px rgba(0,0,0,0.06);
-      cursor: zoom-in;
+      width:100%;
+      border-radius:14px;
+      box-shadow:0 14px 45px rgba(15,23,42,0.12);
+      display:block;
     }
 
-    .gallery-caption {
-      margin-top: 0.6rem;
-      font-size: 0.9rem;
-      line-height: 1.5;
-      color: #777;
-    }
-
-    .credits-section {
-      max-width: 900px;
-      margin: 6rem auto;
-      padding: 0 5% 6rem;
-    }
-
-    .credits-section h2 {
-      font-size: 2rem;
-      font-weight: 700;
-      color: #1a1a1a;
-      margin-bottom: 2rem;
-      letter-spacing: -0.5px;
+    /* CREDITS & NAV */
+    .results-section-title {
+      font-size:clamp(1.6rem,2.6vw,2rem);
+      font-weight:800;
+      letter-spacing:-0.02em;
+      color:var(--title);
+      margin-bottom:1.6rem;
     }
 
     .credits-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1rem 4rem;
+      display:grid;
+      grid-template-columns:minmax(0,1fr);
+      gap:1rem 2.5rem;
+      font-size:0.9rem;
     }
 
     .credit-item {
-      font-size: 0.95rem;
-      color: #555;
-      line-height: 1.8;
+      color:var(--text);
+      line-height:1.7;
     }
 
     .credit-role {
-      font-weight: 600;
-      color: #1a1a1a;
+      font-weight:700;
+      color:var(--title);
     }
 
-    @media (max-width: 768px) {
-      .breadcrumb {
-        padding: 1.5rem 5% 0;
-        font-size: 0.9rem;
-      }
+    .project-nav {
+      margin-top:3rem;
+      padding-top:1.8rem;
+      border-top:1px solid var(--border);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:1rem;
+      font-size:0.9rem;
+    }
 
-      .project-meta {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem 2rem;
-        justify-content: center;
-      }
+    .project-nav a {
+      font-weight:600;
+      text-decoration:underline;
+      text-underline-offset:3px;
+    }
 
-      .meta-item {
-        text-align: left;
-      }
+    .project-nav-up {
+      display:inline-flex;
+      align-items:center;
+      gap:0.35rem;
+    }
 
-      .project-hero {
-        padding: 2rem 5% 2rem;
+    @media (max-width:900px){
+      .project-hero-layout{
+        grid-template-columns:1fr;
+        gap:2.2rem;
       }
-
-      .project-content {
-        padding: 3rem 5% 0;
+      .project-meta-grid{
+        grid-template-columns:repeat(2,minmax(0,1fr));
       }
-
-      .gallery-grid-4 {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 2rem;
+      .gallery-grid-4{
+        grid-template-columns:repeat(2,minmax(0,1fr));
       }
-
-      .gallery-grid-web {
-        grid-template-columns: 1fr;
-        max-width: 600px;
-        gap: 2rem;
-      }
-
-      .credits-grid {
-        gap: 0.8rem 2rem;
+      .gallery-grid-web{
+        grid-template-columns:minmax(0,1fr);
       }
     }
 
-    #scroll-to-top {
-      display: none;
-      position: fixed;
-      bottom: 20px;
-      right: 30px;
-      z-index: 99;
-      border: none;
-      outline: none;
-      background-color: #6c757d;
-      cursor: pointer;
-      width: 50px;
-      height: 50px;
-      border-radius: 4px;
-      box-shadow: none;
-      transition: background-color 0.3s ease;
-      align-items: center;
-      justify-content: center;
-    }
-
-    #scroll-to-top.show-flex {
-      display: flex;
-    }
-
-    #scroll-to-top::before {
-      content: '';
-      display: block;
-      width: 8px;
-      height: 8px;
-      border-top: 2.5px solid white;
-      border-right: 2.5px solid white;
-      transform: rotate(-45deg);
-    }
-
-    #scroll-to-top:hover {
-      background-color: #5a6268;
-    }
-
-    .lightbox-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.75);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
-      padding: 1.5rem;
-    }
-
-    .lightbox-overlay.open {
-      display: flex;
-    }
-
-    .lightbox-content {
-      position: relative;
-      max-width: 90vw;
-      max-height: 90vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.75rem;
-    }
-
-    .lightbox-content img {
-      max-width: 100%;
-      max-height: 80vh;
-      width: auto;
-      height: auto;
-      object-fit: contain;
-      border-radius: 8px;
-      box-shadow: 0 4px 25px rgba(0,0,0,0.4);
-      background: #000;
-    }
-
-    .lightbox-caption {
-      color: #f5f5f5;
-      font-size: 0.95rem;
-      line-height: 1.5;
-      text-align: center;
-      max-width: 800px;
-    }
-
-    .lightbox-close {
-      position: absolute;
-      top: -32px;
-      right: -32px;
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      background: rgba(0,0,0,0.8);
-      color: #fff;
-      border: none;
-      cursor: pointer;
-      font-size: 18px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    @media (max-width: 768px) {
-      .lightbox-content {
-        max-width: 100vw;
-        max-height: 100vh;
+    @media (max-width:768px){
+      .container{ padding:0 1.5rem; }
+      main{
+        padding-top:calc(var(--nav-height) + 2.4rem);
+        padding-bottom:3rem;
       }
-
-      .lightbox-close {
-        top: 8px;
-        right: 8px;
+      .project-meta-grid{
+        grid-template-columns:1fr;
+      }
+      .gallery-grid-4{
+        grid-template-columns:1fr;
       }
     }
   </style>
 </head>
-
 <body>
 
-  <script src="../assets/js/include.js" defer></script>
-  <div data-include="../menu.html"></div>
+  <div id="menu-container"></div>
 
-  <nav class="breadcrumb">
-    <a href="../index.html">Portfolio</a>
-    <span>/</span>
-    <span class="current">Accesorios3d</span>
-  </nav>
-
-  <section class="project-hero">
-    <div class="project-category">Plataformas</div>
-    <h1>Accesorios3d</h1>
-  </section>
-
-  <section class="project-meta">
-    <div class="meta-item">
-      <div class="meta-label">Cliente</div>
-      <div class="meta-value">Proyecto personal</div>
-    </div>
-    <div class="meta-item">
-      <div class="meta-label">Sector</div>
-      <div class="meta-value">Decoración</div>
-    </div>
-    <div class="meta-item">
-      <div class="meta-label">Rol</div>
-      <div class="meta-value">Branding, diseño web, fabricación</div>
-    </div>
-    <div class="meta-item">
-      <div class="meta-label">Año</div>
-      <div class="meta-value">2024</div>
-    </div>
-  </section>
-
-  <section class="project-content">
-    <div class="content-section">
-      <p>
-        Accesorios3d es una marca centrada en la creación de piezas de decoración y accesorios para el hogar mediante impresión 3D, con un enfoque en diseño minimalista, calidad y sostenibilidad. El proyecto busca ofrecer productos de estética contemporánea capaces de integrarse en diferentes estilos de interiorismo sin perder personalidad.
-      </p>
-      <p>
-        La propuesta combina una apariencia de lujo con precios accesibles, utilizando materiales sostenibles y procesos de fabricación responsables. La marca apuesta por la durabilidad y la atemporalidad, priorizando formas limpias, detalles cuidados y acabados de alta calidad.
-      </p>
-      <p>
-        La web permite personalizar ciertos productos, ajustando dimensiones, colores o acabados para adaptarlos a las necesidades de cada cliente. La experiencia de compra se diseña para que sea clara, rápida y agradable, con envíos eficientes y una atención al cliente cercana y personalizada.
-      </p>
-    </div>
-  </section>
-
-  <section class="project-gallery">
-    <h2 class="gallery-title">Logo</h2>
-    <div class="single-image">
-      <figure>
-        <img src="../assets/img/accesorios3d-logo.png" alt="Accesorios3d - Logo de la marca">
-        <figcaption class="gallery-caption">
-          Logotipo principal de Accesorios3d aplicado sobre fondo neutro.
-        </figcaption>
-      </figure>
-    </div>
-  </section>
-
-  <section class="project-gallery">
-    <h2 class="gallery-title">Icono del sitio</h2>
-    <div class="single-image">
-      <figure>
-        <img src="../assets/img/accesorios3d-icon.png" alt="Accesorios3d - Icono del sitio">
-        <figcaption class="gallery-caption">
-          Icono de la marca diseñado para favicon y aplicaciones digitales.
-        </figcaption>
-      </figure>
-    </div>
-  </section>
-
-  <section class="project-gallery">
-    <h2 class="gallery-title">Paleta de colores</h2>
-    <div class="single-image">
-      <figure>
-        <img src="../assets/img/accesorios3d-paleta-colores.png" alt="Accesorios3d - Paleta de colores">
-        <figcaption class="gallery-caption">
-          Paleta cromática de Accesorios3d basada en tonos neutros y acentos suaves.
-        </figcaption>
-      </figure>
-    </div>
-  </section>
-
-  <section class="project-gallery">
-    <h2 class="gallery-title">Productos</h2>
-    <div class="gallery-grid-4 productos">
-      <div class="gallery-item">
-        <figure>
-          <div class="gallery-item-image">
-            <img src="../assets/img/accesorios3d-producto-1.png" alt="Accesorios3d - Producto 1">
+  <main>
+    <!-- HERO -->
+    <section class="project-hero">
+      <div class="container">
+        <div class="project-hero-layout">
+          <div>
+            <h1 class="project-title">Accesorios3d – 3D printed home accessories</h1>
+            <p class="project-subtitle">
+              A self‑initiated brand of 3D printed decorative objects and home accessories
+              with a minimal aesthetic, sustainable materials and a web experience that lets
+              people customise pieces to fit their spaces.
+            </p>
           </div>
-          <figcaption class="gallery-caption">
-            Pieza decorativa impresa en 3D con acabado minimalista.
-          </figcaption>
-        </figure>
-      </div>
-      <div class="gallery-item">
-        <figure>
-          <div class="gallery-item-image">
-            <img src="../assets/img/accesorios3d-producto-2.png" alt="Accesorios3d - Producto 2">
+
+          <div></div>
+
+          <!-- META -->
+          <div class="project-meta-shell">
+            <div class="project-meta-grid">
+              <div class="project-meta-item">
+                <span class="project-meta-label">Client</span>
+                <span class="project-meta-value">Personal project</span>
+              </div>
+              <div class="project-meta-item">
+                <span class="project-meta-label">Year</span>
+                <span class="project-meta-value">2024</span>
+              </div>
+              <div class="project-meta-item">
+                <span class="project-meta-label">My role</span>
+                <span class="project-meta-value">Branding, web design & fabrication</span>
+              </div>
+              <div class="project-meta-item">
+                <span class="project-meta-label">Domain</span>
+                <span class="project-meta-value">Home decor & objects</span>
+              </div>
+            </div>
           </div>
-          <figcaption class="gallery-caption">
-            Accesorio funcional para el hogar con diseño geométrico.
-          </figcaption>
-        </figure>
+        </div>
       </div>
-      <div class="gallery-item">
-        <figure>
-          <div class="gallery-item-image">
-            <img src="../assets/img/accesorios3d-producto-3.png" alt="Accesorios3d - Producto 3">
+    </section>
+
+    <!-- 01 · Overview -->
+    <section class="section">
+      <div class="container">
+        <div class="full-width-block">
+          <div class="section-kicker">01 · Overview</div>
+          <h2 class="section-heading">A minimal 3D printed brand for everyday interiors</h2>
+
+          <div class="body-text">
+            <p>
+              Accesorios3d is a brand focused on designing and producing decorative pieces and
+              home accessories through 3D printing, with an emphasis on minimal aesthetics,
+              quality and sustainability. The goal is to offer contemporary objects that can
+              blend into different interior styles without losing personality.
+            </p>
+            <p>
+              The proposal combines a refined, almost “luxury” look with accessible pricing,
+              using sustainable materials and responsible production processes. The brand
+              bets on durability and timelessness, prioritising clean forms, careful details
+              and high‑quality finishes.
+            </p>
+            <p>
+              The website lets people customise certain products – from dimensions to colours
+              or finishes – so pieces can adapt to the needs of each home. The purchase
+              experience is designed to be clear, quick and pleasant, with efficient
+              shipping and close, human customer support.
+            </p>
           </div>
-          <figcaption class="gallery-caption">
-            Objeto decorativo pensado para integrarse en interiores contemporáneos.
-          </figcaption>
-        </figure>
-      </div>
-      <div class="gallery-item">
-        <figure>
-          <div class="gallery-item-image">
-            <img src="../assets/img/accesorios3d-producto-4.png" alt="Accesorios3d - Producto 4">
+
+          <div class="inline-card-full">
+            <div class="inline-card-title">Responsibilities</div>
+            <ul>
+              <li>Definition of the visual identity and brand positioning.</li>
+              <li>Design and layout of the e‑commerce website.</li>
+              <li>Product design, 3D printing and finishing of the pieces.</li>
+            </ul>
           </div>
-          <figcaption class="gallery-caption">
-            Accesorio en 3D que combina funcionalidad y estética minimalista.
-          </figcaption>
-        </figure>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="project-gallery">
-    <h2 class="gallery-title">Página web</h2>
-    <div class="gallery-grid-web">
-      <div class="gallery-item">
-        <figure>
-          <img src="../assets/img/accesorios3d-web-1.png" alt="Accesorios3d - Diseño web 1">
-          <figcaption class="gallery-caption">
-            Vista de la página de inicio con presentación de la marca y productos destacados.
-          </figcaption>
-        </figure>
-      </div>
-      <div class="gallery-item">
-        <figure>
-          <img src="../assets/img/accesorios3d-web-2.png" alt="Accesorios3d - Diseño web 2">
-          <figcaption class="gallery-caption">
-            Sección de catálogo con diferentes piezas de decoración impresas en 3D.
-          </figcaption>
-        </figure>
-      </div>
-      <div class="gallery-item">
-        <figure>
-          <img src="../assets/img/accesorios3d-web-4.png" alt="Accesorios3d - Diseño web 3">
-          <figcaption class="gallery-caption">
-            Detalle de la experiencia de producto y personalización en la web.
-          </figcaption>
-        </figure>
-      </div>
-      <div class="gallery-item">
-        <figure>
-          <img src="../assets/img/accesorios3d-web-3.png" alt="Accesorios3d - Diseño web 4">
-          <figcaption class="gallery-caption">
-            Diseño responsive pensado para una navegación clara y sencilla.
-          </figcaption>
-        </figure>
-      </div>
-    </div>
-  </section>
+    <!-- 02 · Brand -->
+    <section class="section">
+      <div class="container">
+        <div class="full-width-block">
+          <div class="section-kicker">02 · Brand</div>
+          <h2 class="section-heading">Visual identity and colour system</h2>
 
-  <section class="credits-section">
-    <h2>Créditos</h2>
-    <div class="credits-grid">
-      <div class="credit-item">
-        <span class="credit-role">Diseño gráfico y branding, desarrollo de la página web, fabricación de productos:</span>
-        Jan Escoda
+          <!-- Logo -->
+          <div style="margin-bottom: 2.5rem;">
+            <div class="section-kicker" style="margin-bottom:0.4rem;">Logo</div>
+            <div class="gallery-single">
+              <figure>
+                <img src="../assets/img/accesorios3d-logo.png" alt="Accesorios3d – main logo on neutral background">
+                <figcaption class="gallery-caption">
+                  Main Accesorios3d logo applied on a neutral background, reflecting a clean and minimal character.
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+
+          <!-- Icon -->
+          <div style="margin-bottom: 2.5rem;">
+            <div class="section-kicker" style="margin-bottom:0.4rem;">Site icon</div>
+            <div class="gallery-single">
+              <figure>
+                <img src="../assets/img/accesorios3d-icon.png" alt="Accesorios3d – site icon">
+                <figcaption class="gallery-caption">
+                  Compact icon designed for favicon and digital applications, consistent with the logo’s geometry.
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+
+          <!-- Palette -->
+          <div>
+            <div class="section-kicker" style="margin-bottom:0.4rem;">Colour palette</div>
+            <div class="gallery-single">
+              <figure>
+                <img src="../assets/img/accesorios3d-paleta-colores.png" alt="Accesorios3d – colour palette">
+                <figcaption class="gallery-caption">
+                  Colour palette based on soft neutrals and subtle accents to keep the focus on form and texture.
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <a href="#" id="scroll-to-top" title="Volver arriba"></a>
-  <div data-include="../footer.html"></div>
+    <!-- 03 · Products -->
+    <section class="section">
+      <div class="container">
+        <div class="full-width-block">
+          <div class="section-kicker">03 · Products</div>
+          <h2 class="section-heading">3D printed pieces for everyday use</h2>
 
-  <div class="lightbox-overlay" id="lightbox">
-    <div class="lightbox-content">
-      <button class="lightbox-close" id="lightbox-close" aria-label="Cerrar imagen ampliada">×</button>
-      <img src="" alt="" id="lightbox-img">
-      <div class="lightbox-caption" id="lightbox-caption"></div>
-    </div>
-  </div>
+          <div class="gallery-grid-4 productos">
+            <div class="gallery-item">
+              <figure>
+                <div class="gallery-item-image">
+                  <img src="../assets/img/accesorios3d-producto-1.png" alt="Accesorios3d – product 1">
+                </div>
+                <figcaption class="gallery-caption">
+                  3D printed decorative piece with a minimal, sculptural finish.
+                </figcaption>
+              </figure>
+            </div>
+
+            <div class="gallery-item">
+              <figure>
+                <div class="gallery-item-image">
+                  <img src="../assets/img/accesorios3d-producto-2.png" alt="Accesorios3d – product 2">
+                </div>
+                <figcaption class="gallery-caption">
+                  Functional home accessory with a geometric design.
+                </figcaption>
+              </figure>
+            </div>
+
+            <div class="gallery-item">
+              <figure>
+                <div class="gallery-item-image">
+                  <img src="../assets/img/accesorios3d-producto-3.png" alt="Accesorios3d – product 3">
+                </div>
+                <figcaption class="gallery-caption">
+                  Decorative object created to fit into contemporary interiors.
+                </figcaption>
+              </figure>
+            </div>
+
+            <div class="gallery-item">
+              <figure>
+                <div class="gallery-item-image">
+                  <img src="../assets/img/accesorios3d-producto-4.png" alt="Accesorios3d – product 4">
+                </div>
+                <figcaption class="gallery-caption">
+                  3D printed accessory that balances function and a clean, minimal look.
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+
+          <div class="inline-card-full" style="margin-top:2rem;">
+            <div class="inline-card-title">Product principles</div>
+            <ul>
+              <li>Simple, timeless silhouettes that work across different interior styles.</li>
+              <li>Sustainable printing materials and controlled production batches.</li>
+              <li>Pieces designed to be lightweight, durable and easy to ship.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 · Website -->
+    <section class="section">
+      <div class="container">
+        <div class="full-width-block">
+          <div class="section-kicker">04 · Website</div>
+          <h2 class="section-heading">A simple e‑commerce focused on customisation</h2>
+
+          <div class="body-text" style="margin-bottom:1.8rem;">
+            <p>
+              The website presents the brand, highlights key products and offers a straightforward
+              way to customise pieces. The layout focuses on clarity: few colours, generous white
+              space and photography that shows the objects in context.
+            </p>
+          </div>
+
+          <div class="gallery-grid-web">
+            <div class="gallery-item">
+              <figure>
+                <img src="../assets/img/accesorios3d-web-1.png" alt="Accesorios3d – homepage design">
+                <figcaption class="gallery-caption">
+                  Homepage with brand introduction and a selection of featured products.
+                </figcaption>
+              </figure>
+            </div>
+
+            <div class="gallery-item">
+              <figure>
+                <img src="../assets/img/accesorios3d-web-2.png" alt="Accesorios3d – catalogue view">
+                <figcaption class="gallery-caption">
+                  Catalogue section with different 3D printed decorative pieces.
+                </figcaption>
+              </figure>
+            </div>
+
+            <div class="gallery-item">
+              <figure>
+                <img src="../assets/img/accesorios3d-web-4.png" alt="Accesorios3d – product detail and customisation">
+                <figcaption class="gallery-caption">
+                  Product detail page showing options for customising dimensions and finishes.
+                </figcaption>
+              </figure>
+            </div>
+
+            <div class="gallery-item">
+              <figure>
+                <img src="../assets/img/accesorios3d-web-3.png" alt="Accesorios3d – responsive design">
+                <figcaption class="gallery-caption">
+                  Responsive layout designed for a clear, frictionless browsing experience.
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Credits -->
+    <section class="section">
+      <div class="container">
+        <div class="full-width-block">
+          <h2 class="results-section-title">Credits</h2>
+
+          <div class="credits-grid">
+            <div class="credit-item">
+              <span class="credit-role">
+                Graphic design & branding, website development, product fabrication:
+              </span>
+              &nbsp;Jan Escoda
+            </div>
+          </div>
+
+          <div class="project-nav">
+            <a href="../index.html#work" class="project-nav-up">← Back to works</a>
+            <a href="./category-five.html">Next: Category Five Brand →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-container"></div>
+
+<script>
+  function copyEmail() {
+    var EMAIL = 'janescoda49@gmail.com';
+
+    function animate(btn) {
+      if (!btn) return;
+      btn.classList.add('copied');
+      setTimeout(function () {
+        btn.classList.remove('copied');
+      }, 2500);
+    }
+
+    function fallback() {
+      var el = document.createElement('textarea');
+      el.value = EMAIL;
+      el.style.cssText = 'position:fixed;opacity:0;top:0;left:0;';
+      document.body.appendChild(el);
+      el.focus();
+      el.select();
+      try { document.execCommand('copy'); } catch (e) {}
+      document.body.removeChild(el);
+    }
+
+    var btns = [
+      document.getElementById('copyBtn'),
+      document.getElementById('copyBtnMobile')
+    ];
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(EMAIL)
+        .then(function () { btns.forEach(animate); })
+        .catch(function () { fallback(); btns.forEach(animate); });
+    } else {
+      fallback();
+      btns.forEach(animate);
+    }
+  }
+
+  function initMenuBehavior() {
+    var nav = document.querySelector('.site-nav');
+    if (!nav) return;
+
+    var toggleBtn  = nav.querySelector('.nav-toggle');
+    var mobileMenu = nav.querySelector('.nav-right-mobile');
+
+    if (toggleBtn && mobileMenu) {
+      toggleBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var isOpen = nav.classList.toggle('is-open');
+        toggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+
+      mobileMenu.addEventListener('click', function (e) {
+        if (e.target.closest('.nav-link')) {
+          nav.classList.remove('is-open');
+          toggleBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      document.addEventListener('click', function (e) {
+        if (!nav.contains(e.target)) {
+          nav.classList.remove('is-open');
+          toggleBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+
+    ['copyBtn', 'copyBtnMobile'].forEach(function (id) {
+      var btn = document.getElementById(id);
+      if (!btn) return;
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        copyEmail();
+      });
+    });
+  }
+
+  function setActiveNav(page) {
+    document.querySelectorAll('.nav-link').forEach(function (link) {
+      link.classList.remove('is-active');
+    });
+
+    if (page === 'index') {
+      document.querySelectorAll('.nav-link[href="../index.html#work"]').forEach(function (l) {
+        l.classList.add('is-active');
+      });
+    } else if (page === 'about') {
+      document.querySelectorAll('.nav-link[href="../about.html"]').forEach(function (l) {
+        l.classList.add('is-active');
+      });
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    var menuContainer   = document.getElementById('menu-container');
+    var footerContainer = document.getElementById('footer-container');
+
+    var menuPromise = fetch('../menu.html')
+      .then(function (r) { return r.text(); })
+      .then(function (html) {
+        menuContainer.innerHTML = html;
+        initMenuBehavior();
+        setActiveNav('index');
+      })
+      .catch(function (err) {
+        console.error('Error loading menu.html', err);
+      });
+
+    var footerPromise = fetch('../footer.html')
+      .then(function (r) { return r.text(); })
+      .then(function (html) {
+        footerContainer.innerHTML = html;
+      })
+      .catch(function (err) {
+        console.error('Error loading footer.html', err);
+      });
+
+    Promise.all([menuPromise, footerPromise]).then(function () {});
+  });
+</script>
 
 </body>
 </html>
+
