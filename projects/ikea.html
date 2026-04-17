@@ -80,7 +80,7 @@
       max-width: 34rem;
     }
 
-    /* METRICS – 3 columns full width */
+    /* METRICS – privacy‑friendly */
     .metrics-wrapper {
       grid-column: 1 / -1;
       margin-top: 2.4rem;
@@ -88,7 +88,7 @@
 
     .metrics-row {
       display:grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap:1.8rem;
       font-size:0.9rem;
     }
@@ -104,15 +104,6 @@
       margin-bottom:0.25rem;
     }
 
-    .metric-block-subtitle {
-      font-weight:600;
-      color:#55556c;
-      margin-bottom:0.12rem;
-      font-size:0.8rem;
-      text-transform:uppercase;
-      letter-spacing:.11em;
-    }
-
     .metric-block-caption {
       font-size:0.82rem;
       color:var(--text);
@@ -125,7 +116,6 @@
     }
 
     .metric-delta.positive { color:#1d9c5a; }
-    .metric-delta.negative { color:#cc3b3b; }
 
     /* META block */
     .project-meta-shell {
@@ -255,6 +245,14 @@
       color:#77778a;
     }
 
+    .results-section-title {
+      font-size:clamp(1.6rem,2.6vw,2rem);
+      font-weight:800;
+      letter-spacing:-0.02em;
+      color:var(--title);
+      margin-bottom:1.6rem;
+    }
+
     .project-nav {
       margin-top:3rem;
       padding-top:1.8rem;
@@ -325,42 +323,30 @@
 
           <div></div>
 
-          <!-- METRICS (Main KPIs) -->
+          <!-- METRICS (privacy‑friendly, no raw KPIs) -->
           <div class="metrics-wrapper">
             <div class="metrics-row">
               <div class="metric-block">
-                <div class="metric-block-subtitle">Sessions</div>
-                <div class="metric-block-title">2.50M</div>
-                <div class="metric-delta positive">+18.58%</div>
+                <div class="metric-block-title">+18.58%</div>
+                <div class="metric-delta positive">Year‑on‑year growth</div>
                 <div class="metric-block-caption">
-                  Year‑to‑date sessions on the Catalan web (August 2025).
+                  Increase in visits to the Catalan web compared with the previous year.
                 </div>
               </div>
 
               <div class="metric-block">
-                <div class="metric-block-subtitle">Transactions</div>
-                <div class="metric-block-title">37,048</div>
-                <div class="metric-delta positive">+11.55%</div>
+                <div class="metric-block-title">+11.55%</div>
+                <div class="metric-delta positive">Year‑on‑year growth</div>
                 <div class="metric-block-caption">
-                  Completed online purchases attributed to the Catalan version.
+                  Increase in online purchases coming from the Catalan version.
                 </div>
               </div>
 
               <div class="metric-block">
-                <div class="metric-block-subtitle">CVR</div>
-                <div class="metric-block-title">1.48%</div>
-                <div class="metric-delta negative">‑8.33%</div>
+                <div class="metric-block-title">+6,000</div>
+                <div class="metric-delta positive">Content & SEO updates</div>
                 <div class="metric-block-caption">
-                  Conversion rate with room for improvement through UX and funnel tweaks.
-                </div>
-              </div>
-
-              <div class="metric-block">
-                <div class="metric-block-subtitle">Revenue</div>
-                <div class="metric-block-title">9.11M</div>
-                <div class="metric-delta positive">+10.83%</div>
-                <div class="metric-block-caption">
-                  Year‑to‑date revenue from Catalan sessions (August 2025).
+                  Edits and optimisations carried out on Catalan pages in the last year.
                 </div>
               </div>
             </div>
@@ -707,11 +693,11 @@
     });
 
     if (page === 'index') {
-      document.querySelectorAll('.nav-link[href=\"../index.html#work\"]').forEach(function (l) {
+      document.querySelectorAll('.nav-link[href="../index.html#work"]').forEach(function (l) {
         l.classList.add('is-active');
       });
     } else if (page === 'about') {
-      document.querySelectorAll('.nav-link[href=\"../about.html\"]').forEach(function (l) {
+      document.querySelectorAll('.nav-link[href="../about.html"]').forEach(function (l) {
         l.classList.add('is-active');
       });
     }
