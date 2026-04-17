@@ -154,30 +154,27 @@
       justify-content:space-between; 
     }
 
-/* Lado derecho de la tarjeta para TODAS las imágenes */
 .proj-img-side { 
-  background: #ffffff;          /* todo blanco */
+  background: #ffffff;       
   min-height: 16.25rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1.75rem;             /* margen blanco alrededor del mockup */
-  overflow: hidden;
+  padding: 1.5rem;         
+  overflow: hidden;        
 }
-
-/* Estilo de mockup para lo que haya dentro (img o svg) */
 .proj-img-side img,
 .proj-img-side svg {
   max-width: 100%;
-  max-height: 12rem;            /* AJUSTA este valor si lo quieres más grande o más pequeño */
-  width: 100%;
-  object-fit: contain;
-  border-radius: 16px;          /* esquinas redondeadas */
-  border: 1px solid #e5e5ed;    /* borde gris suave */
-  box-shadow: 0 14px 40px rgba(0,0,0,0.08); /* sombra tipo mockup */
-  background: #ffffff;
+  max-height: 100%;
+  width: auto;                /* deja que conserve su proporción natural */
+  height: auto;
+  object-fit: contain;        /* NO recorta: se adapta al contenedor */
+  border-radius: 12px;        /* si quieres, puedes bajar a 8px o quitarlo */
+  border: none;               /* sin bordes, todo se verá uniforme blanco */
+  box-shadow: none;           /* sombra solo en la tarjeta, no en la imagen */
+  background: transparent;    /* que no añada otra “caja” visual */
   display: block;
-}: block;
 }
 
     .proj-title {
