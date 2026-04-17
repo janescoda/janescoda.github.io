@@ -80,7 +80,7 @@
       max-width: 34rem;
     }
 
-    /* METRICS – optional, left empty here */
+    /* METRICS */
     .metrics-wrapper {
       grid-column: 1 / -1;
       margin-top: 2.4rem;
@@ -204,29 +204,6 @@
       color:var(--title);
     }
 
-    /* Inline grey card (used also for team credits) */
-    .inline-card-full {
-      margin-top:1.4rem;
-      padding:1.1rem 1.2rem;
-      border-radius:16px;
-      background:#f5f5f7;
-      border:1px solid #e4e2dd;
-      font-size:0.9rem;
-    }
-
-    .inline-card-title {
-      font-weight:700;
-      margin-bottom:0.4rem;
-      color:var(--title);
-    }
-
-    .inline-card-full ul {
-      padding-left:1.2rem;
-      list-style:disc;
-    }
-
-    .inline-card-full li + li { margin-top:0.35rem; }
-
     /* Gallery / media blocks */
     .media-block {
       margin-top:1.8rem;
@@ -266,12 +243,6 @@
       cursor:zoom-in;
     }
 
-    .media-caption {
-      padding:0.75rem 1rem 0.9rem;
-      font-size:0.85rem;
-      color:#77778a;
-    }
-
     .media-block-single {
       max-width:56rem;
       margin:1.8rem auto 0;
@@ -280,6 +251,13 @@
     .media-figure-inner-contain img {
       object-fit:contain;
       background:#000;
+    }
+
+    /* Simple captions outside the cards, on white background */
+    .media-description {
+      margin-top:0.75rem;
+      font-size:0.86rem;
+      color:#77778a;
     }
 
     .project-nav {
@@ -352,7 +330,7 @@
 
           <div></div>
 
-          <!-- OPTIONAL METRICS (left blank for this project) -->
+          <!-- METRICS -->
           <div class="metrics-wrapper">
             <div class="metrics-row">
               <div class="metric-block">
@@ -466,22 +444,19 @@
                 <div class="media-figure-inner">
                   <img src="../assets/img/coesuz-product-1.png" alt="Coesuz – flat 3D layout of the packaging" />
                 </div>
-                <figcaption class="media-caption">
-                  3D flat layout of the Coesuz packaging with blue and green logo, medicine information and barcodes,
-                  prepared as if for print.
-                </figcaption>
               </figure>
 
               <figure class="media-figure">
                 <div class="media-figure-inner">
                   <img src="../assets/img/coesuz-product-2.png" alt="Coesuz – 3D render of the product box" />
                 </div>
-                <figcaption class="media-caption">
-                  3D render of the Coesuz box: a white and blue‑green pharmaceutical pack with the product logo and
-                  clean hierarchy of information.
-                </figcaption>
               </figure>
             </div>
+
+            <p class="media-description">
+              3D flat layout and final render of the Coesuz packaging: blue and green logo, medicine information and
+              barcodes arranged in a clean, print‑ready design.
+            </p>
           </div>
         </div>
       </div>
@@ -510,33 +485,31 @@
                   alt="Coesuz – 3D animation of the box"
                 />
               </div>
-              <figcaption class="media-caption" style="text-align:center;">
-                3D animation of the Coesuz box rotating to reveal the product from multiple angles, ready to be
-                integrated into the final promotional video.
-              </figcaption>
             </figure>
+
+            <p class="media-description" style="text-align:center;">
+              3D animation of the Coesuz box rotating to reveal the product from multiple angles, ready to be
+              integrated into the final promotional video.
+            </p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 04 · TEAM CREDITS -->
+    <!-- 04 · CREDITS -->
     <section class="section">
       <div class="container">
         <div class="full-width-block">
-          <div class="section-kicker">04 · Team</div>
-          <h2 class="section-heading">Team credits</h2>
+          <div class="section-kicker">04 · Credits</div>
+          <h2 class="section-heading">Credits</h2>
 
-          <div class="inline-card-full">
-            <div class="inline-card-title">Project roles</div>
-            <ul>
-              <li><strong>General management:</strong> Helena Riba</li>
-              <li><strong>Sales department:</strong> Héctor Cuerda</li>
-              <li><strong>Market access department:</strong> Carolina Alcobé</li>
-              <li><strong>Medical department:</strong> Yasmin Soares</li>
-              <li><strong>Marketing department:</strong> Laura Moncusí</li>
-              <li><strong>3D design, animation and video editing:</strong> Jan Escoda</li>
-            </ul>
+          <div class="body-text">
+            <p><strong>General management:</strong> Helena Riba</p>
+            <p><strong>Sales department:</strong> Héctor Cuerda</p>
+            <p><strong>Market access department:</strong> Carolina Alcobé</p>
+            <p><strong>Medical department:</strong> Yasmin Soares</p>
+            <p><strong>Marketing department:</strong> Laura Moncusí</p>
+            <p><strong>3D design, animation and video editing:</strong> Jan Escoda</p>
           </div>
 
           <div class="project-nav">
