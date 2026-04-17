@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Daina - Jan Escoda</title>
+  <title>Daina Media – Digital communication · Jan Escoda</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -203,7 +203,7 @@
       color:var(--title);
     }
 
-    /* Simple media grids (Instagram & web captures) */
+    /* Media grids (static images) */
     .media-block {
       margin-top:1.8rem;
       display:flex;
@@ -249,7 +249,13 @@
       height:100%;
       object-fit:cover;
       display:block;
-      cursor:zoom-in;
+      /* IMPORTANT: static cursor, no zoom, no hover animation */
+      cursor: default;
+    }
+
+    /* No hover animations on images */
+    .media-figure-inner img:hover {
+      transform: none;
     }
 
     .media-description {
@@ -258,7 +264,7 @@
       color:#77778a;
     }
 
-    /* Credits */
+    /* Credits / nav */
     .results-section-title {
       font-size:clamp(1.6rem,2.6vw,2rem);
       font-weight:800;
@@ -332,7 +338,7 @@
       <div class="container">
         <div class="project-hero-layout">
           <div>
-            <h1 class="project-title">Daina</h1>
+            <h1 class="project-title">Daina Media</h1>
             <p class="project-subtitle">
               A digital marketing agency created as a Master’s final project, turning theory into an applied
               case: from business model and brand definition to a real website and social presence aimed at
@@ -342,7 +348,7 @@
 
           <div></div>
 
-          <!-- METRICS (light, qualitative) -->
+          <!-- METRICS -->
           <div class="metrics-wrapper">
             <div class="metrics-row">
               <div class="metric-block">
@@ -436,7 +442,7 @@
       </div>
     </section>
 
-    <!-- 02 · SOCIAL CONTENT -->
+    <!-- 02 · SOCIAL -->
     <section class="section">
       <div class="container">
         <div class="full-width-block">
@@ -559,7 +565,7 @@
 
           <div class="project-nav">
             <a href="../index.html#work" class="project-nav-up">← Back to works</a>
-            <a href="/projects/scan-and-go.html">Next: Scan&Go →</a>
+            <a href="/projects/coesuz.html">Next: Coesuz →</a>
           </div>
         </div>
       </div>
@@ -693,4 +699,3 @@
 
 </body>
 </html>
-
