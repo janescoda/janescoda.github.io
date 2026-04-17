@@ -1,576 +1,676 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Coesuz - Portfolio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coesuz – Digital communication · Jan Escoda</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    html { font-size: 110%; scroll-behavior: smooth; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root{
+      --bg: #ffffff;
+      --text: rgb(103,103,122);
+      --title: #000000;
+      --card-bg: #f4f3f0;
+      --border: #e4e2dd;
+      --transition: 0.28s cubic-bezier(0.4,0,0.2,1);
+      --page-max-width: 1056px;
+      --page-side-padding: 3.3rem;
+      --nav-height: 4.6rem;
+      --section-gap: 4.5rem;
     }
 
-    body {
-      padding-top: 72px;
-      font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      color: #333;
-      background: #fff;
+    body{
+      font-family: 'Manrope', sans-serif;
+      background: var(--bg);
+      color: var(--text);
       line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
 
-    .breadcrumb {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 2rem 5% 0;
-      font-size: 0.95rem;
+    a { text-decoration:none; color:inherit; }
+
+    ::-webkit-scrollbar{ width:5px; }
+    ::-webkit-scrollbar-track{ background:var(--bg);}
+    ::-webkit-scrollbar-thumb{ background:var(--border); border-radius:3px; }
+
+    .container{
+      max-width:var(--page-max-width);
+      margin:0 auto;
+      padding:0 var(--page-side-padding);
+      box-sizing:border-box;
     }
 
-    .breadcrumb a,
-    .breadcrumb .current {
-      color: #555;
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-
-    .breadcrumb a:hover {
-      color: #000;
-    }
-
-    .breadcrumb span {
-      color: #bbb;
-      margin: 0 0.5rem;
-    }
-
-    .breadcrumb .current {
-      font-weight: 400;
+    main {
+      padding-top: calc(var(--nav-height) + 4.5rem);
+      padding-bottom: 4rem;
     }
 
     .project-hero {
-      padding: 3rem 5% 2rem;
-      text-align: center;
-      max-width: 1400px;
-      margin: 0 auto;
+      padding-bottom: 3.5rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: var(--section-gap);
     }
 
-    .project-category {
-      font-size: 0.85rem;
-      font-weight: 600;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: #999;
-      margin-bottom: 1rem;
+    .project-hero-layout {
+      display:grid;
+      grid-template-columns: minmax(0, 1.8fr) minmax(0, 1fr);
+      gap:3rem;
+      align-items:flex-start;
     }
 
-    .project-hero h1 {
-      font-size: clamp(2.8rem, 6vw, 4rem);
-      font-weight: 700;
-      letter-spacing: -1.5px;
-      color: #1a1a1a;
-      margin-bottom: 1.5rem;
+    .project-title {
+      font-size: clamp(2.3rem, 3.8vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      color: var(--title);
+      margin-bottom: 1.3rem;
     }
 
-    .project-intro {
-      max-width: 900px;
-      margin: 0 auto;
-      font-size: 1.1rem;
-      line-height: 1.9;
-      color: #555;
+    .project-subtitle {
+      font-size: 0.96rem;
+      max-width: 34rem;
     }
 
-    .project-meta {
-      max-width: 1400px;
-      margin: 1.5rem auto 3rem;
-      padding: 0 5%;
-      display: flex;
-      justify-content: center;
-      gap: 4rem;
-      flex-wrap: wrap;
+    /* METRICS – optional, left empty here */
+    .metrics-wrapper {
+      grid-column: 1 / -1;
+      margin-top: 2.4rem;
     }
 
-    .meta-item {
-      text-align: center;
+    .metrics-row {
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap:1.8rem;
+      font-size:0.9rem;
     }
 
-    .meta-label {
-      font-size: 0.85rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: #999;
-      margin-bottom: 0.5rem;
+    .metric-block {
+      min-width:0;
     }
 
-    .meta-value {
-      font-size: 1.05rem;
-      color: #1a1a1a;
-      font-weight: 500;
+    .metric-block-title {
+      font-size:1.3rem;
+      font-weight:800;
+      color:var(--title);
+      margin-bottom:0.18rem;
     }
 
-    .project-content {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 4rem 5% 0;
+    .metric-block-subtitle {
+      font-weight:600;
+      color:#55556c;
+      margin-bottom:0.12rem;
     }
 
-    .content-section {
-      margin-bottom: 4rem;
+    .metric-block-caption {
+      font-size:0.82rem;
+      color:var(--text);
     }
 
-    .content-section p {
-      font-size: 1.05rem;
-      line-height: 1.9;
-      color: #555;
-      margin-bottom: 1.2rem;
+    /* META IN LIGHT GREY SHELL */
+    .project-meta-shell {
+      grid-column: 1 / -1;
+      margin-top: 2.2rem;
+      border-radius:18px;
+      border:1px solid var(--border);
+      background:#f7f7f7;
+      padding:1.1rem 1.4rem 1.2rem;
+      font-size:0.86rem;
     }
 
-    .project-video {
-      max-width: 1400px;
-      margin: 4rem auto;
-      padding: 0 5%;
+    .project-meta-grid {
+      display:grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap:0.6rem 1.8rem;
     }
 
-    .video-title {
-      font-size: 2rem;
-      font-weight: 700;
-      color: #1a1a1a;
-      margin-bottom: 2.5rem;
-      letter-spacing: -0.5px;
-      text-align: center;
+    .project-meta-item {
+      min-width:0;
     }
 
-    .video-container {
-      position: relative;
-      padding-bottom: 56.25%;
-      height: 0;
-      overflow: hidden;
-      border-radius: 8px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-      background: #000;
+    .project-meta-label {
+      font-size:0.75rem;
+      text-transform:uppercase;
+      letter-spacing:.13em;
+      font-weight:700;
+      color:#9a9aa8;
+      margin-bottom:0.18rem;
+      display:block;
     }
 
-    .video-container iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+    .project-meta-value {
+      font-weight:600;
+      color:var(--title);
+      font-size:0.9rem;
+      display:block;
     }
 
-    .project-gallery {
-      max-width: 1400px;
-      margin: 4rem auto;
-      padding: 0 5%;
+    .section {
+      margin-bottom: var(--section-gap);
     }
 
-    .gallery-title {
-      font-size: 2rem;
-      font-weight: 700;
-      color: #1a1a1a;
-      margin-bottom: 2.5rem;
-      letter-spacing: -0.5px;
-      text-align: center;
+    .section-kicker {
+      font-size:0.8rem;
+      text-transform:uppercase;
+      letter-spacing:.13em;
+      font-weight:700;
+      color:#8a8a8a;
+      margin-bottom:0.6rem;
     }
 
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 2.5rem;
+    .section-heading {
+      font-size:clamp(1.7rem,3vw,2.2rem);
+      font-weight:800;
+      letter-spacing:-0.02em;
+      color:var(--title);
+      margin-bottom:1.3rem;
     }
 
-    .gallery-grid.grid-2-columns {
-      grid-template-columns: repeat(2, 1fr);
-      /* ANTES: max-width: 900px; AHORA 1100px PARA QUE COINCIDA MEJOR CON ACCESORIOS3D */
-      max-width: 1100px;
-      margin: 0 auto;
+    .body-text {
+      font-size:0.96rem;
     }
 
-    .gallery-item figure {
-      margin: 0;
+    .body-text p + p { margin-top:1rem; }
+
+    .full-width-block {
+      max-width:var(--page-max-width);
+      margin:0 auto;
     }
 
-    /* CONTENEDOR PARA IGUALAR DIMENSIONES CON LAS CAPTURAS DE WEB */
-    .gallery-item-web {
-      position: relative;
-      width: 100%;
-      /* Misma relación que usarías para web, tipo 16:9 */
-      padding-bottom: 56.25%;
-      overflow: hidden;
-      border-radius: 8px;
-      box-shadow: 0 2px 15px rgba(0,0,0,0.06);
-      background: #f5f5f5;
+    /* Highlight block for key idea */
+    .highlight-callout {
+      margin-top:1.8rem;
+      padding:1.1rem 1.2rem;
+      border-radius:16px;
+      background:#f8f8fb;
+      border:1px solid var(--border);
+      font-size:0.92rem;
+      color:var(--title);
+      font-weight:500;
     }
 
-    .gallery-item-web img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover; /* cambia a 'contain' si prefieres bandas en lugar de recorte */
-      object-position: center;
-      display: block;
-      cursor: zoom-in;
+    .subsection-title {
+      margin-top:1.4rem;
+      font-weight:700;
+      font-size:0.95rem;
+      color:var(--title);
     }
 
-    .gallery-grid-vertical {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 2.5rem;
+    /* Inline grey card (used also for team credits) */
+    .inline-card-full {
+      margin-top:1.4rem;
+      padding:1.1rem 1.2rem;
+      border-radius:16px;
+      background:#f5f5f7;
+      border:1px solid #e4e2dd;
+      font-size:0.9rem;
     }
 
-    .gallery-item-vertical {
-      position: relative;
-      width: 100%;
-      padding-bottom: 177.78%;
-      overflow: hidden;
-      border-radius: 8px;
-      box-shadow: 0 2px 15px rgba(0,0,0,0.06);
-      background: #f5f5f5;
+    .inline-card-title {
+      font-weight:700;
+      margin-bottom:0.4rem;
+      color:var(--title);
     }
 
-    .gallery-item-vertical img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-      display: block;
-      cursor: zoom-in;
+    .inline-card-full ul {
+      padding-left:1.2rem;
+      list-style:disc;
     }
 
-    .gallery-caption {
-      margin-top: 0.6rem;
-      font-size: 0.9rem;
-      line-height: 1.5;
-      color: #777;
+    .inline-card-full li + li { margin-top:0.35rem; }
+
+    /* Gallery / media blocks */
+    .media-block {
+      margin-top:1.8rem;
+      display:flex;
+      flex-direction:column;
+      gap:1rem;
+      font-size:0.9rem;
     }
 
-    .credits-section {
-      max-width: 900px;
-      margin: 6rem auto;
-      padding: 0 5% 6rem;
+    .media-grid-2 {
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:1.4rem;
     }
 
-    .credits-section h2 {
-      font-size: 2rem;
-      font-weight: 700;
-      color: #1a1a1a;
-      margin-bottom: 2rem;
-      letter-spacing: -0.5px;
+    .media-figure {
+      border-radius:16px;
+      overflow:hidden;
+      background:#f5f5f5;
+      border:1px solid #e4e2dd;
     }
 
-    .credits-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1rem 4rem;
+    .media-figure-inner {
+      position:relative;
+      width:100%;
+      padding-bottom:56.25%;
+      overflow:hidden;
     }
 
-    .credit-item {
-      font-size: 0.95rem;
-      color: #555;
-      line-height: 1.8;
+    .media-figure-inner img {
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      cursor:zoom-in;
     }
 
-    .credit-role {
-      font-weight: 600;
-      color: #1a1a1a;
+    .media-caption {
+      padding:0.75rem 1rem 0.9rem;
+      font-size:0.85rem;
+      color:#77778a;
     }
 
-    @media (max-width: 768px) {
-      .breadcrumb {
-        padding: 1.5rem 5% 0;
-        font-size: 0.9rem;
+    .media-block-single {
+      max-width:56rem;
+      margin:1.8rem auto 0;
+    }
+
+    .media-figure-inner-contain img {
+      object-fit:contain;
+      background:#000;
+    }
+
+    .project-nav {
+      margin-top:3rem;
+      padding-top:1.8rem;
+      border-top:1px solid var(--border);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:1rem;
+      font-size:0.9rem;
+    }
+
+    .project-nav a {
+      font-weight:600;
+      text-decoration:underline;
+      text-underline-offset:3px;
+    }
+
+    .project-nav-up {
+      display:inline-flex;
+      align-items:center;
+      gap:0.35rem;
+    }
+
+    @media (max-width:900px){
+      .project-hero-layout{
+        grid-template-columns:1fr;
+        gap:2.2rem;
       }
 
-      .project-meta {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem 2rem;
-        justify-content: center;
+      .project-meta-grid{
+        grid-template-columns:repeat(2,minmax(0,1fr));
       }
 
-      .meta-item {
-        text-align: left;
-      }
-
-      .gallery-grid,
-      .gallery-grid-vertical {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .gallery-grid.grid-2-columns {
-        max-width: 100%;
-        grid-template-columns: 1fr;
-      }
-
-      .credits-grid {
-        grid-template-columns: 1fr;
-        gap: 0.8rem 2rem;
-      }
-
-      .project-hero {
-        padding: 2rem 5% 2rem;
-      }
-
-      .project-content {
-        padding: 3rem 5% 0;
-      }
-
-      .gallery-grid,
-      .gallery-grid-vertical {
-        gap: 2rem;
+      .media-grid-2{
+        grid-template-columns:1fr;
       }
     }
 
-    #scroll-to-top {
-      display: none;
-      position: fixed;
-      bottom: 20px;
-      right: 30px;
-      z-index: 99;
-      border: none;
-      outline: none;
-      background-color: #6c757d;
-      cursor: pointer;
-      width: 50px;
-      height: 50px;
-      border-radius: 4px;
-      box-shadow: none;
-      transition: background-color 0.3s ease;
-      align-items: center;
-      justify-content: center;
-    }
-
-    #scroll-to-top.show-flex {
-      display: flex;
-    }
-
-    #scroll-to-top::before {
-      content: '';
-      display: block;
-      width: 8px;
-      height: 8px;
-      border-top: 2.5px solid white;
-      border-right: 2.5px solid white;
-      transform: rotate(-45deg);
-    }
-
-    #scroll-to-top:hover {
-      background-color: #5a6268;
-    }
-
-    .lightbox-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.75);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
-      padding: 1.5rem;
-    }
-
-    .lightbox-overlay.open {
-      display: flex;
-    }
-
-    .lightbox-content {
-      position: relative;
-      max-width: 90vw;
-      max-height: 90vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.75rem;
-    }
-
-    .lightbox-content img {
-      max-width: 100%;
-      max-height: 80vh;
-      width: auto;
-      height: auto;
-      object-fit: contain;
-      border-radius: 8px;
-      box-shadow: 0 4px 25px rgba(0,0,0,0.4);
-      background: #000;
-    }
-
-    .lightbox-caption {
-      color: #f5f5f5;
-      font-size: 0.95rem;
-      line-height: 1.5;
-      text-align: center;
-      max-width: 800px;
-    }
-
-    .lightbox-close {
-      position: absolute;
-      top: -32px;
-      right: -32px;
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      background: rgba(0,0,0,0.8);
-      color: #fff;
-      border: none;
-      cursor: pointer;
-      font-size: 18px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    @media (max-width: 768px) {
-      .lightbox-content {
-        max-width: 100vw;
-        max-height: 100vh;
+    @media (max-width:768px){
+      .container{ padding:0 1.5rem; }
+      main{
+        padding-top:calc(var(--nav-height) + 2.4rem);
+        padding-bottom:3rem;
       }
-
-      .lightbox-close {
-        top: 8px;
-        right: 8px;
+      .project-meta-grid{
+        grid-template-columns:1fr;
       }
     }
   </style>
 </head>
-
 <body>
 
-  <script src="../assets/js/include.js" defer></script>
-  <div data-include="../menu.html"></div>
+  <div id="menu-container"></div>
 
-  <nav class="breadcrumb">
-    <a href="../index.html">Portfolio</a>
-    <span>/</span>
-    <span class="current">Coesuz</span>
-  </nav>
-
-  <section class="project-hero">
-    <div class="project-category">Comunicación digital</div>
-    <h1>Coesuz</h1>
-  </section>
-
-  <section class="project-meta">
-    <div class="meta-item">
-      <div class="meta-label">Cliente</div>
-      <div class="meta-value">Trabajo Final de Máster - ESAME</div>
-    </div>
-    <div class="meta-item">
-      <div class="meta-label">Sector</div>
-      <div class="meta-value">Farmacéutico</div>
-    </div>
-    <div class="meta-item">
-      <div class="meta-label">Rol</div>
-      <div class="meta-value">Diseño 3D, animación y edición de vídeo</div>
-    </div>
-    <div class="meta-item">
-      <div class="meta-label">Año</div>
-      <div class="meta-value">2024</div>
-    </div>
-  </section>
-
-  <section class="project-content">
-    <div class="content-section">
-      <p>
-        Coesuz es un proyecto académico desarrollado en el marco de un máster para la ESAME Pharmaceutical Business School, centrado en la simulación del lanzamiento de un producto innovador en el sector farmacéutico y biotecnológico. Mi contribución se centra en la creación de los elementos visuales clave del proyecto: el diseño tridimensional de la caja del producto, su animación y la edición del vídeo promocional.
-      </p>
-      <p>
-        A partir de los requisitos estratégicos del equipo, conceptualicé y modelé en 3D el packaging, buscando un equilibrio entre claridad, modernidad y coherencia con los códigos visuales del sector. Posteriormente, desarrollé animaciones 3D que mostraran de forma dinámica la caja, sus detalles gráficos y sus funcionalidades, convirtiéndola en una pieza atractiva para presentación y comunicación.
-      </p>
-      <p>
-        Finalmente, me encargué de la edición del vídeo promocional, integrando las animaciones 3D con otros recursos gráficos y textuales para construir una narrativa clara y profesional. El resultado es una pieza audiovisual diseñada para reforzar el posicionamiento del producto en un contexto académico y simular cómo podría presentarse ante potenciales clientes, inversores o comités internos.
-      </p>
-    </div>
-  </section>
-
-  <section class="project-gallery">
-    <h2 class="gallery-title">Imágenes</h2>
-    <div class="gallery-grid grid-2-columns">
-      <div class="gallery-item">
-        <figure>
-          <div class="gallery-item-web">
-            <img src="../assets/img/coesuz-product-1.png" alt="Coesuz - Imagen de producto 1">
+  <main>
+    <!-- HERO -->
+    <section class="project-hero">
+      <div class="container">
+        <div class="project-hero-layout">
+          <div>
+            <h1 class="project-title">Coesuz – 3D design and launch simulation</h1>
+            <p class="project-subtitle">
+              Academic project for ESAME Pharmaceutical Business School focused on simulating the launch
+              of an innovative product in the pharmaceutical and biotech sector: from 3D packaging design
+              to animation and promotional video editing.
+            </p>
           </div>
-          <figcaption class="gallery-caption">
-            Diseño desplegado en 3D del packaging de Coesuz con logo azul y verde, información del medicamento y códigos de barras.
-          </figcaption>
-        </figure>
-      </div>
-      <div class="gallery-item">
-        <figure>
-          <div class="gallery-item-web">
-            <img src="../assets/img/coesuz-product-2.png" alt="Coesuz - Imagen de producto 2">
-          </div>
-          <figcaption class="gallery-caption">
-            Render 3D de la caja de Coesuz, envase farmacéutico blanco y azul verdoso con el logotipo.
-          </figcaption>
-        </figure>
-      </div>
-    </div>
-  </section>
 
-  <section class="project-gallery">
-    <h2 class="gallery-title">Animación</h2>
-    <div class="project-video">
-      <figure style="max-width: 900px; margin: 0 auto;">
-        <div class="video-container">
-          <img 
-            src="../assets/img/coesuz-animation.gif"
-            alt="Coesuz - Animación de la caja"
-            style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:contain; display:block; cursor:zoom-in;">
+          <div></div>
+
+          <!-- OPTIONAL METRICS (left blank for this project) -->
+          <div class="metrics-wrapper">
+            <div class="metrics-row">
+              <div class="metric-block">
+                <div class="metric-block-title">3D</div>
+                <div class="metric-block-subtitle">product visualization</div>
+                <div class="metric-block-caption">
+                  Realistic renders to present the box as if it were already on the market.
+                </div>
+              </div>
+              <div class="metric-block">
+                <div class="metric-block-title">1</div>
+                <div class="metric-block-subtitle">full promo video</div>
+                <div class="metric-block-caption">
+                  Edited piece combining 3D animation with supporting graphic and text assets.
+                </div>
+              </div>
+              <div class="metric-block">
+                <div class="metric-block-title">End‑to‑end</div>
+                <div class="metric-block-subtitle">visual workflow</div>
+                <div class="metric-block-caption">
+                  From concept and modeling to animation and post‑production.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- META -->
+          <div class="project-meta-shell">
+            <div class="project-meta-grid">
+              <div class="project-meta-item">
+                <span class="project-meta-label">Client</span>
+                <span class="project-meta-value">Final Master’s Project – ESAME</span>
+              </div>
+              <div class="project-meta-item">
+                <span class="project-meta-label">Year</span>
+                <span class="project-meta-value">2024</span>
+              </div>
+              <div class="project-meta-item">
+                <span class="project-meta-label">My role</span>
+                <span class="project-meta-value">3D design, animation and video editing</span>
+              </div>
+              <div class="project-meta-item">
+                <span class="project-meta-label">Domain</span>
+                <span class="project-meta-value">Pharmaceutical and biotech</span>
+              </div>
+            </div>
+          </div>
         </div>
-        <figcaption class="gallery-caption" style="text-align:center;">
-          Animación 3D de la caja de Coesuz mostrando el producto en rotación.
-        </figcaption>
-      </figure>
-    </div>
-  </section>
+      </div>
+    </section>
 
-  <section class="credits-section">
-    <h2>Créditos del equipo</h2>
-    <div class="credits-grid">
-      <div class="credit-item">
-        <span class="credit-role">Dirección general:</span> Helena Riba
-      </div>
-      <div class="credit-item">
-        <span class="credit-role">Departamento de ventas:</span> Héctor Cuerda
-      </div>
-      <div class="credit-item">
-        <span class="credit-role">Departamento de acceso:</span> Carolina Alcobé
-      </div>
-      <div class="credit-item">
-        <span class="credit-role">Departamento médico:</span> Yasmin Soares
-      </div>
-      <div class="credit-item">
-        <span class="credit-role">Departamento de marketing:</span> Laura Moncusí
-      </div>
-      <div class="credit-item">
-        <span class="credit-role">Diseño 3D, animación y edición de vídeo:</span> Jan Escoda
-      </div>
-    </div>
-  </section>
-  
-  <a href="#" id="scroll-to-top" title="Volver arriba"></a>
-  
-  <div data-include="../footer.html"></div>
+    <!-- 01 · PROJECT OVERVIEW -->
+    <section class="section">
+      <div class="container">
+        <div class="full-width-block">
+          <div class="section-kicker">01 · Project</div>
+          <h2 class="section-heading">Turning an academic case into a believable product launch</h2>
 
-  <div class="lightbox-overlay" id="lightbox">
-    <div class="lightbox-content">
-      <button class="lightbox-close" id="lightbox-close" aria-label="Cerrar imagen ampliada">×</button>
-      <img src="" alt="" id="lightbox-img">
-      <div class="lightbox-caption" id="lightbox-caption"></div>
-    </div>
-  </div>
+          <div class="body-text">
+            <p>
+              Coesuz is an academic project developed as part of a master’s degree at ESAME Pharmaceutical Business
+              School. The goal was to simulate the launch of an innovative product in the pharmaceutical and
+              biotechnology sector. My contribution focused on creating the key visual elements: the 3D design of
+              the product box, its animation, and the editing of the promotional video.
+            </p>
+            <p>
+              Based on the strategic requirements defined by the team, I conceptualised and modelled the packaging
+              in 3D, looking for a balance between clarity, a contemporary look and alignment with the visual codes
+              of the sector. From there, I developed 3D animations that show the box, its graphic details and its
+              features in motion, turning it into a compelling piece for presentations and communication.
+            </p>
+            <p>
+              Finally, I took care of the promotional video editing, combining 3D animations with additional graphic
+              and text layers to build a clear and professional narrative. The result is an audiovisual piece designed
+              to reinforce the product’s positioning in an academic context and to simulate how it could be presented
+              to potential clients, investors or internal committees.
+            </p>
+          </div>
 
-  <script src="../assets/js/ikea-page.js" defer></script>
+          <div class="highlight-callout">
+            The aim was not just to show a 3D box, but to build a full visual story that would feel at home in a real
+            pharmaceutical launch presentation.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 · PACKAGING DESIGN -->
+    <section class="section">
+      <div class="container">
+        <div class="full-width-block">
+          <div class="section-kicker">02 · 3D packaging</div>
+          <h2 class="section-heading">Packaging that speaks the language of healthcare</h2>
+
+          <div class="body-text">
+            <p>
+              For the box design I worked with a clean, clinical aesthetic and a blue‑green palette to convey
+              trust, technology and safety. The layout organises key information (name, dosage, indications and
+              regulatory elements) in a way that is easy to scan both in static visuals and in motion.
+            </p>
+            <p>
+              I treated the packaging as if it were going to print: dieline, sides, barcodes and legibility at
+              different sizes were all considered before moving to rendering and animation.
+            </p>
+          </div>
+
+          <!-- IMAGES -->
+          <div class="media-block">
+            <div class="media-grid-2">
+              <figure class="media-figure">
+                <div class="media-figure-inner">
+                  <img src="../assets/img/coesuz-product-1.png" alt="Coesuz – flat 3D layout of the packaging" />
+                </div>
+                <figcaption class="media-caption">
+                  3D flat layout of the Coesuz packaging with blue and green logo, medicine information and barcodes,
+                  prepared as if for print.
+                </figcaption>
+              </figure>
+
+              <figure class="media-figure">
+                <div class="media-figure-inner">
+                  <img src="../assets/img/coesuz-product-2.png" alt="Coesuz – 3D render of the product box" />
+                </div>
+                <figcaption class="media-caption">
+                  3D render of the Coesuz box: a white and blue‑green pharmaceutical pack with the product logo and
+                  clean hierarchy of information.
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 · ANIMATION -->
+    <section class="section">
+      <div class="container">
+        <div class="full-width-block">
+          <div class="section-kicker">03 · Animation</div>
+          <h2 class="section-heading">Animating the box for presentations and video</h2>
+
+          <div class="body-text">
+            <p>
+              The animation focused on showing the box from different angles, highlighting key panels and ensuring
+              that text and visual codes remained legible throughout. The movement is smooth and controlled so that
+              it can be paused at any moment during a pitch or presentation without losing clarity.
+            </p>
+          </div>
+
+          <div class="media-block media-block-single">
+            <figure class="media-figure">
+              <div class="media-figure-inner media-figure-inner-contain">
+                <img
+                  src="../assets/img/coesuz-animation.gif"
+                  alt="Coesuz – 3D animation of the box"
+                />
+              </div>
+              <figcaption class="media-caption" style="text-align:center;">
+                3D animation of the Coesuz box rotating to reveal the product from multiple angles, ready to be
+                integrated into the final promotional video.
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 · TEAM CREDITS -->
+    <section class="section">
+      <div class="container">
+        <div class="full-width-block">
+          <div class="section-kicker">04 · Team</div>
+          <h2 class="section-heading">Team credits</h2>
+
+          <div class="inline-card-full">
+            <div class="inline-card-title">Project roles</div>
+            <ul>
+              <li><strong>General management:</strong> Helena Riba</li>
+              <li><strong>Sales department:</strong> Héctor Cuerda</li>
+              <li><strong>Market access department:</strong> Carolina Alcobé</li>
+              <li><strong>Medical department:</strong> Yasmin Soares</li>
+              <li><strong>Marketing department:</strong> Laura Moncusí</li>
+              <li><strong>3D design, animation and video editing:</strong> Jan Escoda</li>
+            </ul>
+          </div>
+
+          <div class="project-nav">
+            <a href="../index.html#work" class="project-nav-up">← Back to works</a>
+            <a href="/projects/accesorios3d.html">Next: Accesorios 3D →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-container"></div>
+
+  <script>
+    function copyEmail() {
+      var EMAIL = 'janescoda49@gmail.com';
+
+      function animate(btn) {
+        if (!btn) return;
+        btn.classList.add('copied');
+        setTimeout(function () {
+          btn.classList.remove('copied');
+        }, 2500);
+      }
+
+      function fallback() {
+        var el = document.createElement('textarea');
+        el.value = EMAIL;
+        el.style.cssText = 'position:fixed;opacity:0;top:0;left:0;';
+        document.body.appendChild(el);
+        el.focus();
+        el.select();
+        try { document.execCommand('copy'); } catch (e) {}
+        document.body.removeChild(el);
+      }
+
+      var btns = [
+        document.getElementById('copyBtn'),
+        document.getElementById('copyBtnMobile')
+      ];
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(EMAIL)
+          .then(function () { btns.forEach(animate); })
+          .catch(function () { fallback(); btns.forEach(animate); });
+      } else {
+        fallback();
+        btns.forEach(animate);
+      }
+    }
+
+    function initMenuBehavior() {
+      var nav = document.querySelector('.site-nav');
+      if (!nav) return;
+
+      var toggleBtn  = nav.querySelector('.nav-toggle');
+      var mobileMenu = nav.querySelector('.nav-right-mobile');
+
+      if (toggleBtn && mobileMenu) {
+        toggleBtn.addEventListener('click', function (e) {
+          e.stopPropagation();
+          var isOpen = nav.classList.toggle('is-open');
+          toggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+
+        mobileMenu.addEventListener('click', function (e) {
+          if (e.target.closest('.nav-link')) {
+            nav.classList.remove('is-open');
+            toggleBtn.setAttribute('aria-expanded', 'false');
+          }
+        });
+
+        document.addEventListener('click', function (e) {
+          if (!nav.contains(e.target)) {
+            nav.classList.remove('is-open');
+            toggleBtn.setAttribute('aria-expanded', 'false');
+          }
+        });
+      }
+
+      ['copyBtn', 'copyBtnMobile'].forEach(function (id) {
+        var btn = document.getElementById(id);
+        if (!btn) return;
+        btn.addEventListener('click', function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          copyEmail();
+        });
+      });
+    }
+
+    function setActiveNav(page) {
+      document.querySelectorAll('.nav-link').forEach(function (link) {
+        link.classList.remove('is-active');
+      });
+
+      if (page === 'index') {
+        document.querySelectorAll('.nav-link[href="../index.html#work"]').forEach(function (l) {
+          l.classList.add('is-active');
+        });
+      } else if (page === 'about') {
+        document.querySelectorAll('.nav-link[href="../about.html"]').forEach(function (l) {
+          l.classList.add('is-active');
+        });
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      var menuContainer   = document.getElementById('menu-container');
+      var footerContainer = document.getElementById('footer-container');
+
+      var menuPromise = fetch('../menu.html')
+        .then(function (r) { return r.text(); })
+        .then(function (html) {
+          menuContainer.innerHTML = html;
+          initMenuBehavior();
+          setActiveNav('index');
+        })
+        .catch(function (err) {
+          console.error('Error loading menu.html', err);
+        });
+
+      var footerPromise = fetch('../footer.html')
+        .then(function (r) { return r.text(); })
+        .then(function (html) {
+          footerContainer.innerHTML = html;
+        })
+        .catch(function (err) {
+          console.error('Error loading footer.html', err);
+        });
+
+      Promise.all([menuPromise, footerPromise]).then(function () {});
+    });
+  </script>
 
 </body>
 </html>
