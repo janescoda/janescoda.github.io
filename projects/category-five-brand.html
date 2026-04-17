@@ -3,236 +3,176 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Category Five Brand - Jan Escoda</title>
+  <title>Category Five Brand – Digital campaign · Jan Escoda</title>
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet"
-  />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
-    :root {
+    html { font-size: 110%; scroll-behavior: smooth; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root{
       --bg: #ffffff;
-      --text-main: #111111;
-      --text-soft: #555555;
-      --text-mute: #9b9b9b;
-      --border-subtle: #e5e5e5;
-      --shadow-soft: 0 18px 55px rgba(15, 23, 42, 0.12);
-      --radius-lg: 18px;
-      --radius-md: 14px;
-      --radius-sm: 10px;
-      --max-width: 1160px;
+      --text: rgb(103,103,122);
+      --title: #000000;
+      --card-bg: #f4f3f0;
+      --border: #e4e2dd;
+      --transition: 0.28s cubic-bezier(0.4,0,0.2,1);
+      --page-max-width: 1056px;
+      --page-side-padding: 3.3rem;
+      --nav-height: 4.6rem;
+      --section-gap: 4.5rem;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      padding-top: 80px;
-      font-family: "Manrope", system-ui, -apple-system, BlinkMacSystemFont,
-        "Segoe UI", sans-serif;
+    body{
+      font-family: 'Manrope', sans-serif;
       background: var(--bg);
-      color: var(--text-main);
-      line-height: 1.7;
+      color: var(--text);
+      line-height: 1.6;
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
 
-    img {
-      max-width: 100%;
-      display: block;
+    a { text-decoration:none; color:inherit; }
+
+    ::-webkit-scrollbar{ width:5px; }
+    ::-webkit-scrollbar-track{ background:var(--bg);}
+    ::-webkit-scrollbar-thumb{ background:var(--border); border-radius:3px; }
+
+    .container{
+      max-width:var(--page-max-width);
+      margin:0 auto;
+      padding:0 var(--page-side-padding);
+      box-sizing:border-box;
     }
 
-    /* Breadcrumb */
-    .breadcrumb {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 1.5rem 20px 0;
-      font-size: 0.9rem;
-      color: var(--text-soft);
-      display: flex;
-      gap: 0.5rem;
-      align-items: center;
+    main {
+      padding-top: calc(var(--nav-height) + 4.5rem);
+      padding-bottom: 4rem;
     }
 
-    .breadcrumb a {
-      color: var(--text-soft);
-      text-decoration: none;
-      font-weight: 500;
-      letter-spacing: 0.02em;
-      text-transform: uppercase;
-      font-size: 0.8rem;
-    }
-
-    .breadcrumb a:hover {
-      color: var(--text-main);
-    }
-
-    .breadcrumb span.separator {
-      color: #c9c9c9;
-    }
-
-    .breadcrumb .current {
-      color: #a0a0a0;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      font-size: 0.8rem;
-    }
-
-    /* Header: hero + meta */
-    .project-header {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 2.5rem 20px 0;
-      display: grid;
-      grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.2fr);
-      gap: 2.5rem;
-      align-items: flex-start;
-    }
-
+    /* HERO */
     .project-hero {
-      padding-right: 1rem;
+      padding-bottom: 3.5rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: var(--section-gap);
     }
 
-    .project-category {
-      font-size: 0.8rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: var(--text-mute);
-      margin-bottom: 1.4rem;
+    .project-hero-layout {
+      display:grid;
+      grid-template-columns: minmax(0, 1.8fr) minmax(0, 1fr);
+      gap:3rem;
+      align-items:flex-start;
     }
 
     .project-title {
-      font-size: clamp(2.4rem, 3.4vw, 3.1rem);
-      font-weight: 700;
-      letter-spacing: -0.06em;
-      margin-bottom: 1.8rem;
-      color: var(--text-main);
-    }
-
-    .project-intro {
-      font-size: 0.98rem;
-      color: var(--text-soft);
-      max-width: 32rem;
-      line-height: 1.8;
-    }
-
-    /* Meta card */
-    .project-meta-card {
-      background: #f8fafc;
-      border-radius: var(--radius-lg);
-      padding: 1.4rem 1.5rem;
-      box-shadow: 0 12px 35px rgba(15, 23, 42, 0.04);
-      border: 1px solid #eef2f7;
-    }
-
-    .meta-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 1.3rem 1.8rem;
-    }
-
-    .meta-item {
-      display: flex;
-      flex-direction: column;
-      gap: 0.25rem;
-    }
-
-    .meta-label {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: #9ca3af;
-      font-weight: 600;
-    }
-
-    .meta-value {
-      font-size: 0.92rem;
-      color: var(--text-main);
-      font-weight: 500;
-    }
-
-    /* Main content */
-    .project-main {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 3.5rem 20px 0;
-    }
-
-    .content-card {
-      background: #f9fafb;
-      border-radius: var(--radius-lg);
-      padding: 2.25rem 2.25rem 2.4rem;
-      box-shadow: 0 26px 70px rgba(15, 23, 42, 0.08);
-      border: 1px solid #e5e7eb;
-    }
-
-    .content-section p {
-      font-size: 0.98rem;
-      color: var(--text-soft);
-      line-height: 1.9;
-      margin-bottom: 1.2rem;
-    }
-
-    .content-section p:last-child {
-      margin-bottom: 0;
-    }
-
-    /* Section blocks */
-    .section-block {
-      max-width: var(--max-width);
-      margin: 3.5rem auto 0;
-      padding: 0 20px;
-    }
-
-    .section-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      margin-bottom: 1.8rem;
-    }
-
-    .section-title {
-      font-size: 1.2rem;
-      font-weight: 600;
+      font-size: clamp(2.3rem, 3.8vw, 3rem);
+      font-weight: 800;
       letter-spacing: -0.03em;
-      color: var(--text-main);
+      line-height: 1.1;
+      color: var(--title);
+      margin-bottom: 1.3rem;
+    }
+
+    .project-subtitle {
+      font-size: 0.96rem;
+      max-width: 34rem;
+    }
+
+    /* META */
+    .project-meta-shell {
+      grid-column: 1 / -1;
+      margin-top: 2.2rem;
+      border-radius:18px;
+      border:1px solid var(--border);
+      background:#f7f7f7;
+      padding:1.1rem 1.4rem 1.2rem;
+      font-size:0.86rem;
+    }
+
+    .project-meta-grid {
+      display:grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap:0.6rem 1.8rem;
+    }
+
+    .project-meta-item {
+      min-width:0;
+    }
+
+    .project-meta-label {
+      font-size:0.75rem;
+      text-transform:uppercase;
+      letter-spacing:.13em;
+      font-weight:700;
+      color:#9a9aa8;
+      margin-bottom:0.18rem;
+      display:block;
+    }
+
+    .project-meta-value {
+      font-weight:600;
+      color:var(--title);
+      font-size:0.9rem;
+      display:block;
+    }
+
+    /* GENERIC SECTIONS */
+    .section {
+      margin-bottom: var(--section-gap);
     }
 
     .section-kicker {
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: var(--text-mute);
+      font-size:0.8rem;
+      text-transform:uppercase;
+      letter-spacing:.13em;
+      font-weight:700;
+      color:#8a8a8a;
+      margin-bottom:0.6rem;
     }
 
-    /* Galleries */
-    .gallery-grid,
+    .section-heading {
+      font-size:clamp(1.7rem,3vw,2.2rem);
+      font-weight:800;
+      letter-spacing:-0.02em;
+      color:var(--title);
+      margin-bottom:1.3rem;
+    }
+
+    .body-text {
+      font-size:0.96rem;
+    }
+
+    .body-text p + p { margin-top:1rem; }
+
+    .full-width-block {
+      max-width:var(--page-max-width);
+      margin:0 auto;
+    }
+
+    /* GALLERIES */
+    .gallery-grid-vertical,
+    .gallery-grid {
+      display:grid;
+      gap:2rem;
+    }
+
     .gallery-grid-vertical {
-      display: grid;
-      gap: 1.8rem;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
     }
 
     .gallery-grid {
       grid-template-columns: repeat(4, minmax(0, 1fr));
     }
 
-    .gallery-grid-vertical {
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-    }
-
     .gallery-figure-vertical,
     .gallery-item figure {
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 0.55rem;
+      margin:0;
+      display:flex;
+      flex-direction:column;
+      gap:0.5rem;
     }
 
     .gallery-item-vertical {
@@ -240,10 +180,9 @@
       width: 100%;
       padding-bottom: 177.78%;
       overflow: hidden;
-      border-radius: var(--radius-md);
-      background: #f3f4f6;
-      box-shadow: 0 14px 45px rgba(15, 23, 42, 0.12);
-      cursor: zoom-in;
+      border-radius: 12px;
+      background: #f5f5f5;
+      box-shadow: 0 14px 45px rgba(15,23,42,0.12);
     }
 
     .gallery-item-vertical img {
@@ -256,27 +195,29 @@
     }
 
     .gallery-item img {
-      border-radius: var(--radius-md);
-      box-shadow: 0 14px 45px rgba(15, 23, 42, 0.12);
-      cursor: zoom-in;
+      width:100%;
+      border-radius:12px;
+      box-shadow: 0 14px 45px rgba(15,23,42,0.12);
+      display:block;
     }
 
     .gallery-caption {
-      font-size: 0.8rem;
-      color: #6b7280;
-      line-height: 1.6;
+      font-size:0.82rem;
+      color:#6b7280;
+      line-height:1.5;
     }
 
     .gallery-grid.animaciones-logo {
-      max-width: 680px;
+      max-width: 700px;
       margin: 0 auto;
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    /* Videos */
+    /* VIDEO GRID */
     .video-grid {
-      display: grid;
-      gap: 1.8rem;
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap:1.8rem;
     }
 
     .video-container {
@@ -284,674 +225,571 @@
       padding-bottom: 56.25%;
       height: 0;
       overflow: hidden;
-      border-radius: var(--radius-lg);
-      box-shadow: 0 22px 70px rgba(15, 23, 42, 0.16);
-      background: #020617;
+      border-radius: 14px;
+      box-shadow: 0 22px 70px rgba(15,23,42,0.2);
+      background: #000;
     }
 
     .video-container iframe {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      border: 0;
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      border:0;
     }
 
-    /* Credits */
-    .credits-card {
-      background: #0f172a;
-      border-radius: var(--radius-lg);
-      padding: 2.2rem 2.25rem 2.4rem;
-      margin-bottom: 4rem;
-      color: #e5e7eb;
-      box-shadow: 0 32px 90px rgba(15, 23, 42, 0.5);
-    }
-
-    .credits-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      margin-bottom: 2rem;
-    }
-
-    .credits-title {
-      font-size: 1.15rem;
-      font-weight: 600;
-      letter-spacing: -0.03em;
-    }
-
-    .credits-kicker {
-      font-size: 0.78rem;
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-      color: #6b7280;
-    }
-
+    /* CREDITS */
     .credits-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 1rem 2.5rem;
+      display:grid;
+      grid-template-columns: repeat(2,minmax(0,1fr));
+      gap:1rem 2.5rem;
+      font-size:0.9rem;
     }
 
     .credit-item {
-      font-size: 0.86rem;
-      color: #e5e7eb;
-      line-height: 1.7;
+      color:var(--text);
+      line-height:1.7;
     }
 
     .credit-role {
-      font-weight: 600;
-      color: #f9fafb;
+      font-weight:700;
+      color:var(--title);
     }
 
-    /* Scroll to top */
-    #scroll-to-top {
-      display: none;
-      position: fixed;
-      bottom: 22px;
-      right: 26px;
-      z-index: 99;
-      border: 1px solid rgba(15, 23, 42, 0.12);
-      outline: none;
-      background-color: #111827;
-      cursor: pointer;
-      width: 46px;
-      height: 46px;
-      border-radius: 999px;
-      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.35);
-      transition: background-color 0.25s ease, transform 0.2s ease,
-        box-shadow 0.25s ease;
-      align-items: center;
-      justify-content: center;
+    .results-section-title {
+      font-size:clamp(1.6rem,2.6vw,2rem);
+      font-weight:800;
+      letter-spacing:-0.02em;
+      color:var(--title);
+      margin-bottom:1.6rem;
     }
 
-    #scroll-to-top.show-flex {
-      display: flex;
+    .project-nav {
+      margin-top:3rem;
+      padding-top:1.8rem;
+      border-top:1px solid var(--border);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:1rem;
+      font-size:0.9rem;
     }
 
-    #scroll-to-top::before {
-      content: "";
-      display: block;
-      width: 9px;
-      height: 9px;
-      border-top: 2.2px solid white;
-      border-right: 2.2px solid white;
-      transform: rotate(-45deg) translateY(1px);
+    .project-nav a {
+      font-weight:600;
+      text-decoration:underline;
+      text-underline-offset:3px;
     }
 
-    #scroll-to-top:hover {
-      background-color: #020617;
-      transform: translateY(-1px);
-      box-shadow: 0 22px 55px rgba(15, 23, 42, 0.45);
+    .project-nav-up {
+      display:inline-flex;
+      align-items:center;
+      gap:0.35rem;
     }
 
-    /* Lightbox */
-    .lightbox-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(15, 23, 42, 0.85);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
-      padding: 1.5rem;
-      backdrop-filter: blur(4px);
-    }
-
-    .lightbox-overlay.open {
-      display: flex;
-    }
-
-    .lightbox-content {
-      position: relative;
-      max-width: 92vw;
-      max-height: 92vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.75rem;
-    }
-
-    .lightbox-content img {
-      max-width: 100%;
-      max-height: 82vh;
-      width: auto;
-      height: auto;
-      object-fit: contain;
-      border-radius: var(--radius-lg);
-      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.8);
-      background: #020617;
-    }
-
-    .lightbox-caption {
-      color: #e5e7eb;
-      font-size: 0.92rem;
-      line-height: 1.5;
-      text-align: center;
-      max-width: 720px;
-    }
-
-    .lightbox-close {
-      position: absolute;
-      top: -40px;
-      right: -40px;
-      width: 32px;
-      height: 32px;
-      border-radius: 999px;
-      background: rgba(15, 23, 42, 0.9);
-      color: #f9fafb;
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      cursor: pointer;
-      font-size: 18px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      line-height: 1;
-    }
-
-    @media (max-width: 900px) {
-      .project-header {
-        grid-template-columns: minmax(0, 1.7fr) minmax(0, 1.2fr);
-        gap: 2rem;
+    @media (max-width:900px){
+      .project-hero-layout{
+        grid-template-columns:1fr;
+        gap:2.2rem;
       }
-
-      .content-card,
-      .credits-card {
-        padding: 1.8rem 1.6rem 1.9rem;
+      .project-meta-grid{
+        grid-template-columns:repeat(2,minmax(0,1fr));
       }
-
       .gallery-grid,
-      .gallery-grid-vertical {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+      .gallery-grid-vertical{
+        grid-template-columns:repeat(2,minmax(0,1fr));
       }
-
-      .video-grid {
-        grid-template-columns: minmax(0, 1fr);
+      .video-grid{
+        grid-template-columns:minmax(0,1fr);
       }
-
-      .credits-grid {
-        grid-template-columns: minmax(0, 1fr);
+      .credits-grid{
+        grid-template-columns:minmax(0,1fr);
       }
     }
 
-    @media (max-width: 720px) {
-      body {
-        padding-top: 70px;
+    @media (max-width:768px){
+      .container{ padding:0 1.5rem; }
+      main{
+        padding-top:calc(var(--nav-height) + 2.4rem);
+        padding-bottom:3rem;
       }
-
-      .breadcrumb {
-        padding-top: 1.1rem;
-        font-size: 0.82rem;
+      .project-meta-grid{
+        grid-template-columns:1fr;
       }
-
-      .project-header {
-        grid-template-columns: minmax(0, 1fr);
-        padding-top: 1.8rem;
-      }
-
-      .project-hero {
-        padding-right: 0;
-      }
-
-      .project-intro {
-        max-width: 100%;
-      }
-
-      .project-meta-card {
-        padding: 1.4rem 1.3rem;
-      }
-
-      .meta-grid {
-        grid-template-columns: minmax(0, 1fr);
-        gap: 1rem 1.4rem;
-      }
-
-      .project-main {
-        padding-top: 2.8rem;
-      }
-
-      .section-block {
-        margin-top: 2.6rem;
-      }
-
-      .section-header {
-        flex-direction: column;
-        gap: 0.35rem;
-        align-items: flex-start;
-      }
-
       .gallery-grid,
-      .gallery-grid-vertical {
-        grid-template-columns: minmax(0, 1fr);
-        gap: 1.4rem;
-      }
-
-      .gallery-grid.animaciones-logo {
-        max-width: 100%;
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      .credits-card {
-        margin-bottom: 3rem;
-      }
-
-      .lightbox-content {
-        max-width: 100vw;
-        max-height: 100vh;
-      }
-
-      .lightbox-close {
-        top: 8px;
-        right: 8px;
-      }
-
-      #scroll-to-top {
-        width: 42px;
-        height: 42px;
-        bottom: 18px;
-        right: 18px;
+      .gallery-grid-vertical{
+        grid-template-columns:1fr;
       }
     }
   </style>
 </head>
-
 <body>
-  <script src="../assets/js/include.js" defer></script>
-  <div data-include="../menu.html"></div>
 
-  <nav class="breadcrumb">
-    <a href="../index.html">Portfolio</a>
-    <span class="separator">/</span>
-    <span class="current">Category Five Brand</span>
-  </nav>
+  <div id="menu-container"></div>
 
-  <!-- Hero + Meta -->
-  <header class="project-header">
+  <main>
+    <!-- HERO -->
     <section class="project-hero">
-      <div class="project-category">Digital communication</div>
-      <h1 class="project-title">Category Five Brand</h1>
-      <p class="project-intro">
-        Digital campaign for Category Five Brand built around audiovisual
-        pieces, photographic content and graphic assets designed for social
-        media, with the aim of connecting with a young audience interested in
-        streetwear, urban culture and contemporary trends.
-      </p>
-    </section>
+      <div class="container">
+        <div class="project-hero-layout">
+          <div>
+            <h1 class="project-title">Category Five Brand – Digital campaign</h1>
+            <p class="project-subtitle">
+              A content and social campaign for Category Five Brand that combines video, photography,
+              graphics and logo animations to connect with a young streetwear audience on Instagram and TikTok.
+            </p>
+          </div>
 
-    <aside class="project-meta-card">
-      <div class="meta-grid">
-        <div class="meta-item">
-          <div class="meta-label">Client</div>
-          <div class="meta-value">Category Five Brand</div>
-        </div>
-        <div class="meta-item">
-          <div class="meta-label">Industry</div>
-          <div class="meta-value">Fashion</div>
-        </div>
-        <div class="meta-item">
-          <div class="meta-label">Role</div>
-          <div class="meta-value">
-            Art direction, graphic design and digital content
+          <div></div>
+
+          <!-- META -->
+          <div class="project-meta-shell">
+            <div class="project-meta-grid">
+              <div class="project-meta-item">
+                <span class="project-meta-label">Client</span>
+                <span class="project-meta-value">Category Five Brand</span>
+              </div>
+              <div class="project-meta-item">
+                <span class="project-meta-label">Year</span>
+                <span class="project-meta-value">2023</span>
+              </div>
+              <div class="project-meta-item">
+                <span class="project-meta-label">My role</span>
+                <span class="project-meta-value">Art direction, graphic design & digital content</span>
+              </div>
+              <div class="project-meta-item">
+                <span class="project-meta-label">Domain</span>
+                <span class="project-meta-value">Streetwear & urban fashion</span>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="meta-item">
-          <div class="meta-label">Year</div>
-          <div class="meta-value">2023</div>
+      </div>
+    </section>
+
+    <!-- 01 · Campaign -->
+    <section class="section">
+      <div class="container">
+        <div class="full-width-block">
+          <div class="section-kicker">01 · Campaign</div>
+          <h2 class="section-heading">Three videos to bring the brand’s summer universe to life</h2>
+
+          <div class="body-text">
+            <p>
+              The campaign is built around three short videos that explore different summer activities
+              connected to the brand’s world: days at the beach, motorbike rides and urban skate events.
+              Each piece was designed to highlight specific garments from the new collection and show how
+              they work in real contexts, aligned with the audience’s lifestyle.
+            </p>
+            <p>
+              In parallel, we developed a digital campaign focused on Instagram and TikTok, combining
+              photographic content, graphic pieces and logo animations. The publishing plan integrated
+              Stories, Reels and grid posts that worked both as a visual lookbook and as a showcase of the
+              brand’s identity, keeping colour, typography and composition consistent throughout.
+            </p>
+            <p>
+              The main target was 18–25 year olds interested in fashion, urban culture, the latest trends
+              and oversized clothing, who see the way they dress as a form of self‑expression. From this
+              profile, we defined messages and formats to create identification with Category Five Brand’s
+              lifestyle and reinforce its positioning within urban fashion.
+            </p>
+            <p>
+              Community engagement was encouraged through social media challenges, polls and giveaways,
+              which helped to increase organic reach and strengthen the relationship between the brand and
+              its audience. The campaign aimed to consolidate a fresh, contemporary image of Category Five
+              Brand, aligned with current streetwear references and supported by a consistent visual
+              identity across graphic, photographic, animated and audiovisual assets.
+            </p>
+          </div>
         </div>
       </div>
-    </aside>
-  </header>
+    </section>
 
-  <!-- Main copy -->
-  <main class="project-main">
-    <section class="content-card">
-      <div class="content-section">
-        <p>
-          The campaign is built around three short videos that portray different
-          summer activities connected to the brand’s universe: days at the
-          beach, motorbike routes and urban events featuring skateboarding. Each
-          piece is designed to highlight specific garments from the new
-          collection and showcase their versatility in real-life contexts,
-          aligning with the audience’s lifestyle.
-        </p>
-        <p>
-          In parallel, a digital campaign focused on Instagram and TikTok was
-          developed, combining photographic content, graphic pieces and logo
-          animations. The content plan integrated Stories, Reels and grid posts
-          conceived both as a visual lookbook and as a showcase of the brand’s
-          identity, maintaining a coherent aesthetic across colour, typography
-          and composition.
-        </p>
-        <p>
-          The target audience was young people between 18 and 25 interested in
-          fashion, urban culture, the latest trends and oversized clothing, who
-          see the way they dress as a form of self-expression. Based on this
-          profile, messages and formats were designed to create identification
-          with Category Five Brand’s lifestyle and to reinforce its positioning
-          within urban fashion.
-        </p>
-        <p>
-          Community engagement was driven through challenges, polls and contests
-          on social media, helping to increase organic reach and strengthen the
-          connection between the brand and its audience. The campaign aimed to
-          consolidate a fresh and contemporary image of Category Five Brand,
-          aligned with current streetwear references and supported by a
-          consistent visual identity across all graphic, photographic, animated
-          and audiovisual pieces.
-        </p>
+    <!-- 02 · Stories photography -->
+    <section class="section">
+      <div class="container">
+        <div class="full-width-block">
+          <div class="section-kicker">02 · Stories</div>
+          <h2 class="section-heading">Photographic assets for stories</h2>
+
+          <div class="gallery-grid-vertical">
+            <figure class="gallery-figure-vertical">
+              <div class="gallery-item-vertical">
+                <img src="../assets/img/category-five-stories-1.png"
+                     alt="Category Five Brand story showing a summer look outdoors">
+              </div>
+              <figcaption class="gallery-caption">
+                Story photography featuring a summer look in an outdoor setting.
+              </figcaption>
+            </figure>
+
+            <figure class="gallery-figure-vertical">
+              <div class="gallery-item-vertical">
+                <img src="../assets/img/category-five-stories-2.png"
+                     alt="Category Five Brand story with oversized urban outfit">
+              </div>
+              <figcaption class="gallery-caption">
+                Story focused on an urban outfit with oversized garments at the centre.
+              </figcaption>
+            </figure>
+
+            <figure class="gallery-figure-vertical">
+              <div class="gallery-item-vertical">
+                <img src="../assets/img/category-five-stories-3.png"
+                     alt="Category Five Brand story highlighting collection details">
+              </div>
+              <figcaption class="gallery-caption">
+                Social media image highlighting key details of the new collection.
+              </figcaption>
+            </figure>
+
+            <figure class="gallery-figure-vertical">
+              <div class="gallery-item-vertical">
+                <img src="../assets/img/category-five-stories-4.png"
+                     alt="Category Five Brand story with skate scene">
+              </div>
+              <figcaption class="gallery-caption">
+                Story with a skate scene directly linked to the brand’s universe.
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 · Stories graphics -->
+    <section class="section">
+      <div class="container">
+        <div class="full-width-block">
+          <div class="section-kicker">03 · Stories</div>
+          <h2 class="section-heading">Graphic pieces for stories</h2>
+
+          <div class="gallery-grid-vertical">
+            <figure class="gallery-figure-vertical">
+              <div class="gallery-item-vertical">
+                <img src="../assets/img/category-five-graficas-1.png"
+                     alt="Category Five Brand graphic story 1">
+              </div>
+              <figcaption class="gallery-caption">
+                Graphic composition for stories combining typography and brand visual resources.
+              </figcaption>
+            </figure>
+
+            <figure class="gallery-figure-vertical">
+              <div class="gallery-item-vertical">
+                <img src="../assets/img/category-five-graficas-2.png"
+                     alt="Category Five Brand graphic story 2">
+              </div>
+              <figcaption class="gallery-caption">
+                Graphic design focused on the logo and the main campaign claim.
+              </figcaption>
+            </figure>
+
+            <figure class="gallery-figure-vertical">
+              <div class="gallery-item-vertical">
+                <img src="../assets/img/category-five-graficas-3.png"
+                     alt="Category Five Brand graphic story 3">
+              </div>
+              <figcaption class="gallery-caption">
+                Story asset that blends image and text to present the collection.
+              </figcaption>
+            </figure>
+
+            <figure class="gallery-figure-vertical">
+              <div class="gallery-item-vertical">
+                <img src="../assets/img/category-five-graficas-4.png"
+                     alt="Category Five Brand graphic story 4">
+              </div>
+              <figcaption class="gallery-caption">
+                Graphic story designed to announce launches and special promotions.
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 · Feed posts -->
+    <section class="section">
+      <div class="container">
+        <div class="full-width-block">
+          <div class="section-kicker">04 · Feed</div>
+          <h2 class="section-heading">Grid posts</h2>
+
+          <div class="gallery-grid">
+            <div class="gallery-item">
+              <figure>
+                <img src="../assets/img/category-five-post-1.png"
+                     alt="Category Five Brand grid post 1">
+                <figcaption class="gallery-caption">
+                  Grid post featuring one of the campaign’s main photographs.
+                </figcaption>
+              </figure>
+            </div>
+            <div class="gallery-item">
+              <figure>
+                <img src="../assets/img/category-five-post-2.png"
+                     alt="Category Five Brand grid post 2">
+                <figcaption class="gallery-caption">
+                  Post combining text and a highlighted garment from the collection.
+                </figcaption>
+              </figure>
+            </div>
+            <div class="gallery-item">
+              <figure>
+                <img src="../assets/img/category-five-post-3.png"
+                     alt="Category Five Brand grid post 3">
+                <figcaption class="gallery-caption">
+                  Lookbook‑style post designed for the Instagram feed.
+                </figcaption>
+              </figure>
+            </div>
+            <div class="gallery-item">
+              <figure>
+                <img src="../assets/img/category-five-post-4.png"
+                     alt="Category Five Brand grid post 4">
+                <figcaption class="gallery-caption">
+                  Graphic post that reinforces the visual identity across the grid.
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 · Animations -->
+    <section class="section">
+      <div class="container">
+        <div class="full-width-block">
+          <div class="section-kicker">05 · Motion</div>
+          <h2 class="section-heading">Logo animations</h2>
+
+          <div class="gallery-grid animaciones-logo">
+            <div class="gallery-item">
+              <figure>
+                <img src="../assets/img/category-five-animacion-1.gif"
+                     alt="Category Five Brand logo animation 1">
+                <figcaption class="gallery-caption">
+                  Logo animation adapted to social formats, used as an intro and transition element.
+                </figcaption>
+              </figure>
+            </div>
+            <div class="gallery-item">
+              <figure>
+                <img src="../assets/img/category-five-animacion-2.gif"
+                     alt="Category Five Brand logo animation 2">
+                <figcaption class="gallery-caption">
+                  Logo motion variation focused on rhythm, movement and visual impact.
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 · Videos -->
+    <section class="section">
+      <div class="container">
+        <div class="full-width-block">
+          <div class="section-kicker">06 · Video</div>
+          <h2 class="section-heading">Campaign videos</h2>
+
+          <div class="video-grid">
+            <div class="video-container">
+              <iframe
+                src="https://www.youtube.com/embed/FJIjyeRB-lM"
+                title="Category Five Brand campaign video 1"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+              </iframe>
+            </div>
+
+            <div class="video-container">
+              <iframe
+                src="https://www.youtube.com/embed/9hrsZba2ddA"
+                title="Category Five Brand campaign video 2"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+              </iframe>
+            </div>
+
+            <div class="video-container">
+              <iframe
+                src="https://www.youtube.com/embed/khjVIbZ8PeU"
+                title="Category Five Brand campaign video 3"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+              </iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CREDITS -->
+    <section class="section">
+      <div class="container">
+        <div class="full-width-block">
+          <h2 class="results-section-title">Credits</h2>
+
+          <div class="credits-grid">
+            <div class="credit-item">
+              <span class="credit-role">Director of photography:</span> Rubén Carbón
+            </div>
+            <div class="credit-item">
+              <span class="credit-role">Direction and script:</span> Xavier Charques
+            </div>
+            <div class="credit-item">
+              <span class="credit-role">Production and script:</span> Martí Roma
+            </div>
+            <div class="credit-item">
+              <span class="credit-role">Production assistant and sound:</span> Oriol Villarino
+            </div>
+            <div class="credit-item">
+              <span class="credit-role">Art direction, graphic design & content:</span> Jan Escoda
+            </div>
+            <div class="credit-item">
+              <span class="credit-role">Photography & content management:</span> Maria Ibarguren
+            </div>
+            <div class="credit-item">
+              <span class="credit-role">Post‑production & editing:</span> Alex Tubau
+            </div>
+          </div>
+
+          <div class="project-nav">
+            <a href="../index.html#work" class="project-nav-up">← Back to works</a>
+            <a href="./airo.html">Next: Airo →</a>
+          </div>
+        </div>
       </div>
     </section>
   </main>
 
-  <!-- Photographic stories -->
-  <section class="section-block project-gallery">
-    <div class="section-header">
-      <h2 class="section-title">Photographic assets for stories</h2>
-      <span class="section-kicker">Stories · Visual content</span>
-    </div>
+  <div id="footer-container"></div>
 
-    <div class="gallery-grid-vertical">
-      <figure class="gallery-figure-vertical">
-        <div class="gallery-item-vertical">
-          <img
-            src="../assets/img/category-five-stories-1.png"
-            alt="Category Five Brand story showing a summer look outdoors"
-          />
-        </div>
-        <figcaption class="gallery-caption">
-          Story photography showing a summer look in an outdoor setting.
-        </figcaption>
-      </figure>
+<script>
+  function copyEmail() {
+    var EMAIL = 'janescoda49@gmail.com';
 
-      <figure class="gallery-figure-vertical">
-        <div class="gallery-item-vertical">
-          <img
-            src="../assets/img/category-five-stories-2.png"
-            alt="Category Five Brand story with oversized urban outfit"
-          />
-        </div>
-        <figcaption class="gallery-caption">
-          Story featuring an urban outfit focused on oversized garments.
-        </figcaption>
-      </figure>
+    function animate(btn) {
+      if (!btn) return;
+      btn.classList.add('copied');
+      setTimeout(function () {
+        btn.classList.remove('copied');
+      }, 2500);
+    }
 
-      <figure class="gallery-figure-vertical">
-        <div class="gallery-item-vertical">
-          <img
-            src="../assets/img/category-five-stories-3.png"
-            alt="Category Five Brand story highlighting collection details"
-          />
-        </div>
-        <figcaption class="gallery-caption">
-          Social media image highlighting details of the new collection.
-        </figcaption>
-      </figure>
+    function fallback() {
+      var el = document.createElement('textarea');
+      el.value = EMAIL;
+      el.style.cssText = 'position:fixed;opacity:0;top:0;left:0;';
+      document.body.appendChild(el);
+      el.focus();
+      el.select();
+      try { document.execCommand('copy'); } catch (e) {}
+      document.body.removeChild(el);
+    }
 
-      <figure class="gallery-figure-vertical">
-        <div class="gallery-item-vertical">
-          <img
-            src="../assets/img/category-five-stories-4.png"
-            alt="Category Five Brand story with skate scene"
-          />
-        </div>
-        <figcaption class="gallery-caption">
-          Story featuring a skate scene directly linked to the brand universe.
-        </figcaption>
-      </figure>
-    </div>
-  </section>
+    var btns = [
+      document.getElementById('copyBtn'),
+      document.getElementById('copyBtnMobile')
+    ];
 
-  <!-- Graphic stories -->
-  <section class="section-block project-gallery">
-    <div class="section-header">
-      <h2 class="section-title">Graphic assets for stories</h2>
-      <span class="section-kicker">Stories · Graphic pieces</span>
-    </div>
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(EMAIL)
+        .then(function () { btns.forEach(animate); })
+        .catch(function () { fallback(); btns.forEach(animate); });
+    } else {
+      fallback();
+      btns.forEach(animate);
+    }
+  }
 
-    <div class="gallery-grid-vertical">
-      <figure class="gallery-figure-vertical">
-        <div class="gallery-item-vertical">
-          <img
-            src="../assets/img/category-five-graficas-1.png"
-            alt="Category Five Brand graphic story 1"
-          />
-        </div>
-        <figcaption class="gallery-caption">
-          Graphic composition for stories combining type and brand visual
-          resources.
-        </figcaption>
-      </figure>
+  function initMenuBehavior() {
+    var nav = document.querySelector('.site-nav');
+    if (!nav) return;
 
-      <figure class="gallery-figure-vertical">
-        <div class="gallery-item-vertical">
-          <img
-            src="../assets/img/category-five-graficas-2.png"
-            alt="Category Five Brand graphic story 2"
-          />
-        </div>
-        <figcaption class="gallery-caption">
-          Graphic design for social media focused on the logo and campaign
-          claim.
-        </figcaption>
-      </figure>
+    var toggleBtn  = nav.querySelector('.nav-toggle');
+    var mobileMenu = nav.querySelector('.nav-right-mobile');
 
-      <figure class="gallery-figure-vertical">
-        <div class="gallery-item-vertical">
-          <img
-            src="../assets/img/category-five-graficas-3.png"
-            alt="Category Five Brand graphic story 3"
-          />
-        </div>
-        <figcaption class="gallery-caption">
-          Story graphic combining photography and text to communicate the
-          collection.
-        </figcaption>
-      </figure>
+    if (toggleBtn && mobileMenu) {
+      toggleBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var isOpen = nav.classList.toggle('is-open');
+        toggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
 
-      <figure class="gallery-figure-vertical">
-        <div class="gallery-item-vertical">
-          <img
-            src="../assets/img/category-five-graficas-4.png"
-            alt="Category Five Brand graphic story 4"
-          />
-        </div>
-        <figcaption class="gallery-caption">
-          Graphic story designed to announce drops and special promotions.
-        </figcaption>
-      </figure>
-    </div>
-  </section>
+      mobileMenu.addEventListener('click', function (e) {
+        if (e.target.closest('.nav-link')) {
+          nav.classList.remove('is-open');
+          toggleBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
 
-  <!-- Feed posts -->
-  <section class="section-block project-gallery">
-    <div class="section-header">
-      <h2 class="section-title">Posts</h2>
-      <span class="section-kicker">Feed · Grid</span>
-    </div>
+      document.addEventListener('click', function (e) {
+        if (!nav.contains(e.target)) {
+          nav.classList.remove('is-open');
+          toggleBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
 
-    <div class="gallery-grid">
-      <div class="gallery-item">
-        <figure>
-          <img
-            src="../assets/img/category-five-post-1.png"
-            alt="Category Five Brand grid post 1"
-          />
-          <figcaption class="gallery-caption">
-            Grid post featuring one of the main campaign photographs.
-          </figcaption>
-        </figure>
-      </div>
-      <div class="gallery-item">
-        <figure>
-          <img
-            src="../assets/img/category-five-post-2.png"
-            alt="Category Five Brand grid post 2"
-          />
-          <figcaption class="gallery-caption">
-            Post combining text and a highlighted garment from the collection.
-          </figcaption>
-        </figure>
-      </div>
-      <div class="gallery-item">
-        <figure>
-          <img
-            src="../assets/img/category-five-post-3.png"
-            alt="Category Five Brand grid post 3"
-          />
-          <figcaption class="gallery-caption">
-            Lookbook-style post designed for the Instagram grid.
-          </figcaption>
-        </figure>
-      </div>
-      <div class="gallery-item">
-        <figure>
-          <img
-            src="../assets/img/category-five-post-4.png"
-            alt="Category Five Brand grid post 4"
-          />
-          <figcaption class="gallery-caption">
-            Graphic post reinforcing the brand’s visual identity across the
-            feed.
-          </figcaption>
-        </figure>
-      </div>
-    </div>
-  </section>
+    ['copyBtn', 'copyBtnMobile'].forEach(function (id) {
+      var btn = document.getElementById(id);
+      if (!btn) return;
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        copyEmail();
+      });
+    });
+  }
 
-  <!-- Animations -->
-  <section class="section-block project-gallery">
-    <div class="section-header">
-      <h2 class="section-title">Animations</h2>
-      <span class="section-kicker">Logo · Motion</span>
-    </div>
+  function setActiveNav(page) {
+    document.querySelectorAll('.nav-link').forEach(function (link) {
+      link.classList.remove('is-active');
+    });
 
-    <div class="gallery-grid animaciones-logo">
-      <div class="gallery-item">
-        <figure>
-          <img
-            src="../assets/img/category-five-animacion-1.gif"
-            alt="Category Five Brand logo animation 1"
-          />
-          <figcaption class="gallery-caption">
-            Logo animation for Category Five Brand adapted to social media
-            formats.
-          </figcaption>
-        </figure>
-      </div>
-      <div class="gallery-item">
-        <figure>
-          <img
-            src="../assets/img/category-five-animacion-2.gif"
-            alt="Category Five Brand logo animation 2"
-          />
-          <figcaption class="gallery-caption">
-            Logo motion variation focused on rhythm, energy and visual impact.
-          </figcaption>
-        </figure>
-      </div>
-    </div>
-  </section>
+    if (page === 'index') {
+      document.querySelectorAll('.nav-link[href="../index.html#work"]').forEach(function (l) {
+        l.classList.add('is-active');
+      });
+    } else if (page === 'about') {
+      document.querySelectorAll('.nav-link[href="../about.html"]').forEach(function (l) {
+        l.classList.add('is-active');
+      });
+    }
+  }
 
-  <!-- Videos -->
-  <section class="section-block project-video">
-    <div class="section-header">
-      <h2 class="section-title">Videos</h2>
-      <span class="section-kicker">Campaign · Audiovisual</span>
-    </div>
+  document.addEventListener('DOMContentLoaded', function () {
+    var menuContainer   = document.getElementById('menu-container');
+    var footerContainer = document.getElementById('footer-container');
 
-    <div class="video-grid">
-      <div class="video-container">
-        <iframe
-          src="https://www.youtube.com/embed/FJIjyeRB-lM"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-          title="Category Five Brand campaign video 1"
-        ></iframe>
-      </div>
+    var menuPromise = fetch('../menu.html')
+      .then(function (r) { return r.text(); })
+      .then(function (html) {
+        menuContainer.innerHTML = html;
+        initMenuBehavior();
+        setActiveNav('index');
+      })
+      .catch(function (err) {
+        console.error('Error loading menu.html', err);
+      });
 
-      <div class="video-container">
-        <iframe
-          src="https://www.youtube.com/embed/9hrsZba2ddA"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-          title="Category Five Brand campaign video 2"
-        ></iframe>
-      </div>
+    var footerPromise = fetch('../footer.html')
+      .then(function (r) { return r.text(); })
+      .then(function (html) {
+        footerContainer.innerHTML = html;
+      })
+      .catch(function (err) {
+        console.error('Error loading footer.html', err);
+      });
 
-      <div class="video-container">
-        <iframe
-          src="https://www.youtube.com/embed/khjVIbZ8PeU"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-          title="Category Five Brand campaign video 3"
-        ></iframe>
-      </div>
-    </div>
-  </section>
+    Promise.all([menuPromise, footerPromise]).then(function () {});
+  });
+</script>
 
-  <!-- Credits -->
-  <section class="section-block">
-    <article class="credits-card">
-      <div class="credits-header">
-        <h2 class="credits-title">Credits</h2>
-        <span class="credits-kicker">Team · Production</span>
-      </div>
-
-      <div class="credits-grid">
-        <div class="credit-item">
-          <span class="credit-role">Director of photography:</span> Rubén
-          Carbón
-        </div>
-        <div class="credit-item">
-          <span class="credit-role">Direction and script:</span> Xavier
-          Charques
-        </div>
-        <div class="credit-item">
-          <span class="credit-role">Production and script:</span> Martí Roma
-        </div>
-        <div class="credit-item">
-          <span class="credit-role">Production assistant and sound:</span>
-          Oriol Villarino
-        </div>
-        <div class="credit-item">
-          <span class="credit-role">
-            Art direction, graphic design and content creation:
-          </span>
-          Jan Escoda
-        </div>
-        <div class="credit-item">
-          <span class="credit-role">Photography and content management:</span>
-          Maria Ibarguren
-        </div>
-        <div class="credit-item">
-          <span class="credit-role">Post-production and editing:</span> Alex
-          Tubau
-        </div>
-      </div>
-    </article>
-  </section>
-
-  <!-- Scroll to top -->
-  <a href="#" id="scroll-to-top" title="Back to top"></a>
-
-  <!-- Footer -->
-  <div data-include="../footer.html"></div>
-
-  <!-- Lightbox -->
-  <div class="lightbox-overlay" id="lightbox">
-    <div class="lightbox-content">
-      <button
-        class="lightbox-close"
-        id="lightbox-close"
-        aria-label="Close enlarged image"
-      >
-        ×
-      </button>
-      <img src="" alt="" id="lightbox-img" />
-      <div class="lightbox-caption" id="lightbox-caption"></div>
-    </div>
-  </div>
-
-  <script src="../assets/js/ikea-page.js" defer></script>
 </body>
 </html>
