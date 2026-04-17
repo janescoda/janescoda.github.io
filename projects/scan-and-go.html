@@ -1,526 +1,718 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Scan and Go - Jan Escoda</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scan&Go Arcade · Jan Escoda</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    html { font-size: 110%; scroll-behavior: smooth; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root{
+      --bg: #ffffff;
+      --text: rgb(103,103,122);
+      --title: #000000;
+      --card-bg: #f4f3f0;
+      --border: #e4e2dd;
+      --transition: 0.28s cubic-bezier(0.4,0,0.2,1);
+      --page-max-width: 1056px;
+      --page-side-padding: 3.3rem;
+      --nav-height: 4.6rem;
+      --section-gap: 4.5rem;
     }
 
-    body {
-      padding-top: 72px;
-      font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      color: #333;
-      background: #fff;
+    body{
+      font-family: 'Manrope', sans-serif;
+      background: var(--bg);
+      color: var(--text);
       line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
 
-    .breadcrumb {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 2rem 5% 0;
-      font-size: 0.95rem;
+    a { text-decoration:none; color:inherit; }
+
+    ::-webkit-scrollbar{ width:5px; }
+    ::-webkit-scrollbar-track{ background:var(--bg);}
+    ::-webkit-scrollbar-thumb{ background:var(--border); border-radius:3px; }
+
+    .container{
+      max-width:var(--page-max-width);
+      margin:0 auto;
+      padding:0 var(--page-side-padding);
+      box-sizing:border-box;
     }
 
-    .breadcrumb a,
-    .breadcrumb .current {
-      color: #555;
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-
-    .breadcrumb a {
-      font-weight: 400;
-    }
-
-    .breadcrumb a:hover {
-      color: #000;
-    }
-
-    .breadcrumb span {
-      color: #bbb;
-      margin: 0 0.5rem;
-    }
-
-    .breadcrumb .current {
-      font-weight: 400;
+    main {
+      padding-top: calc(var(--nav-height) + 4.5rem);
+      padding-bottom: 4rem;
     }
 
     .project-hero {
-      padding: 3rem 5% 2rem;
-      text-align: center;
-      max-width: 1400px;
-      margin: 0 auto;
+      padding-bottom: 3.5rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: var(--section-gap);
     }
 
-    .project-category {
-      font-size: 0.85rem;
-      font-weight: 600;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: #999;
-      margin-bottom: 1rem;
+    .project-hero-layout {
+      display:grid;
+      grid-template-columns: minmax(0, 1.8fr) minmax(0, 1fr);
+      gap:3rem;
+      align-items:flex-start;
     }
 
-    .project-hero h1 {
-      font-size: clamp(2.8rem, 6vw, 4rem);
-      font-weight: 700;
-      letter-spacing: -1.5px;
-      color: #1a1a1a;
-      margin-bottom: 1.5rem;
+    .project-title {
+      font-size: clamp(2.3rem, 3.8vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      color: var(--title);
+      margin-bottom: 1.3rem;
     }
 
-    .project-intro {
-      max-width: 900px;
-      margin: 0 auto;
-      font-size: 1.1rem;
-      line-height: 1.9;
-      color: #555;
+    .project-subtitle {
+      font-size: 0.96rem;
+      max-width: 34rem;
     }
 
-    .project-meta {
-      max-width: 1400px;
-      margin: 1.5rem auto 3rem;
-      padding: 0 5%;
-      display: flex;
-      justify-content: center;
-      gap: 4rem;
-      flex-wrap: wrap;
+    /* META CARD */
+    .project-meta-shell {
+      grid-column: 1 / -1;
+      margin-top: 2.2rem;
+      border-radius:18px;
+      border:1px solid var(--border);
+      background:#f7f7f7;
+      padding:1.1rem 1.4rem 1.2rem;
+      font-size:0.86rem;
     }
 
-    .meta-item {
-      text-align: center;
+    .project-meta-grid {
+      display:grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap:0.6rem 1.8rem;
     }
 
-    .meta-label {
-      font-size: 0.85rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: #999;
-      margin-bottom: 0.5rem;
+    .project-meta-item {
+      min-width:0;
     }
 
-    .meta-value {
-      font-size: 1.05rem;
-      color: #1a1a1a;
-      font-weight: 500;
+    .project-meta-label {
+      font-size:0.75rem;
+      text-transform:uppercase;
+      letter-spacing:.13em;
+      font-weight:700;
+      color:#9a9aa8;
+      margin-bottom:0.18rem;
+      display:block;
     }
 
-    .project-content {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 4rem 5% 0;
+    .project-meta-value {
+      font-weight:600;
+      color:var(--title);
+      font-size:0.9rem;
+      display:block;
     }
 
-    .content-section {
-      margin-bottom: 4rem;
+    .section {
+      margin-bottom: var(--section-gap);
     }
 
-    .content-section p {
-      font-size: 1.05rem;
-      line-height: 1.9;
-      color: #555;
-      margin-bottom: 1.2rem;
+    .section-kicker {
+      font-size:0.8rem;
+      text-transform:uppercase;
+      letter-spacing:.13em;
+      font-weight:700;
+      color:#8a8a8a;
+      margin-bottom:0.6rem;
     }
 
-    .project-gallery {
-      max-width: 1400px;
-      margin: 4rem auto;
-      padding: 0 5%;
+    .section-heading {
+      font-size:clamp(1.7rem,3vw,2.2rem);
+      font-weight:800;
+      letter-spacing:-0.02em;
+      color:var(--title);
+      margin-bottom:1.3rem;
     }
 
-    .gallery-title {
-      font-size: 2rem;
-      font-weight: 700;
-      color: #1a1a1a;
-      margin-bottom: 2.5rem;
-      letter-spacing: -0.5px;
-      text-align: center;
+    .body-text {
+      font-size:0.96rem;
     }
 
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2.5rem;
-      max-width: 1000px;
-      margin: 0 auto;
+    .body-text p + p { margin-top:1rem; }
+
+    .full-width-block {
+      max-width:var(--page-max-width);
+      margin:0 auto;
     }
 
-    .gallery-grid-publicidad {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2.5rem;
-      max-width: 800px;
-      margin: 0 auto;
+    /* Highlight card */
+    .highlight-callout {
+      margin-top:1.8rem;
+      padding:1.1rem 1.2rem;
+      border-radius:16px;
+      background:#f8f8fb;
+      border:1px solid var(--border);
+      font-size:0.92rem;
+      color:var(--title);
+      font-weight:500;
     }
 
-    .gallery-item figure {
-      margin: 0;
+    .subsection-title {
+      margin-top:1.4rem;
+      font-weight:700;
+      font-size:0.95rem;
+      color:var(--title);
     }
 
-    .gallery-item img {
+    /* Generic grey card */
+    .inline-card-full {
+      margin-top:1.4rem;
+      padding:1.1rem 1.2rem;
+      border-radius:16px;
+      background:#f5f5f7;
+      border:1px solid #e4e2dd;
+      font-size:0.9rem;
+    }
+
+    .inline-card-title {
+      font-weight:700;
+      margin-bottom:0.4rem;
+      color:var(--title);
+    }
+
+    .inline-card-full ul {
+      padding-left:1.2rem;
+      list-style:disc;
+    }
+
+    .inline-card-full li + li { margin-top:0.35rem; }
+
+    /* Gallery-style images */
+    .project-image {
       width: 100%;
-      display: block;
-      border-radius: 8px;
+      border-radius: 12px;
+      margin-top: 1.8rem;
       box-shadow: 0 2px 15px rgba(0,0,0,0.06);
-      cursor: zoom-in;
-    }
-
-    .gallery-caption {
-      margin-top: 0.6rem;
-      font-size: 0.9rem;
-      line-height: 1.5;
-      color: #777;
-    }
-
-    .credits-section {
-      max-width: 900px;
-      margin: 6rem auto;
-      padding: 0 5% 6rem;
-    }
-
-    .credits-section h2 {
-      font-size: 2rem;
-      font-weight: 700;
-      color: #1a1a1a;
-      margin-bottom: 2rem;
-      letter-spacing: -0.5px;
-    }
-
-    .credits-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1rem 4rem;
-    }
-
-    .credit-item {
-      font-size: 0.95rem;
-      color: #555;
-      line-height: 1.8;
-    }
-
-    .credit-role {
-      font-weight: 600;
-      color: #1a1a1a;
-    }
-
-    @media (max-width: 768px) {
-      .breadcrumb {
-        padding: 1.5rem 5% 0;
-        font-size: 0.9rem;
-      }
-
-      .project-meta {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem 2rem;
-        justify-content: center;
-      }
-
-      .meta-item {
-        text-align: left;
-      }
-
-      .gallery-grid-publicidad {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .gallery-grid {
-        grid-template-columns: 1fr;
-        max-width: 500px;
-      }
-
-      .project-hero {
-        padding: 2rem 5% 2rem;
-      }
-
-      .project-content {
-        padding: 3rem 5% 0;
-      }
-
-      .credits-grid {
-        gap: 0.8rem 2rem;
-      }
-
-      .gallery-grid,
-      .gallery-grid-publicidad {
-        gap: 2rem;
-      }
-    }
-
-    #scroll-to-top {
-      display: none;
-      position: fixed;
-      bottom: 20px;
-      right: 30px;
-      z-index: 99;
-      border: none;
-      outline: none;
-      background-color: #6c757d;
-      cursor: pointer;
-      width: 50px;
-      height: 50px;
-      border-radius: 4px;
-      box-shadow: none;
-      transition: background-color 0.3s ease;
-      align-items: center;
-      justify-content: center;
-    }
-
-    #scroll-to-top.show-flex {
-      display: flex;
-    }
-
-    #scroll-to-top::before {
-      content: '';
       display: block;
-      width: 8px;
-      height: 8px;
-      border-top: 2.5px solid white;
-      border-right: 2.5px solid white;
-      transform: rotate(-45deg);
     }
 
-    #scroll-to-top:hover {
-      background-color: #5a6268;
+    .project-image-caption {
+      font-size: 0.83rem;
+      color: #8a8a8a;
+      margin-top: 0.45rem;
     }
 
-    .lightbox-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.75);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
-      padding: 1.5rem;
+    .image-grid-2 {
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:1.8rem;
+      margin-top:1.8rem;
     }
 
-    .lightbox-overlay.open {
-      display: flex;
+    .image-grid-2 figure {
+      margin:0;
     }
 
-    .lightbox-content {
-      position: relative;
-      max-width: 90vw;
-      max-height: 90vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.75rem;
+    .image-grid-2 img {
+      width:100%;
+      border-radius:12px;
+      box-shadow:0 2px 15px rgba(0,0,0,0.06);
+      display:block;
     }
 
-    .lightbox-content img {
-      max-width: 100%;
-      max-height: 80vh;
-      width: auto;
-      height: auto;
-      object-fit: contain;
-      border-radius: 8px;
-      box-shadow: 0 4px 25px rgba(0,0,0,0.4);
-      background: #000;
+    .image-grid-2 figcaption {
+      font-size:0.83rem;
+      color:#8a8a8a;
+      margin-top:0.45rem;
     }
 
-    .lightbox-caption {
-      color: #f5f5f5;
-      font-size: 0.95rem;
-      line-height: 1.5;
-      text-align: center;
-      max-width: 800px;
+    /* Results / Learnings */
+    .results-section-title {
+      font-size:clamp(1.6rem,2.6vw,2rem);
+      font-weight:800;
+      letter-spacing:-0.02em;
+      color:var(--title);
+      margin-bottom:1.6rem;
     }
 
-    .lightbox-close {
-      position: absolute;
-      top: -32px;
-      right: -32px;
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      background: rgba(0,0,0,0.8);
-      color: #fff;
-      border: none;
-      cursor: pointer;
-      font-size: 18px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .results-grid {
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0,1fr));
+      gap:1.4rem;
+      font-size:0.9rem;
     }
 
-    @media (max-width: 768px) {
-      .lightbox-content {
-        max-width: 100vw;
-        max-height: 100vh;
+    .result-card {
+      background:#f4f6ff;
+      border-radius:18px;
+      border:1px solid #dde2ff;
+      padding:1.1rem 1.3rem;
+      display:flex;
+      flex-direction:column;
+      gap:0.4rem;
+    }
+
+    .result-card-emoji {
+      font-size:1.1rem;
+      margin-bottom:0.1rem;
+    }
+
+    .result-card-title {
+      font-weight:700;
+      color:var(--title);
+    }
+
+    .result-card-body {
+      font-size:0.9rem;
+    }
+
+    .takeaways-grid {
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:1.5rem 2.4rem;
+      font-size:0.9rem;
+    }
+
+    .takeaway-item-title {
+      font-weight:700;
+      color:var(--title);
+      margin-bottom:0.3rem;
+    }
+
+    .project-nav {
+      margin-top:3rem;
+      padding-top:1.8rem;
+      border-top:1px solid var(--border);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:1rem;
+      font-size:0.9rem;
+    }
+
+    .project-nav a {
+      font-weight:600;
+      text-decoration:underline;
+      text-underline-offset:3px;
+    }
+
+    .project-nav-up {
+      display:inline-flex;
+      align-items:center;
+      gap:0.35rem;
+    }
+
+    @media (max-width:900px){
+      .project-hero-layout{
+        grid-template-columns:1fr;
+        gap:2.2rem;
       }
+      .results-grid{
+        grid-template-columns:1fr;
+      }
+      .project-meta-grid{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+      }
+      .image-grid-2{
+        grid-template-columns:1fr;
+      }
+    }
 
-      .lightbox-close {
-        top: 8px;
-        right: 8px;
+    @media (max-width:768px){
+      .container{ padding:0 1.5rem; }
+      main{
+        padding-top:calc(var(--nav-height) + 2.4rem);
+        padding-bottom:3rem;
+      }
+      .project-meta-grid{
+        grid-template-columns:1fr;
       }
     }
   </style>
 </head>
-
 <body>
 
-  <script src="../assets/js/include.js" defer></script>
-  <div data-include="../menu.html"></div>
+  <div id="menu-container"></div>
 
-  <nav class="breadcrumb">
-    <a href="../index.html">Portfolio</a>
-    <span>/</span>
-    <span class="current">Scan and Go</span>
-  </nav>
+  <main>
+    <!-- HERO -->
+    <section class="project-hero">
+      <div class="container">
+        <div class="project-hero-layout">
+          <div>
+            <h1 class="project-title">Scan&Go Arcade – Motion‑controlled interactive game</h1>
+            <p class="project-subtitle">
+              A single‑player arcade installation where people use hand gestures to select bubbles on screen, race against the clock
+              and compete for the top of the leaderboard at LAVS, a visual and sound art exhibition.
+            </p>
+          </div>
 
-  <section class="project-hero">
-    <div class="project-category">Plataformas</div>
-    <h1>Scan and Go</h1>
-  </section>
+          <div></div>
 
-  <section class="project-meta">
-    <div class="meta-item">
-      <div class="meta-label">Cliente</div>
-      <div class="meta-value">Proyecto universitario</div>
-    </div>
-    <div class="meta-item">
-      <div class="meta-label">Sector</div>
-      <div class="meta-value">Instalación interactiva</div>
-    </div>
-    <div class="meta-item">
-      <div class="meta-label">Rol</div>
-      <div class="meta-value">Concepto, desarrollo y montaje</div>
-    </div>
-    <div class="meta-item">
-      <div class="meta-label">Año</div>
-      <div class="meta-value">2023</div>
-    </div>
-  </section>
+          <!-- META -->
+          <div class="project-meta-shell">
+            <div class="project-meta-grid">
+              <div class="project-meta-item">
+                <span class="project-meta-label">Client</span>
+                <span class="project-meta-value">University project</span>
+              </div>
+              <div class="project-meta-item">
+                <span class="project-meta-label">Domain</span>
+                <span class="project-meta-value">Interactive installation</span>
+              </div>
+              <div class="project-meta-item">
+                <span class="project-meta-label">Role</span>
+                <span class="project-meta-value">Concept, development &amp; installation</span>
+              </div>
+              <div class="project-meta-item">
+                <span class="project-meta-label">Year</span>
+                <span class="project-meta-value">2023</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <section class="project-content">
-    <div class="content-section">
-      <p>
-        Scan&Go Arcade es una instalación interactiva basada en un videojuego para un solo jugador, centrado en la rapidez y la precisión: el objetivo es seleccionar burbujas en pantalla para acumular el máximo de puntos en un tiempo limitado y registrar la puntuación en una tabla de clasificación que incentiva la competitividad y la rejugabilidad.
-      </p>
-      <p>
-        El sistema utiliza un sensor de detección de movimiento que reconoce la presencia de personas frente a la pantalla y sigue el movimiento de las manos, traducido en un cursor dentro del juego. La navegación basta con mantener el cursor unos segundos sobre cada botón para activar la acción, facilitando la interacción incluso a usuarios sin experiencia previa en videojuegos.
-      </p>
-      <p>
-        El proyecto se desarrolló con Processing, abarcando desde la conceptualización y definición de mecánicas hasta la implementación en código, la integración del sistema de movimiento y varias iteraciones de pruebas y ajuste. La instalación fue presentada ante un tribunal y seleccionada para la exposición LAVS: Laboratori d’art visual i sonor (21–30 de abril de 2023, antigua prisión de Mataró), donde funcionó como pieza abierta al público, permitiendo jugar, experimentar el sistema y competir por las primeras posiciones.
-      </p>
-    </div>
-  </section>
+    <!-- 01 · Concept & mechanics -->
+    <section class="section">
+      <div class="container">
+        <div class="full-width-block">
+          <div class="section-kicker">01 · Concept & mechanics</div>
+          <h2 class="section-heading">An arcade game about speed, precision and replayability</h2>
 
-  <section class="project-gallery">
-    <h2 class="gallery-title">Imágenes LAVS</h2>
-    <div class="gallery-grid-publicidad">
-      <div class="gallery-item">
-        <figure>
-          <img src="../assets/img/scan-go-lavs-1.png" alt="Scan&Go Arcade - Cartel LAVS 1">
-          <figcaption class="gallery-caption">
-            Cartel de la exposición LAVS donde se presentó la instalación Scan&Go Arcade.
-          </figcaption>
-        </figure>
-      </div>
-      <div class="gallery-item">
-        <figure>
-          <img src="../assets/img/scan-go-lavs-2.png" alt="Scan&Go Arcade - Cartel LAVS 2">
-          <figcaption class="gallery-caption">
-            Gráfica promocional de LAVS destacando la presencia del proyecto interactivo.
-          </figcaption>
-        </figure>
-      </div>
-    </div>
-  </section>
+          <div class="body-text">
+            <p>
+              Scan&Go Arcade is a single‑player interactive installation built around a simple idea: select as many bubbles as you can
+              before time runs out. Each bubble you “touch” with your hand‑controlled cursor adds points, and at the end of the round
+              your score is saved in a leaderboard that keeps people coming back to beat each other.
+            </p>
+            <p>
+              The goal was to design something instantly understandable, fast to play and compelling enough that visitors at an exhibition
+              would want to try it more than once — even if they had no previous experience with videogames.
+            </p>
+          </div>
 
-  <section class="project-gallery">
-    <h2 class="gallery-title">Pantallas de juego</h2>
-    <div class="gallery-grid">
-      <div class="gallery-item">
-        <figure>
-          <img src="../assets/img/scan-go-game-1.png" alt="Scan&Go Arcade - Pantalla menú principal">
-          <figcaption class="gallery-caption">
-            Menú principal del juego donde el usuario inicia la partida.
-          </figcaption>
-        </figure>
+          <div class="highlight-callout">
+            The installation had to work like a “pick‑up‑and‑play” arcade machine: no controller, no tutorial, just step in front of the
+            screen and intuitively understand what to do.
+          </div>
+        </div>
       </div>
-      <div class="gallery-item">
-        <figure>
-          <img src="../assets/img/scan-go-game-2.png" alt="Scan&Go Arcade - Pantalla de juego 1">
-          <figcaption class="gallery-caption">
-            Pantalla de juego con las burbujas apareciendo en movimiento para ser seleccionadas.
-          </figcaption>
-        </figure>
-      </div>
-      <div class="gallery-item">
-        <figure>
-          <img src="../assets/img/scan-go-game-3.png" alt="Scan&Go Arcade - Pantalla de juego 2">
-          <figcaption class="gallery-caption">
-            Momento de la partida con el cursor siguiendo el movimiento del jugador.
-          </figcaption>
-        </figure>
-      </div>
-      <div class="gallery-item">
-        <figure>
-          <img src="../assets/img/scan-go-game-4.png" alt="Scan&Go Arcade - Pantalla de juego 3">
-          <figcaption class="gallery-caption">
-            Variación de nivel que añade dificultad y ritmo al juego.
-          </figcaption>
-        </figure>
-      </div>
-      <div class="gallery-item">
-        <figure>
-          <img src="../assets/img/scan-go-game-5.png" alt="Scan&Go Arcade - Pantalla tabla de clasificación">
-          <figcaption class="gallery-caption">
-            Tabla de clasificación con las mejores puntuaciones obtenidas por los jugadores.
-          </figcaption>
-        </figure>
-      </div>
-      <div class="gallery-item">
-        <figure>
-          <img src="../assets/img/scan-go-game-6.png" alt="Scan&Go Arcade - Pantalla fin de partida">
-          <figcaption class="gallery-caption">
-            Pantalla de fin de partida que invita a volver a jugar y superar el récord.
-          </figcaption>
-        </figure>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="credits-section">
-    <h2>Créditos</h2>
-    <div class="credits-grid">
-      <div class="credit-item">
-        <span class="credit-role">Concepto, desarrollo, programación y montaje de la instalación:</span>
-        Jan Escoda
+    <!-- 02 · Interaction & technology -->
+    <section class="section">
+      <div class="container">
+        <div class="full-width-block">
+          <div class="section-kicker">02 · Interaction & technology</div>
+          <h2 class="section-heading">Motion tracking as the only controller</h2>
+
+          <div class="body-text">
+            <p>
+              The system uses a motion detection sensor to recognise when someone stands in front of the screen and to track their hand
+              movement. That motion is translated into a cursor inside the game, so moving your hand in the air feels like moving a
+              virtual pointer.
+            </p>
+            <p>
+              To keep the experience accessible, there are no physical buttons: actions are triggered simply by hovering the cursor over
+              each button for a few seconds. This dwell‑time interaction makes the game inclusive for people with little or no gaming
+              background.
+            </p>
+            <p>
+              The project was developed in Processing, from early concept and mechanics definition to code implementation, sensor
+              integration and several rounds of testing and tuning to make the cursor responsive and the game flow feel fair.
+            </p>
+          </div>
+
+          <div class="inline-card-full">
+            <div class="inline-card-title">What I handled in this phase</div>
+            <ul>
+              <li>Definition of core game loop and difficulty curve (round length, spawn rate, scoring).</li>
+              <li>Implementation in Processing, including state management for menus, gameplay and leaderboard.</li>
+              <li>Integration of the motion sensor and mapping of physical gestures to the on‑screen cursor.</li>
+              <li>User tests to adjust dwell‑time thresholds and bubble behaviour so the game feels reactive, not frustrating.</li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <div class="credit-item">
-        <span class="credit-role">Materiales y espacios:</span>
-        La Presó. M|A|C, Tecno Campus
+    </section>
+
+    <!-- 03 · Exhibition context (LAVS) + images -->
+    <section class="section">
+      <div class="container">
+        <div class="full-width-block">
+          <div class="section-kicker">03 · Exhibition</div>
+          <h2 class="section-heading">From classroom project to public installation at LAVS</h2>
+
+          <div class="body-text">
+            <p>
+              After being presented to the university board, Scan&Go Arcade was selected to be exhibited at
+              <strong>LAVS – Laboratori d’art visual i sonor</strong> (21–30 April 2023, former prison of Mataró).
+              During the exhibition it functioned as a fully open interactive piece: people could walk up, play, see the leaderboard
+              and try to climb to the top positions.
+            </p>
+            <p>
+              The installation required building not just the game, but the whole experience: physical setup, sensor placement,
+              projection, and calibration so that different heights and distances still translated into a smooth interaction.
+            </p>
+          </div>
+
+          <!-- LAVS images (2-column grid) -->
+          <div class="image-grid-2">
+            <figure>
+              <img src="../assets/img/scan-go-lavs-1.png" alt="Scan&Go Arcade poster for the LAVS exhibition">
+              <figcaption>Poster for the LAVS exhibition where Scan&Go Arcade was presented.</figcaption>
+            </figure>
+            <figure>
+              <img src="../assets/img/scan-go-lavs-2.png" alt="Promotional graphic for LAVS highlighting the interactive project">
+              <figcaption>Promotional visual from LAVS highlighting the interactive installation.</figcaption>
+            </figure>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <a href="#" id="scroll-to-top" title="Volver arriba"></a>
-  <div data-include="../footer.html"></div>
+    <!-- 04 · Game screens -->
+    <section class="section">
+      <div class="container">
+        <div class="full-width-block">
+          <div class="section-kicker">04 · Game UI</div>
+          <h2 class="section-heading">Menus, game states and leaderboard</h2>
 
-  <div class="lightbox-overlay" id="lightbox">
-    <div class="lightbox-content">
-      <button class="lightbox-close" id="lightbox-close" aria-label="Cerrar imagen ampliada">×</button>
-      <img src="" alt="" id="lightbox-img">
-      <div class="lightbox-caption" id="lightbox-caption"></div>
-    </div>
-  </div>
+          <div class="body-text">
+            <p>
+              The visual language is simple and bold to remain readable from a distance inside a gallery. Each screen is focused on a single
+              action: start a game, follow the bubbles, read your score or check the leaderboard. This structure helps visitors understand
+              where they are in the experience at all times.
+            </p>
+          </div>
 
-  <script src="../assets/js/include.js" defer></script>
-  <script src="../assets/js/ikea-page.js" defer></script>
+          <div class="image-grid-2">
+            <figure>
+              <img src="../assets/img/scan-go-game-1.png" alt="Scan&Go Arcade main menu screen">
+              <figcaption>Main menu where the player starts the game.</figcaption>
+            </figure>
+            <figure>
+              <img src="../assets/img/scan-go-game-2.png" alt="Scan&Go Arcade gameplay screen with moving bubbles">
+              <figcaption>Gameplay screen with bubbles appearing and moving across the field.</figcaption>
+            </figure>
+          </div>
+
+          <div class="image-grid-2" style="margin-top:2rem;">
+            <figure>
+              <img src="../assets/img/scan-go-game-3.png" alt="Scan&Go Arcade gameplay with cursor following the player’s hand">
+              <figcaption>In‑game moment with the cursor following the player’s hand movements.</figcaption>
+            </figure>
+            <figure>
+              <img src="../assets/img/scan-go-game-4.png" alt="Scan&Go Arcade level variation with increased difficulty">
+              <figcaption>Level variation that increases difficulty and pace over time.</figcaption>
+            </figure>
+          </div>
+
+          <div class="image-grid-2" style="margin-top:2rem;">
+            <figure>
+              <img src="../assets/img/scan-go-game-5.png" alt="Scan&Go Arcade leaderboard screen">
+              <figcaption>Leaderboard screen showing the best scores achieved by players.</figcaption>
+            </figure>
+            <figure>
+              <img src="../assets/img/scan-go-game-6.png" alt="Scan&Go Arcade end of round screen inviting players to retry">
+              <figcaption>End‑of‑game screen inviting players to replay and beat the high score.</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 · Credits -->
+    <section class="section">
+      <div class="container">
+        <div class="full-width-block">
+          <div class="section-kicker">Credits</div>
+          <h2 class="section-heading">Who did what</h2>
+
+          <div class="inline-card-full">
+            <ul>
+              <li><strong>Concept, development, programming and installation:</strong> Jan Escoda</li>
+              <li><strong>Materials and exhibition space:</strong> La Presó · M|A|C, TecnoCampus</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Results / Learnings -->
+    <section class="section">
+      <div class="container">
+        <div class="full-width-block">
+          <h2 class="results-section-title">What this project taught me</h2>
+
+          <div class="takeaways-grid">
+            <div>
+              <p class="takeaway-item-title">Interactive installations live or die on clarity</p>
+              <p>
+                In a public space you only have a few seconds to explain the rules. The UI, pacing and feedback must make the game
+                self‑explanatory.
+              </p>
+            </div>
+            <div>
+              <p class="takeaway-item-title">Sensors require iteration</p>
+              <p>
+                Mapping hand movement to a cursor that feels natural takes rounds of testing, calibration and small tweaks to thresholds.
+              </p>
+            </div>
+            <div>
+              <p class="takeaway-item-title">Exhibition context shapes design decisions</p>
+              <p>
+                Light conditions, distance and crowd flow influenced choices in colour, typography size and how long a round should last.
+              </p>
+            </div>
+            <div>
+              <p class="takeaway-item-title">A simple mechanic can still feel competitive</p>
+              <p>
+                Adding a persistent leaderboard turned a basic “tap the bubbles” game into something that encouraged replay and
+                social interaction.
+              </p>
+            </div>
+          </div>
+
+          <div class="project-nav">
+            <a href="../index.html#work" class="project-nav-up">← Back to works</a>
+            <a href="./ikea.html">Next: IKEA →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-container"></div>
+
+<script>
+  function copyEmail() {
+    var EMAIL = 'janescoda49@gmail.com';
+
+    function animate(btn) {
+      if (!btn) return;
+      btn.classList.add('copied');
+      setTimeout(function () {
+        btn.classList.remove('copied');
+      }, 2500);
+    }
+
+    function fallback() {
+      var el = document.createElement('textarea');
+      el.value = EMAIL;
+      el.style.cssText = 'position:fixed;opacity:0;top:0;left:0;';
+      document.body.appendChild(el);
+      el.focus();
+      el.select();
+      try { document.execCommand('copy'); } catch (e) {}
+      document.body.removeChild(el);
+    }
+
+    var btns = [
+      document.getElementById('copyBtn'),
+      document.getElementById('copyBtnMobile')
+    ];
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(EMAIL)
+        .then(function () { btns.forEach(animate); })
+        .catch(function () { fallback(); btns.forEach(animate); });
+    } else {
+      fallback();
+      btns.forEach(animate);
+    }
+  }
+
+  function initMenuBehavior() {
+    var nav = document.querySelector('.site-nav');
+    if (!nav) return;
+
+    var toggleBtn  = nav.querySelector('.nav-toggle');
+    var mobileMenu = nav.querySelector('.nav-right-mobile');
+
+    if (toggleBtn && mobileMenu) {
+      toggleBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var isOpen = nav.classList.toggle('is-open');
+        toggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+
+      mobileMenu.addEventListener('click', function (e) {
+        if (e.target.closest('.nav-link')) {
+          nav.classList.remove('is-open');
+          toggleBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      document.addEventListener('click', function (e) {
+        if (!nav.contains(e.target)) {
+          nav.classList.remove('is-open');
+          toggleBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+
+    ['copyBtn', 'copyBtnMobile'].forEach(function (id) {
+      var btn = document.getElementById(id);
+      if (!btn) return;
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        copyEmail();
+      });
+    });
+  }
+
+  function setActiveNav(page) {
+    document.querySelectorAll('.nav-link').forEach(function (link) {
+      link.classList.remove('is-active');
+    });
+
+    if (page === 'index') {
+      document.querySelectorAll('.nav-link[href="../index.html#work"]').forEach(function (l) {
+        l.classList.add('is-active');
+      });
+    } else if (page === 'about') {
+      document.querySelectorAll('.nav-link[href="../about.html"]').forEach(function (l) {
+        l.classList.add('is-active');
+      });
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    var menuContainer   = document.getElementById('menu-container');
+    var footerContainer = document.getElementById('footer-container');
+
+    var menuPromise = fetch('../menu.html')
+      .then(function (r) { return r.text(); })
+      .then(function (html) {
+        menuContainer.innerHTML = html;
+        initMenuBehavior();
+        setActiveNav('index');
+      })
+      .catch(function (err) {
+        console.error('Error loading menu.html', err);
+      });
+
+    var footerPromise = fetch('../footer.html')
+      .then(function (r) { return r.text(); })
+      .then(function (html) {
+        footerContainer.innerHTML = html;
+      })
+      .catch(function (err) {
+        console.error('Error loading footer.html', err);
+      });
+
+    Promise.all([menuPromise, footerPromise]).then(function () {});
+  });
+</script>
+
 </body>
 </html>
