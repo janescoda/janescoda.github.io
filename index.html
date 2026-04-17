@@ -4,787 +4,797 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Jan Escoda - Marketing & Digital Content</title>
- 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
- 
-  <style>
-    html { font-size: 110%; scroll-behavior: smooth; }
- 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
- 
-    :root{
-      --bg: #ffffff;
-      --text: rgb(103,103,122);
-      --title: #000000;
-      --card-bg: #ffffff;
-      --border: #e4e2dd;
-      --transition: 0.28s cubic-bezier(0.4,0,0.2,1);
-      --page-max-width: 1056px;
-      --page-side-padding: 3.3rem;
-      --hero-gap-top: clamp(2rem, 5vh, 4rem);
-      --hero-gap-bottom: clamp(1.2rem, 6vh, 3rem);
-      --nav-height: 4.6rem;
-    }
- 
-    body{
-      font-family: 'Manrope', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-    }
- 
-    a { text-decoration:none; color:inherit; }
-    ::-webkit-scrollbar{ width:5px; } 
-    ::-webkit-scrollbar-track{ background:var(--bg);} 
-    ::-webkit-scrollbar-thumb{ background:var(--border); border-radius:3px; }
- 
-    .container{ 
-      max-width:var(--page-max-width); 
-      margin:0 auto; 
-      padding:0 var(--page-side-padding); 
-      box-sizing:border-box; 
-    }
- 
-    #scroll {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: stretch;
-      padding-inline: var(--page-side-padding);
-      padding-top: calc(var(--nav-height) + var(--hero-gap-top));
-      padding-bottom: var(--hero-gap-bottom);
-      box-sizing: border-box;
-    }
- 
-    .hero-inner {
-      max-width: var(--page-max-width);
-      margin: 0 auto;
-      width: 100%;
-      box-sizing: border-box;
-      margin-top: clamp(3.6rem, 12vh, 8rem);
-      margin-bottom: clamp(1rem, 5vh, 2.8rem);
-    }
- 
-    .hero-title {
-      max-width: 800px;
-      font-weight: 800;
-      font-size: clamp(2.4rem, 5vw, 4.2rem);
-      line-height: 1.06;
-      letter-spacing: -0.03em;
-      margin-bottom: clamp(0.9rem, 3vw, 1.8rem);
-      opacity: 0;
-      animation: fadeUp 0.85s 0.15s forwards;
-    }
- 
-    .hero-title .name { color: #8a8a8a; }
-    .hero-title .strong { color: var(--title); }
- 
-    .hero-tags {
-      display: flex;
-      gap: .5rem;
-      opacity: 0;
-      animation: fadeUp 0.85s 0.32s forwards;
-      align-items: center;
-      flex-wrap: wrap;
-    }
- 
+
+<style>
+  html { font-size: 110%; scroll-behavior: smooth; }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root{
+    --bg: #ffffff;
+    --text: rgb(103,103,122);
+    --title: #000000;
+    --card-bg: #ffffff;
+    --border: #e4e2dd;
+    --transition: 0.28s cubic-bezier(0.4,0,0.2,1);
+    --page-max-width: 1056px;
+    --page-side-padding: 3.3rem;
+    --hero-gap-top: clamp(2rem, 5vh, 4rem);
+    --hero-gap-bottom: clamp(1.2rem, 6vh, 3rem);
+    --nav-height: 4.6rem;
+  }
+
+  body{
+    font-family: 'Manrope', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  a { text-decoration:none; color:inherit; }
+  ::-webkit-scrollbar{ width:5px; } 
+  ::-webkit-scrollbar-track{ background:var(--bg);} 
+  ::-webkit-scrollbar-thumb{ background:var(--border); border-radius:3px; }
+
+  .container{ 
+    max-width:var(--page-max-width); 
+    margin:0 auto; 
+    padding:0 var(--page-side-padding); 
+    box-sizing:border-box; 
+  }
+
+  #scroll {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    padding-inline: var(--page-side-padding);
+    padding-top: calc(var(--nav-height) + var(--hero-gap-top));
+    padding-bottom: var(--hero-gap-bottom);
+    box-sizing: border-box;
+  }
+
+  .hero-inner {
+    max-width: var(--page-max-width);
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: clamp(3.6rem, 12vh, 8rem);
+    margin-bottom: clamp(1rem, 5vh, 2.8rem);
+  }
+
+  .hero-title {
+    max-width: 800px;
+    font-weight: 800;
+    font-size: clamp(2.4rem, 5vw, 4.2rem);
+    line-height: 1.06;
+    letter-spacing: -0.03em;
+    margin-bottom: clamp(0.9rem, 3vw, 1.8rem);
+    opacity: 0;
+    animation: fadeUp 0.85s 0.15s forwards;
+  }
+
+  .hero-title .name { color: #8a8a8a; }
+  .hero-title .strong { color: var(--title); }
+
+  .hero-tags {
+    display: flex;
+    gap: .5rem;
+    opacity: 0;
+    animation: fadeUp 0.85s 0.32s forwards;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .hero-tag {
+    background: #fff;
+    border: 1px solid var(--border);
+    padding: .42rem 1rem;
+    border-radius: 100px;
+    font-weight: 600;
+    color: #8a8a8a;
+    line-height: 1.4;
+    white-space: normal;
+  }
+
+  @media (min-width: 769px) {
     .hero-tag {
-      background: #fff;
-      border: 1px solid var(--border);
-      padding: .42rem 1rem;
-      border-radius: 100px;
-      font-weight: 600;
-      color: #8a8a8a;
-      line-height: 1.4;
-      white-space: normal;
-    }
- 
-    @media (min-width: 769px) {
-      .hero-tag {
-        white-space: nowrap;
-      }
-    }
- 
-    .section-label{ 
-      font-weight:700; 
-      font-size:.72rem; 
-      text-transform:uppercase; 
-      letter-spacing:.13em; 
-      color:#8a8a8a; 
-      margin-bottom:2rem; 
-    }
-    .section-heading{ 
-      font-weight:800; 
-      font-size:clamp(1.7rem,3vw,2.2rem); 
-      margin:3.5rem 0 1.8rem; 
-      color:var(--title); 
-    }
- 
-    #work{ padding:3rem 0 4rem; }
- 
-    .proj-card{ 
-      display:grid; 
-      grid-template-columns:1fr 400px; 
-      background:#fffff; 
-      border:1px solid var(--border); 
-      border-radius:20px; 
-      overflow:hidden; 
-      margin-bottom:1.25rem; 
-      transition:transform var(--transition), box-shadow var(--transition); 
-      text-decoration: none;
-      color: inherit;
-    }
- 
-    .proj-card a,
-    .proj-card a:visited,
-    .proj-card a:hover,
-    .proj-card a:active {
-      color: inherit;
-      text-decoration: none;
-    }
- 
-    .proj-body{ 
-      padding:2.25rem 2.5rem; 
-      display:flex; 
-      flex-direction:column; 
-      justify-content:space-between; 
-    }
- 
-.proj-img-side { 
-  background: #ffffff;       
-  min-height: 16.25rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1.5rem;         
-  overflow: hidden;        
-}
-.proj-img-side img,
-.proj-img-side svg {
-  max-width: 100%;
-  max-height: 100%;
-  width: auto;                /* deja que conserve su proporción natural */
-  height: auto;
-  object-fit: contain;        /* NO recorta: se adapta al contenedor */
-  border-radius: 12px;        /* si quieres, puedes bajar a 8px o quitarlo */
-  border: none;               /* sin bordes, todo se verá uniforme blanco */
-  box-shadow: none;           /* sombra solo en la tarjeta, no en la imagen */
-  background: transparent;    /* que no añada otra “caja” visual */
-  display: block;
-}
- 
-    .proj-title {
-      color: var(--title);
-    }
- 
-    .proj-meta {
-      color: var(--text);
-    }
- 
-    .proj-card:hover{ 
-      transform:translateY(-4px); 
-      box-shadow:0 20px 56px rgba(0,0,0,0.08); 
-    }
- 
-    .proj-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 1rem;
-      align-items: center;
-    }
- 
-    .proj-tag {
-      background: #ffffff;
-      border: 1px solid var(--border);
-      border-radius: 100px;
-      padding: 0.42rem 1rem;
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--text);
-      line-height: 1;
       white-space: nowrap;
-      box-shadow: none;
-      transition: none;
-      cursor: default;
     }
- 
-    .proj-tag--dark {
-      background: #000;
-      color: #fff;
-      border-color: #000;
-    }
- 
-    @media (max-width: 540px) {
-      .proj-tag { padding: 0.36rem 0.8rem; font-size: 0.92rem; }
-    }
- 
-    .wip-badge {
-      color: #1e7bf6;
-    }
- 
-    .other-heading{ 
-      font-size:clamp(1.5rem,3vw,2.2rem); 
-      font-weight:800; 
-      margin-bottom:2rem; 
-      margin-top:5rem; 
-      color: var(--title);
-    }
- 
-    .mini-grid{ 
-      display:grid; 
-      grid-template-columns: repeat(2, minmax(0,1fr)); 
-      gap:2.2rem; 
-    }
-    .mini-img-frame{ 
-      background:#fff; 
-      border-radius:24px; 
-      border:1px solid #e5e5ed; 
-      padding:1.6rem 1.9rem; 
-      overflow:hidden; 
-    }
-    .mini-img{ 
-      width:100%; 
-      height:13.75rem; 
-      display:flex; 
-      align-items:center; 
-      justify-content:center; 
-    }
- 
-    .mini-card{ 
-      position:relative; 
-      cursor:pointer; 
-      background:transparent; 
-      border-radius:12px; 
-      padding:0.6rem 0.5rem; 
-      min-height:5.6rem; 
-      display:flex; 
-      flex-direction:column; 
-      gap:.35rem;
-      opacity:0; 
-      transform:translateY(10px); 
-      transition: opacity .5s ease, transform .5s ease;
-    }
- 
-    .reveal.visible .mini-card{ opacity:1; transform:translateY(0); }
-    .reveal.visible .mini-card:nth-child(1){ transition-delay: .06s; }
-    .reveal.visible .mini-card:nth-child(2){ transition-delay: .12s; }
-    .reveal.visible .mini-card:nth-child(3){ transition-delay: .18s; }
-    .reveal.visible .mini-card:nth-child(4){ transition-delay: .24s; }
- 
-    .mini-overlay{ 
-      position:absolute; 
-      top:0; 
-      left:0; 
-      right:0; 
-      bottom:-14px; 
-      border-radius:24px; 
-      background:#f2f5ff; 
-      padding:1.8rem 2rem 2.3rem; 
-      color:var(--text); 
-      font-size:0.9rem; 
-      line-height:1.8; 
-      opacity:0; 
-      pointer-events:none; 
-      transition:opacity var(--transition); 
-      z-index:2; 
-    }
-    .mini-card:hover .mini-overlay{ opacity:1; }
- 
-    .mini-title {
-      color: var(--title);
-    }
- 
-    #principles{ padding:0rem 0 4rem; }
-    .principles-card{ 
-      background:#f7f9ff; 
-      border-radius:24px; 
-      padding:2.4rem; 
-      box-sizing:border-box; 
-    }
-    .principles-grid{ 
-      display:grid; 
-      grid-template-columns:repeat(2,minmax(0,1fr)); 
-      gap:2.2rem 3.5rem; 
-    }
-    .principle-item{ padding:0; }
-    .principle-emoji{ font-size:1.4rem; margin-bottom:.8rem; display:block; }
-    .principle-title{ font-weight:700; font-size:.98rem; margin-bottom:.35rem; }
-    .principle-text{ font-size:.86rem; color:#8a8a8a; line-height:1.7; }
- 
-    #testimonials{ padding:1rem 0; }
-    .testi-slider-outer{ position:relative; overflow:visible; padding-bottom:2.5rem; }
-    .testi-track-wrapper{ overflow:hidden; width:100%; box-sizing:border-box; }
-    .testi-track{ display:flex; gap:1.5rem; transition: transform .55s cubic-bezier(0.4,0,0.2,1); will-change:transform; }
-    .testi-card{ 
-      min-width:70%; 
-      max-width:70%; 
-      flex-shrink:0; 
-      background:#fff; 
-      border-radius:24px; 
-      border:1px solid #e5e5ed; 
-      padding:2.4rem 2.6rem; 
-      box-shadow:0 18px 45px rgba(15,23,42,0.05); 
-    }
-    .testi-quote{ font-size:.95rem; line-height:1.9; margin-bottom:2rem; color:var(--text); }
-    .testi-footer{ display:flex; align-items:center; gap:.85rem; }
-    .testi-avatar{ 
-      width:44px; 
-      height:44px; 
-      border-radius:50%; 
-      background:var(--border); 
-      border:2px solid #fff; 
-      box-shadow:0 0 0 1.5px var(--border); 
-      display:flex; 
-      align-items:center; 
-      justify-content:center; 
-      font-weight:800; 
-      color:#8a8a8a; 
-    }
-    .testi-arrow{ 
-      position:absolute; 
-      top:50%; 
-      transform:translateY(-50%); 
-      width:40px; 
-      height:40px; 
-      border-radius:999px; 
-      background:#fff; 
-      border:1px solid #e5e5ed; 
-      display:flex; 
-      align-items:center; 
-      justify-content:center; 
-      cursor:pointer; 
-      box-shadow:0 10px 25px rgba(15,23,42,0.08); 
-      transition:all var(--transition); 
-    }
-    .testi-arrow-left{ left:0.4rem; } 
-    .testi-arrow-right{ right:0.4rem; }
-    .testi-controls{ 
-      position:absolute; 
-      left:50%; 
-      bottom:0; 
-      transform:translateX(-50%); 
-      display:flex; 
-      gap:.6rem; 
-      align-items:center; 
-    }
-    .testi-dot{ 
-      width:8px; 
-      height:8px; 
-      border-radius:999px; 
-      background:#d7d7e3; 
-      border:none; 
-      cursor:pointer; 
-      transition: background var(--transition), width var(--transition); 
-    }
-    .testi-dot.active{ background:#9a9ab8; width:20px; }
- 
-    #hard-skills{ padding:6rem 0; }
-    .hard-skills-inner{ 
-      display:flex; 
-      flex-direction:column; 
-      align-items:flex-start; 
-      gap:1.6rem; 
-      max-width:var(--page-max-width); 
-      margin:0 auto; 
-      padding-left:0; 
-      padding-right:0; 
-      box-sizing:border-box; 
-    }
-    .hard-skills-text{ 
-      font-size:clamp(2rem,4vw,3rem); 
-      font-weight:800; 
-      line-height:1.18; 
-      max-width:800px; 
-      color: var(--title)
-    }
-    .hard-skills-btn{ 
-      display:inline-flex; 
-      align-items:center; 
-      justify-content:center; 
-      padding:.75rem 1.9rem; 
-      background:#000; 
-      color:#fff; 
-      border-radius:999px; 
-      border:1.5px solid #000; 
-      font-weight:700; 
-    }
- 
-    #contact {
-      padding: 3.5rem 0 2.5rem;
-    }
- 
-    .contact-title {
-      font-size: clamp(1.7rem, 3vw, 2.2rem);
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      margin-bottom: 1.6rem;
-      color: var(--title);
-    }
- 
-    .contact-layout {
-      display: grid;
-      grid-template-columns: minmax(0, 1.8fr) minmax(0, 1fr);
-      gap: 2rem;
-      align-items: flex-start;
-    }
- 
-    .contact-card {
-      background: #ffffff;
-      border-radius: 18px;
-      border: 1px solid #e5e5ed;
-      padding: 1.8rem 2rem;
-    }
- 
-    .contact-sub {
-      color: var(--text);
-      font-size: 0.95rem;
-      line-height: 1.7;
-      margin-bottom: 1rem;
-      max-width: 540px;
-    }
- 
-    .contact-email-link {
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: #4a4a6a;
-      text-decoration: underline;
-      text-underline-offset: 3px;
-    }
- 
-    .contact-elsewhere-title {
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 0.9rem;
-    }
- 
-    .contact-elsewhere-links {
-      display: flex;
-      flex-direction: column;
-      gap: 0.9rem;
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: var(--text);
-    }
- 
-    .contact-elsewhere-links a {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      text-decoration: none;
-      color: inherit;
-    }
- 
-    .contact-elsewhere-links a .icon {
-      font-size: 0.95rem;
-      color: var(--text);
-    }
- 
-    @keyframes fadeUp{ 
-      from{ opacity:0; transform:translateY(26px);} 
-      to{ opacity:1; transform:translateY(0);} 
-    }
-    .reveal{ 
-      opacity:0; 
-      transform:translateY(20px); 
-      transition: opacity .6s ease, transform .6s ease; 
-    }
-    .reveal.visible{ opacity:1; transform:translateY(0); }
- 
-    @media (max-width:1024px){ 
-      .proj-card{ grid-template-columns:1fr; } 
-      .mini-grid{ grid-template-columns:1fr; } 
-      .principles-grid{ grid-template-columns:1fr 1fr; } 
-    }
-    @media (max-width:768px){ 
-      .container{ padding:0 1.5rem; } 
-      .mini-grid{ grid-template-columns:1fr; } 
-      .testi-card{ min-width:100%; max-width:100%; padding:2rem 1.8rem; } 
-      .principles-card{ padding:1.8rem; } 
-      .principles-grid{ grid-template-columns:1fr; gap:1.9rem; } 
-      .contact-layout { grid-template-columns: 1fr; }
-    }
+  }
+
+  .section-label{ 
+    font-weight:700; 
+    font-size:.72rem; 
+    text-transform:uppercase; 
+    letter-spacing:.13em; 
+    color:#8a8a8a; 
+    margin-bottom:2rem; 
+  }
+  .section-heading{ 
+    font-weight:800; 
+    font-size:clamp(1.7rem,3vw,2.2rem); 
+    margin:3.5rem 0 1.8rem; 
+    color:var(--title); 
+  }
+
+  #work{ padding:3rem 0 4rem; }
+
+  .proj-card{ 
+    display:grid; 
+    grid-template-columns:1fr 400px; 
+    background:#fffff; 
+    border:1px solid var(--border); 
+    border-radius:20px; 
+    overflow:hidden; 
+    margin-bottom:1.25rem; 
+    transition:transform var(--transition), box-shadow var(--transition); 
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .proj-card a,
+  .proj-card a:visited,
+  .proj-card a:hover,
+  .proj-card a:active {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .proj-body{ 
+    padding:2.25rem 2.5rem; 
+    display:flex; 
+    flex-direction:column; 
+    justify-content:space-between; 
+  }
+
+  .proj-img-side { 
+    background: #ffffff;       
+    min-height: 16.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;         
+    overflow: hidden;        
+  }
+  .proj-img-side img,
+  .proj-img-side svg {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 12px;
+    border: none;
+    box-shadow: none;
+    background: transparent;
+    display: block;
+  }
+
+  .proj-title {
+    color: var(--title);
+  }
+
+  .proj-meta {
+    color: var(--text);
+  }
+
+  .proj-card:hover{ 
+    transform:translateY(-4px); 
+    box-shadow:0 20px 56px rgba(0,0,0,0.08); 
+  }
+
+  .proj-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    align-items: center;
+  }
+
+  .proj-tag {
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 0.42rem 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1;
+    white-space: nowrap;
+    box-shadow: none;
+    transition: none;
+    cursor: default;
+  }
+
+  .proj-tag--dark {
+    background: #000;
+    color: #fff;
+    border-color: #000;
+  }
+
+  @media (max-width: 540px) {
+    .proj-tag { padding: 0.36rem 0.8rem; font-size: 0.92rem; }
+  }
+
+  .wip-badge {
+    color: #1e7bf6;
+  }
+
+  .other-heading{ 
+    font-size:clamp(1.5rem,3vw,2.2rem); 
+    font-weight:800; 
+    margin-bottom:2rem; 
+    margin-top:5rem; 
+    color: var(--title);
+  }
+
+  .mini-grid{ 
+    display:grid; 
+    grid-template-columns: repeat(2, minmax(0,1fr)); 
+    gap:2.2rem; 
+  }
+  .mini-img-frame{ 
+    background:#fff; 
+    border-radius:24px; 
+    border:1px solid #e5e5ed; 
+    padding:1.6rem 1.9rem; 
+    overflow:hidden; 
+  }
+  .mini-img{ 
+    width:100%; 
+    height:13.75rem; /* puedes bajar a 11–12rem si quieres más compacto */
+    display:flex; 
+    align-items:center; 
+    justify-content:center; 
+  }
+
+  /* IMPORTANTE: imágenes de Other projects encajadas en el recuadro */
+  .mini-img img {
+    max-width: 100%;
+    max-height: 100%;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;  /* como las grandes, no recorta */
+    display: block;
+  }
+
+  .mini-card{ 
+    position:relative; 
+    cursor:pointer; 
+    background:transparent; 
+    border-radius:12px; 
+    padding:0.6rem 0.5rem; 
+    min-height:5.6rem; 
+    display:flex; 
+    flex-direction:column; 
+    gap:.35rem;
+    opacity:0; 
+    transform:translateY(10px); 
+    transition: opacity .5s ease, transform .5s ease;
+  }
+
+  .reveal.visible .mini-card{ opacity:1; transform:translateY(0); }
+  .reveal.visible .mini-card:nth-child(1){ transition-delay: .06s; }
+  .reveal.visible .mini-card:nth-child(2){ transition-delay: .12s; }
+  .reveal.visible .mini-card:nth-child(3){ transition-delay: .18s; }
+  .reveal.visible .mini-card:nth-child(4){ transition-delay: .24s; }
+
+  .mini-overlay{ 
+    position:absolute; 
+    top:0; 
+    left:0; 
+    right:0; 
+    bottom:-14px; 
+    border-radius:24px; 
+    background:#f2f5ff; 
+    padding:1.8rem 2rem 2.3rem; 
+    color:var(--text); 
+    font-size:0.9rem; 
+    line-height:1.8; 
+    opacity:0; 
+    pointer-events:none; 
+    transition:opacity var(--transition); 
+    z-index:2; 
+  }
+  .mini-card:hover .mini-overlay{ opacity:1; }
+
+  .mini-title {
+    color: var(--title);
+  }
+
+  #principles{ padding:0rem 0 4rem; }
+  .principles-card{ 
+    background:#f7f9ff; 
+    border-radius:24px; 
+    padding:2.4rem; 
+    box-sizing:border-box; 
+  }
+  .principles-grid{ 
+    display:grid; 
+    grid-template-columns:repeat(2,minmax(0,1fr)); 
+    gap:2.2rem 3.5rem; 
+  }
+  .principle-item{ padding:0; }
+  .principle-emoji{ font-size:1.4rem; margin-bottom:.8rem; display:block; }
+  .principle-title{ font-weight:700; font-size:.98rem; margin-bottom:.35rem; }
+  .principle-text{ font-size:.86rem; color:#8a8a8a; line-height:1.7; }
+
+  #testimonials{ padding:1rem 0; }
+  .testi-slider-outer{ position:relative; overflow:visible; padding-bottom:2.5rem; }
+  .testi-track-wrapper{ overflow:hidden; width:100%; box-sizing:border-box; }
+  .testi-track{ display:flex; gap:1.5rem; transition: transform .55s cubic-bezier(0.4,0,0.2,1); will-change:transform; }
+  .testi-card{ 
+    min-width:70%; 
+    max-width:70%; 
+    flex-shrink:0; 
+    background:#fff; 
+    border-radius:24px; 
+    border:1px solid #e5e5ed; 
+    padding:2.4rem 2.6rem; 
+    box-shadow:0 18px 45px rgba(15,23,42,0.05); 
+  }
+  .testi-quote{ font-size:.95rem; line-height:1.9; margin-bottom:2rem; color:var(--text); }
+  .testi-footer{ display:flex; align-items:center; gap:.85rem; }
+  .testi-avatar{ 
+    width:44px; 
+    height:44px; 
+    border-radius:50%; 
+    background:var(--border); 
+    border:2px solid #fff; 
+    box-shadow:0 0 0 1.5px var(--border); 
+    display:flex; 
+    align-items:center; 
+    justify-content:center; 
+    font-weight:800; 
+    color:#8a8a8a; 
+  }
+  .testi-arrow{ 
+    position:absolute; 
+    top:50%; 
+    transform:translateY(-50%); 
+    width:40px; 
+    height:40px; 
+    border-radius:999px; 
+    background:#fff; 
+    border:1px solid #e5e5ed; 
+    display:flex; 
+    align-items:center; 
+    justify-content:center; 
+    cursor:pointer; 
+    box-shadow:0 10px 25px rgba(15,23,42,0.08); 
+    transition:all var(--transition); 
+  }
+  .testi-arrow-left{ left:0.4rem; } 
+  .testi-arrow-right{ right:0.4rem; }
+  .testi-controls{ 
+    position:absolute; 
+    left:50%; 
+    bottom:0; 
+    transform:translateX(-50%); 
+    display:flex; 
+    gap:.6rem; 
+    align-items:center; 
+  }
+  .testi-dot{ 
+    width:8px; 
+    height:8px; 
+    border-radius:999px; 
+    background:#d7d7e3; 
+    border:none; 
+    cursor:pointer; 
+    transition: background var(--transition), width var(--transition); 
+  }
+  .testi-dot.active{ background:#9a9ab8; width:20px; }
+
+  #hard-skills{ padding:6rem 0; }
+  .hard-skills-inner{ 
+    display:flex; 
+    flex-direction:column; 
+    align-items:flex-start; 
+    gap:1.6rem; 
+    max-width:var(--page-max-width); 
+    margin:0 auto; 
+    padding-left:0; 
+    padding-right:0; 
+    box-sizing:border-box; 
+  }
+  .hard-skills-text{ 
+    font-size:clamp(2rem,4vw,3rem); 
+    font-weight:800; 
+    line-height:1.18; 
+    max-width:800px; 
+    color: var(--title)
+  }
+  .hard-skills-btn{ 
+    display:inline-flex; 
+    align-items:center; 
+    justify-content:center; 
+    padding:.75rem 1.9rem; 
+    background:#000; 
+    color:#fff; 
+    border-radius:999px; 
+    border:1.5px solid #000; 
+    font-weight:700; 
+  }
+
+  #contact {
+    padding: 3.5rem 0 2.5rem;
+  }
+
+  .contact-title {
+    font-size: clamp(1.7rem, 3vw, 2.2rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.6rem;
+    color: var(--title);
+  }
+
+  .contact-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.8fr) minmax(0, 1fr);
+    gap: 2rem;
+    align-items: flex-start;
+  }
+
+  .contact-card {
+    background: #ffffff;
+    border-radius: 18px;
+    border: 1px solid #e5e5ed;
+    padding: 1.8rem 2rem;
+  }
+
+  .contact-sub {
+    color: var(--text);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+    max-width: 540px;
+  }
+
+  .contact-email-link {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #4a4a6a;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .contact-elsewhere-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.9rem;
+  }
+
+  .contact-elsewhere-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .contact-elsewhere-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .contact-elsewhere-links a .icon {
+    font-size: 0.95rem;
+    color: var(--text);
+  }
+
+  @keyframes fadeUp{ 
+    from{ opacity:0; transform:translateY(26px);} 
+    to{ opacity:1; transform:translateY(0);} 
+  }
+  .reveal{ 
+    opacity:0; 
+    transform:translateY(20px); 
+    transition: opacity .6s ease, transform .6s ease; 
+  }
+  .reveal.visible{ opacity:1; transform:translateY(0); }
+
+  @media (max-width:1024px){ 
+    .proj-card{ grid-template-columns:1fr; } 
+    .mini-grid{ grid-template-columns:1fr; } 
+    .principles-grid{ grid-template-columns:1fr 1fr; } 
+  }
+  @media (max-width:768px){ 
+    .container{ padding:0 1.5rem; } 
+    .mini-grid{ grid-template-columns:1fr; } 
+    .testi-card{ min-width:100%; max-width:100%; padding:2rem 1.8rem; } 
+    .principles-card{ padding:1.8rem; } 
+    .principles-grid{ grid-template-columns:1fr; gap:1.9rem; } 
+    .contact-layout { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
- 
-  <div id="menu-container"></div>
- 
-  <div id="scroll">
-<div class="hero-inner">
-<h1 class="hero-title">
-<span class="name">Hi, I'm Jan,</span>
-<span class="strong">Marketing &amp; Digital Content Specialist creating ideas that make everyday brands work better.</span>
-</h1>
-<div class="hero-tags">
-<span class="hero-tag">+2 years of experience</span>
-<span class="hero-tag">Digital Marketing, Content, Web, SEO/GEO, E-commerce</span>
-<span class="hero-tag">Based in Barcelona</span>
+
+<div id="menu-container"></div>
+
+<div id="scroll">
+  <div class="hero-inner">
+    <h1 class="hero-title">
+      <span class="name">Hi, I'm Jan,</span>
+      <span class="strong">Marketing &amp; Digital Content Specialist creating ideas that make everyday brands work better.</span>
+    </h1>
+    <div class="hero-tags">
+      <span class="hero-tag">+2 years of experience</span>
+      <span class="hero-tag">Digital Marketing, Content, Web, SEO/GEO, E-commerce</span>
+      <span class="hero-tag">Based in Barcelona</span>
+    </div>
+  </div>
 </div>
-</div>
-</div>
- 
+
 <section id="work">
-<div class="container">
-<div class="section-label reveal">Work</div>
- 
-<a href="projects/ikea.html" class="proj-card reveal">
-<div class="proj-body">
-<div>
-<p class="proj-meta">IKEA • 2024</p>
-<h2 class="proj-title">Local Marketing and Digital Content for Catalonia</h2>
-</div>
-<div class="wip-badge">In progress</div>
- 
-    <div class="proj-tags">
-<span class="proj-tag">Digital</span>
-<span class="proj-tag">SEO</span>
-<span class="proj-tag">Localization</span>
-<span class="proj-tag">Marketing</span>
-<span class="proj-tag">Campaigns</span>
-</div>
-</div>
- 
-<div class="proj-img-side">
-<img src="assets/img/index_ikea.png" alt="Project IKEA">
-</div>
-</a>
- 
-    <a href="projects/daina-media.html" class="proj-card reveal">
-<div class="proj-body">
-<div>
-<p class="proj-meta">Daina • 2025</p>
-<h2 class="proj-title">Website and strategy for a new agency</h2>
-</div>
-<div class="proj-tags">
-<span class="proj-tag">Landing page</span>
-<span class="proj-tag">Marketing</span>
-<span class="proj-tag">Content</span>
-</div>
-</div>
-<div class="proj-img-side">
-<img src="assets/img/index_daina.png" alt="Project Daina">
-</div>
-</a>
- 
-    <a href="projects/coesuz.html" class="proj-card reveal">
-<div class="proj-body">
-<div>
-<p class="proj-meta">Coesuz • 2024</p>
-<h2 class="proj-title">Digital product development and promotional video</h2>
-</div>
-<div class="proj-tags">
-<span class="proj-tag">Product</span>
-<span class="proj-tag">Digital</span>
-<span class="proj-tag">Media</span>
-</div>
-</div>
-<div class="proj-img-side">
-<img src="assets/img/index_coesuz.png" alt="Project Coesuz">
-</div>
-</a>
- 
-    <div class="reveal" style="margin-top:1.5rem;">
-<h2 class="other-heading">Other projects</h2>
-<div class="mini-grid">
- 
-        <a href="projects/accesorios3d.html" class="mini-card">
-<div class="mini-img-frame">
-<div class="mini-img">
-<img src="assets/img/index_accesorios3d.png" alt="Project Accesorios3D">
-</div>
-</div>
-<div class="mini-body">
-<p class="mini-meta">Accesorios3D · 3D Printing ·  E‑commerce · 2024</p>
-<h3 class="mini-title">Branding, web and product production</h3>
-</div>
-<div class="mini-overlay">
-<p>Accesorios3d creates minimalist, durable home accessories produced with sustainable 3D printing. I developed the brand identity, product visuals and a responsive e‑commerce site that supports product personalization (size, color, finish). Deliverables include logo & icon, color palette, product renders, production files and landing page.</p>
-</div>
-</a>
- 
-        <a href="projects/category-five-brand.html" class="mini-card">
-<div class="mini-img-frame">
-<div class="mini-img">
-<img src="assets/img/index_categoryfive.png" alt="Project Category Five">
-</div>
-</div>
-<div class="mini-body">
-<p class="mini-meta">Category Five · Social media · Visual Identity · 2023</p>
-<h3 class="mini-title">Brand digital strategy and implementation plan</h3>
-</div>
-<div class="mini-overlay">
-<p>Led art direction and content for a summer launch featuring three short films and a social campaign on Instagram and TikTok. Produced photography, animated logo variations and a content calendar (Stories, Reels, grid posts) to position the brand. The campaign drove organic reach through community challenges and cohesive visual storytelling.</p>
-</div>
-</a>
- 
-        <a href="projects/airo.html" class="mini-card">
-<div class="mini-img-frame">
-<div class="mini-img">
-<img src="assets/img/index_airo.png" alt="Project Airo">
-</div>
-</div>
-<div class="mini-body">
-<p class="mini-meta">Airo · Digital · UX/UI · 2023</p>
-<h3 class="mini-title">Create the visual identity and UX/UI.</h3>
-</div>
-<div class="mini-overlay">
-<p>Airo is a university concept for a universal transit card with a rewards program to encourage public transport use. I created the visual identity and mockups for a website and mobile app.</p>
-</div>
-</a>
- 
-        <a href="projects/scan-and-go.html" class="mini-card">
-<div class="mini-img-frame">
-<div class="mini-img">
-<img src="assets/img/index_scanandgo.png" alt="Project Scan&Go">
-</div>
-</div>
-<div class="mini-body">
-<p class="mini-meta">Scan&Go · Development · Interactive · 2020</p>
-<h3 class="mini-title">Produced an interactive video game and exhibition installation</h3>
-</div>
-<div class="mini-overlay">
-<p>Scan&Go Arcade is a motion‑controlled interactive installation built with Processing and sensor input. Players select moving targets with hand gestures; the system logs scores to a leaderboard. I handled concept, coding, sensor integration and assembly — the piece was exhibited at LAVS and tested with live audiences.</p>
-</div>
-</a>
- 
-      </div>
-</div>
-</div>
-</section>
- 
-  <section id="principles">
-<div class="container">
-<h2 class="section-heading reveal">My principles</h2>
-<div class="principles-card reveal">
-<div class="principles-grid">
-<div class="principle-item">
-<span class="principle-emoji">🚀</span>
-<h3 class="principle-title">What ships matters more than what's perfect</h3>
-<p class="principle-text">Beautiful design artifacts are great, but progress is better.</p>
-</div>
-<div class="principle-item">
-<span class="principle-emoji">🧠</span>
-<h3 class="principle-title">Make intentional decisions</h3>
-<p class="principle-text">Cultivate spaces of trust and collect diverse perspectives, and then use them to sharpen ideas.</p>
-</div>
-<div class="principle-item">
-<span class="principle-emoji">📐</span>
-<h3 class="principle-title">Measurement as intervention</h3>
-<p class="principle-text">As P. Drucker famously said — "What gets measured gets managed, and what gets managed gets done".</p>
-</div>
-<div class="principle-item">
-<span class="principle-emoji">💫</span>
-<h3 class="principle-title">Never settle for mediocrity</h3>
-<p class="principle-text">There's always room to make our designs better, one iteration at a time.</p>
-</div>
-</div>
-</div>
-</div>
-</section>
- 
-  <section id="testimonials">
-<div class="container">
-<h2 class="section-heading reveal">In their words</h2>
- 
-      <div class="testi-slider-outer reveal">
-<div class="testi-track-wrapper">
-<div class="testi-track" id="testiTrack">
-<div class="testi-card">
-<p class="testi-quote">"Combines strong UI &amp; UX skills with a genuine passion for understanding the user and tailoring solutions to the target audience. Always open to feedback and eager to collaborate."</p>
-<div class="testi-footer">
-<div class="testi-avatar">DB</div>
-<div>
-<p class="testi-author">Dan Bayo</p>
-<p class="testi-role">Marketing Campaign Specialist</p>
-</div>
-</div>
-</div>
- 
-            <div class="testi-card">
-<p class="testi-quote">"Smoothly balances taking care of all the small details and understanding the importance of the bigger picture, whilst ensuring that everyone can succeed."</p>
-<div class="testi-footer">
-<div class="testi-avatar">AG</div>
-<div>
-<p class="testi-author">Alberto Gonzalez</p>
-<p class="testi-role">Marketing Specialist</p>
-</div>
-</div>
-</div>
- 
-            <div class="testi-card">
-<p class="testi-quote">"Extremely organized and meticulous, designs are always thoughtful, clear, and beautifully executed."</p>
-<div class="testi-footer">
-<div class="testi-avatar">TC</div>
-<div>
-<p class="testi-author">Tiffany Cachout</p>
-<p class="testi-role">Insights</p>
-</div>
-</div>
-</div>
- 
-          </div>
-</div>
- 
-        <button class="testi-arrow testi-arrow-left" id="testiPrev" aria-label="Previous testimonial">
-<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
-</button>
- 
-        <button class="testi-arrow testi-arrow-right" id="testiNext" aria-label="Next testimonial">
-<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-</button>
- 
-        <div class="testi-controls" id="testiDots">
-<button class="testi-dot active" data-idx="0"></button>
-<button class="testi-dot" data-idx="1"></button>
-<button class="testi-dot" data-idx="2"></button>
-</div>
-</div>
-</div>
-</section>
- 
-  <section id="hard-skills">
-<div class="container">
-<div class="hard-skills-inner reveal">
-<p class="hard-skills-text">Hard skills can be learned, but the real magic happens when personalities click</p>
-<a href="about.html" class="hard-skills-btn">More about me</a>
-</div>
-</div>
-</section>
- 
-  <section id="contact">
-<div class="container">
-<h2 class="contact-title">Get in touch</h2>
- 
-      <div class="contact-layout">
-<div class="contact-card">
-<p class="contact-sub">Whether it's a quick question, a collaboration idea, or just a friendly chat, I'd love to hear from you.</p>
-<a href="mailto:janescoda49@gmail.com" class="contact-email-link">janescoda49@gmail.com</a>
-</div>
- 
+  <div class="container">
+    <div class="section-label reveal">Work</div>
+
+    <a href="projects/ikea.html" class="proj-card reveal">
+      <div class="proj-body">
         <div>
-<p class="contact-elsewhere-title">Elsewhere</p>
-<div class="contact-elsewhere-links">
-<a href="https://www.linkedin.com/in/janescoda" target="_blank" rel="noopener noreferrer">
-              LinkedIn <span class="icon">↗</span>
-</a>
-</div>
-</div>
-</div>
-</div>
+          <p class="proj-meta">IKEA • 2024</p>
+          <h2 class="proj-title">Local Marketing and Digital Content for Catalonia</h2>
+        </div>
+        <div class="wip-badge">In progress</div>
+
+        <div class="proj-tags">
+          <span class="proj-tag">Digital</span>
+          <span class="proj-tag">SEO</span>
+          <span class="proj-tag">Localization</span>
+          <span class="proj-tag">Marketing</span>
+          <span class="proj-tag">Campaigns</span>
+        </div>
+      </div>
+
+      <div class="proj-img-side">
+        <img src="assets/img/index_ikea.png" alt="Project IKEA">
+      </div>
+    </a>
+
+    <a href="projects/daina-media.html" class="proj-card reveal">
+      <div class="proj-body">
+        <div>
+          <p class="proj-meta">Daina • 2025</p>
+          <h2 class="proj-title">Website and strategy for a new agency</h2>
+        </div>
+        <div class="proj-tags">
+          <span class="proj-tag">Landing page</span>
+          <span class="proj-tag">Marketing</span>
+          <span class="proj-tag">Content</span>
+        </div>
+      </div>
+      <div class="proj-img-side">
+        <img src="assets/img/index_daina.png" alt="Project Daina">
+      </div>
+    </a>
+
+    <a href="projects/coesuz.html" class="proj-card reveal">
+      <div class="proj-body">
+        <div>
+          <p class="proj-meta">Coesuz • 2024</p>
+          <h2 class="proj-title">Digital product development and promotional video</h2>
+        </div>
+        <div class="proj-tags">
+          <span class="proj-tag">Product</span>
+          <span class="proj-tag">Digital</span>
+          <span class="proj-tag">Media</span>
+        </div>
+      </div>
+      <div class="proj-img-side">
+        <img src="assets/img/index_coesuz.png" alt="Project Coesuz">
+      </div>
+    </a>
+
+    <div class="reveal" style="margin-top:1.5rem;">
+      <h2 class="other-heading">Other projects</h2>
+      <div class="mini-grid">
+
+        <a href="projects/accesorios3d.html" class="mini-card">
+          <div class="mini-img-frame">
+            <div class="mini-img">
+              <img src="assets/img/index_accesorios3d.png" alt="Project Accesorios3D">
+            </div>
+          </div>
+          <div class="mini-body">
+            <p class="mini-meta">Accesorios3D · 3D Printing ·  E‑commerce · 2024</p>
+            <h3 class="mini-title">Branding, web and product production</h3>
+          </div>
+          <div class="mini-overlay">
+            <p>Accesorios3d creates minimalist, durable home accessories produced with sustainable 3D printing. I developed the brand identity, product visuals and a responsive e‑commerce site that supports product personalization (size, color, finish). Deliverables include logo & icon, color palette, product renders, production files and landing page.</p>
+          </div>
+        </a>
+
+        <a href="projects/category-five-brand.html" class="mini-card">
+          <div class="mini-img-frame">
+            <div class="mini-img">
+              <img src="assets/img/index_categoryfive.png" alt="Project Category Five">
+            </div>
+          </div>
+          <div class="mini-body">
+            <p class="mini-meta">Category Five · Social media · Visual Identity · 2023</p>
+            <h3 class="mini-title">Brand digital strategy and implementation plan</h3>
+          </div>
+          <div class="mini-overlay">
+            <p>Led art direction and content for a summer launch featuring three short films and a social campaign on Instagram and TikTok. Produced photography, animated logo variations and a content calendar (Stories, Reels, grid posts) to position the brand. The campaign drove organic reach through community challenges and cohesive visual storytelling.</p>
+          </div>
+        </a>
+
+        <a href="projects/airo.html" class="mini-card">
+          <div class="mini-img-frame">
+            <div class="mini-img">
+              <img src="assets/img/index_airo.png" alt="Project Airo">
+            </div>
+          </div>
+          <div class="mini-body">
+            <p class="mini-meta">Airo · Digital · UX/UI · 2023</p>
+            <h3 class="mini-title">Create the visual identity and UX/UI.</h3>
+          </div>
+          <div class="mini-overlay">
+            <p>Airo is a university concept for a universal transit card with a rewards program to encourage public transport use. I created the visual identity and mockups for a website and mobile app.</p>
+          </div>
+        </a>
+
+        <a href="projects/scan-and-go.html" class="mini-card">
+          <div class="mini-img-frame">
+            <div class="mini-img">
+              <img src="assets/img/index_scanandgo.png" alt="Project Scan&Go">
+            </div>
+          </div>
+          <div class="mini-body">
+            <p class="mini-meta">Scan&Go · Development · Interactive · 2020</p>
+            <h3 class="mini-title">Produced an interactive video game and exhibition installation</h3>
+          </div>
+          <div class="mini-overlay">
+            <p>Scan&Go Arcade is a motion‑controlled interactive installation built with Processing and sensor input. Players select moving targets with hand gestures; the system logs scores to a leaderboard. I handled concept, coding, sensor integration and assembly — the piece was exhibited at LAVS and tested with live audiences.</p>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </div>
 </section>
- 
-  <div id="footer-container"></div>
- 
+
+<section id="principles">
+  <div class="container">
+    <h2 class="section-heading reveal">My principles</h2>
+    <div class="principles-card reveal">
+      <div class="principles-grid">
+        <div class="principle-item">
+          <span class="principle-emoji">🚀</span>
+          <h3 class="principle-title">What ships matters more than what's perfect</h3>
+          <p class="principle-text">Beautiful design artifacts are great, but progress is better.</p>
+        </div>
+        <div class="principle-item">
+          <span class="principle-emoji">🧠</span>
+          <h3 class="principle-title">Make intentional decisions</h3>
+          <p class="principle-text">Cultivate spaces of trust and collect diverse perspectives, and then use them to sharpen ideas.</p>
+        </div>
+        <div class="principle-item">
+          <span class="principle-emoji">📐</span>
+          <h3 class="principle-title">Measurement as intervention</h3>
+          <p class="principle-text">As P. Drucker famously said — "What gets measured gets managed, and what gets managed gets done".</p>
+        </div>
+        <div class="principle-item">
+          <span class="principle-emoji">💫</span>
+          <h3 class="principle-title">Never settle for mediocrity</h3>
+          <p class="principle-text">There's always room to make our designs better, one iteration at a time.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="testimonials">
+  <div class="container">
+    <h2 class="section-heading reveal">In their words</h2>
+
+    <div class="testi-slider-outer reveal">
+      <div class="testi-track-wrapper">
+        <div class="testi-track" id="testiTrack">
+          <div class="testi-card">
+            <p class="testi-quote">"Combines strong UI &amp; UX skills with a genuine passion for understanding the user and tailoring solutions to the target audience. Always open to feedback and eager to collaborate."</p>
+            <div class="testi-footer">
+              <div class="testi-avatar">DB</div>
+              <div>
+                <p class="testi-author">Dan Bayo</p>
+                <p class="testi-role">Marketing Campaign Specialist</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="testi-card">
+            <p class="testi-quote">"Smoothly balances taking care of all the small details and understanding the importance of the bigger picture, whilst ensuring that everyone can succeed."</p>
+            <div class="testi-footer">
+              <div class="testi-avatar">AG</div>
+              <div>
+                <p class="testi-author">Alberto Gonzalez</p>
+                <p class="testi-role">Marketing Specialist</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="testi-card">
+            <p class="testi-quote">"Extremely organized and meticulous, designs are always thoughtful, clear, and beautifully executed."</p>
+            <div class="testi-footer">
+              <div class="testi-avatar">TC</div>
+              <div>
+                <p class="testi-author">Tiffany Cachout</p>
+                <p class="testi-role">Insights</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <button class="testi-arrow testi-arrow-left" id="testiPrev" aria-label="Previous testimonial">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+
+      <button class="testi-arrow testi-arrow-right" id="testiNext" aria-label="Next testimonial">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+
+      <div class="testi-controls" id="testiDots">
+        <button class="testi-dot active" data-idx="0"></button>
+        <button class="testi-dot" data-idx="1"></button>
+        <button class="testi-dot" data-idx="2"></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="hard-skills">
+  <div class="container">
+    <div class="hard-skills-inner reveal">
+      <p class="hard-skills-text">Hard skills can be learned, but the real magic happens when personalities click</p>
+      <a href="about.html" class="hard-skills-btn">More about me</a>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <h2 class="contact-title">Get in touch</h2>
+
+    <div class="contact-layout">
+      <div class="contact-card">
+        <p class="contact-sub">Whether it's a quick question, a collaboration idea, or just a friendly chat, I'd love to hear from you.</p>
+        <a href="mailto:janescoda49@gmail.com" class="contact-email-link">janescoda49@gmail.com</a>
+      </div>
+
+      <div>
+        <p class="contact-elsewhere-title">Elsewhere</p>
+        <div class="contact-elsewhere-links">
+          <a href="https://www.linkedin.com/in/janescoda" target="_blank" rel="noopener noreferrer">
+            LinkedIn <span class="icon">↗</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="footer-container"></div>
+
 <script>
   function copyEmail() {
     var EMAIL = 'janescoda49@gmail.com';
- 
+
     function animate(btn) {
       if (!btn) return;
       btn.classList.add('copied');
@@ -792,7 +802,7 @@
         btn.classList.remove('copied');
       }, 2500);
     }
- 
+
     function fallback() {
       var el = document.createElement('textarea');
       el.value = EMAIL;
@@ -805,12 +815,12 @@
       } catch (e) {}
       document.body.removeChild(el);
     }
- 
+
     var btns = [
       document.getElementById('copyBtn'),
       document.getElementById('copyBtnMobile')
     ];
- 
+
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(EMAIL)
         .then(function () {
@@ -825,28 +835,28 @@
       btns.forEach(animate);
     }
   }
- 
+
   function initMenuBehavior() {
     var nav = document.querySelector('.site-nav');
     if (!nav) return;
- 
+
     var toggleBtn  = nav.querySelector('.nav-toggle');
     var mobileMenu = nav.querySelector('.nav-right-mobile');
- 
+
     if (toggleBtn && mobileMenu) {
       toggleBtn.addEventListener('click', function (e) {
         e.stopPropagation();
         var isOpen = nav.classList.toggle('is-open');
         toggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
       });
- 
+
       mobileMenu.addEventListener('click', function (e) {
         if (e.target.closest('.nav-link')) {
           nav.classList.remove('is-open');
           toggleBtn.setAttribute('aria-expanded', 'false');
         }
       });
- 
+
       document.addEventListener('click', function (e) {
         if (!nav.contains(e.target)) {
           nav.classList.remove('is-open');
@@ -854,7 +864,7 @@
         }
       });
     }
- 
+
     ['copyBtn', 'copyBtnMobile'].forEach(function (id) {
       var btn = document.getElementById(id);
       if (!btn) return;
@@ -865,12 +875,12 @@
       });
     });
   }
- 
+
   function setActiveNav(page) {
     document.querySelectorAll('.nav-link').forEach(function (link) {
       link.classList.remove('is-active');
     });
- 
+
     if (page === 'index') {
       document.querySelectorAll('.nav-link[href="index.html#work"]').forEach(function (l) {
         l.classList.add('is-active');
@@ -881,22 +891,22 @@
       });
     }
   }
- 
+
   function initPageScripts() {
     var observer = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
         if (e.isIntersecting) e.target.classList.add('visible');
       });
     }, { threshold: 0.08 });
- 
+
     document.querySelectorAll('.reveal').forEach(function (el) {
       observer.observe(el);
     });
- 
+
     (function () {
       var track   = document.getElementById('testiTrack');
       if (!track) return;
- 
+
       var wrapper = track.parentElement;
       var dots    = Array.from(document.querySelectorAll('.testi-dot'));
       var nextBtn = document.getElementById('testiNext');
@@ -904,17 +914,17 @@
       var cards   = Array.from(track.querySelectorAll('.testi-card'));
       var total   = cards.length;
       if (!total) return;
- 
+
       var current    = 0;
       var auto       = null;
       var AUTO_DELAY = 6000;
- 
+
       function clamp(v, a, b) { return Math.min(Math.max(v, a), b); }
- 
+
       function centerCard(idx, animate) {
         var normalized = ((idx % total) + total) % total;
         current = normalized;
- 
+
         var card      = cards[normalized];
         var cardLeft  = card.offsetLeft;
         var cardWidth = card.offsetWidth;
@@ -922,74 +932,74 @@
         var target    = cardLeft + (cardWidth / 2) - (wrapperW / 2);
         var maxT      = Math.max(0, track.scrollWidth - wrapperW);
         target = clamp(target, 0, maxT);
- 
+
         if (animate === false) {
           track.style.transition = 'none';
         } else {
           track.style.transition = 'transform 0.55s cubic-bezier(0.4,0,0.2,1)';
         }
         track.style.transform = 'translateX(-' + Math.round(target) + 'px)';
- 
+
         dots.forEach(function (d, i) {
           d.classList.toggle('active', i === current);
         });
- 
+
         if (animate === false) {
           requestAnimationFrame(function () {
             track.style.transition = 'transform 0.55s cubic-bezier(0.4,0,0.2,1)';
           });
         }
       }
- 
+
       function stopAuto()  {
         if (auto) {
           clearInterval(auto);
           auto = null;
         }
       }
- 
+
       function startAuto() {
         stopAuto();
         auto = setInterval(function () {
           centerCard(current + 1, true);
         }, AUTO_DELAY);
       }
- 
+
       function resetAuto() {
         stopAuto();
         startAuto();
       }
- 
+
       function goTo(i) {
         centerCard(i, true);
         resetAuto();
       }
- 
+
       if (nextBtn) nextBtn.addEventListener('click', function () { goTo(current + 1); });
       if (prevBtn) prevBtn.addEventListener('click', function () { goTo(current - 1); });
- 
+
       dots.forEach(function (d) {
         d.addEventListener('click', function () {
           goTo(parseInt(d.dataset.idx, 10));
         });
       });
- 
+
       window.addEventListener('resize', function () {
         centerCard(current, false);
       });
- 
+
       wrapper.addEventListener('mouseenter', stopAuto);
       wrapper.addEventListener('mouseleave', startAuto);
- 
+
       centerCard(0, false);
       startAuto();
     })();
   }
- 
+
   document.addEventListener('DOMContentLoaded', function () {
     var menuContainer   = document.getElementById('menu-container');
     var footerContainer = document.getElementById('footer-container');
- 
+
     var menuPromise = fetch('menu.html')
       .then(function (r) { return r.text(); })
       .then(function (html) {
@@ -1000,7 +1010,7 @@
       .catch(function (err) {
         console.error('Error cargando menu.html', err);
       });
- 
+
     var footerPromise = fetch('footer.html')
       .then(function (r) { return r.text(); })
       .then(function (html) {
@@ -1009,7 +1019,7 @@
       .catch(function (err) {
         console.error('Error cargando footer.html', err);
       });
- 
+
     Promise.all([menuPromise, footerPromise]).then(function () {
       initPageScripts();
     });
